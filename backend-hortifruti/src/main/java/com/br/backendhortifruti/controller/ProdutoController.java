@@ -20,7 +20,6 @@ public class ProdutoController {
 	private ProdutoService produtoService;
 
 	public ProdutoController(ProdutoService produtoService) {
-		super();
 		this.produtoService = produtoService;
 	}
 	

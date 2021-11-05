@@ -14,7 +14,6 @@ public class ProdutoServiceImpl implements ProdutoService {
 	private ProdutoRepository produtoRepository;
 
 	public ProdutoServiceImpl(ProdutoRepository produtoRepository) {
-		super();
 		this.produtoRepository = produtoRepository;
 	}
 

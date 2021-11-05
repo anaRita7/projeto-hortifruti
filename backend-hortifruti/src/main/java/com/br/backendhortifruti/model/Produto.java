@@ -13,35 +13,48 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id")
+	private int id;
+	
+	@Column(name = "codigo")
 	private int codigo;
 	
 	@Column(name = "descricao")
 	private String descricao;
 	
-	@Column(name = "unidade_medida")
+	@Column(name = "und_medida")
 	private String unidadeMedida;
 		
-	@Column(name = "valor_unitario")
+	@Column(name = "valor")
 	private float valorUnitario;
 		
 	@Column(name = "status")
-	private boolean ativo;
+	private boolean status;
 	
 	public Produto() {}
-
-	public Produto(int codigo, String descricao, String unidadeMedida, float valorUnitario, boolean ativo) {
+	
+	public Produto(int codigo, String descricao, String unidadeMedida, float valorUnitario, boolean status) {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.unidadeMedida = unidadeMedida;
 		this.valorUnitario = valorUnitario;
-		this.ativo = ativo;
+		this.status = status;
 	}
 
-	public Produto(String descricao, String unidadeMedida, float valorUnitario, boolean ativo) {
+	public Produto(int id, int codigo, String descricao, String unidadeMedida, float valorUnitario, boolean status) {
+		this.id = id;
+		this.codigo = codigo;
 		this.descricao = descricao;
 		this.unidadeMedida = unidadeMedida;
 		this.valorUnitario = valorUnitario;
-		this.ativo = ativo;
+		this.status = status;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public int getCodigo() {
@@ -76,12 +89,11 @@ public class Produto {
 		this.valorUnitario = valorUnitario;
 	}
 
-	public boolean isAtivo() {
-		return ativo;
+	public boolean isStatus() {
+		return status;
 	}
 
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-
+	public void setStatus(boolean status) {
+		this.status = status;
+	}	
 }
