@@ -8,32 +8,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="produto")
+@Table(name = "produto")
 public class Produto {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_produto")
 	private int id;
-	
+
 	@Column(name = "codigo")
 	private int codigo;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "descricao")
 	private String descricao;
-	
+
 	@Column(name = "unidade_medida")
 	private String unidadeMedida;
-		
+
 	@Column(name = "valor_unitario")
 	private float valorUnitario;
-		
+
 	@Column(name = "status")
 	private boolean status;
-	
-	public Produto() {}
+
+	public Produto() {
+	}
 
 	public int getId() {
 		return id;
@@ -89,5 +90,5 @@ public class Produto {
 
 	public void setStatus(boolean status) {
 		this.status = status;
-	}	
+	}
 }

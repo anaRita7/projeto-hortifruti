@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.br.backendhortifruti.model.Produto;
 
-public interface ProdutoRepository extends JpaRepository<Produto, Integer>{
+public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
 }
