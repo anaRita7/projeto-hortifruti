@@ -1,6 +1,7 @@
 package com.br.backendhortifruti.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,14 @@ public class ProdutoServiceImpl implements ProdutoService {
 	@Override
 	public List<Produto> consultarProdutos() {
 		return produtoRepository.findAll();
+	}
+
+	@Override
+	public Produto consultarProduto(int id) {
+		Optional<Produto> produto = produtoRepository.findById(id);
+		if (produto.isPresent())
+			return produto.get();
+		return null;
 	}
 	
 	

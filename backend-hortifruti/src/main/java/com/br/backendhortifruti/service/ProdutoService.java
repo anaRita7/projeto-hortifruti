@@ -8,4 +8,5 @@ public interface ProdutoService {
 	
 	Produto incluirProduto(Produto produto);
 	List<Produto> consultarProdutos();
+	Produto consultarProduto (int id);
 }
