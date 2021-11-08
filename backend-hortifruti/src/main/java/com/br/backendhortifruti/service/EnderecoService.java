@@ -13,4 +13,6 @@ public interface EnderecoService {
     Endereco consultarEndereco(int enderecoId);
 
     Endereco alterarEndereco(int enderecoId, Endereco endereco);
+
+    void excluirEndereco(int enderecoId);
 }

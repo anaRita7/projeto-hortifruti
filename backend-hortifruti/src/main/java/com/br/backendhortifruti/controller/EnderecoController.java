@@ -37,4 +37,10 @@ public class EnderecoController {
     public ResponseEntity<Endereco> alterarEndereco(@PathVariable("id") int enderecoId, @RequestBody Endereco endereco){
         return new ResponseEntity<Endereco>(enderecoService.alterarEndereco(enderecoId, endereco), HttpStatus.OK);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> excluirEndereco(@PathVariable("id") int enderecoId){
+        enderecoService.excluirEndereco(enderecoId);
+        return new ResponseEntity<String>("Deleted", HttpStatus.OK);
+    }
 }
