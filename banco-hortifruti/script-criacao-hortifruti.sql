@@ -62,3 +62,4 @@ ALTER TABLE pedido ADD CONSTRAINT fk_endereco_pedido FOREIGN KEY (id_endereco) R
 ALTER TABLE item_do_pedido ADD CONSTRAINT fk_pedido_item_do_pedido FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido);
 ALTER TABLE item_do_pedido ADD CONSTRAINT fk_produto_item_do_pedido FOREIGN KEY (id_produto) REFERENCES produto (id_produto);
 
+select * from cliente;
