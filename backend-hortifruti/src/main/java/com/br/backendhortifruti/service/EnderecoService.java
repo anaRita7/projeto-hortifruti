@@ -7,4 +7,6 @@ import java.util.List;
 public interface EnderecoService {
 
     List<Endereco> consultarEnderecos();
+
+    Endereco incluirEndereco(Endereco endereco);
 }

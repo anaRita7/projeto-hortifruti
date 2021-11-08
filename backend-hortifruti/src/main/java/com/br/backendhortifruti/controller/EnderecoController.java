@@ -14,12 +14,14 @@ public class EnderecoController {
 
     private EnderecoService enderecoService;
 
-
     @GetMapping("")
     public ResponseEntity <List<Endereco>> consultarEnderecos(){
         return new ResponseEntity<>(enderecoService.consultarEnderecos(), HttpStatus.OK);
     }
 
-
+    @PostMapping("")
+    public ResponseEntity<Endereco> incluirEndereco(@RequestBody Endereco endereco){
+        return new ResponseEntity<Endereco>(enderecoService.incluirEndereco(endereco), HttpStatus.CREATED);
+    }
 
 }

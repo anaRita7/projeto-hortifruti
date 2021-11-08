@@ -12,9 +12,13 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     private EnderecoRepository enderecoRepository;
 
-
     @Override
     public List<Endereco> consultarEnderecos() {
         return enderecoRepository.findAll();
+    }
+
+    @Override
+    public Endereco incluirEndereco(Endereco endereco) {
+        return enderecoRepository.save(endereco);
     }
 }
