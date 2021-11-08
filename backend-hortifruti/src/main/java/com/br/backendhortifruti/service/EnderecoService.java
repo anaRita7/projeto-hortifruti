@@ -9,4 +9,6 @@ public interface EnderecoService {
     List<Endereco> consultarEnderecos();
 
     Endereco incluirEndereco(Endereco endereco);
+
+    Endereco consultarEndereco(int enderecoId);
 }
