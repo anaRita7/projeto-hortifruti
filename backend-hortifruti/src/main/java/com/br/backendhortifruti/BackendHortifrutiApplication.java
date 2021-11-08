@@ -9,5 +9,5 @@ public class BackendHortifrutiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BackendHortifrutiApplication.class, args);
 	}
-
+	
 }
