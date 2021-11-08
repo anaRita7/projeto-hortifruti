@@ -13,6 +13,10 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     private EnderecoRepository enderecoRepository;
 
+    public EnderecoServiceImpl(EnderecoRepository enderecoRepository){
+        this.enderecoRepository = enderecoRepository;
+    }
+
     @Override
     public List<Endereco> consultarEnderecos() {
         return enderecoRepository.findAll();
@@ -27,5 +31,14 @@ public class EnderecoServiceImpl implements EnderecoService {
     public Endereco consultarEndereco(int enderecoId) {
         Optional<Endereco> endereco = enderecoRepository.findById(enderecoId);
         return endereco.orElse(null);
+    }
+
+    @Override
+    public Endereco alterarEndereco(int enderecoId, Endereco endereco) {
+        if(enderecoRepository.findById(enderecoId).isPresent()){
+            Endereco enderecoExistente = enderecoRepository.findById(enderecoId).get();
+            enderecoExistente = endereco;
+            return enderecoRepository.save(enderecoExistente);
+        } return null;
     }
 }

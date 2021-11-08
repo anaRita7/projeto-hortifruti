@@ -14,6 +14,10 @@ public class EnderecoController {
 
     private EnderecoService enderecoService;
 
+    public EnderecoController(EnderecoService enderecoService){
+        this.enderecoService = enderecoService;
+    }
+
     @GetMapping("")
     public ResponseEntity <List<Endereco>> consultarEnderecos(){
         return new ResponseEntity<>(enderecoService.consultarEnderecos(), HttpStatus.OK);
@@ -24,8 +28,13 @@ public class EnderecoController {
         return new ResponseEntity<Endereco>(enderecoService.incluirEndereco(endereco), HttpStatus.CREATED);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<Endereco> consultarEndereco(@PathVariable("id") int enderecoId){
         return new ResponseEntity<Endereco>(enderecoService.consultarEndereco(enderecoId), HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Endereco> alterarEndereco(@PathVariable("id") int enderecoId, @RequestBody Endereco endereco){
+        return new ResponseEntity<Endereco>(enderecoService.alterarEndereco(enderecoId, endereco), HttpStatus.OK);
     }
 }
