@@ -10,11 +10,22 @@ public class Endereco {
     @Column(name = "id_endereco")
     private int id;
 
+    @Column(name="cep")
     private String cep;
+
+    @Column(name="cidade")
     private String cidade;
+
+    @Column(name="estado")
     private String estado;
+
+    @Column(name="rua")
     private String rua;
+
+    @Column(name="complemento")
     private String complemento;
+
+    @Column(name="numero")
     private int numero;
 
     public Endereco() {
