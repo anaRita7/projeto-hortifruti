@@ -12,42 +12,28 @@ import javax.persistence.Table;
 public class Produto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id")
+	@Column(name = "id_produto")
 	private int id;
 	
 	@Column(name = "codigo")
 	private int codigo;
 	
+	@Column(name = "nome")
+	private String nome;
+	
 	@Column(name = "descricao")
 	private String descricao;
 	
-	@Column(name = "und_medida")
+	@Column(name = "unidade_medida")
 	private String unidadeMedida;
 		
-	@Column(name = "valor")
+	@Column(name = "valor_unitario")
 	private float valorUnitario;
 		
 	@Column(name = "status")
 	private boolean status;
 	
 	public Produto() {}
-	
-	public Produto(int codigo, String descricao, String unidadeMedida, float valorUnitario, boolean status) {
-		this.codigo = codigo;
-		this.descricao = descricao;
-		this.unidadeMedida = unidadeMedida;
-		this.valorUnitario = valorUnitario;
-		this.status = status;
-	}
-
-	public Produto(int id, int codigo, String descricao, String unidadeMedida, float valorUnitario, boolean status) {
-		this.id = id;
-		this.codigo = codigo;
-		this.descricao = descricao;
-		this.unidadeMedida = unidadeMedida;
-		this.valorUnitario = valorUnitario;
-		this.status = status;
-	}
 
 	public int getId() {
 		return id;
@@ -63,6 +49,14 @@ public class Produto {
 
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getDescricao() {
