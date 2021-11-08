@@ -10,4 +10,5 @@ public interface ProdutoService {
 	List<Produto> consultarProdutos();
 	Produto consultarProduto (int id);
 	Produto alterarProduto(Produto produto, int id);
+	void excluirProduto(int id);
 }

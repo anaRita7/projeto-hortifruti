@@ -51,6 +51,11 @@ public class ProdutoServiceImpl implements ProdutoService {
 		return existingProduto;
 	}
 
+	@Override
+	public void excluirProduto(int id) {
+		produtoRepository.deleteById(id);
+	}
+
 
 	
 	
