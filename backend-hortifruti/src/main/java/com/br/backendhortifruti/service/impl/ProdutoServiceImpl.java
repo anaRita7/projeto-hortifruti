@@ -11,7 +11,7 @@ import com.br.backendhortifruti.service.ProdutoService;
 
 @Service
 public class ProdutoServiceImpl implements ProdutoService {
-	
+
 	private ProdutoRepository produtoRepository;
 
 	public ProdutoServiceImpl(ProdutoRepository produtoRepository) {
@@ -46,7 +46,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 		existingProduto.setUnidadeMedida(produto.getUnidadeMedida());
 		existingProduto.setValorUnitario(produto.getValorUnitario());
 		existingProduto.setStatus(produto.isStatus());
-		
+
 		produtoRepository.save(existingProduto);
 		return existingProduto;
 	}
@@ -55,11 +55,5 @@ public class ProdutoServiceImpl implements ProdutoService {
 	public void excluirProduto(int id) {
 		produtoRepository.deleteById(id);
 	}
-
-
-	
-	
-	
-	
 
 }

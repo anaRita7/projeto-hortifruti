@@ -8,23 +8,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cliente")
+@Table(name = "cliente")
 public class Cliente {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_cliente")
 	private Integer id;
-	
+
 	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "tipo")
 	private char tipo;
-	
+
 	@Column(name = "documento")
 	private String documento;
-	
+
 	public Cliente() {
 	}
 
@@ -62,5 +62,5 @@ public class Cliente {
 	public void setDocumento(String documento) {
 		this.documento = documento;
 	}
-	
+
 }
