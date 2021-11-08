@@ -35,6 +35,23 @@ public class ProdutoServiceImpl implements ProdutoService {
 			return produto.get();
 		return null;
 	}
+
+	@Override
+	public Produto alterarProduto(Produto produto, int id) {
+		Produto existingProduto = null;
+		if (produtoRepository.findById(id).isPresent())
+			existingProduto = produtoRepository.findById(id).get();
+		existingProduto.setNome(produto.getNome());
+		existingProduto.setDescricao(produto.getDescricao());
+		existingProduto.setUnidadeMedida(produto.getUnidadeMedida());
+		existingProduto.setValorUnitario(produto.getValorUnitario());
+		existingProduto.setStatus(produto.isStatus());
+		
+		produtoRepository.save(existingProduto);
+		return existingProduto;
+	}
+
+
 	
 	
 	

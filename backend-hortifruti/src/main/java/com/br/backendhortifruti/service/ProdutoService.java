@@ -9,4 +9,5 @@ public interface ProdutoService {
 	Produto incluirProduto(Produto produto);
 	List<Produto> consultarProdutos();
 	Produto consultarProduto (int id);
+	Produto alterarProduto(Produto produto, int id);
 }
