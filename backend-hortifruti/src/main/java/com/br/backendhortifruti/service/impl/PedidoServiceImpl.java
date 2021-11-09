@@ -26,5 +26,10 @@ public class PedidoServiceImpl implements PedidoService {
         return pedido.orElse(null);
     }
 
+    @Override
+    public Pedido incluirPedido(Pedido pedido) {
+        return pedidoRepository.save(pedido);
+    }
+
 
 }

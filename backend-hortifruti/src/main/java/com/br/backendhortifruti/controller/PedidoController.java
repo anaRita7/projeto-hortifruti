@@ -23,9 +23,16 @@ public class PedidoController {
         return new ResponseEntity<>(pedidoService.consultarPedidos(), HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @GetMapping("/{id}")
     public ResponseEntity<Pedido> consultarPedido(@PathVariable ("id") Integer pedidoId){
         return new ResponseEntity<Pedido>(pedidoService.consultarPedido(pedidoId), HttpStatus.OK);
     }
+
+    @PostMapping("")
+    public ResponseEntity<Pedido> incluirPedido(@RequestBody Pedido pedido){
+        return new ResponseEntity<Pedido>(pedidoService.incluirPedido(pedido), HttpStatus.OK);
+    }
+
+
 }
 

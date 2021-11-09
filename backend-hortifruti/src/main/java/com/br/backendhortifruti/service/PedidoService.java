@@ -8,4 +8,6 @@ public interface PedidoService {
     List<Pedido> consultarPedidos();
 
     Pedido consultarPedido(Integer pedidoId);
+
+    Pedido incluirPedido(Pedido pedido);
 }
