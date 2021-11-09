@@ -8,6 +8,6 @@ import com.br.backendhortifruti.model.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 
-	public Optional<Produto> findByCodigo(Integer codigo);
+	Optional<Produto> findByCodigo(Integer codigo);
 
 }
