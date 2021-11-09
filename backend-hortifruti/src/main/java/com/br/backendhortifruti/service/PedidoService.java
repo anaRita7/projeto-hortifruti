@@ -1,9 +1,11 @@
 package com.br.backendhortifruti.service;
 
 import com.br.backendhortifruti.model.Pedido;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface PedidoService {
     List<Pedido> consultarPedidos();
 
