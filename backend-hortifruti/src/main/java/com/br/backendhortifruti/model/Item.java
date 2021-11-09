@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "item_do_pedido")
 public class Item {
@@ -18,7 +20,8 @@ public class Item {
 	private Integer id;
 	
 	@ManyToOne
-	@Column(name = "id_pedido")
+	@JoinColumn(name = "id_pedido")
+	@JsonIgnore
 	private Pedido pedido;
 	
 	@ManyToOne
