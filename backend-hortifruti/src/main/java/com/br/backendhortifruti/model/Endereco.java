@@ -8,7 +8,7 @@ public class Endereco {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "id_endereco")
-    private int id;
+    private Integer id;
 
     @Column(name="cep")
     private String cep;
@@ -26,12 +26,12 @@ public class Endereco {
     private String complemento;
 
     @Column(name="numero")
-    private int numero;
+    private Integer numero;
 
     public Endereco() {
     }
 
-    public Endereco(String cep, String cidade, String estado, String rua, String complemento, int numero) {
+    public Endereco(String cep, String cidade, String estado, String rua, String complemento, Integer numero) {
         this.cep = cep;
         this.cidade = cidade;
         this.estado = estado;
@@ -40,59 +40,60 @@ public class Endereco {
         this.numero = numero;
     }
 
-    public int getId() {
-        return id;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public String getCep() {
-        return cep;
-    }
+	public String getCep() {
+		return cep;
+	}
 
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
-    public String getCidade() {
-        return cidade;
-    }
+	public String getCidade() {
+		return cidade;
+	}
 
-    public void setCidade(String cidade) {
-        this.cidade = cidade;
-    }
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
 
-    public String getEstado() {
-        return estado;
-    }
+	public String getEstado() {
+		return estado;
+	}
 
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
-    public String getRua() {
-        return rua;
-    }
+	public String getRua() {
+		return rua;
+	}
 
-    public void setRua(String rua) {
-        this.rua = rua;
-    }
+	public void setRua(String rua) {
+		this.rua = rua;
+	}
 
-    public String getComplemento() {
-        return complemento;
-    }
+	public String getComplemento() {
+		return complemento;
+	}
 
-    public void setComplemento(String complemento) {
-        this.complemento = complemento;
-    }
+	public void setComplemento(String complemento) {
+		this.complemento = complemento;
+	}
 
-    public int getNumero() {
-        return numero;
-    }
+	public Integer getNumero() {
+		return numero;
+	}
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+    
 }

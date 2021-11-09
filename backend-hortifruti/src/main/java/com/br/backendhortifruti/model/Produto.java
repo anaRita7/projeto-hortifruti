@@ -13,10 +13,10 @@ public class Produto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_produto")
-	private int id;
+	private Integer id;
 
 	@Column(name = "codigo")
-	private int codigo;
+	private Integer codigo;
 
 	@Column(name = "nome")
 	private String nome;
@@ -36,19 +36,19 @@ public class Produto {
 	public Produto() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getCodigo() {
+	public Integer getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(Integer codigo) {
 		this.codigo = codigo;
 	}
 
@@ -91,4 +91,5 @@ public class Produto {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
 }

@@ -15,32 +15,39 @@ public class Item {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_item_do_pedido")
-	private int id;
+	private Integer id;
 	
-	//Em pedido será: @OneToMany(mappedBy = "pedido")
-	//@ManyToOne
-	//@Column(name = "id_pedido")
-	//private Pedido pedido;
+	@ManyToOne
+	@Column(name = "id_pedido")
+	private Pedido pedido;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_produto")
 	private Produto produto;
 		
 	@Column(name = "quantidade")
-	private int quantidadeTotal;
+	private Integer quantidadeTotal;
 		
 	@Column(name = "valor_total")
 	private float valorTotal;
 
 	public Item() {		
 	}
-	
-	public int getId() {
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	public Produto getProduto() {
@@ -51,11 +58,11 @@ public class Item {
 		this.produto = produto;
 	}
 
-	public int getQuantidadeTotal() {
+	public Integer getQuantidadeTotal() {
 		return quantidadeTotal;
 	}
 
-	public void setQuantidadeTotal(int quantidadeTotal) {
+	public void setQuantidadeTotal(Integer quantidadeTotal) {
 		this.quantidadeTotal = quantidadeTotal;
 	}
 
@@ -65,5 +72,6 @@ public class Item {
 
 	public void setValorTotal(float valorTotal) {
 		this.valorTotal = valorTotal;
-	}	
+	}
+
 }
