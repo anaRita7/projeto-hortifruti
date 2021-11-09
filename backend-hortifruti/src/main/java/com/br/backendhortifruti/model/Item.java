@@ -10,10 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="item_do_pedido")
+@Table(name = "item_do_pedido")
 public class Item {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_item_do_pedido")
 	private int id;
 	
@@ -32,7 +32,8 @@ public class Item {
 	@Column(name = "valor_total")
 	private float valorTotal;
 
-	public Item() {}
+	public Item() {		
+	}
 	
 	public int getId() {
 		return id;

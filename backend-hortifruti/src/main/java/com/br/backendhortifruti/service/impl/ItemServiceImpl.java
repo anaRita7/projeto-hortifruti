@@ -6,9 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.br.backendhortifruti.model.Item;
-import com.br.backendhortifruti.model.Produto;
 import com.br.backendhortifruti.repository.ItemRepository;
-import com.br.backendhortifruti.repository.ProdutoRepository;
 import com.br.backendhortifruti.service.ItemService;
 
 @Service
@@ -43,7 +41,6 @@ public class ItemServiceImpl implements ItemService{
 		Item existingItem = null;
 		if(itemRepository.findById(id).isPresent())
 			existingItem = itemRepository.findById(id).get();
-		
 		existingItem.setQuantidadeTotal(item.getQuantidadeTotal());
 		existingItem.setValorTotal(item.getValorTotal());
 		
@@ -56,6 +53,4 @@ public class ItemServiceImpl implements ItemService{
 		itemRepository.deleteById(id);
 	}
 	
-
-
 }
