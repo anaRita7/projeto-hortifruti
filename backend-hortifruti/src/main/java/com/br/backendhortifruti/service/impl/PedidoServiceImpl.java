@@ -31,5 +31,21 @@ public class PedidoServiceImpl implements PedidoService {
         return pedidoRepository.save(pedido);
     }
 
+    @Override
+    public Pedido alterarPedido(int pedidoId, Pedido pedido) {
+        if(pedidoRepository.findById(pedidoId).isPresent()){
+            Pedido pedidoExistente = pedidoRepository.findById(pedidoId).get();
+            pedidoExistente = pedido;
+            return pedidoRepository.save(pedidoExistente);
+        }
+
+        return null;
+    }
+
+    @Override
+    public void excluirPedido(int pedidoId) {
+        pedidoRepository.deleteById(pedidoId);
+    }
+
 
 }

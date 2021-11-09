@@ -10,4 +10,7 @@ public interface PedidoService {
     Pedido consultarPedido(Integer pedidoId);
 
     Pedido incluirPedido(Pedido pedido);
+
+    Pedido alterarPedido(int pedidoId, Pedido pedido);
+
 }

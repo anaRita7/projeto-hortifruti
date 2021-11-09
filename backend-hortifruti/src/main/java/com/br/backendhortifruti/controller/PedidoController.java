@@ -33,6 +33,12 @@ public class PedidoController {
         return new ResponseEntity<Pedido>(pedidoService.incluirPedido(pedido), HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Pedido> alterarPedido(@PathVariable("id") int pedidoId, @RequestBody Pedido pedido){
+        return new ResponseEntity<Pedido>(pedidoService.alterarPedido(pedidoId, pedido), HttpStatus.OK);
+    }
+
+
 
 }
 
