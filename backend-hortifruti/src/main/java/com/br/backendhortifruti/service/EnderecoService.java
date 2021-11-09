@@ -10,9 +10,9 @@ public interface EnderecoService {
 
     Endereco incluirEndereco(Endereco endereco);
 
-    Endereco consultarEndereco(int enderecoId);
+    Endereco consultarEndereco(Integer enderecoId);
 
-    Endereco alterarEndereco(int enderecoId, Endereco endereco);
+    Endereco alterarEndereco(Integer enderecoId, Endereco endereco);
 
-    void excluirEndereco(int enderecoId);
+    void excluirEndereco(Integer enderecoId);
 }

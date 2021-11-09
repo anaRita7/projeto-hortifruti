@@ -28,13 +28,13 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
-    public Endereco consultarEndereco(int enderecoId) {
+    public Endereco consultarEndereco(Integer enderecoId) {
         Optional<Endereco> endereco = enderecoRepository.findById(enderecoId);
         return endereco.orElse(null);
     }
 
     @Override
-    public Endereco alterarEndereco(int enderecoId, Endereco endereco) {
+    public Endereco alterarEndereco(Integer enderecoId, Endereco endereco) {
         if(enderecoRepository.findById(enderecoId).isPresent()){
             Endereco enderecoExistente = enderecoRepository.findById(enderecoId).get();
             enderecoExistente = endereco;
@@ -43,7 +43,7 @@ public class EnderecoServiceImpl implements EnderecoService {
     }
 
     @Override
-    public void excluirEndereco(int enderecoId) {
+    public void excluirEndereco(Integer enderecoId) {
         enderecoRepository.deleteById(enderecoId);
     }
 }
