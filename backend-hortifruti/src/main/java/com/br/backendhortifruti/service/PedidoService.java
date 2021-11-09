@@ -13,4 +13,5 @@ public interface PedidoService {
 
     Pedido alterarPedido(int pedidoId, Pedido pedido);
 
+    void excluirPedido(int pedidoId);
 }

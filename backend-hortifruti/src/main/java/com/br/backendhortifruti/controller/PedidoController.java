@@ -38,6 +38,11 @@ public class PedidoController {
         return new ResponseEntity<Pedido>(pedidoService.alterarPedido(pedidoId, pedido), HttpStatus.OK);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> excluirPedido(@PathVariable("id") int pedidoId){
+        pedidoService.excluirPedido(pedidoId);
+        return new ResponseEntity<String>("Deleted", HttpStatus.OK);
+    }
 
 
 }
