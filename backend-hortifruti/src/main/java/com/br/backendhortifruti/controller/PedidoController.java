@@ -4,9 +4,7 @@ import com.br.backendhortifruti.model.Pedido;
 import com.br.backendhortifruti.service.PedidoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,6 +21,11 @@ public class PedidoController {
     @GetMapping("")
     public ResponseEntity <List<Pedido>> consultarPedidos(){
         return new ResponseEntity<>(pedidoService.consultarPedidos(), HttpStatus.OK);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Pedido> consultarPedido(@PathVariable ("id") Integer pedidoId){
+        return new ResponseEntity<Pedido>(pedidoService.consultarPedido(pedidoId), HttpStatus.OK);
     }
 }
 
