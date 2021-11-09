@@ -10,9 +10,11 @@ public interface ProdutoService {
 
 	List<Produto> consultarProdutos();
 
-	Produto consultarProduto(int id);
+	Produto consultarProduto(Integer id);
+	
+	Produto consultarProdutoPorCodigo(Integer codigo);
 
-	Produto alterarProduto(Produto produto, int id);
+	Produto alterarProduto(Produto produto, Integer id);
 
-	void excluirProduto(int id);
+	void excluirProduto(Integer id);
 }

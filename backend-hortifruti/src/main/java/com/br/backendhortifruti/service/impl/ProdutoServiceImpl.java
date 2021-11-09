@@ -29,7 +29,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	@Override
-	public Produto consultarProduto(int id) {
+	public Produto consultarProduto(Integer id) {
 		Optional<Produto> produto = produtoRepository.findById(id);
 		if (produto.isPresent())
 			return produto.get();
@@ -37,7 +37,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	@Override
-	public Produto alterarProduto(Produto produto, int id) {
+	public Produto alterarProduto(Produto produto, Integer id) {
 		Produto existingProduto = null;
 		if (produtoRepository.findById(id).isPresent())
 			existingProduto = produtoRepository.findById(id).get();
@@ -52,8 +52,16 @@ public class ProdutoServiceImpl implements ProdutoService {
 	}
 
 	@Override
-	public void excluirProduto(int id) {
+	public void excluirProduto(Integer id) {
 		produtoRepository.deleteById(id);
+	}
+
+	@Override
+	public Produto consultarProdutoPorCodigo(Integer codigo) {
+		Optional<Produto> produto = produtoRepository.findByCodigo(codigo);
+		if (produto.isPresent())
+			return produto.get();
+		return null;
 	}
 
 }

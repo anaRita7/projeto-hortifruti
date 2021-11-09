@@ -37,17 +37,22 @@ public class ProdutoController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Produto> consultarProduto(@PathVariable("id") int produtoId) {
+	public ResponseEntity<Produto> consultarProduto(@PathVariable("id") Integer produtoId) {
 		return new ResponseEntity<Produto>(produtoService.consultarProduto(produtoId), HttpStatus.OK);
+	}
+	
+	@GetMapping("/codigo/{codigo}")
+	public ResponseEntity<Produto> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
+		return new ResponseEntity<Produto>(produtoService.consultarProduto(codigo), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Produto> alterarProduto(@PathVariable("id") int produtoId, @RequestBody Produto produto) {
+	public ResponseEntity<Produto> alterarProduto(@PathVariable("id") Integer produtoId, @RequestBody Produto produto) {
 		return new ResponseEntity<Produto>(produtoService.alterarProduto(produto, produtoId), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> excluirProduto(@PathVariable("id") int produtoId) {
+	public ResponseEntity<String> excluirProduto(@PathVariable("id") Integer produtoId) {
 		produtoService.excluirProduto(produtoId);
 		return new ResponseEntity<String>("Produto deleted sucessfully!", HttpStatus.OK);
 	}
