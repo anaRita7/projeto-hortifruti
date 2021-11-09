@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api//endereco")
+@RequestMapping("/api/endereco")
 public class EnderecoController {
 
     private EnderecoService enderecoService;
