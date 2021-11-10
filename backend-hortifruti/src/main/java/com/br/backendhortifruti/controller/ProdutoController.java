@@ -43,7 +43,7 @@ public class ProdutoController {
 	
 	@GetMapping("/codigo/{codigo}")
 	public ResponseEntity<Produto> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
-		return new ResponseEntity<Produto>(produtoService.consultarProduto(codigo), HttpStatus.OK);
+		return new ResponseEntity<Produto>(produtoService.consultarProdutoPorCodigo(codigo), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
