@@ -47,6 +47,11 @@ public class ClienteController {
 		List<Cliente> list = clienteServiceImpl.consultarClientes();
 		return ResponseEntity.ok().body(list);
 	}
+	
+	@GetMapping("/documento/{documento}")
+	public ResponseEntity<Cliente> consultarClientePorDocumento(@PathVariable("documento") String documento) {
+		return new ResponseEntity<Cliente>(clienteServiceImpl.consultarClientePorDocumento(documento), HttpStatus.OK);
+	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirCliente(@PathVariable Integer id) {

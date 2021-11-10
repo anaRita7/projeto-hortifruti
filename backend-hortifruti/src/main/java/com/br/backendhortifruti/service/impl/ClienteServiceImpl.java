@@ -1,6 +1,7 @@
 package com.br.backendhortifruti.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,6 +48,14 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public void excluirCliente(Integer id) {
 		clienteRepository.deleteById(id);
+	}
+
+	@Override
+	public Cliente consultarClientePorDocumento(String documento) {
+		Optional<Cliente> cliente = clienteRepository.findByDocumento(documento);
+		if (cliente.isPresent())
+			return cliente.get();
+		return null;
 	}
 
 }

@@ -6,14 +6,16 @@ import com.br.backendhortifruti.model.Cliente;
 
 public interface ClienteService {
 
-	public Cliente incluirCliente(Cliente cliente);
+	Cliente incluirCliente(Cliente cliente);
 
-	public List<Cliente> consultarClientes();
+	List<Cliente> consultarClientes();
 
-	public Cliente consultarCliente(Integer id);
+	Cliente consultarCliente(Integer id);
+	
+	Cliente consultarClientePorDocumento(String documento);
 
-	public Cliente alterarCliente(Cliente cliente, Integer id);
+	Cliente alterarCliente(Cliente cliente, Integer id);
 
-	public void excluirCliente(Integer id);
+	void excluirCliente(Integer id);
 
 }
