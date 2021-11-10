@@ -16,48 +16,48 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.entity.Cliente;
-import com.br.backendhortifruti.model.service.impl.ClienteServiceImpl;
+import com.br.backendhortifruti.model.service.ClienteService;
 
 @RestController
 @RequestMapping("/api/cliente")
 public class ClienteController {
 
 	@Autowired
-	private ClienteServiceImpl clienteServiceImpl;
+	private ClienteService clienteService;
 
 	@PostMapping("")
 	public ResponseEntity<Cliente> incluirCliente(@RequestBody Cliente cliente) {
-		Cliente clienteResponse = clienteServiceImpl.incluirCliente(cliente);
+		Cliente clienteResponse = clienteService.incluirCliente(cliente);
 		return ResponseEntity.ok().body(clienteResponse);
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<Cliente> alterarCliente(@PathVariable Integer id, @RequestBody Cliente cliente) {
-		Cliente clienteResponse = clienteServiceImpl.alterarCliente(cliente, id);
+		Cliente clienteResponse = clienteService.alterarCliente(cliente, id);
 		return ResponseEntity.ok().body(clienteResponse);
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ClienteDTO> consultarCliente(@PathVariable Integer id) {
-		Cliente clienteResponse = clienteServiceImpl.consultarCliente(id);
+		Cliente clienteResponse = clienteService.consultarCliente(id);
 		return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
 	}
 
 	@GetMapping("")
 	public ResponseEntity<List<ClienteDTO>> consultarClientes() {
-		List<Cliente> list = clienteServiceImpl.consultarClientes();
+		List<Cliente> list = clienteService.consultarClientes();
 		return new ResponseEntity<>(ClienteDTO.converterLista(list), HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/documento/{documento}")
 	public ResponseEntity<ClienteDTO> consultarClientePorDocumento(@PathVariable("documento") String documento) {
-		Cliente cliente = clienteServiceImpl.consultarClientePorDocumento(documento);
+		Cliente cliente = clienteService.consultarClientePorDocumento(documento);
 		return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(cliente), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirCliente(@PathVariable Integer id) {
-		clienteServiceImpl.excluirCliente(id);
+		clienteService.excluirCliente(id);
 		return new ResponseEntity<String>("Produto deleted sucessfully!", HttpStatus.OK);
 	}
 
