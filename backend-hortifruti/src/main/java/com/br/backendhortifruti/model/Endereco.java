@@ -16,6 +16,9 @@ public class Endereco {
     @Column(name="cidade")
     private String cidade;
 
+    @Column (name="bairro")
+	private String bairro;
+
     @Column(name="estado")
     private String estado;
 
@@ -31,14 +34,15 @@ public class Endereco {
     public Endereco() {
     }
 
-    public Endereco(String cep, String cidade, String estado, String rua, String complemento, Integer numero) {
-        this.cep = cep;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.rua = rua;
-        this.complemento = complemento;
-        this.numero = numero;
-    }
+	public Endereco(String cep, String cidade, String bairro, String estado, String rua, String complemento, Integer numero) {
+		this.cep = cep;
+		this.cidade = cidade;
+		this.bairro = bairro;
+		this.estado = estado;
+		this.rua = rua;
+		this.complemento = complemento;
+		this.numero = numero;
+	}
 
 	public Integer getId() {
 		return id;
@@ -62,6 +66,14 @@ public class Endereco {
 
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
+	}
+
+	public String getBairro() {
+		return bairro;
+	}
+
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
 	}
 
 	public String getEstado() {
@@ -95,5 +107,4 @@ public class Endereco {
 	public void setNumero(Integer numero) {
 		this.numero = numero;
 	}
-    
 }
