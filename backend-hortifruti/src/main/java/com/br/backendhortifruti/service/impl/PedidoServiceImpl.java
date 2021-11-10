@@ -48,5 +48,14 @@ public class PedidoServiceImpl implements PedidoService {
         pedidoRepository.deleteById(pedidoId);
     }
 
+	@Override
+	public Pedido consultarPedidoPorCodigo(Integer codigo) {
+		Optional<Pedido> pedido = pedidoRepository.findByCodigo(codigo);
+		if (pedido.isPresent())
+			return pedido.get();
+		return null;
+	}
+
+	
 
 }
