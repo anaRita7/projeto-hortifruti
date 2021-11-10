@@ -30,17 +30,12 @@ public class ProdutoServiceImpl implements ProdutoService {
 
 	@Override
 	public Produto consultarProduto(Integer id) {
-		Optional<Produto> produto = produtoRepository.findById(id);
-		if (produto.isPresent())
-			return produto.get();
-		return null;
+		return produtoRepository.findById(id).get();
 	}
 
 	@Override
 	public Produto alterarProduto(Produto produto, Integer id) {
-		Produto existingProduto = null;
-		if (produtoRepository.findById(id).isPresent())
-			existingProduto = produtoRepository.findById(id).get();
+		Produto existingProduto = produtoRepository.findById(id).get();
 		existingProduto.setNome(produto.getNome());
 		existingProduto.setDescricao(produto.getDescricao());
 		existingProduto.setUnidadeMedida(produto.getUnidadeMedida());

@@ -30,17 +30,12 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public Item consultarItem(int id) {
-		Optional<Item> item = itemRepository.findById(id);
-		if (item.isPresent())
-			return item.get();
-		return null;
+		return itemRepository.findById(id).get();
 	}
 
 	@Override
 	public Item alterarItem(Item item, int id) {
-		Item existingItem = null;
-		if(itemRepository.findById(id).isPresent())
-			existingItem = itemRepository.findById(id).get();
+		Item existingItem = itemRepository.findById(id).get();
 		existingItem.setQuantidadeTotal(item.getQuantidadeTotal());
 		existingItem.setValorTotal(item.getValorTotal());
 		
