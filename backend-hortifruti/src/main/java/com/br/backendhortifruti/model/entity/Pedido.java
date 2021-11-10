@@ -1,4 +1,4 @@
-package com.br.backendhortifruti.model;
+package com.br.backendhortifruti.model.entity;
 
 import java.time.LocalDate;
 import java.util.List;

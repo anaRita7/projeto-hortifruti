@@ -10,7 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.ClienteController;
-import com.br.backendhortifruti.model.Cliente;
+import com.br.backendhortifruti.model.entity.Cliente;
 
 @SpringBootTest
 public class ClienteControllerTest {

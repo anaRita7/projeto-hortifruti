@@ -1,8 +1,8 @@
-package com.br.backendhortifruti.service.impl;
+package com.br.backendhortifruti.model.service.impl;
 
-import com.br.backendhortifruti.model.Pedido;
-import com.br.backendhortifruti.repository.PedidoRepository;
-import com.br.backendhortifruti.service.PedidoService;
+import com.br.backendhortifruti.model.entity.Pedido;
+import com.br.backendhortifruti.model.repository.PedidoRepository;
+import com.br.backendhortifruti.model.service.PedidoService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,5 +48,14 @@ public class PedidoServiceImpl implements PedidoService {
         pedidoRepository.deleteById(pedidoId);
     }
 
+	@Override
+	public Pedido consultarPedidoPorCodigo(Integer codigo) {
+		Optional<Pedido> pedido = pedidoRepository.findByCodigo(codigo);
+		if (pedido.isPresent())
+			return pedido.get();
+		return null;
+	}
+
+	
 
 }

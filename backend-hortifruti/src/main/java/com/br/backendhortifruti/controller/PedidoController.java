@@ -1,7 +1,7 @@
 package com.br.backendhortifruti.controller;
 
-import com.br.backendhortifruti.model.Pedido;
-import com.br.backendhortifruti.service.PedidoService;
+import com.br.backendhortifruti.model.entity.Pedido;
+import com.br.backendhortifruti.model.service.PedidoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +23,11 @@ public class PedidoController {
         return new ResponseEntity<>(pedidoService.consultarPedidos(), HttpStatus.OK);
     }
 
+    @GetMapping("/codigo/{codigo}")
+	public ResponseEntity<Pedido> consultarPedidoPorCodigo(@PathVariable("codigo") Integer codigo) {
+		return new ResponseEntity<Pedido>(pedidoService.consultarPedidoPorCodigo(codigo), HttpStatus.OK);
+	}
+    
     @GetMapping("/{id}")
     public ResponseEntity<Pedido> consultarPedido(@PathVariable ("id") Integer pedidoId){
         return new ResponseEntity<Pedido>(pedidoService.consultarPedido(pedidoId), HttpStatus.OK);

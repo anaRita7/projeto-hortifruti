@@ -1,13 +1,14 @@
-package com.br.backendhortifruti.service.impl;
+package com.br.backendhortifruti.model.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.br.backendhortifruti.model.Cliente;
-import com.br.backendhortifruti.repository.ClienteRepository;
-import com.br.backendhortifruti.service.ClienteService;
+import com.br.backendhortifruti.model.entity.Cliente;
+import com.br.backendhortifruti.model.repository.ClienteRepository;
+import com.br.backendhortifruti.model.service.ClienteService;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -47,6 +48,14 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public void excluirCliente(Integer id) {
 		clienteRepository.deleteById(id);
+	}
+
+	@Override
+	public Cliente consultarClientePorDocumento(String documento) {
+		Optional<Cliente> cliente = clienteRepository.findByDocumento(documento);
+		if (cliente.isPresent())
+			return cliente.get();
+		return null;
 	}
 
 }

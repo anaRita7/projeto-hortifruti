@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.backendhortifruti.model.Produto;
-import com.br.backendhortifruti.service.ProdutoService;
+import com.br.backendhortifruti.model.entity.Produto;
+import com.br.backendhortifruti.model.service.ProdutoService;
 
 @RestController
 @RequestMapping("/api/produto")
@@ -43,7 +43,7 @@ public class ProdutoController {
 	
 	@GetMapping("/codigo/{codigo}")
 	public ResponseEntity<Produto> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
-		return new ResponseEntity<Produto>(produtoService.consultarProduto(codigo), HttpStatus.OK);
+		return new ResponseEntity<Produto>(produtoService.consultarProdutoPorCodigo(codigo), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")

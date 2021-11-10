@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.backendhortifruti.model.Cliente;
-import com.br.backendhortifruti.service.impl.ClienteServiceImpl;
+import com.br.backendhortifruti.model.entity.Cliente;
+import com.br.backendhortifruti.model.service.impl.ClienteServiceImpl;
 
 @RestController
 @RequestMapping("/api/cliente")
@@ -46,6 +46,11 @@ public class ClienteController {
 	public ResponseEntity<List<Cliente>> consultarClientes() {
 		List<Cliente> list = clienteServiceImpl.consultarClientes();
 		return ResponseEntity.ok().body(list);
+	}
+	
+	@GetMapping("/documento/{documento}")
+	public ResponseEntity<Cliente> consultarClientePorDocumento(@PathVariable("documento") String documento) {
+		return new ResponseEntity<Cliente>(clienteServiceImpl.consultarClientePorDocumento(documento), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
