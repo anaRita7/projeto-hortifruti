@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.service.impl.ClienteServiceImpl;
 
@@ -37,26 +38,26 @@ public class ClienteController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Cliente> consultarCliente(@PathVariable Integer id) {
+	public ResponseEntity<ClienteDTO> consultarCliente(@PathVariable Integer id) {
 		Cliente clienteResponse = clienteServiceImpl.consultarCliente(id);
-		return ResponseEntity.ok().body(clienteResponse);
+		return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
 	}
 
 	@GetMapping("")
-	public ResponseEntity<List<Cliente>> consultarClientes() {
+	public ResponseEntity<List<ClienteDTO>> consultarClientes() {
 		List<Cliente> list = clienteServiceImpl.consultarClientes();
-		return ResponseEntity.ok().body(list);
+		return new ResponseEntity<>(ClienteDTO.converterLista(list), HttpStatus.OK);
 	}
 	
 	@GetMapping("/documento/{documento}")
-	public ResponseEntity<Cliente> consultarClientePorDocumento(@PathVariable("documento") String documento) {
-		return new ResponseEntity<Cliente>(clienteServiceImpl.consultarClientePorDocumento(documento), HttpStatus.OK);
+	public ResponseEntity<ClienteDTO> consultarClientePorDocumento(@PathVariable("documento") String documento) {
+		Cliente cliente = clienteServiceImpl.consultarClientePorDocumento(documento);
+		return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(cliente), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirCliente(@PathVariable Integer id) {
 		clienteServiceImpl.excluirCliente(id);
-		;
 		return new ResponseEntity<String>("Produto deleted sucessfully!", HttpStatus.OK);
 	}
 
