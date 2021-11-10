@@ -1,8 +1,8 @@
-package com.br.backendhortifruti.service.impl;
+package com.br.backendhortifruti.model.service.impl;
 
-import com.br.backendhortifruti.model.Endereco;
-import com.br.backendhortifruti.repository.EnderecoRepository;
-import com.br.backendhortifruti.service.EnderecoService;
+import com.br.backendhortifruti.model.entity.Endereco;
+import com.br.backendhortifruti.model.repository.EnderecoRepository;
+import com.br.backendhortifruti.model.service.EnderecoService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

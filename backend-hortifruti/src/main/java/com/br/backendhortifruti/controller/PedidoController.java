@@ -1,7 +1,7 @@
 package com.br.backendhortifruti.controller;
 
-import com.br.backendhortifruti.model.Pedido;
-import com.br.backendhortifruti.service.PedidoService;
+import com.br.backendhortifruti.model.entity.Pedido;
+import com.br.backendhortifruti.model.service.PedidoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

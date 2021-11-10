@@ -1,8 +1,8 @@
-package com.br.backendhortifruti.service;
+package com.br.backendhortifruti.model.service;
 
 import java.util.List;
 
-import com.br.backendhortifruti.model.Cliente;
+import com.br.backendhortifruti.model.entity.Cliente;
 
 public interface ClienteService {
 

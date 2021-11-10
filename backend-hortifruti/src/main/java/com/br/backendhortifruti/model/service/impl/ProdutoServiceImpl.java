@@ -1,13 +1,13 @@
-package com.br.backendhortifruti.service.impl;
+package com.br.backendhortifruti.model.service.impl;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.br.backendhortifruti.model.Produto;
-import com.br.backendhortifruti.repository.ProdutoRepository;
-import com.br.backendhortifruti.service.ProdutoService;
+import com.br.backendhortifruti.model.entity.Produto;
+import com.br.backendhortifruti.model.repository.ProdutoRepository;
+import com.br.backendhortifruti.model.service.ProdutoService;
 
 @Service
 public class ProdutoServiceImpl implements ProdutoService {

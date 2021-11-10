@@ -1,6 +1,6 @@
-package com.br.backendhortifruti.repository;
+package com.br.backendhortifruti.model.repository;
 
-import com.br.backendhortifruti.model.Pedido;
+import com.br.backendhortifruti.model.entity.Pedido;
 
 import java.util.Optional;
 

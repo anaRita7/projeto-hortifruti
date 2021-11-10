@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.br.backendhortifruti.model.Produto;
-import com.br.backendhortifruti.service.ProdutoService;
+import com.br.backendhortifruti.model.entity.Produto;
+import com.br.backendhortifruti.model.service.ProdutoService;
 
 @RestController
 @RequestMapping("/api/produto")

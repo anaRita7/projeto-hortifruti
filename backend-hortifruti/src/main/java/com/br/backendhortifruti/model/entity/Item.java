@@ -1,4 +1,4 @@
-package com.br.backendhortifruti.model;
+package com.br.backendhortifruti.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

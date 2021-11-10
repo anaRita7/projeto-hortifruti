@@ -1,7 +1,7 @@
 package com.br.backendhortifruti.controller;
 
-import com.br.backendhortifruti.model.Endereco;
-import com.br.backendhortifruti.service.EnderecoService;
+import com.br.backendhortifruti.model.entity.Endereco;
+import com.br.backendhortifruti.model.service.EnderecoService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

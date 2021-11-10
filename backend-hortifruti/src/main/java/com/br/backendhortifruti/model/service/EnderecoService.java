@@ -1,6 +1,6 @@
-package com.br.backendhortifruti.service;
+package com.br.backendhortifruti.model.service;
 
-import com.br.backendhortifruti.model.Endereco;
+import com.br.backendhortifruti.model.entity.Endereco;
 
 import java.util.List;
 

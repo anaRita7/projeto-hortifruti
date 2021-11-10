@@ -1,6 +1,6 @@
-package com.br.backendhortifruti.service;
+package com.br.backendhortifruti.model.service;
 
-import com.br.backendhortifruti.model.Pedido;
+import com.br.backendhortifruti.model.entity.Pedido;
 
 import org.springframework.stereotype.Service;
 

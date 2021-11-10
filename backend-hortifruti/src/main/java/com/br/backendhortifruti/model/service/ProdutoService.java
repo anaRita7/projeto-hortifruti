@@ -1,8 +1,8 @@
-package com.br.backendhortifruti.service;
+package com.br.backendhortifruti.model.service;
 
 import java.util.List;
 
-import com.br.backendhortifruti.model.Produto;
+import com.br.backendhortifruti.model.entity.Produto;
 
 public interface ProdutoService {
 
