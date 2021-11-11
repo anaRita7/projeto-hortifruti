@@ -8,7 +8,7 @@ import com.br.backendhortifruti.model.entity.Produto;
 import lombok.Getter;
 
 @Getter
-public class ProdutoDTO {
+public class ProdutoAtivoDTO {
 	
 	private Integer codigo;
 	
@@ -19,24 +19,21 @@ public class ProdutoDTO {
     private String unidadeMedida;
 
     private double valorUnitario;
-    
-    private boolean status;
 
-    public ProdutoDTO(Produto produto) {
+    public ProdutoAtivoDTO(Produto produto) {
     	this.codigo = produto.getCodigo();
     	this.nome = produto.getNome();
         this.descricao = produto.getDescricao();
         this.unidadeMedida = produto.getUnidadeMedida();
         this.valorUnitario = produto.getValorUnitario();
-        this.status = produto.isStatus();
     }
 
-    public static List<ProdutoDTO> converterList(List<Produto> produtos) {
-        return produtos.stream().map(ProdutoDTO::new).collect(Collectors.toList());
+    public static List<ProdutoAtivoDTO> converterList(List<Produto> produtos) {
+        return produtos.stream().map(ProdutoAtivoDTO::new).collect(Collectors.toList());
     }
 
-    public static ProdutoDTO converter(Produto produto) {
-		return new ProdutoDTO(produto);
+    public static ProdutoAtivoDTO converter(Produto produto) {
+		return new ProdutoAtivoDTO(produto);
 	}
-
+	
 }

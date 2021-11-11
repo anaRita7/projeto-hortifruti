@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.backendhortifruti.model.dto.ProdutoAtivoDTO;
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
 import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.service.ProdutoService;
@@ -31,6 +32,18 @@ public class ProdutoController {
 	public ResponseEntity<List<ProdutoDTO>> consultarProdutos() {
 		List<Produto> produtos = produtoService.consultarProdutos();
 		return new ResponseEntity<>(ProdutoDTO.converterList(produtos), HttpStatus.OK);
+	}
+	
+	@GetMapping("/ativos")
+	public ResponseEntity<List<ProdutoAtivoDTO>> consultarProdutosAtivos() {
+		List<Produto> produtos = produtoService.consultarProdutosAtivos();
+		return new ResponseEntity<>(ProdutoAtivoDTO.converterList(produtos), HttpStatus.OK);
+	}
+	
+	@GetMapping("/ativos/codigo/{codigo}")
+	public ResponseEntity<ProdutoAtivoDTO> consultarProdutoAtivoPorCodigo(@PathVariable("codigo") Integer codigo) {
+		Produto produto = produtoService.consultarProdutoAtivoPorCodigo(codigo);
+		return new ResponseEntity<ProdutoAtivoDTO>(ProdutoAtivoDTO.converter(produto), HttpStatus.OK);
 	}
 
 	@PostMapping("")
