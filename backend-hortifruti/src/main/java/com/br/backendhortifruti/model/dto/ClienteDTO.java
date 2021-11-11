@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import com.br.backendhortifruti.model.entity.Cliente;
 
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 public class ClienteDTO {
