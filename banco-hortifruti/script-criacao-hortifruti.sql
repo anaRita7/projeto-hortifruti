@@ -22,6 +22,7 @@ CREATE TABLE pedido(
 	valor_total float(5,2),
 	valor_final float(5,2),
 	desconto float (3,2),
+	forma_pagamento varchar(20),
 	PRIMARY KEY (id_pedido)
 );
 
