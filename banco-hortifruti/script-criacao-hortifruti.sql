@@ -7,6 +7,7 @@ CREATE TABLE cliente(
 	tipo char,
 	documento varchar(50),
 	nome varchar(50),
+	telefone varchar(15),
 	PRIMARY KEY (id_cliente)
 );
 
