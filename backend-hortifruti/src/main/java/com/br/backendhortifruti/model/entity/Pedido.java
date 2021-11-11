@@ -1,5 +1,9 @@
 package com.br.backendhortifruti.model.entity;
 
+import com.br.backendhortifruti.model.dto.ClienteDTO;
+import com.br.backendhortifruti.model.dto.EnderecoDTO;
+import com.br.backendhortifruti.model.dto.ItemDTO;
+
 import java.time.LocalDate;
 import java.util.List;
 
@@ -81,6 +85,8 @@ public class Pedido {
 		return cliente;
 	}
 
+	public ClienteDTO getClienteDTO() { return ClienteDTO.converter(getCliente());}
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
@@ -88,6 +94,8 @@ public class Pedido {
 	public Endereco getEndereco() {
 		return endereco;
 	}
+
+	public EnderecoDTO getEnderecoDTO(){ return EnderecoDTO.converter(getEndereco());}
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
@@ -136,6 +144,8 @@ public class Pedido {
 	public List<Item> getItens() {
 		return itens;
 	}
+
+	public List<ItemDTO> getItensDTO(){ return ItemDTO.converterLista(getItens()); }
 
 	public void setItens(List<Item> itens) {
 		this.itens = itens;
