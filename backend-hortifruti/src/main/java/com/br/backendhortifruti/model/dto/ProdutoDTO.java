@@ -5,6 +5,9 @@ import java.util.stream.Collectors;
 
 import com.br.backendhortifruti.model.entity.Produto;
 
+import lombok.Getter;
+
+@Getter
 public class ProdutoDTO {
 	private String descricao;
 
@@ -28,20 +31,5 @@ public class ProdutoDTO {
     public static ProdutoDTO converter(Produto produto) {
 		return new ProdutoDTO(produto);
 	}
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public String getUnidadeMedida() {
-		return unidadeMedida;
-	}
-
-	public double getValorUnitario() {
-		return valorUnitario;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-    
+	
 }
