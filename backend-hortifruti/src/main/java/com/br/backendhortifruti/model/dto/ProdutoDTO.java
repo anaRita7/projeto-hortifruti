@@ -14,14 +14,11 @@ public class ProdutoDTO {
     private String unidadeMedida;
 
     private double valorUnitario;
-    
-    private boolean status;
 
     public ProdutoDTO(Produto produto) {
         this.descricao = produto.getDescricao();
         this.unidadeMedida = produto.getUnidadeMedida();
         this.valorUnitario = produto.getValorUnitario();
-        this.status = produto.isStatus();
     }
 
     public static List<ProdutoDTO> converterList(List<Produto> produtos) {
