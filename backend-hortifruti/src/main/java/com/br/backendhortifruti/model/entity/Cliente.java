@@ -25,18 +25,26 @@ public class Cliente {
 	@Column(name = "documento")
 	private String documento;
 
+	@Column(name = "telefone")
+	private String telefone;
+
 	public Cliente() {
 	}
 
-	public Cliente(Integer id, String nome, char tipo, String documento) {
+	public Cliente(Integer id, String nome, char tipo, String documento, String telefone) {
 		this.id = id;
 		this.nome = nome;
 		this.tipo = tipo;
 		this.documento = documento;
+		this.telefone = telefone;
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -63,4 +71,11 @@ public class Cliente {
 		this.documento = documento;
 	}
 
+	public String getTelefone() {
+		return telefone;
+	}
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
 }

@@ -12,6 +12,7 @@ public class ClienteDTO {
 	private String nome;
 	private char tipo;
 	private String documento;
+	private String telefone;
 
 	public ClienteDTO(Cliente cliente) {
 		this.nome = cliente.getNome();
