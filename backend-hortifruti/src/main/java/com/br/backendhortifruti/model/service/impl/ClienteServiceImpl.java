@@ -41,7 +41,6 @@ public class ClienteServiceImpl implements ClienteService {
 			clienteRepository.save(clienteRetornado);
 			return clienteRetornado;
 		}
-		;
 		return null;
 	}
 
