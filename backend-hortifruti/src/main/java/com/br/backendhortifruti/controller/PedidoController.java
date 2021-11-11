@@ -1,5 +1,6 @@
 package com.br.backendhortifruti.controller;
 
+import com.br.backendhortifruti.model.dto.PedidoForListDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.service.PedidoService;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,9 @@ public class PedidoController {
     }
 
     @GetMapping("")
-    public ResponseEntity <List<Pedido>> consultarPedidos(){
-        return new ResponseEntity<>(pedidoService.consultarPedidos(), HttpStatus.OK);
+    public ResponseEntity <List<PedidoForListDTO>> consultarPedidos(){
+    	List<Pedido> pedidos = pedidoService.consultarPedidos();
+        return new ResponseEntity<>(PedidoForListDTO.converterList(pedidos), HttpStatus.OK);
     }
 
     @GetMapping("/codigo/{codigo}")
