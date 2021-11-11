@@ -1,7 +1,6 @@
 package com.br.backendhortifruti.model.dto;
 
 import com.br.backendhortifruti.model.entity.Item;
-import com.br.backendhortifruti.model.entity.Produto;
 import lombok.Getter;
 
 import java.util.List;
@@ -10,12 +9,12 @@ import java.util.stream.Collectors;
 @Getter
 public class ItemDTO {
 
-    private Produto produto;
+    private ProdutoDTO produto;
     private Integer quantidadeTotal;
     private float valorTotal;
 
     public ItemDTO(Item item){
-        this.produto = item.getProduto();
+        this.produto = item.getProdutoDTO();
         this.quantidadeTotal = item.getQuantidadeTotal();
         this.valorTotal = item.getValorTotal();
     }
