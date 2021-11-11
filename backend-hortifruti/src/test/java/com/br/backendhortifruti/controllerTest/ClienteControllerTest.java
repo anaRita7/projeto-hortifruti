@@ -33,7 +33,6 @@ public class ClienteControllerTest {
 		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 
-
 	@Test
 	public void consultarClientes() {
 		ResponseEntity<List<ClienteDTO>> clienteResponse = clienteController.consultarClientes();
@@ -43,10 +42,10 @@ public class ClienteControllerTest {
 	@Test
 	public void consultaDeleteCliente() {
 		try {
-			ResponseEntity<ClienteDTO> clienteResponse = clienteController.consultarCliente(28);
+			ResponseEntity<ClienteDTO> clienteResponse = clienteController.consultarCliente(38);
 			assertThat(clienteResponse.getBody().getNome().equals("Mercadinho do seu Ze"));
 			if (clienteResponse.getBody().getNome().equals("Mercadinho do seu Ze")) {
-				ResponseEntity<String> clienteDeletado = clienteController.excluirCliente(28);
+				ResponseEntity<String> clienteDeletado = clienteController.excluirCliente(38);
 				assertThat(clienteDeletado.getBody().equals("Produto deleted sucessfully!"));
 			}
 		} catch (Exception e) {

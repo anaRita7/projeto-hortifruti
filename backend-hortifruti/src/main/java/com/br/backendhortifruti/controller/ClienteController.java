@@ -27,8 +27,7 @@ public class ClienteController {
 
 	@PostMapping("")
 	public ResponseEntity<Cliente> incluirCliente(@RequestBody Cliente cliente) {
-		Cliente clienteResponse = clienteService.incluirCliente(cliente);
-		return ResponseEntity.ok().body(clienteResponse);
+		return new ResponseEntity<Cliente>(clienteService.incluirCliente(cliente), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{id}")

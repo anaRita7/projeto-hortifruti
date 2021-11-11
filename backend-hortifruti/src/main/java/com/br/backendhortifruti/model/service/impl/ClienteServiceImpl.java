@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.repository.ClienteRepository;
 import com.br.backendhortifruti.model.service.ClienteService;
+import com.br.backendhortifruti.model.service.util.ValidadorDocumento;
 
 @Service
 public class ClienteServiceImpl implements ClienteService {
@@ -18,7 +19,20 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente incluirCliente(Cliente cliente) {
-		return clienteRepository.save(cliente);
+		String documento = ValidadorDocumento.removeCaracteresEspeciais(cliente.getDocumento());
+		cliente.setDocumento(documento);
+		if (documento.length() == 11) {
+			boolean isCPF = ValidadorDocumento.isCpf(documento);
+			if (isCPF) {
+				return clienteRepository.save(cliente);
+			}
+		} else if (documento.length() == 14) {
+			boolean isCnpj = ValidadorDocumento.isCnpj(documento);
+			if (isCnpj) {
+				return clienteRepository.save(cliente);
+			}
+		}
+		return null;
 	}
 
 	@Override
