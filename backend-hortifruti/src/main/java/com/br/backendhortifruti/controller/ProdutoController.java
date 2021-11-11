@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.backendhortifruti.model.dto.ProdutoDTO;
 import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.service.ProdutoService;
 
@@ -27,8 +28,9 @@ public class ProdutoController {
 	}
 
 	@GetMapping("")
-	public ResponseEntity<List<Produto>> consultarProdutos() {
-		return new ResponseEntity<>(produtoService.consultarProdutos(), HttpStatus.OK);
+	public ResponseEntity<List<ProdutoDTO>> consultarProdutos() {
+		List<Produto> produtos = produtoService.consultarProdutos();
+		return new ResponseEntity<>(ProdutoDTO.converterList(produtos), HttpStatus.OK);
 	}
 
 	@PostMapping("")
@@ -37,13 +39,15 @@ public class ProdutoController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Produto> consultarProduto(@PathVariable("id") Integer produtoId) {
-		return new ResponseEntity<Produto>(produtoService.consultarProduto(produtoId), HttpStatus.OK);
+	public ResponseEntity<ProdutoDTO> consultarProduto(@PathVariable("id") Integer produtoId) {
+		Produto produto = produtoService.consultarProduto(produtoId);
+		return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produto), HttpStatus.OK);
 	}
 	
 	@GetMapping("/codigo/{codigo}")
-	public ResponseEntity<Produto> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
-		return new ResponseEntity<Produto>(produtoService.consultarProdutoPorCodigo(codigo), HttpStatus.OK);
+	public ResponseEntity<ProdutoDTO> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
+		Produto produto = produtoService.consultarProdutoPorCodigo(codigo);
+		return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produto), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
