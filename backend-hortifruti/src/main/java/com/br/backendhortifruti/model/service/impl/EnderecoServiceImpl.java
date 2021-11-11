@@ -6,7 +6,6 @@ import com.br.backendhortifruti.model.service.EnderecoService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EnderecoServiceImpl implements EnderecoService {
@@ -29,8 +28,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     @Override
     public Endereco consultarEndereco(Integer enderecoId) {
-        Optional<Endereco> endereco = enderecoRepository.findById(enderecoId);
-        return endereco.orElse(null);
+        return enderecoRepository.findById(enderecoId).get();
     }
 
     @Override

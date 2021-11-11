@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.br.backendhortifruti.model.dto.ProdutoDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -56,6 +57,8 @@ public class Item {
 	public Produto getProduto() {
 		return produto;
 	}
+
+	public ProdutoDTO getProdutoDTO(){ return ProdutoDTO.converter(getProduto()); }
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;

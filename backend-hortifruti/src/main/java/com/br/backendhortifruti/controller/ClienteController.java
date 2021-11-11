@@ -27,6 +27,9 @@ public class ClienteController {
 
 	@PostMapping("")
 	public ResponseEntity<Cliente> incluirCliente(@RequestBody Cliente cliente) {
+		if(clienteService.incluirCliente(cliente) == null) {
+			return new ResponseEntity<Cliente>(clienteService.incluirCliente(cliente), HttpStatus.UNPROCESSABLE_ENTITY);
+		}
 		return new ResponseEntity<Cliente>(clienteService.incluirCliente(cliente), HttpStatus.CREATED);
 	}
 

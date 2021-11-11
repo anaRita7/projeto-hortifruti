@@ -1,5 +1,7 @@
 package com.br.backendhortifruti.controller;
 
+import com.br.backendhortifruti.model.dto.PedidoDTO;
+import com.br.backendhortifruti.model.dto.PedidoForListDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.service.PedidoService;
 import org.springframework.http.HttpStatus;
@@ -19,8 +21,9 @@ public class PedidoController {
     }
 
     @GetMapping("")
-    public ResponseEntity <List<Pedido>> consultarPedidos(){
-        return new ResponseEntity<>(pedidoService.consultarPedidos(), HttpStatus.OK);
+    public ResponseEntity <List<PedidoForListDTO>> consultarPedidos(){
+    	List<Pedido> pedidos = pedidoService.consultarPedidos();
+        return new ResponseEntity<>(PedidoForListDTO.converterList(pedidos), HttpStatus.OK);
     }
 
     @GetMapping("/codigo/{codigo}")
@@ -29,8 +32,9 @@ public class PedidoController {
 	}
     
     @GetMapping("/{id}")
-    public ResponseEntity<Pedido> consultarPedido(@PathVariable ("id") Integer pedidoId){
-        return new ResponseEntity<Pedido>(pedidoService.consultarPedido(pedidoId), HttpStatus.OK);
+    public ResponseEntity<PedidoDTO> consultarPedido(@PathVariable ("id") Integer pedidoId){
+        Pedido pedido = pedidoService.consultarPedido(pedidoId);
+        return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedido), HttpStatus.OK);
     }
 
     @PostMapping("")
@@ -48,7 +52,6 @@ public class PedidoController {
         pedidoService.excluirPedido(pedidoId);
         return new ResponseEntity<String>("Deleted", HttpStatus.OK);
     }
-
 
 }
 

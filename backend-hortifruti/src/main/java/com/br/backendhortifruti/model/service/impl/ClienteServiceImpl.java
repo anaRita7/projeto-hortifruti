@@ -52,6 +52,7 @@ public class ClienteServiceImpl implements ClienteService {
 			clienteRetornado.setNome(cliente.getNome());
 			clienteRetornado.setTipo(cliente.getTipo());
 			clienteRetornado.setDocumento(cliente.getDocumento());
+			clienteRetornado.setTelefone(cliente.getTelefone());
 			clienteRepository.save(clienteRetornado);
 			return clienteRetornado;
 		}

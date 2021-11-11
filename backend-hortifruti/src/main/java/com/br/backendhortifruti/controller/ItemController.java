@@ -2,6 +2,7 @@ package com.br.backendhortifruti.controller;
 
 import java.util.List;
 
+import com.br.backendhortifruti.model.dto.ItemDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,8 +28,9 @@ public class ItemController {
 	}
 	
 	@GetMapping("")
-	public ResponseEntity<List<Item>> consultarItens() {
-        return new ResponseEntity<>(itemService.consultarItens(), HttpStatus.OK);
+	public ResponseEntity<List<ItemDTO>> consultarItens() {
+		List<Item> list = itemService.consultarItens();
+        return new ResponseEntity<>(ItemDTO.converterLista(list), HttpStatus.OK);
     }
 
 	@PostMapping("")
@@ -37,18 +39,19 @@ public class ItemController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Item> consultarItem(@PathVariable("id") int itemId) {
-        return new ResponseEntity<Item>(itemService.consultarItem(itemId), HttpStatus.OK);
+	public ResponseEntity<ItemDTO> consultarItem(@PathVariable Integer id) {
+		Item itemResponse = itemService.consultarItem(id);
+        return new ResponseEntity<ItemDTO>(ItemDTO.converter(itemResponse), HttpStatus.OK);
     }
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Item> alterarItem(@PathVariable("id") int itemId, @RequestBody Item item) {
-        return new ResponseEntity<Item>(itemService.alterarItem(item, itemId), HttpStatus.OK);
+	public ResponseEntity<Item> alterarItem(@PathVariable("id") Integer id, @RequestBody Item item) {
+        return new ResponseEntity<Item>(itemService.alterarItem(item, id), HttpStatus.OK);
     }
 	
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> excluirItem(@PathVariable("id") int itemId) {
-		itemService.excluirItem(itemId);
+	public ResponseEntity<String> excluirItem(@PathVariable Integer id) {
+		itemService.excluirItem(id);
         return new ResponseEntity<String>("Item de pedido deleted sucessfully!",HttpStatus.OK);
     }
 
