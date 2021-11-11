@@ -2,10 +2,12 @@ package com.br.backendhortifruti.model.dto;
 
 import com.br.backendhortifruti.model.entity.Item;
 import com.br.backendhortifruti.model.entity.Produto;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
 public class ItemDTO {
 
     private Produto produto;

@@ -1,10 +1,12 @@
 package com.br.backendhortifruti.model.dto;
 
 import com.br.backendhortifruti.model.entity.Endereco;
+import lombok.Getter;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Getter
 public class EnderecoDTO {
 
     private String cep;
