@@ -53,6 +53,9 @@ public class Pedido {
 	
 	@Column(name = "valor_final")
 	private Double valorFinal;
+
+	@Column(name = "forma_pagamento")
+	private String formaPagamento;
 	
 	@OneToMany(mappedBy = "pedido")
 	private List<Item> itens;
@@ -139,6 +142,14 @@ public class Pedido {
 
 	public void setValorFinal(Double valorFinal) {
 		this.valorFinal = valorFinal;
+	}
+
+	public String getFormaPagamento() {
+		return formaPagamento;
+	}
+
+	public void setFormaPagamento(String formaPagamento) {
+		this.formaPagamento = formaPagamento;
 	}
 
 	public List<Item> getItens() {

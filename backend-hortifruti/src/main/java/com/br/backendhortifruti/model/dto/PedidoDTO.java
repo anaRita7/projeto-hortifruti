@@ -19,6 +19,7 @@ public class PedidoDTO {
     private Integer quantidadeTotal;
     private Double desconto;
     private Double valorFinal;
+    private String formaPagamento;
     private List<ItemDTO> itens;
 
     public PedidoDTO(Pedido pedido){
@@ -31,6 +32,7 @@ public class PedidoDTO {
         this.quantidadeTotal = pedido.getQuantidadeTotal();
         this.desconto = pedido.getDesconto();
         this.valorFinal = pedido.getValorFinal();
+        this.formaPagamento = pedido.getFormaPagamento();
         this.itens = pedido.getItensDTO();
     }
 
