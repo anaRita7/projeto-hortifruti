@@ -1,5 +1,6 @@
 package com.br.backendhortifruti.controller;
 
+import com.br.backendhortifruti.model.dto.EnderecoDTO;
 import com.br.backendhortifruti.model.entity.Endereco;
 import com.br.backendhortifruti.model.service.EnderecoService;
 import org.springframework.http.HttpStatus;
@@ -19,8 +20,9 @@ public class EnderecoController {
     }
 
     @GetMapping("")
-    public ResponseEntity <List<Endereco>> consultarEnderecos(){
-        return new ResponseEntity<>(enderecoService.consultarEnderecos(), HttpStatus.OK);
+    public ResponseEntity <List<EnderecoDTO>> consultarEnderecos(){
+        List<Endereco> list = enderecoService.consultarEnderecos();
+        return new ResponseEntity<>(EnderecoDTO.converterLista(list), HttpStatus.OK);
     }
 
     @PostMapping("")
@@ -29,18 +31,19 @@ public class EnderecoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Endereco> consultarEndereco(@PathVariable("id") Integer enderecoId){
-        return new ResponseEntity<Endereco>(enderecoService.consultarEndereco(enderecoId), HttpStatus.OK);
+    public ResponseEntity<EnderecoDTO> consultarEndereco(@PathVariable Integer id){
+        Endereco enderecoResponse = enderecoService.consultarEndereco(id);
+        return new ResponseEntity<EnderecoDTO>(EnderecoDTO.converter(enderecoResponse), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Endereco> alterarEndereco(@PathVariable("id") Integer enderecoId, @RequestBody Endereco endereco){
-        return new ResponseEntity<Endereco>(enderecoService.alterarEndereco(enderecoId, endereco), HttpStatus.OK);
+    public ResponseEntity<Endereco> alterarEndereco(@PathVariable("id") Integer id, @RequestBody Endereco endereco){
+        return new ResponseEntity<Endereco>(enderecoService.alterarEndereco(id, endereco), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> excluirEndereco(@PathVariable("id") Integer enderecoId){
-        enderecoService.excluirEndereco(enderecoId);
+    public ResponseEntity<String> excluirEndereco(@PathVariable Integer id){
+        enderecoService.excluirEndereco(id);
         return new ResponseEntity<String>("Deleted", HttpStatus.OK);
     }
 }
