@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,8 +35,8 @@ public class Pedido {
 	@Column(name = "codigo")
 	private Integer codigo;
 	
-	@Column(name = "data")
-	private LocalDate data;
+	@Column(name = "data_hora")
+	private LocalDateTime dataHora;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
