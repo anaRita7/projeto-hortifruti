@@ -27,8 +27,9 @@ public class PedidoController {
     }
 
     @GetMapping("/codigo/{codigo}")
-	public ResponseEntity<Pedido> consultarPedidoPorCodigo(@PathVariable("codigo") Integer codigo) {
-		return new ResponseEntity<Pedido>(pedidoService.consultarPedidoPorCodigo(codigo), HttpStatus.OK);
+	public ResponseEntity<PedidoDTO> consultarPedidoPorCodigo(@PathVariable("codigo") Integer codigo) {
+    	Pedido pedido = pedidoService.consultarPedidoPorCodigo(codigo);
+		return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedido), HttpStatus.OK);
 	}
     
     @GetMapping("/{id}")
