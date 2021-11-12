@@ -1,6 +1,14 @@
 package com.br.backendhortifruti.controllerTest;
 
+//import static org.junit.Assert.assertEquals;
+//
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.http.ResponseEntity;
+//
+//import com.br.backendhortifruti.controller.ClienteController;
+//import com.br.backendhortifruti.model.entity.Cliente;
 
 @SpringBootTest
 public class ValidadorDocumentoTest {
