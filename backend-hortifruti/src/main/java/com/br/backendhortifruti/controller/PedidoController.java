@@ -39,13 +39,15 @@ public class PedidoController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Pedido> incluirPedido(@RequestBody Pedido pedido){
-        return new ResponseEntity<Pedido>(pedidoService.incluirPedido(pedido), HttpStatus.OK);
+    public ResponseEntity<String> incluirPedido(@RequestBody Pedido pedido){
+    	pedidoService.incluirPedido(pedido);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Pedido> alterarPedido(@PathVariable("id") int pedidoId, @RequestBody Pedido pedido){
-        return new ResponseEntity<Pedido>(pedidoService.alterarPedido(pedidoId, pedido), HttpStatus.OK);
+    public ResponseEntity<PedidoDTO> alterarPedido(@PathVariable("id") int pedidoId, @RequestBody Pedido pedido){
+    	Pedido pedidoResponse = pedidoService.alterarPedido(pedidoId, pedido);
+        return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedidoResponse), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
