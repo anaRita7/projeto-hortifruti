@@ -34,8 +34,9 @@ public class ItemController {
     }
 
 	@PostMapping("")
-	public ResponseEntity<Item> incluirItem(@RequestBody Item item){
-		return new ResponseEntity<Item>(itemService.incluirItem(item), HttpStatus.CREATED);		
+	public ResponseEntity<String> incluirItem(@RequestBody Item item){
+		itemService.incluirItem(item);
+		return new ResponseEntity<>(HttpStatus.CREATED);		
 	}
 	
 	@GetMapping("/{id}")
@@ -45,8 +46,9 @@ public class ItemController {
     }
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Item> alterarItem(@PathVariable("id") Integer id, @RequestBody Item item) {
-        return new ResponseEntity<Item>(itemService.alterarItem(item, id), HttpStatus.OK);
+	public ResponseEntity<ItemDTO> alterarItem(@PathVariable("id") Integer id, @RequestBody Item item) {
+		Item itemResponse = itemService.alterarItem(item, id);
+        return new ResponseEntity<ItemDTO>(ItemDTO.converter(itemResponse), HttpStatus.OK);
     }
 	
 	@DeleteMapping("/{id}")
