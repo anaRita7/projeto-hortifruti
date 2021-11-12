@@ -39,19 +39,21 @@ public class PedidoController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Pedido> incluirPedido(@RequestBody Pedido pedido){
-        return new ResponseEntity<Pedido>(pedidoService.incluirPedido(pedido), HttpStatus.OK);
+    public ResponseEntity<String> incluirPedido(@RequestBody Pedido pedido){
+    	pedidoService.incluirPedido(pedido);
+        return new ResponseEntity<String>("Pedido salvo com sucesso!",HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Pedido> alterarPedido(@PathVariable("id") int pedidoId, @RequestBody Pedido pedido){
-        return new ResponseEntity<Pedido>(pedidoService.alterarPedido(pedidoId, pedido), HttpStatus.OK);
+    public ResponseEntity<String> alterarPedido(@PathVariable("id") int pedidoId, @RequestBody Pedido pedido){
+    	pedidoService.alterarPedido(pedidoId, pedido);
+        return new ResponseEntity<String>("Pedido Alterado com sucesso!", HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> excluirPedido(@PathVariable("id") int pedidoId){
         pedidoService.excluirPedido(pedidoId);
-        return new ResponseEntity<String>("Deleted", HttpStatus.OK);
+        return new ResponseEntity<String>("Pedido deletado com sucesso!", HttpStatus.OK);
     }
 
 }
