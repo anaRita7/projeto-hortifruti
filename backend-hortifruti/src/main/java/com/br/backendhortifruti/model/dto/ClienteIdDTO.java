@@ -12,8 +12,8 @@ public class ClienteIdDTO {
         this.id = cliente.getId();
     }
 
-    public static ClienteDTO converter(Cliente cliente) {
-        return new ClienteDTO(cliente);
+    public static ClienteIdDTO converter(Cliente cliente) {
+        return new ClienteIdDTO(cliente);
     }
 
 }
