@@ -3,7 +3,7 @@ package com.br.backendhortifruti.model.dto;
 import com.br.backendhortifruti.model.entity.Pedido;
 import lombok.Getter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class PedidoDTO {
 
     private Integer codigo;
-    private LocalDate data;
+    private LocalDateTime data;
     private ClienteDTO cliente;
     private EnderecoDTO endereco;
     private boolean situacao;
@@ -24,7 +24,7 @@ public class PedidoDTO {
 
     public PedidoDTO(Pedido pedido){
         this.codigo = pedido.getCodigo();
-        this.data = pedido.getData();
+        this.data = pedido.getDataHora();
         this.cliente = pedido.getClienteDTO();
         this.endereco = pedido.getEnderecoDTO();
         this.situacao = pedido.isSituacao();
