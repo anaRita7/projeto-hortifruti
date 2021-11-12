@@ -28,12 +28,24 @@ public class Produto {
 	private String unidadeMedida;
 
 	@Column(name = "valor_unitario")
-	private float valorUnitario;
+	private double valorUnitario;
 
 	@Column(name = "status")
 	private boolean status;
 
 	public Produto() {
+	}
+	
+
+	public Produto(Integer id, Integer codigo, String nome, String descricao, String unidadeMedida, double valorUnitario, boolean status) {
+		super();
+		this.id = id;
+		this.codigo = codigo;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.unidadeMedida = unidadeMedida;
+		this.valorUnitario = valorUnitario;
+		this.status = status;
 	}
 
 	public Integer getId() {
@@ -76,12 +88,12 @@ public class Produto {
 		this.unidadeMedida = unidadeMedida;
 	}
 
-	public float getValorUnitario() {
+	public double getValorUnitario() {
 		return valorUnitario;
 	}
 
-	public void setValorUnitario(float valorUnitario) {
-		this.valorUnitario = valorUnitario;
+	public void setValorUnitario(double d) {
+		this.valorUnitario = d;
 	}
 
 	public boolean isStatus() {
