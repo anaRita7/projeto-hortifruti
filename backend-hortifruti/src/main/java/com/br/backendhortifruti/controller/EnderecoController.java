@@ -1,6 +1,7 @@
 package com.br.backendhortifruti.controller;
 
 import com.br.backendhortifruti.model.dto.EnderecoDTO;
+import com.br.backendhortifruti.model.dto.EnderecoIdDTO;
 import com.br.backendhortifruti.model.entity.Endereco;
 import com.br.backendhortifruti.model.service.EnderecoService;
 import org.springframework.http.HttpStatus;
@@ -26,8 +27,9 @@ public class EnderecoController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Endereco> incluirEndereco(@RequestBody Endereco endereco){
-        return new ResponseEntity<Endereco>(enderecoService.incluirEndereco(endereco), HttpStatus.CREATED);
+    public ResponseEntity<EnderecoIdDTO> incluirEndereco(@RequestBody Endereco endereco){
+    	Endereco enderecoResponse = enderecoService.incluirEndereco(endereco)
+        return new ResponseEntity<EnderecoIdDTO>(EnderecoIdDTO.converter(enderecoResponse), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -37,8 +39,9 @@ public class EnderecoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Endereco> alterarEndereco(@PathVariable("id") Integer id, @RequestBody Endereco endereco){
-        return new ResponseEntity<Endereco>(enderecoService.alterarEndereco(id, endereco), HttpStatus.OK);
+    public ResponseEntity<EnderecoDTO> alterarEndereco(@PathVariable("id") Integer id, @RequestBody Endereco endereco){
+    	Endereco enderecoResponse = enderecoService.alterarEndereco(id, endereco);
+        return new ResponseEntity<EnderecoDTO>(EnderecoDTO.converter(enderecoResponse), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

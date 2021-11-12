@@ -28,11 +28,11 @@ public class ClienteController {
 
 	@PostMapping("")
 	public ResponseEntity<ClienteIdDTO> incluirCliente(@RequestBody Cliente cliente) {
-		Cliente client = clienteService.incluirCliente(cliente);
-		if(client == null) {
-			return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(client), HttpStatus.UNPROCESSABLE_ENTITY);
+		Cliente clienteResponse = clienteService.incluirCliente(cliente);
+		if(clienteResponse == null) {
+			return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(clienteResponse), HttpStatus.UNPROCESSABLE_ENTITY);
 		}
-		return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(client), HttpStatus.CREATED);
+		return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(clienteResponse), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{id}")
