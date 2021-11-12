@@ -28,7 +28,7 @@ public class EnderecoController {
 
     @PostMapping("")
     public ResponseEntity<EnderecoIdDTO> incluirEndereco(@RequestBody Endereco endereco){
-    	Endereco enderecoResponse = enderecoService.incluirEndereco(endereco)
+    	Endereco enderecoResponse = enderecoService.incluirEndereco(endereco);
         return new ResponseEntity<EnderecoIdDTO>(EnderecoIdDTO.converter(enderecoResponse), HttpStatus.CREATED);
     }
 
@@ -39,14 +39,14 @@ public class EnderecoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<EnderecoDTO> alterarEndereco(@PathVariable("id") Integer id, @RequestBody Endereco endereco){
-    	Endereco enderecoResponse = enderecoService.alterarEndereco(id, endereco);
-        return new ResponseEntity<EnderecoDTO>(EnderecoDTO.converter(enderecoResponse), HttpStatus.OK);
+    public ResponseEntity<String> alterarEndereco(@PathVariable("id") Integer id, @RequestBody Endereco endereco){
+    	enderecoService.alterarEndereco(id, endereco);
+        return new ResponseEntity<String>("Endereço alterado com sucesso!", HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> excluirEndereco(@PathVariable Integer id){
         enderecoService.excluirEndereco(id);
-        return new ResponseEntity<String>("Deleted", HttpStatus.OK);
+        return new ResponseEntity<String>("Endereço alterado com sucesso!", HttpStatus.OK);
     }
 }

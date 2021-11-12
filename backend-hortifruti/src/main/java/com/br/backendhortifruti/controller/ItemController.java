@@ -36,7 +36,7 @@ public class ItemController {
 	@PostMapping("")
 	public ResponseEntity<String> incluirItem(@RequestBody Item item){
 		itemService.incluirItem(item);
-		return new ResponseEntity<>(HttpStatus.CREATED);		
+		return new ResponseEntity<String>("Item incluído a pedido com sucesso!",HttpStatus.CREATED);		
 	}
 	
 	@GetMapping("/{id}")
@@ -46,15 +46,15 @@ public class ItemController {
     }
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<ItemDTO> alterarItem(@PathVariable("id") Integer id, @RequestBody Item item) {
-		Item itemResponse = itemService.alterarItem(item, id);
-        return new ResponseEntity<ItemDTO>(ItemDTO.converter(itemResponse), HttpStatus.OK);
+	public ResponseEntity<String> alterarItem(@PathVariable("id") Integer id, @RequestBody Item item) {
+		itemService.alterarItem(item, id);
+        return new ResponseEntity<String>("Item de pedido alterado com sucesso!", HttpStatus.OK);
     }
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirItem(@PathVariable Integer id) {
 		itemService.excluirItem(id);
-        return new ResponseEntity<String>("Item de pedido deleted sucessfully!",HttpStatus.OK);
+        return new ResponseEntity<String>("Item de pedido deletado com sucesso!",HttpStatus.OK);
     }
 
 }
