@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.backendhortifruti.model.dto.ClienteDTO;
+import com.br.backendhortifruti.model.dto.ClienteIdDTO;
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.service.ClienteService;
 
@@ -26,17 +27,18 @@ public class ClienteController {
 	private ClienteService clienteService;
 
 	@PostMapping("")
-	public ResponseEntity<Cliente> incluirCliente(@RequestBody Cliente cliente) {
-		if(clienteService.incluirCliente(cliente) == null) {
-			return new ResponseEntity<Cliente>(clienteService.incluirCliente(cliente), HttpStatus.UNPROCESSABLE_ENTITY);
+	public ResponseEntity<ClienteIdDTO> incluirCliente(@RequestBody Cliente cliente) {
+		Cliente client = clienteService.incluirCliente(cliente);
+		if(client == null) {
+			return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(client), HttpStatus.UNPROCESSABLE_ENTITY);
 		}
-		return new ResponseEntity<Cliente>(clienteService.incluirCliente(cliente), HttpStatus.CREATED);
+		return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(client), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Cliente> alterarCliente(@PathVariable Integer id, @RequestBody Cliente cliente) {
+	public ResponseEntity<ClienteDTO> alterarCliente(@PathVariable Integer id, @RequestBody Cliente cliente) {
 		Cliente clienteResponse = clienteService.alterarCliente(cliente, id);
-		return ResponseEntity.ok().body(clienteResponse);
+		return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/{id}")
@@ -52,9 +54,9 @@ public class ClienteController {
 	}
 
 	@GetMapping("/documento/{documento}")
-	public ResponseEntity<ClienteDTO> consultarClientePorDocumento(@PathVariable("documento") String documento) {
+	public ResponseEntity<ClienteIdDTO> consultarClientePorDocumento(@PathVariable("documento") String documento) {
 		Cliente cliente = clienteService.consultarClientePorDocumento(documento);
-		return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(cliente), HttpStatus.OK);
+		return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(cliente), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
