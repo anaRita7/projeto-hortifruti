@@ -1,5 +1,9 @@
 package com.br.backendhortifruti.model.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +11,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "produto")
 public class Produto {
@@ -32,64 +39,4 @@ public class Produto {
 
 	@Column(name = "status")
 	private boolean status;
-
-	public Produto() {
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getUnidadeMedida() {
-		return unidadeMedida;
-	}
-
-	public void setUnidadeMedida(String unidadeMedida) {
-		this.unidadeMedida = unidadeMedida;
-	}
-
-	public float getValorUnitario() {
-		return valorUnitario;
-	}
-
-	public void setValorUnitario(float valorUnitario) {
-		this.valorUnitario = valorUnitario;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-	
 }

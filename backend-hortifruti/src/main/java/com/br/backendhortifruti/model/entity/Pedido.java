@@ -3,6 +3,9 @@ package com.br.backendhortifruti.model.entity;
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.dto.EnderecoDTO;
 import com.br.backendhortifruti.model.dto.ItemDTO;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +20,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "pedido")
 public class Pedido {
@@ -60,106 +66,9 @@ public class Pedido {
 	@OneToMany(mappedBy = "pedido")
 	private List<Item> itens;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Integer getCodigo() {
-		return codigo;
-	}
-
-	public void setCodigo(Integer codigo) {
-		this.codigo = codigo;
-	}
-
-	public LocalDate getData() {
-		return data;
-	}
-
-	public void setData(LocalDate data) {
-		this.data = data;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
 	public ClienteDTO getClienteDTO() { return ClienteDTO.converter(getCliente());}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
 
 	public EnderecoDTO getEnderecoDTO(){ return EnderecoDTO.converter(getEndereco());}
 
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public boolean isSituacao() {
-		return situacao;
-	}
-
-	public void setSituacao(boolean situacao) {
-		this.situacao = situacao;
-	}
-
-	public Double getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-
-	public Integer getQuantidadeTotal() {
-		return quantidadeTotal;
-	}
-
-	public void setQuantidadeTotal(Integer quantidadeTotal) {
-		this.quantidadeTotal = quantidadeTotal;
-	}
-
-	public Double getDesconto() {
-		return desconto;
-	}
-
-	public void setDesconto(Double desconto) {
-		this.desconto = desconto;
-	}
-
-	public Double getValorFinal() {
-		return valorFinal;
-	}
-
-	public void setValorFinal(Double valorFinal) {
-		this.valorFinal = valorFinal;
-	}
-
-	public String getFormaPagamento() {
-		return formaPagamento;
-	}
-
-	public void setFormaPagamento(String formaPagamento) {
-		this.formaPagamento = formaPagamento;
-	}
-
-	public List<Item> getItens() {
-		return itens;
-	}
-
 	public List<ItemDTO> getItensDTO(){ return ItemDTO.converterLista(getItens()); }
-
-	public void setItens(List<Item> itens) {
-		this.itens = itens;
-	}
-
 }

@@ -11,7 +11,13 @@ import javax.persistence.Table;
 
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "item_do_pedido")
 public class Item {
@@ -35,49 +41,5 @@ public class Item {
 	@Column(name = "valor_total")
 	private float valorTotal;
 
-	public Item() {		
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
-
-	public Produto getProduto() {
-		return produto;
-	}
-
-	public ProdutoDTO getProdutoDTO(){ return ProdutoDTO.converter(getProduto()); }
-
-	public void setProduto(Produto produto) {
-		this.produto = produto;
-	}
-
-	public Integer getQuantidadeTotal() {
-		return quantidadeTotal;
-	}
-
-	public void setQuantidadeTotal(Integer quantidadeTotal) {
-		this.quantidadeTotal = quantidadeTotal;
-	}
-
-	public float getValorTotal() {
-		return valorTotal;
-	}
-
-	public void setValorTotal(float valorTotal) {
-		this.valorTotal = valorTotal;
-	}
-
+ 	public ProdutoDTO getProdutoDTO(){ return ProdutoDTO.converter(getProduto()); }
 }
