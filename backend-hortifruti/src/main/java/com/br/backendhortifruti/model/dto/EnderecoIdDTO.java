@@ -12,8 +12,8 @@ public class EnderecoIdDTO {
         this.id = endereco.getId();
     }
 
-    public static EnderecoDTO converter(Endereco endereco){
-        return new EnderecoDTO(endereco);
+    public static EnderecoIdDTO converter(Endereco endereco){
+        return new EnderecoIdDTO(endereco);
     }
 
 }
