@@ -24,4 +24,6 @@ public interface ProdutoService {
 	Produto alterarProduto(Produto produto, Integer id);
 
 	void excluirProduto(Integer id);
+
+    Produto alterarStatusProduto(Integer produtoId, boolean status);
 }

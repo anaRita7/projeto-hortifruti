@@ -74,4 +74,9 @@ public class ProdutoController {
 		return new ResponseEntity<String>("Produto deleted sucessfully!", HttpStatus.OK);
 	}
 
+	@PutMapping("/{id}/{status}")
+	public ResponseEntity<ProdutoDTO> alterarStatusProduto(@PathVariable("id") Integer produtoId, @PathVariable ("status") boolean status){
+		Produto produtoResponse = produtoService.alterarStatusProduto(produtoId, status);
+		return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produtoResponse), HttpStatus.OK);
+	}
 }
