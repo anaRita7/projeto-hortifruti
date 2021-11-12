@@ -14,7 +14,7 @@ CREATE TABLE cliente(
 CREATE TABLE pedido(
 	id_pedido bigint AUTO_INCREMENT NOT NULL, 
 	codigo bigint,
-	data date,
+	data_hora timestamp,
 	id_cliente bigint NOT NULL,
 	id_endereco bigint NOT NULL,
 	situacao boolean,
