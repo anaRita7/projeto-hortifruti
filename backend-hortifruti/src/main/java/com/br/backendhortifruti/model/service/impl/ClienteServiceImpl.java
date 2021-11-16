@@ -19,11 +19,11 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente incluirCliente(Cliente cliente) {
-		//Formatação de caracteries será feita futuramento no front!
+		//Formatação de caracteres será feita futuramento no front!
 		String documento = ValidadorDocumento.removeCaracteresEspeciais(cliente.getDocumento());
 		cliente.setDocumento(documento);
 		
-		//Chamada do método validador
+		//Chamada do método validador classe static
 		boolean documentoValido = ValidadorDocumento.validaDocumento(cliente);
 		if(documentoValido) {
 			//Salva o cliente com CPF/CNPJ ok

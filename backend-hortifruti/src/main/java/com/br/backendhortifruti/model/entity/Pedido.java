@@ -1,13 +1,5 @@
 package com.br.backendhortifruti.model.entity;
 
-import com.br.backendhortifruti.model.dto.ClienteDTO;
-import com.br.backendhortifruti.model.dto.EnderecoDTO;
-import com.br.backendhortifruti.model.dto.ItemDTO;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,6 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.br.backendhortifruti.model.dto.ClienteDTO;
+import com.br.backendhortifruti.model.dto.EnderecoDTO;
+import com.br.backendhortifruti.model.dto.ItemDTO;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
