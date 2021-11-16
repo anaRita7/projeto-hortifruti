@@ -34,9 +34,8 @@ public class PedidoServiceImpl implements PedidoService {
 
 	@Override
 	public Pedido incluirPedido(Pedido pedido) {
-		Integer codigoGerado = 0;
 		if(pedido.getCodigo() == null) {
-			codigoGerado = random.nextInt(10000);
+			Integer codigoGerado = (random.nextInt(10000) + 1000);
 			if (consultarPedidoPorCodigo(codigoGerado) == null) {
 				pedido.setCodigo(codigoGerado);
 				return pedidoRepository.save(pedido);
