@@ -13,7 +13,7 @@ public class PedidoForListDTO {
 	
 	private Integer codigo;
 	
-	private LocalDateTime data;
+	private LocalDateTime dataHora;
 	
 	private String nomeCliente;
 	
@@ -25,7 +25,7 @@ public class PedidoForListDTO {
 
 	public PedidoForListDTO(Pedido pedido) {
 		this.codigo = pedido.getCodigo();
-		this.data = pedido.getDataHora();
+		this.dataHora = pedido.getDataHora();
 		this.nomeCliente = pedido.getCliente().getNome();
 		this.situacao = pedido.isSituacao();
 		this.quantidadeTotal = pedido.getQuantidadeTotal();

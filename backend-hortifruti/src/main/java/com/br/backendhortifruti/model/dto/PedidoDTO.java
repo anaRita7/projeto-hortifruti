@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class PedidoDTO {
 
     private Integer codigo;
-    private LocalDateTime data;
+    private LocalDateTime dataHora;
     private ClienteDTO cliente;
     private EnderecoDTO endereco;
     private boolean situacao;
@@ -24,7 +24,7 @@ public class PedidoDTO {
 
     public PedidoDTO(Pedido pedido){
         this.codigo = pedido.getCodigo();
-        this.data = pedido.getDataHora();
+        this.dataHora = pedido.getDataHora();
         this.cliente = pedido.getClienteDTO();
         this.endereco = pedido.getEnderecoDTO();
         this.situacao = pedido.isSituacao();
