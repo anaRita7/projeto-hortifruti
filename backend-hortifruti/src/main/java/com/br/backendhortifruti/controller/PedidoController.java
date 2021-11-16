@@ -25,6 +25,17 @@ public class PedidoController {
     	List<Pedido> pedidos = pedidoService.consultarPedidos();
         return new ResponseEntity<>(PedidoForListDTO.converterList(pedidos), HttpStatus.OK);
     }
+    
+    @GetMapping("/ativos")
+	public ResponseEntity<List<PedidoForListDTO>> consultarProdutosAtivos() {
+		List<Pedido> pedidos = pedidoService.consultarPedidosAtivos();
+		return new ResponseEntity<>(PedidoForListDTO.converterList(pedidos), HttpStatus.OK);
+	}
+    @GetMapping("/inativos")
+	public ResponseEntity<List<PedidoForListDTO>> consultarProdutosInativos() {
+		List<Pedido> pedidos = pedidoService.consultarPedidosInativos();
+		return new ResponseEntity<>(PedidoForListDTO.converterList(pedidos), HttpStatus.OK);
+	}
 
     @GetMapping("/codigo/{codigo}")
 	public ResponseEntity<PedidoDTO> consultarPedidoPorCodigo(@PathVariable("codigo") Integer codigo) {

@@ -56,6 +56,16 @@ public class PedidoServiceImpl implements PedidoService {
 		return null;
 	}
 
+	@Override
+	public List<Pedido> consultarPedidosAtivos() {
+		return pedidoRepository.findBySituacaoTrue();
+	}
+
+	@Override
+	public List<Pedido> consultarPedidosInativos() {
+		return pedidoRepository.findBySituacaoFalse();
+	}
+
 	
 
 }
