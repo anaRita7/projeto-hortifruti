@@ -19,18 +19,15 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente incluirCliente(Cliente cliente) {
+		//Formatação de caracteres será feita futuramento no front!
 		String documento = ValidadorDocumento.removeCaracteresEspeciais(cliente.getDocumento());
 		cliente.setDocumento(documento);
-		if (documento.length() == 11) {
-			boolean isCPF = ValidadorDocumento.isCpf(documento);
-			if (isCPF) {
-				return clienteRepository.save(cliente);
-			}
-		} else if (documento.length() == 14) {
-			boolean isCnpj = ValidadorDocumento.isCnpj(documento);
-			if (isCnpj) {
-				return clienteRepository.save(cliente);
-			}
+		
+		//Chamada do método validador classe static
+		boolean documentoValido = ValidadorDocumento.validaDocumento(cliente);
+		if(documentoValido) {
+			//Salva o cliente com CPF/CNPJ ok
+			return clienteRepository.save(cliente);
 		}
 		return null;
 	}

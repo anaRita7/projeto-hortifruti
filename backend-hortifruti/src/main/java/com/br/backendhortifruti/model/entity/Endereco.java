@@ -38,13 +38,4 @@ public class Endereco {
     @Column(name="numero")
     private Integer numero;
 
-	public Endereco(String cep, String cidade, String bairro, String estado, String rua, String complemento, Integer numero) {
-		this.cep = cep;
-		this.cidade = cidade;
-		this.bairro = bairro;
-		this.estado = estado;
-		this.rua = rua;
-		this.complemento = complemento;
-		this.numero = numero;
-	}
 }

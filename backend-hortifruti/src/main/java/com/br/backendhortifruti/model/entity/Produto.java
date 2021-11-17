@@ -35,8 +35,9 @@ public class Produto {
 	private String unidadeMedida;
 
 	@Column(name = "valor_unitario")
-	private float valorUnitario;
+	private double valorUnitario;
 
 	@Column(name = "status")
 	private boolean status;
+
 }
