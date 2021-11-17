@@ -1,6 +1,6 @@
 package com.br.backendhortifruti.model.dto;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +13,7 @@ public class PedidoForListDTO {
 	
 	private Integer codigo;
 	
-	private LocalDate data;
+	private LocalDateTime dataHora;
 	
 	private String nomeCliente;
 	
@@ -25,7 +25,7 @@ public class PedidoForListDTO {
 
 	public PedidoForListDTO(Pedido pedido) {
 		this.codigo = pedido.getCodigo();
-		this.data = pedido.getData();
+		this.dataHora = pedido.getDataHora();
 		this.nomeCliente = pedido.getCliente().getNome();
 		this.situacao = pedido.isSituacao();
 		this.quantidadeTotal = pedido.getQuantidadeTotal();

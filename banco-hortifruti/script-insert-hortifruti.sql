@@ -1,15 +1,15 @@
-INSERT INTO cliente (tipo, documento, nome) VALUES 
-  ("J","605.737.218-04","Paula Jacobs"),
-  ("F","622.184.166-25","Iona Pereira"),
-  ("F","640.243.813-45","Maria Silva"),
-  ("F","769.750.722-54","Silas Sandoval"),
-  ("F","546.171.253-60","Grady Prates");
- INSERT INTO cliente (tipo, documento, nome) VALUES 
-  ("J","754.031.324-43","Fernando Maia"),
-  ("F","655.747.758-83","Denise Vieira"),
-  ("J","115.886.861-14","Cody Chapman"),
-  ("J","418.717.313-27","Rigel Rocha"),
-  ("J","048.541.195-63","Caick Stanton");
+INSERT INTO cliente (tipo, documento, nome, telefone) VALUES 
+  ("J","605.737.218-04","Paula Jacobs","(31)3223-2122"),
+  ("F","622.184.166-25","Iona Pereira","(31)3222-2544"),
+  ("F","640.243.813-45","Maria Silva","(31)3221-4788"),
+  ("F","769.750.722-54","Silas Sandoval","(31)3229-5552"),
+  ("F","546.171.253-60","Grady Prates","(31)3223-0899");
+ INSERT INTO cliente (tipo, documento, nome, telefone) VALUES 
+  ("J","754.031.324-43","Fernando Maia","(31)3222-0577"),
+  ("F","655.747.758-83","Denise Vieira","(31)3221-2049"),
+  ("J","115.886.861-14","Cody Chapman","(31)3222-1897"),
+  ("J","418.717.313-27","Rigel Rocha","(31)3223-3133"),
+  ("J","048.541.195-63","Caick Stanton","(31)3221-2011");
  
   
 INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status)

@@ -65,4 +65,11 @@ public class ProdutoServiceImpl implements ProdutoService {
 		return produtoRepository.findByStatusAndCodigo(true, codigo).get();
 	}
 
+	@Override
+	public Produto alterarStatusProduto(Integer produtoId, boolean status) {
+		Produto produto = produtoRepository.findById(produtoId).get();
+		produto.setStatus(status);
+		return produtoRepository.save(produto);
+	}
+
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.br.backendhortifruti.model.dto.ProdutoAtivoDTO;
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
+import com.br.backendhortifruti.model.dto.ProdutoIdDTO;
 import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.service.ProdutoService;
 
@@ -47,8 +48,9 @@ public class ProdutoController {
 	}
 
 	@PostMapping("")
-	public ResponseEntity<Produto> incluirProduto(@RequestBody Produto produto) {
-		return new ResponseEntity<Produto>(produtoService.incluirProduto(produto), HttpStatus.CREATED);
+	public ResponseEntity<String> incluirProduto(@RequestBody Produto produto) {
+		produtoService.incluirProduto(produto);
+		return new ResponseEntity<String>("Produto criado com sucesso!", HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{id}")
@@ -58,20 +60,26 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/codigo/{codigo}")
-	public ResponseEntity<ProdutoDTO> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
+	public ResponseEntity<ProdutoIdDTO> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
 		Produto produto = produtoService.consultarProdutoPorCodigo(codigo);
-		return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produto), HttpStatus.OK);
+		return new ResponseEntity<ProdutoIdDTO>(ProdutoIdDTO.converter(produto), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<Produto> alterarProduto(@PathVariable("id") Integer produtoId, @RequestBody Produto produto) {
-		return new ResponseEntity<Produto>(produtoService.alterarProduto(produto, produtoId), HttpStatus.OK);
+	public ResponseEntity<String> alterarProduto(@PathVariable("id") Integer produtoId, @RequestBody Produto produto) {
+		produtoService.alterarProduto(produto, produtoId);
+		return new ResponseEntity<String>("Produto alterado com sucesso!",HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirProduto(@PathVariable("id") Integer produtoId) {
 		produtoService.excluirProduto(produtoId);
-		return new ResponseEntity<String>("Produto deleted sucessfully!", HttpStatus.OK);
+		return new ResponseEntity<String>("Produto deletado com sucesso!", HttpStatus.OK);
 	}
 
+	@PutMapping("/{id}/{status}")
+	public ResponseEntity<ProdutoDTO> alterarStatusProduto(@PathVariable("id") Integer produtoId, @PathVariable ("status") boolean status){
+		Produto produtoResponse = produtoService.alterarStatusProduto(produtoId, status);
+		return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produtoResponse), HttpStatus.OK);
+	}
 }

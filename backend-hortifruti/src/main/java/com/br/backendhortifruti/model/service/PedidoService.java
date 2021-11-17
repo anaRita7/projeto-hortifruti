@@ -9,6 +9,10 @@ import java.util.List;
 @Service
 public interface PedidoService {
     List<Pedido> consultarPedidos();
+    
+    List<Pedido> consultarPedidosAtivos();
+    
+    List<Pedido> consultarPedidosInativos();
 
     Pedido consultarPedido(Integer pedidoId);
     
