@@ -1,9 +1,11 @@
 package com.br.backendhortifruti.model.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.repository.ProdutoRepository;
 import com.br.backendhortifruti.model.service.ProdutoService;
@@ -52,7 +54,10 @@ public class ProdutoServiceImpl implements ProdutoService {
 
 	@Override
 	public Produto consultarProdutoPorCodigo(Integer codigo) {
-		return produtoRepository.findByCodigo(codigo).get();
+		Optional<Produto> Produto = produtoRepository.findByCodigo(codigo);
+		if (Produto.isPresent())
+			return Produto.get();
+		return null;
 	}
 
 	@Override

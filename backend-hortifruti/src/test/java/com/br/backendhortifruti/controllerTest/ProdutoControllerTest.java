@@ -10,9 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.ProdutoController;
-import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
 import com.br.backendhortifruti.model.dto.ProdutoIdDTO;
+import com.br.backendhortifruti.model.entity.Produto;
 
 @SpringBootTest
 public class ProdutoControllerTest {
@@ -22,14 +22,26 @@ public class ProdutoControllerTest {
 	
 	@Test
 	public void incluirProdutoTest() {
-		Produto p1 = new Produto(null, 9340, "Chuchu", "fonte de potassio", "kg", 3.49, true);
+		Produto p1 = new Produto();
+		p1.setNome("Chuchu");
+		p1.setDescricao("fonte de potassio");
+		p1.setUnidadeMedida("kg");
+		p1.setValorUnitario(3.49);
+		p1.setStatus(true);
+		
 		ResponseEntity<String> produtoResponse = produtoController.incluirProduto(p1);
 		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(201);
 	}
 	
 	@Test
 	public void alterarProdutoTest() {
-		Produto p2 = new Produto(null, 1230, "Pimentao", "verde, amarelo e vermelho", "kg", 2.49, true);
+		Produto p2 = new Produto();
+		p2.setNome("Pimentao");
+		p2.setDescricao("verde, amarelo e vermelho");
+		p2.setUnidadeMedida("kg");
+		p2.setValorUnitario(2.49);
+		p2.setStatus(true);
+		
 		ResponseEntity<String> produtoResponse = produtoController.alterarProduto(4, p2);
 		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
@@ -44,8 +56,8 @@ public class ProdutoControllerTest {
 	
 	@Test
 	public void consultarProdutoPorCodigoTest() {
-		ResponseEntity<ProdutoIdDTO> produtoResponse = produtoController.consultarProdutoPorCodigo(1);
-		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+		 ResponseEntity<ProdutoIdDTO> produtoResponse = produtoController.consultarProdutoPorCodigo(4323);
+		assertThat(produtoResponse.getStatusCodeValue() == 200);
 	}
 	
 	// TODO: Consultar produto
