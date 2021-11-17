@@ -14,4 +14,25 @@ export class ProdutoService {
   getProdutos() {
     return this.http.get<Produto[]>(this.Url);
   }
+
+  getProdutosAtivos() {
+    return this.http.get<Produto[]>(this.Url+'/ativos');
+  }
+
+  getProdutoCodigo(codigo: string){
+    return this.http.get<Produto>(this.Url + '/codigo/' + codigo);
+  }
+
+  postProduto(produto: Produto){
+    return this.http.post<Produto>(this.Url, produto);
+  }
+
+  editProduto(id: String, produto: Produto){
+    return this.http.put(this.Url + '/' + id, produto);
+  }
+
+  deleteProduto(id: String){
+    return this.http.delete(this.Url + '/' + id);
+  }
+
 }
