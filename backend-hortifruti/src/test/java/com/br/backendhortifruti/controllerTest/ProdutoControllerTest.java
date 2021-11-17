@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.ProdutoController;
+import com.br.backendhortifruti.model.dto.ProdutoAtivoDTO;
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
 import com.br.backendhortifruti.model.dto.ProdutoIdDTO;
 import com.br.backendhortifruti.model.entity.Produto;
@@ -46,10 +47,14 @@ public class ProdutoControllerTest {
 		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-	// TODO: Excluir produto
+	@Test
+	public void excluirProdutoTest() {
+		ResponseEntity<String> produtoResponse = produtoController.excluirProduto(4);
+		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
 	
 	@Test
-	public void consultarProdutoTest() {
+	public void consultarProdutosTest() {
 		ResponseEntity<List<ProdutoDTO>> produtoResponse = produtoController.consultarProdutos();
 		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
@@ -57,13 +62,24 @@ public class ProdutoControllerTest {
 	@Test
 	public void consultarProdutoPorCodigoTest() {
 		 ResponseEntity<ProdutoIdDTO> produtoResponse = produtoController.consultarProdutoPorCodigo(4323);
-		assertThat(produtoResponse.getStatusCodeValue() == 200);
+		 assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-	// TODO: Consultar produto
+	@Test
+	public void consultarProdutoTest() {
+		 ResponseEntity<ProdutoDTO> produtoResponse = produtoController.consultarProduto(1);
+		 assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
 	
-	// TODO: Consultar produtos ativos
+	@Test
+	public void consultarProdutosAtivosTest() {
+		ResponseEntity<List<ProdutoAtivoDTO>> produtoResponse = produtoController.consultarProdutosAtivos();
+		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
 		
-	// TODO: Consultar produtos ativos por codigo
-		
+	@Test
+	public void consultarProdutosAtivosPorCodigoTest() {
+		ResponseEntity<ProdutoAtivoDTO> produtoResponse = produtoController.consultarProdutoAtivoPorCodigo(8861);
+		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
 }
