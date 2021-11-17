@@ -67,6 +67,7 @@ public class ProdutoController {
 		Produto produto = produtoService.consultarProdutoPorCodigo(codigo);
 		return new ResponseEntity<ProdutoIdDTO>(ProdutoIdDTO.converter(produto), HttpStatus.OK);
 	}
+	
 
 	@PutMapping("/{id}")
 	public ResponseEntity<String> alterarProduto(@PathVariable("id") Integer produtoId, @RequestBody Produto produto) {

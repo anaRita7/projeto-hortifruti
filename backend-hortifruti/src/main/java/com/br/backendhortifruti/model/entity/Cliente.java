@@ -35,11 +35,4 @@ public class Cliente {
 	@Column(name = "telefone")
 	private String telefone;
 
-	public Cliente(Integer id, String nome, char tipo, String documento, String telefone) {
-		this.id = id;
-		this.nome = nome;
-		this.tipo = tipo;
-		this.documento = documento;
-		this.telefone = telefone;
-	}
 }
