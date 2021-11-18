@@ -1,4 +1,5 @@
 export class Produto{
+    id: number;
     codigo: number;
     nome: String;
     descricao: String;
@@ -6,8 +7,9 @@ export class Produto{
     valorUnitario: number;
     status: boolean;
 
-    constructor(codigo:number, nome:String, descricao: String, 
+    constructor(id: number, codigo:number, nome:String, descricao: String, 
         unidadeMedida: String, valorUnitario: number, status: boolean){
+            this.id = id;
             this.codigo = codigo;
             this.nome = nome;
             this.descricao = descricao;
