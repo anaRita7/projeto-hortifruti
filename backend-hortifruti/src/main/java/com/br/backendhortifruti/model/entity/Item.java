@@ -28,7 +28,6 @@ public class Item {
 	
 	@ManyToOne
 	@JoinColumn(name = "id_pedido")
-	@JsonIgnore
 	private Pedido pedido;
 	
 	@ManyToOne
