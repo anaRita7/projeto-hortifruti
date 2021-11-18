@@ -1,25 +1,50 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Cadastrar Cliente</h1>
-                </div><!-- /.row -->
-            </div><!-- /.container-fluid -->
-        </div>
-        <!-- /.content-header -->
-
-        <!-- Main content -->
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                </div>
-                <!-- /.row -->
+    <div class="content-header mx-3 my-3">
+        <div class="card card-success">
+            <div class="card-header">
+                <h2 class="title-cad-prod">Cadastar Cliente</h2>
             </div>
-            <!-- /.container-fluid -->
+            <div class="card-body">
+                <form action="">
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="exampleSelectBorder">PF / PJ</label>
+                            <select class="custom-select form-control-border" id="exampleSelectBorder">
+                              <option>Pessoa Física</option>
+                              <option>Pessoa Jurídica</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>Documento</label>
+                                <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>Nome</label>
+                                <input type="text" name="nome" class="form-control" placeholder="Insira seu nome ...">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <!-- text input -->
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input type="tel" name="telefone" class="form-control" placeholder="Insira seu número ...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-cad-prod">
+                        <input type="submit" value="Cadastar">
+                    </div>
+                </form>
+            </div>
+            <!-- /.card-body -->
         </div>
-        <!-- /.content -->
+        <!-- /.card -->
     </div>
     <!-- /.content-wrapper -->
 </div>
