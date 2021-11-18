@@ -1,4 +1,6 @@
+import { Cliente } from "./Cliente";
 import { Item } from "./Item";
+import { Endereco } from "./Endereco";
 
 export class Pedido{
     codigo: number;

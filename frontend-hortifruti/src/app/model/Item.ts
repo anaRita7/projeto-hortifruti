@@ -1,19 +1,17 @@
-import { identifierModuleUrl } from "@angular/compiler";
-import { ProdutoService } from "../services/produto.service";
 import { Produto } from "./Produto";
 
 export class Item{
     id: number;
     idPedido: number;
-    idProduto: number;
+    produto: Produto;
     quantidadeTotal: number;
     valorTotal: number;
 
-    constructor(id: number, idPedido: number, idProduto: number,
+    constructor(id: number, idPedido: number, produto: Produto,
         quantidadeTotal: number, valorTotal:number){
             this.id = id;
             this.idPedido = idPedido;
-            this.idProduto = idProduto;
+            this.produto = produto;
             this.quantidadeTotal = quantidadeTotal;
             this.valorTotal = valorTotal;
     }
