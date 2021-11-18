@@ -3,6 +3,8 @@ package com.br.backendhortifruti.controller;
 import java.util.List;
 
 import com.br.backendhortifruti.model.dto.ItemDTO;
+import com.br.backendhortifruti.model.dto.ItemIdDTO;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,9 +36,9 @@ public class ItemController {
     }
 
 	@PostMapping("")
-	public ResponseEntity<String> incluirItem(@RequestBody Item item){
-		itemService.incluirItem(item);
-		return new ResponseEntity<String>("Item incluído a pedido com sucesso!",HttpStatus.CREATED);		
+	public ResponseEntity<ItemIdDTO> incluirItem(@RequestBody Item item){
+		Item itemResponse = itemService.incluirItem(item);
+		return new ResponseEntity<ItemIdDTO>(ItemIdDTO.converter(itemResponse),HttpStatus.CREATED);		
 	}
 	
 	@GetMapping("/{id}")

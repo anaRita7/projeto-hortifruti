@@ -15,11 +15,11 @@ export class ItemService {
     return this.http.post<Item>(this.Url, item);
   }
 
-  editProduto(id: String, item: Item){
+  editItem(id: String, item: Item){
     return this.http.put(this.Url + '/' + id, item);
   }
 
-  deleteProduto(id: String){
+  deleteItem(id: String){
     return this.http.delete(this.Url + '/' + id);
   }
 }
