@@ -15,7 +15,7 @@
                 <table class="table table-striped projects">
                     <thead class="text-center">
                         <tr>
-                            <th style="width: 5%" >
+                            <th style="width: 5%">
                                 Código
                             </th>
                             <th style="width: 20%">
@@ -53,16 +53,18 @@
                                 <span class="badge badge-success py-2">Disponível</span>
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm mr-2" href="#">
+                                <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
+                                    data-target="#editProdModal">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#delProdModal">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
-                                </a>
+                                </button>
                             </td>
                         </tr>
                         <tr>
@@ -82,16 +84,18 @@
                                 <span class="badge badge-danger py-2">Indisponível</span>
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm mr-2" href="#">
+                                <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
+                                    data-target="#editProdModal">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#delProdModal">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
@@ -102,4 +106,47 @@
         <!-- /.card -->
     </div>
     <!-- /.content-wrapper -->
+</div>
+<!-- Modal Edit Product-->
+<div class="modal fade" id="editProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Informações do Produto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Delete Product-->
+<div class="modal fade" id="delProdModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseka del?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
