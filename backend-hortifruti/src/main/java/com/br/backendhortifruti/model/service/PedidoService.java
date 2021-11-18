@@ -8,7 +8,6 @@ import java.util.List;
 
 @Service
 public interface PedidoService {
-    List<Pedido> consultarPedidos();
     
     List<Pedido> consultarPedidosAtivos();
     
