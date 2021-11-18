@@ -1,1 +1,92 @@
-<p>sidebar works!</p>
+<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+        <!-- COLOCAR IMAGEM DA LOGO -->
+        <span class="brand-text font-weight-light">HORTIFRUTI</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+                <li class="nav-item menu-open">
+                    <a routerLink="/" class="nav-link active">
+                        <i class="nav-icon fas fa-home"></i>
+                        <p>
+                            Home
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
+                    <a class="nav-link active">
+                        <i class="nav-icon fas fa-store"></i>
+                        <p>
+                            Produtos
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/products-register" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cadastrar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/products-consult" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu-open">
+                    <a class="nav-link active">
+                        <i class="nav-icon fas fa-id-card"></i>
+                        <p>
+                            Clientes
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a routerLink="/clients-register" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cadastrar</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a routerLink="/clients-consult" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Consultar</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item menu-open">
+                    <a routerLink="/" class="nav-link active">
+                        <i class="nav-icon fas fa-shopping-cart"></i>
+                        <p>
+                            Carrinho
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item menu-open">
+                    <a routerLink="/" class="nav-link active">
+                        <i class="nav-icon fas fa-cash-register"></i>
+                        <p>
+                            Pedidos
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
