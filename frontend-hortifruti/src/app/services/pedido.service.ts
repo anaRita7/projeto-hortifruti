@@ -35,8 +35,8 @@ export class PedidoService {
     return this.http.post<Pedido>(this.Url, pedido);
   }
 
-  editPedido(id: String, produto: Pedido){
-    return this.http.put(this.Url + '/' + id, produto);
+  editPedido(id: String, pedido: Pedido){
+    return this.http.put(this.Url + '/' + id, pedido);
   }
 
   deletePedido(id: String){
