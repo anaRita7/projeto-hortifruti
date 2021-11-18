@@ -52,9 +52,10 @@ public class ClienteControllerTest {
 	@Test
 	public void consultaDeleteCliente() {
 		try {
-			ResponseEntity<ClienteDTO> clienteResponse = clienteController.consultarCliente(76);
+			ResponseEntity<ClienteDTO> clienteResponse = clienteController.consultarCliente(64);
 			if (clienteResponse.getBody().getNome().equals("Mercadinho do seu Ze")) {
-				ResponseEntity<String> clienteDeletado = clienteController.excluirCliente(76);
+				ResponseEntity<String> clienteDeletado = clienteController.excluirCliente(64);
+
 				assertThat(clienteDeletado.getBody().equals("Produto deleted sucessfully!"));
 			}
 		} catch (Exception e) {

@@ -49,7 +49,10 @@ public class ProdutoController {
 
 	@PostMapping("")
 	public ResponseEntity<String> incluirProduto(@RequestBody Produto produto) {
-		produtoService.incluirProduto(produto);
+		Produto produtoResponse = produtoService.incluirProduto(produto);
+		if(produtoResponse == null) {
+			return new ResponseEntity<String>("Falha ao criar o produto!", HttpStatus.UNPROCESSABLE_ENTITY);
+		}
 		return new ResponseEntity<String>("Produto criado com sucesso!", HttpStatus.CREATED);
 	}
 

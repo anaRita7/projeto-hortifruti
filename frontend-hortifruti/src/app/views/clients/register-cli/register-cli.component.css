@@ -1,0 +1,16 @@
+.title-cad-prod {
+    font-size: 1.3rem;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding: 1px;
+}
+
+.btn-cad-prod {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 15px;
+}

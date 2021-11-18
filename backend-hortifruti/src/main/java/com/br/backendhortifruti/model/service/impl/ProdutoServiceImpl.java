@@ -2,10 +2,10 @@ package com.br.backendhortifruti.model.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 import org.springframework.stereotype.Service;
 
-import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.repository.ProdutoRepository;
 import com.br.backendhortifruti.model.service.ProdutoService;
@@ -14,6 +14,8 @@ import com.br.backendhortifruti.model.service.ProdutoService;
 public class ProdutoServiceImpl implements ProdutoService {
 
 	private ProdutoRepository produtoRepository;
+	
+	Random random = new Random();
 
 	public ProdutoServiceImpl(ProdutoRepository produtoRepository) {
 		this.produtoRepository = produtoRepository;
@@ -21,7 +23,14 @@ public class ProdutoServiceImpl implements ProdutoService {
 
 	@Override
 	public Produto incluirProduto(Produto produto) {
-		return produtoRepository.save(produto);
+		if(produto.getCodigo() == null) {
+			Integer codigoGerado = (random.nextInt(1000000001) + 899999999);
+			if (consultarProdutoPorCodigo(codigoGerado) == null) {
+				produto.setCodigo(codigoGerado);
+				return produtoRepository.save(produto);
+			}
+		}
+		return null;
 	}
 
 	@Override
