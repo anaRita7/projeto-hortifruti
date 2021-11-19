@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cliente } from 'src/app/model/Cliente';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-consult',
@@ -7,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConsultCliComponent implements OnInit {
 
-  constructor() { }
+  clientes: Cliente[] = [];
 
+  constructor(private service:ClienteService) {
+     this.service.getClientes().subscribe(data => this.clientes = data);
+  }
   ngOnInit(): void {
   }
 

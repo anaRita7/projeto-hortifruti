@@ -33,44 +33,18 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
+                        <tr *ngFor = "let cliente of clientes">
                             <td>
-                                PF
+                                {{cliente.tipo}}
                             </td>
                             <td>
-                                326.749.790-62
+                                {{cliente.documento}}
                             </td>
                             <td>
-                                Davi Gomes da Silva
+                                {{cliente.nome}}
                             </td>
                             <td>
-                                (31) 9896-3105
-                            </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm mr-2" href="#">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                PJ
-                            </td>
-                            <td>
-                                81.870.016/0001-57
-                            </td>
-                            <td>
-                                Veludo Mercado Comércio de Alimentos Ltda.
-                            </td>
-                            <td>
-                                (41) 8437-2774
+                                {{cliente.telefone}}
                             </td>
                             <td class="project-actions text-right">
                                 <a class="btn btn-info btn-sm mr-2" href="#">
