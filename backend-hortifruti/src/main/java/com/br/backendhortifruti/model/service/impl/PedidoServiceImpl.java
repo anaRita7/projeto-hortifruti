@@ -66,9 +66,7 @@ public class PedidoServiceImpl implements PedidoService {
 	@Override
 	public Pedido consultarPedidoPorCodigo(Integer codigo) {
 		Optional<Pedido> pedido = pedidoRepository.findByCodigo(codigo);
-		if (pedido.isPresent())
-			return pedido.get();
-		return null;
+		return pedido.orElse(null);
 	}
 
 	@Override

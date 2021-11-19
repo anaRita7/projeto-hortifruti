@@ -39,7 +39,8 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente consultarCliente(Integer id) {
-		return clienteRepository.findById(id).get();
+		Optional<Cliente> cliente = clienteRepository.findById(id);
+		return cliente.orElse(null);
 	}
 
 	@Override
@@ -64,9 +65,7 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public Cliente consultarClientePorDocumento(String documento) {
 		Optional<Cliente> cliente = clienteRepository.findByDocumento(documento);
-		if (cliente.isPresent())
-			return cliente.get();
-		return null;
+		return cliente.orElse(null);
 	}
 
 }
