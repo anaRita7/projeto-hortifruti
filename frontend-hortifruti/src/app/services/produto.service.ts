@@ -35,6 +35,10 @@ export class ProdutoService {
     return this.http.put(this.Url + '/' + id, produto);
   }
 
+  alteraStatusProduto(id: String, status: String){
+    return this.http.put(this.Url + '/' + id + '/status', status);
+  }
+
   deleteProduto(id: String){
     return this.http.delete(this.Url + '/' + id);
   }
