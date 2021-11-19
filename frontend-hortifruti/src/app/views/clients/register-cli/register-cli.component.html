@@ -6,7 +6,7 @@
                 <h2 class="title-cad-prod">Cadastar Cliente</h2>
             </div>
             <div class="card-body">
-                <form [formGroup]="form">
+                <form>
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label for="exampleSelectBorder">PF / PJ</label>
@@ -20,9 +20,6 @@
                             <div class="form-group">
                                 <label>Documento</label>
                                 <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
-                            </div>
-                            <div *ngIf="form.get('cpf').getError('cpfNotValid')"> 
-                                O cpf não é válido.
                             </div>
                         </div>
                         <div class="col-sm-6">

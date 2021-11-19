@@ -12,25 +12,12 @@ import { Cliente } from './../../../model/Cliente';
   styleUrls: ['./register-cli.component.css']
 })
 export class RegisterCliComponent implements OnInit {
-  form: FormGroup;
-  cliente: Cliente = new Cliente();
-  constructor(
-    private service: ClienteService, 
-    private router: Router,
-    private formBuilder: FormBuilder
-    ) { }
-
+    
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      cpf: this.formBuilder.control({ value: null, disabled: false}, FormValidations.isValidCpf())
-    })
+    
   }
   postClient(){
-    this.service.postCliente(this.cliente)
-    .subscribe(data => {
-      alert('Cadastrado com sucesso');
-      this.router.navigate(["clients-register"]);
-    })
+    
   }
 
 }
