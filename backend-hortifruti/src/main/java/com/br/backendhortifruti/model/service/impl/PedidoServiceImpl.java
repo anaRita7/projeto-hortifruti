@@ -49,7 +49,6 @@ public class PedidoServiceImpl implements PedidoService {
 		if (pedidoRepository.findById(pedidoId).isPresent()) {
 			Pedido pedidoExistente = pedidoRepository.findById(pedidoId).get();
 			pedidoExistente.setDataHora(pedido.getDataHora());
-			pedidoExistente.setCliente(pedido.getCliente());
 			pedidoExistente.setEndereco(pedido.getEndereco());
 			pedidoExistente.setSituacao(pedido.isSituacao());
 			pedidoExistente.setValorTotal(pedido.getValorTotal());
