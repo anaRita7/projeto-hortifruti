@@ -14,6 +14,7 @@ import com.br.backendhortifruti.model.entity.Item;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.dto.ItemDTO;
+import com.br.backendhortifruti.model.dto.ItemIdDTO;
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
 
 @SpringBootTest
@@ -36,7 +37,7 @@ public class ItemControllerTest {
 		item.setQuantidadeTotal(123);
 		item.setValorTotal(1000);
 		
-		ResponseEntity<String> itemResponse = itemController.incluirItem(item);
+		ResponseEntity<ItemIdDTO> itemResponse = itemController.incluirItem(item);
 		assertThat(itemResponse.getStatusCodeValue()).isEqualTo(201);
 	} 
 	
