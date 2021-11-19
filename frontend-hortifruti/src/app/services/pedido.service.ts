@@ -15,14 +15,6 @@ export class PedidoService {
     return this.http.get<Pedido[]>(this.Url);
   }
 
-  getPedidosAbertos() {
-    return this.http.get<Pedido[]>(this.Url+'/ativos');
-  }
-
-  getPedidosFechados() {
-    return this.http.get<Pedido[]>(this.Url+'/inativos');
-  }
-
   getPedidoCodigo(codigo: string){
     return this.http.get<Pedido>(this.Url + '/codigo/' + codigo);
   }
