@@ -22,11 +22,6 @@ public class PedidoServiceImpl implements PedidoService {
 	}
 
 	@Override
-	public List<Pedido> consultarPedidos() {
-		return pedidoRepository.findAll();
-	}
-
-	@Override
 	public Pedido consultarPedido(Integer pedidoId) {
 		Optional<Pedido> pedido = pedidoRepository.findById(pedidoId);
 		return pedido.orElse(null);
