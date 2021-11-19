@@ -23,6 +23,10 @@ export class ProdutoService {
     return this.http.get<Produto>(this.Url + '/codigo/' + codigo);
   }
 
+  getProduto(id: string){
+    return this.http.get<Produto>(this.Url + '/' + id);
+  }
+
   postProduto(produto: Produto){
     return this.http.post<Produto>(this.Url, produto);
   }
