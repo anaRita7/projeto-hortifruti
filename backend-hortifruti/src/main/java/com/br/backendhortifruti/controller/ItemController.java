@@ -29,13 +29,13 @@ public class ItemController {
 		this.itemService = itemService;
 	}
 	
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<List<ItemDTO>> consultarItens() {
 		List<Item> list = itemService.consultarItens();
         return new ResponseEntity<>(ItemDTO.converterLista(list), HttpStatus.OK);
     }
 
-	@PostMapping("")
+	@PostMapping
 	public ResponseEntity<ItemIdDTO> incluirItem(@RequestBody Item item){
 		Item itemResponse = itemService.incluirItem(item);
 		return new ResponseEntity<ItemIdDTO>(ItemIdDTO.converter(itemResponse),HttpStatus.CREATED);		

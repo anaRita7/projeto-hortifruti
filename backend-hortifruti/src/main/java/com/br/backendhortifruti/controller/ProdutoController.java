@@ -29,7 +29,7 @@ public class ProdutoController {
 		this.produtoService = produtoService;
 	}
 
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<List<ProdutoDTO>> consultarProdutos() {
 		List<Produto> produtos = produtoService.consultarProdutos();
 		return new ResponseEntity<>(ProdutoDTO.converterList(produtos), HttpStatus.OK);
@@ -51,7 +51,7 @@ public class ProdutoController {
 		}
 	}
 
-	@PostMapping("")
+	@PostMapping
 	public ResponseEntity<String> incluirProduto(@RequestBody Produto produto) {
 		Produto produtoResponse = produtoService.incluirProduto(produto);
 		if(produtoResponse == null) {
@@ -79,7 +79,6 @@ public class ProdutoController {
 			throw new NullPointerException();
 		}
 	}
-	
 
 	@PutMapping("/{id}")
 	public ResponseEntity<String> alterarProduto(@PathVariable("id") Integer produtoId, @RequestBody Produto produto) {

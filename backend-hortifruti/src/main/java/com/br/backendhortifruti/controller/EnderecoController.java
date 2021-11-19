@@ -20,13 +20,13 @@ public class EnderecoController {
         this.enderecoService = enderecoService;
     }
 
-    @GetMapping("")
+    @GetMapping
     public ResponseEntity <List<EnderecoDTO>> consultarEnderecos(){
         List<Endereco> list = enderecoService.consultarEnderecos();
         return new ResponseEntity<>(EnderecoDTO.converterLista(list), HttpStatus.OK);
     }
 
-    @PostMapping("")
+    @PostMapping
     public ResponseEntity<EnderecoIdDTO> incluirEndereco(@RequestBody Endereco endereco){
     	Endereco enderecoResponse = enderecoService.incluirEndereco(endereco);
         return new ResponseEntity<EnderecoIdDTO>(EnderecoIdDTO.converter(enderecoResponse), HttpStatus.CREATED);

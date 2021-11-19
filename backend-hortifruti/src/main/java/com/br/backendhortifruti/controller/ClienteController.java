@@ -26,7 +26,7 @@ public class ClienteController {
 	@Autowired
 	private ClienteService clienteService;
 
-	@PostMapping("")
+	@PostMapping
 	public ResponseEntity<ClienteIdDTO> incluirCliente(@RequestBody Cliente cliente) {
 		Cliente clienteResponse = clienteService.incluirCliente(cliente);
 		if(clienteResponse == null) {
@@ -55,7 +55,7 @@ public class ClienteController {
 		}
 	}
 
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<List<ClienteDTO>> consultarClientes() {
 		List<Cliente> list = clienteService.consultarClientes();
 		return new ResponseEntity<>(ClienteDTO.converterLista(list), HttpStatus.OK);

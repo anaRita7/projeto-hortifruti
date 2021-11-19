@@ -28,7 +28,7 @@ public class PedidoController {
 		this.pedidoService = pedidoService;
 	}
 
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<List<PedidoForListDTO>> consultarPedidos() {
 		List<Pedido> pedidos = pedidoService.consultarPedidosAtivos();
 		pedidos.addAll(pedidoService.consultarPedidosInativos());
@@ -55,7 +55,7 @@ public class PedidoController {
 		}
 	}
 
-	@PostMapping("")
+	@PostMapping
 	public ResponseEntity<String> incluirPedido(@RequestBody Pedido pedido) {
 		Pedido pedidoResponse = pedidoService.incluirPedido(pedido);
 		if (pedidoResponse == null) {
