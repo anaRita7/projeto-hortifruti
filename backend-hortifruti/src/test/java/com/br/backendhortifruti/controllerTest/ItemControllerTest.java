@@ -40,7 +40,7 @@ public class ItemControllerTest {
 		assertThat(itemResponse.getStatusCodeValue()).isEqualTo(201);
 	} 
 	
-	@Test // precisa de ajustes
+	@Test 
 	public void alterarItemTest() {
 		Pedido pedido = new Pedido();
 		pedido.setId(1);
@@ -49,8 +49,6 @@ public class ItemControllerTest {
 		produto.setId(5);
 		
 		Item item = new Item();
-		item.setPedido(pedido);
-		item.setProduto(produto);
 		item.setQuantidadeTotal(20);
 		item.setValorTotal(80);
 		
