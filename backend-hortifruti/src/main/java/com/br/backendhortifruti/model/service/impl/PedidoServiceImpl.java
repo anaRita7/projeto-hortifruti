@@ -48,8 +48,18 @@ public class PedidoServiceImpl implements PedidoService {
 	public Pedido alterarPedido(int pedidoId, Pedido pedido) {
 		if (pedidoRepository.findById(pedidoId).isPresent()) {
 			Pedido pedidoExistente = pedidoRepository.findById(pedidoId).get();
-			pedidoExistente = pedido;
-			return pedidoRepository.save(pedidoExistente);
+			pedidoExistente.setDataHora(pedido.getDataHora());
+			pedidoExistente.setCliente(pedido.getCliente());
+			pedidoExistente.setEndereco(pedido.getEndereco());
+			pedidoExistente.setSituacao(pedido.isSituacao());
+			pedidoExistente.setValorTotal(pedido.getValorTotal());
+			pedidoExistente.setQuantidadeTotal(pedido.getQuantidadeTotal());
+			pedidoExistente.setDesconto(pedido.getDesconto());
+			pedidoExistente.setValorFinal(pedido.getValorFinal());
+			pedidoExistente.setFormaPagamento(pedido.getFormaPagamento());
+			
+			pedidoRepository.save(pedidoExistente);
+			return pedidoExistente;
 		}
 		return null;
 	}

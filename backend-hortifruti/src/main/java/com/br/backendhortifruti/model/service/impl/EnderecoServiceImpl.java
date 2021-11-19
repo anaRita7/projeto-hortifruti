@@ -33,11 +33,19 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     @Override
     public Endereco alterarEndereco(Integer enderecoId, Endereco endereco) {
-        if(enderecoRepository.findById(enderecoId).isPresent()){
+        if(enderecoRepository.findById(enderecoId).isPresent()) {
             Endereco enderecoExistente = enderecoRepository.findById(enderecoId).get();
-            enderecoExistente = endereco;
-            return enderecoRepository.save(enderecoExistente);
-        } return null;
+            enderecoExistente.setCep(endereco.getCep());
+            enderecoExistente.setCidade(endereco.getCidade());
+            enderecoExistente.setBairro(endereco.getEstado());
+            enderecoExistente.setRua(endereco.getCep());
+            enderecoExistente.setComplemento(endereco.getComplemento());
+            enderecoExistente.setNumero(endereco.getNumero());
+            
+            enderecoRepository.save(enderecoExistente);
+            return enderecoExistente;
+        }
+        return null;
     }
 
     @Override
