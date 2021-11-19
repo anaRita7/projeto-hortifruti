@@ -35,7 +35,7 @@ public class EnderecoControllerTest {
 		assertThat(enderecoResponse.getStatusCodeValue()).isEqualTo(201);
 	}
 	
-	/*	@Test
+	@Test
 	public void alterarEnderecoTest() {
 		Endereco ed2 = new Endereco();
 		ed2.setCep("72303392");
@@ -46,9 +46,9 @@ public class EnderecoControllerTest {
 		ed2.setComplemento("Prox a padaria");
 		ed2.setNumero(112);
 		
-		ResponseEntity<String> enderecoResponse = enderecoController.alterarEndereco(6, ed2);
+		ResponseEntity<String> enderecoResponse = enderecoController.alterarEndereco(4, ed2);
 		assertThat(enderecoResponse.getStatusCodeValue()).isEqualTo(200);
-	}  */
+	}  
 	
 	@Test
 	public void excluirEnderecoTest() {

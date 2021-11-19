@@ -67,7 +67,7 @@ public class PedidoControllerTest {
 		Cliente cliente = new Cliente();
 		cliente.setId(3);
 		Endereco endereco = new Endereco();
-		endereco.setId(2);
+		endereco.setId(1);
 
 		Pedido pedido = new Pedido();
 		pedido.setDataHora(LocalDateTime.now());
