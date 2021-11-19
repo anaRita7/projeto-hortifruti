@@ -37,14 +37,22 @@ public class ClienteController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<ClienteDTO> alterarCliente(@PathVariable Integer id, @RequestBody Cliente cliente) {
-		Cliente clienteResponse = clienteService.alterarCliente(cliente, id);
-		return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
+		try {
+			Cliente clienteResponse = clienteService.alterarCliente(cliente, id);
+			return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ClienteDTO> consultarCliente(@PathVariable Integer id) {
-		Cliente clienteResponse = clienteService.consultarCliente(id);
-		return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
+		try{
+			Cliente clienteResponse = clienteService.consultarCliente(id);
+			return new ResponseEntity<ClienteDTO>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 
 	@GetMapping("")
@@ -55,14 +63,18 @@ public class ClienteController {
 
 	@GetMapping("/documento/{documento}")
 	public ResponseEntity<ClienteIdDTO> consultarClientePorDocumento(@PathVariable("documento") String documento) {
-		Cliente cliente = clienteService.consultarClientePorDocumento(documento);
-		return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(cliente), HttpStatus.OK);
+		try{
+            Cliente cliente = clienteService.consultarClientePorDocumento(documento);
+            return new ResponseEntity<ClienteIdDTO>(ClienteIdDTO.converter(cliente), HttpStatus.OK);}
+		catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirCliente(@PathVariable Integer id) {
 		clienteService.excluirCliente(id);
-		return new ResponseEntity<String>("Produto deleted sucessfully!", HttpStatus.OK);
+		return new ResponseEntity<String>("Cliente excluído com sucesso!", HttpStatus.OK);
 	}
 
 }

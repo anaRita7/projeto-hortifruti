@@ -43,14 +43,22 @@ public class ItemController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<ItemDTO> consultarItem(@PathVariable Integer id) {
-		Item itemResponse = itemService.consultarItem(id);
-        return new ResponseEntity<ItemDTO>(ItemDTO.converter(itemResponse), HttpStatus.OK);
+		try{
+			Item itemResponse = itemService.consultarItem(id);
+        	return new ResponseEntity<ItemDTO>(ItemDTO.converter(itemResponse), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
     }
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<String> alterarItem(@PathVariable("id") Integer id, @RequestBody Item item) {
-		itemService.alterarItem(item, id);
-        return new ResponseEntity<String>("Item de pedido alterado com sucesso!", HttpStatus.OK);
+		try {
+			itemService.alterarItem(item, id);
+			return new ResponseEntity<String>("Item de pedido alterado com sucesso!", HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
     }
 	
 	@DeleteMapping("/{id}")

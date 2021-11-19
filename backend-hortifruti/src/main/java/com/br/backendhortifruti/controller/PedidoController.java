@@ -37,14 +37,22 @@ public class PedidoController {
 
 	@GetMapping("/codigo/{codigo}")
 	public ResponseEntity<PedidoDTO> consultarPedidoPorCodigo(@PathVariable("codigo") Integer codigo) {
-		Pedido pedido = pedidoService.consultarPedidoPorCodigo(codigo);
-		return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedido), HttpStatus.OK);
+		try{
+			Pedido pedido = pedidoService.consultarPedidoPorCodigo(codigo);
+			return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedido), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<PedidoDTO> consultarPedido(@PathVariable("id") Integer pedidoId) {
-		Pedido pedido = pedidoService.consultarPedido(pedidoId);
-		return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedido), HttpStatus.OK);
+		try{
+			Pedido pedido = pedidoService.consultarPedido(pedidoId);
+			return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedido), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 
 	@PostMapping("")
@@ -58,8 +66,12 @@ public class PedidoController {
 
 	@PutMapping("/{id}")
 	public ResponseEntity<String> alterarPedido(@PathVariable("id") int pedidoId, @RequestBody Pedido pedido) {
-		pedidoService.alterarPedido(pedidoId, pedido);
-		return new ResponseEntity<String>("Pedido Alterado com sucesso!", HttpStatus.OK);
+		try{
+			pedidoService.alterarPedido(pedidoId, pedido);
+			return new ResponseEntity<String>("Pedido Alterado com sucesso!", HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 
 	@DeleteMapping("/{id}")
