@@ -1,8 +1,8 @@
 export class Cliente{
-    id?: number;
+    id!: number;
 	nome?: String;
 	tipo?: String;
 	documento?: String;
-	telefone?: String;    
+	telefone?: String;   
 
 }
