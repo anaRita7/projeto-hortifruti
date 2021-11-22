@@ -53,7 +53,7 @@
                                     </i>
                                     Edit
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                <button (click)="irModalExcluir(cliente.documento)"  type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                     data-target="#delCliModal">
                                     <i class="fas fa-trash">
                                     </i>
@@ -126,7 +126,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" > Deletar</button>
+                <button type="button" class="btn btn-primary" (click)="Excluir()" data-dismiss="modal"> Deletar</button>
             </div>
         </div>
     </div>
