@@ -30,9 +30,20 @@ export class ConsultCliComponent implements OnInit {
   Editar(){
     let id = localStorage.getItem("id");
     this.service.editCliente(id, this.cliente).subscribe(data => {
-      alert('Editado com sucesso');
+      alert('Cliente editado com sucesso');
       this.reloadCurrentRoute();
-    });
+    },
+    erro =>
+    {
+      switch(erro.status) {
+        case 400:
+          alert(erro.error.mensagem);
+          break;
+        case 404:
+          alert('Cliente não localizado!');
+          break;
+      }
+    })
   }
 
   irModalExcluir(documento: any){
@@ -42,10 +53,17 @@ export class ConsultCliComponent implements OnInit {
 
   Excluir(){
     let id = localStorage.getItem("id");
-    this.service.deleteCliente(id).subscribe(data =>{
-      alert('Excluído com sucesso');
-      this.reloadCurrentRoute()
-    });
+    this.service.deleteCliente(id).subscribe(data => 
+      {
+        alert("Cliente excluído com sucesso!")
+        this.reloadCurrentRoute();
+      },
+      erro =>
+      {
+        if(erro.status == 404) 
+          alert('Cliente não localizado!');
+      }
+    )
   }
 
   reloadCurrentRoute() {

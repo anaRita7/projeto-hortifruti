@@ -1,6 +1,7 @@
 import { Produto } from '../model/Produto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class ProdutoService {
   }
 
   postProduto(produto: Produto){
-    return this.http.post<Produto>(this.Url, produto);
+    return this.http.post<string>(this.Url, produto);
   }
 
   editProduto(id: any, produto: Produto){
