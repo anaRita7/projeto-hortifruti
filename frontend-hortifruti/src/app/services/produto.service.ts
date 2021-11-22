@@ -23,7 +23,7 @@ export class ProdutoService {
     return this.http.get<Produto>(this.Url + '/codigo/' + codigo);
   }
 
-  getProduto(id: string){
+  getProduto(id: any){
     return this.http.get<Produto>(this.Url + '/' + id);
   }
 
@@ -31,15 +31,15 @@ export class ProdutoService {
     return this.http.post<Produto>(this.Url, produto);
   }
 
-  editProduto(id: String, produto: Produto){
+  editProduto(id: any, produto: Produto){
     return this.http.put(this.Url + '/' + id, produto);
   }
 
-  alteraStatusProduto(id: String, status: String){
+  editStatusProduto(id: String, status: String){
     return this.http.put(this.Url + '/' + id + '/status', status);
   }
 
-  deleteProduto(id: String){
+  deleteProduto(id: any){
     return this.http.delete(this.Url + '/' + id);
   }
 
