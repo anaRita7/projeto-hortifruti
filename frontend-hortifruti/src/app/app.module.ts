@@ -13,6 +13,7 @@ import { RegisterProdComponent } from './views/products/register-prod/register-p
 import { ConsultProdComponent } from './views/products/consult-prod/consult-prod.component';
 import { RegisterCliComponent } from './views/clients/register-cli/register-cli.component';
 import { ConsultCliComponent } from './views/clients/consult-cli/consult-cli.component';
+import { CartComponent } from './views/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ConsultCliComponent } from './views/clients/consult-cli/consult-cli.com
     RegisterProdComponent,
     ConsultProdComponent,
     RegisterCliComponent,
-    ConsultCliComponent
+    ConsultCliComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
