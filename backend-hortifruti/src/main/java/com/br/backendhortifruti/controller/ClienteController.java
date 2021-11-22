@@ -3,6 +3,9 @@ package com.br.backendhortifruti.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -56,9 +59,10 @@ public class ClienteController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<ClienteDTO>> consultarClientes() {
-		List<Cliente> list = clienteService.consultarClientes();
-		return new ResponseEntity<>(ClienteDTO.converterLista(list), HttpStatus.OK);
+	public ResponseEntity<PageImpl<ClienteDTO>> consultarClientes(Pageable pageable) {
+		Page<Cliente> page = clienteService.consultarClientes(pageable);
+		PageImpl<ClienteDTO> pageDTO = new PageImpl<> (ClienteDTO.converterLista(page.getContent()), pageable, page.getTotalElements());
+		return new ResponseEntity<PageImpl<ClienteDTO>>(pageDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("/documento/{documento}")
