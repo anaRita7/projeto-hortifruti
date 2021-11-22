@@ -6,7 +6,7 @@
                 <h2 class="title-cad-prod">Cadastar Cliente</h2>
             </div>
             <div class="card-body">
-                <form >
+                <form [formGroup]="form">
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label for="exampleSelectBorder">PF / PJ</label>
@@ -19,7 +19,7 @@
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Documento</label>
-                                <input type="text" name="documento" class="form-control" [(ngModel)]="cliente.documento" placeholder="CPF/CNPJ">
+                                <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ" formControlName="cpf" >
                             </div>
                         </div>
                         <div class="col-sm-6">

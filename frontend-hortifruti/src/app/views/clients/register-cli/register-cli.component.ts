@@ -1,9 +1,10 @@
-import { Cliente } from 'src/app/model/Cliente';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { FormValidations } from 'src/app/shered/form-validations';
+
+import { Cliente } from './../../../model/Cliente';
 
 @Component({
   selector: 'app-register',
@@ -11,24 +12,26 @@ import { FormValidations } from 'src/app/shered/form-validations';
   styleUrls: ['./register-cli.component.css']
 })
 export class RegisterCliComponent implements OnInit {
-  form: FormGroup | undefined;
-  constructor(
-    public cliente: Cliente,
-    private service: ClienteService, 
-    private router: Router,
-    private formBuilder: FormBuilder
-    ) { }
+  cliente: Cliente = new Cliente();
+  form!: FormGroup;
+  constructor( 
+        private service: ClienteService,
+        private router : Router,
+        private formBuilder : FormBuilder
+  ) {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(){
+    this.form = this.formBuilder.group({
+      cpf: this.formBuilder.control({ value: null, disabled: false}, FormValidations.isValidCpf())
+    })
+ }
 
   postCliente(){
     this.service.postCliente(this.cliente)
     .subscribe(data => {
-      alert('Cadastrado com sucesso');
-      this.router.navigate(["clients-consult"]);
-    })
+      alert('Cliente cadastrado com sucesso');
+      this.router.navigate(['clients-consult']);
+    });
   }
 
 }
