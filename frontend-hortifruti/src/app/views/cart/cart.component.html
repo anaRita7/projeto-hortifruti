@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-10">
-                    <h1 class="m-0">Carrinho de Compras</h1>
+                    <h1 class="mx-2 mb-2">Carrinho de Compras</h1>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -13,10 +13,107 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="row">
-                                  
+                <div class="card mx-2">
+                    <div class="card-body p-0">
+                        <table class="table table-striped projects">
+                            <thead class="">
+                                <tr>
+                                    <th>
+                                        PRODUTO
+                                    </th>
+                                    <th style="width: 80%"></th>
+                                    <th style="width: 15%">
+                                        SUBTOTAL
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="">
+                                <!--teste samy-->
+                                <tr style="background-color: #fff;">
+                                    <td>
+                                        <img class="cart-img"
+                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_caturra1-7e2b9a3f6b39b3309915220270001382-320-0.jpg"
+                                            alt="">
+                                    </td>
+                                    <td>
+                                        <div class="pb-1">BANANA CATURRA - Kg</div>
+                                        <div class="pb-2">R$ 8,80</div>
+                                        <div class="">
+                                            <input type="number">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            R$ 8,80
+                                            <a class="btn btn-danger btn-sm ml-2">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--teste samy-->
+                                <tr style="background-color: #fff;">
+                                    <td>
+                                        <img class="cart-img"
+                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/pessego1-a170da5c81599c4e5b15222051622651-320-0.jpg"
+                                            alt="">
+                                    </td>
+                                    <td>
+                                        <div>PÊSSEGO - Kg</div>
+                                        <div>R$ 9,70</div>
+                                        <div>
+                                            <input type="number">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            R$ 9,70
+                                            <a class="btn btn-danger btn-sm ml-2">
+                                                <i class="fas fa-trash"></i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr style="font-size: x-large;">
+                                    <th>Total:</th>
+                                    <th></th>
+                                    <th>R$ 18,50</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
                 </div>
-                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="mx-2 mt-4 cart-adress">
+                    <div>
+                        <h5>Endereço:</h5>
+                    </div>
+                    <div>
+                        <label for="">CEP -</label>
+                        <input type="text" name="endereco" class="ml-2">
+                        <button class="ml-2">GERAR ENDEREÇO</button>
+                        <span>
+                            <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="ml-2" target="_blank" style="font-size: small;">NÃO SEI MEU CEP</a>
+                        </span>
+                    </div>
+                    <div class="m-2">
+                        <input type="text" placeholder="Rua" class="mx-1 mt-2">
+                        <input type="text" placeholder="Número" class="mx-1 mt-2">
+                        <input type="text" placeholder="Bairro" class="mx-1 mt-2">
+                        <input type="text" placeholder="Cidade" class="mx-1 mt-2">
+                        <input type="text" placeholder="Estado" class="mx-1 mt-2">
+                        <input type="text" placeholder="Complemento" class="mx-1 mt-2">
+                    </div>
+                </div>
             </div>
             <!-- /.container-fluid -->
         </div>
