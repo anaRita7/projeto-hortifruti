@@ -9,7 +9,7 @@ import com.br.backendhortifruti.model.entity.Pedido;
 import lombok.Getter;
 
 @Getter
-public class PedidoForListDTO {
+public class PedidoForPageDTO {
 	
 	private Integer codigo;
 	
@@ -23,7 +23,7 @@ public class PedidoForListDTO {
 
 	private Double valorFinal;
 
-	public PedidoForListDTO(Pedido pedido) {
+	public PedidoForPageDTO(Pedido pedido) {
 		this.codigo = pedido.getCodigo();
 		this.dataHora = pedido.getDataHora();
 		this.nomeCliente = pedido.getCliente().getNome();
@@ -32,8 +32,8 @@ public class PedidoForListDTO {
 		this.valorFinal = pedido.getValorFinal();
 	}
 	
-	public static List<PedidoForListDTO> converterList(List<Pedido> pedidos) {
-        return pedidos.stream().map(PedidoForListDTO::new).collect(Collectors.toList());
+	public static List<PedidoForPageDTO> converterList(List<Pedido> pedidos) {
+        return pedidos.stream().map(PedidoForPageDTO::new).collect(Collectors.toList());
     }
 	
 	

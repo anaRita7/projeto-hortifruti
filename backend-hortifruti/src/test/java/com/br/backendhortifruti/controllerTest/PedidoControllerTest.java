@@ -3,7 +3,6 @@ package com.br.backendhortifruti.controllerTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.PedidoController;
 import com.br.backendhortifruti.model.dto.PedidoDTO;
-import com.br.backendhortifruti.model.dto.PedidoForListDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.entity.Endereco;
@@ -111,11 +109,11 @@ public class PedidoControllerTest {
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-	@Test
-	public void consultarPedidosTest() {
-		ResponseEntity<List<PedidoForListDTO>> pedidoResponse = pedidoController.consultarPedidos();
-		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
-	}
+//	@Test
+//	public void consultarPedidosTest() {
+//		ResponseEntity<List<PedidoForListDTO>> pedidoResponse = pedidoController.consultarPedidos();
+//		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
+//	}
 	
 	@Test
 	public void consultarPedidoTest() {

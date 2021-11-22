@@ -1,7 +1,8 @@
 package com.br.backendhortifruti.controller;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.backendhortifruti.model.dto.PedidoDTO;
-import com.br.backendhortifruti.model.dto.PedidoForListDTO;
+import com.br.backendhortifruti.model.dto.PedidoForPageDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.service.PedidoService;
 
@@ -29,17 +30,17 @@ public class PedidoController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<PedidoForListDTO>> consultarPedidos() {
-		List<Pedido> pedidos = pedidoService.consultarPedidosAtivos();
-		pedidos.addAll(pedidoService.consultarPedidosInativos());
-		return new ResponseEntity<>(PedidoForListDTO.converterList(pedidos), HttpStatus.OK);
+	public ResponseEntity<PageImpl<PedidoForPageDTO>> consultarPedidos(Pageable pageable) {
+		Page<Pedido> page = pedidoService.consultarPedidos(pageable);
+		PageImpl<PedidoForPageDTO> pageDTO = new PageImpl<>(PedidoForPageDTO.converterList(page.getContent()),pageable, page.getTotalElements());
+		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
 
 	@GetMapping("/codigo/{codigo}")
 	public ResponseEntity<PedidoDTO> consultarPedidoPorCodigo(@PathVariable("codigo") Integer codigo) {
 		try{
 			Pedido pedido = pedidoService.consultarPedidoPorCodigo(codigo);
-			return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedido), HttpStatus.OK);
+			return new ResponseEntity<>(PedidoDTO.converter(pedido), HttpStatus.OK);
 		}catch (NullPointerException e){
 			throw new NullPointerException();
 		}
@@ -49,7 +50,7 @@ public class PedidoController {
 	public ResponseEntity<PedidoDTO> consultarPedido(@PathVariable("id") Integer pedidoId) {
 		try{
 			Pedido pedido = pedidoService.consultarPedido(pedidoId);
-			return new ResponseEntity<PedidoDTO>(PedidoDTO.converter(pedido), HttpStatus.OK);
+			return new ResponseEntity<>(PedidoDTO.converter(pedido), HttpStatus.OK);
 		}catch (NullPointerException e){
 			throw new NullPointerException();
 		}
@@ -59,16 +60,16 @@ public class PedidoController {
 	public ResponseEntity<String> incluirPedido(@RequestBody Pedido pedido) {
 		Pedido pedidoResponse = pedidoService.incluirPedido(pedido);
 		if (pedidoResponse == null) {
-			return new ResponseEntity<String>("Falha ao salvar o pedido!", HttpStatus.UNPROCESSABLE_ENTITY);
+			return new ResponseEntity<>("Falha ao salvar o pedido!", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
-		return new ResponseEntity<String>("Pedido salvo com sucesso!", HttpStatus.OK);
+		return new ResponseEntity<>("Pedido salvo com sucesso!", HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
 	public ResponseEntity<String> alterarPedido(@PathVariable("id") int pedidoId, @RequestBody Pedido pedido) {
 		try{
 			pedidoService.alterarPedido(pedidoId, pedido);
-			return new ResponseEntity<String>("Pedido Alterado com sucesso!", HttpStatus.OK);
+			return new ResponseEntity<>("Pedido Alterado com sucesso!", HttpStatus.OK);
 		}catch (NullPointerException e){
 			throw new NullPointerException();
 		}
@@ -77,7 +78,7 @@ public class PedidoController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirPedido(@PathVariable("id") int pedidoId) {
 		pedidoService.excluirPedido(pedidoId);
-		return new ResponseEntity<String>("Pedido deletado com sucesso!", HttpStatus.OK);
+		return new ResponseEntity<>("Pedido deletado com sucesso!", HttpStatus.OK);
 	}
 
 }
