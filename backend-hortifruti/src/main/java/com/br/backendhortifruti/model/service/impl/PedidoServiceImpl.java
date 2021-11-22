@@ -6,6 +6,7 @@ import com.br.backendhortifruti.model.service.PedidoService;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -33,6 +34,7 @@ public class PedidoServiceImpl implements PedidoService {
 			Integer codigoGerado = (random.nextInt(10000) + 1000);
 			if (consultarPedidoPorCodigo(codigoGerado) == null) {
 				pedido.setCodigo(codigoGerado);
+				pedido.setDataHora(LocalDateTime.now());
 				return pedidoRepository.save(pedido);
 			}
 		}

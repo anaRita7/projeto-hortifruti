@@ -36,61 +36,32 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
+                        <tr *ngFor = "let produto of produtos">
                             <td>
-                                2359785
+                                {{produto.codigo}}
                             </td>
                             <td>
-                                Banana Sla oq
+                                {{produto.nome}}
                             </td>
                             <td>
-                                Kg
+                                {{produto.unidadeMedida}}
                             </td>
                             <td>
-                                R$ 8,90
+                                {{produto.valorUnitario}}
                             </td>
                             <td class="project-state text-center">
-                                <span class="badge badge-success py-2">Disponível</span>
+                                <div *ngIf="produto.status; then thenBlock else elseBlock"></div>
+                                <ng-template #thenBlock><span class="badge badge-success py-2">Disponível</span></ng-template>
+                                <ng-template #elseBlock><span class="badge badge-success py-2">Indisponível</span></ng-template>
                             </td>
                             <td class="project-actions text-center">
-                                <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
+                                <button (click)="irModalEditar(produto.codigo)" type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
                                     data-target="#editProdModal">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#delProdModal">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                957594
-                            </td>
-                            <td>
-                                Uva
-                            </td>
-                            <td>
-                                Kg
-                            </td>
-                            <td>
-                                R$ 5,90
-                            </td>
-                            <td class="project-state text-center">
-                                <span class="badge badge-danger py-2">Indisponível</span>
-                            </td>
-                            <td class="project-actions text-center">
-                                <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
-                                    data-target="#editProdModal">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                <button (click)="irModalExcluir(produto.codigo)" type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                     data-target="#delProdModal">
                                     <i class="fas fa-trash">
                                     </i>
@@ -122,38 +93,38 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Código</label>
-                    <input type="text" name="codigo" class="form-control" placeholder="Insira o código ...">
+                    <input type="text" name="codigo" class="form-control" [(ngModel)]="produto.codigo">
                 </div>
                 <div class="form-group">
                     <label>Produto</label>
-                    <input type="text" name="nome" class="form-control" placeholder="Insira o nome ...">
+                    <input type="text" name="nome" class="form-control" [(ngModel)]="produto.nome">
                 </div>
                 <div class="form-group">
                     <label for="exampleSelectBorder">Unidade de Medida</label>
-                    <select class="custom-select form-control-border" id="exampleSelectBorder">
-                        <option>Kg</option>
-                        <option>Un</option>
+                    <select [(ngModel)]="produto.unidadeMedida" name="codigo" class="custom-select form-control-border" id="exampleSelectBorder">
+                        <option value="Kg">Kg</option>
+                        <option value="und">Un</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Preço</label>
-                    <input type="text" name="preco" class="form-control" placeholder="R$">
+                    <input [(ngModel)]="produto.valorUnitario" type="text" name="preco" class="form-control" placeholder="R$">
                 </div>
                 <div class="form-group">
                     <label for="exampleSelectBorder">Status</label>
-                    <select class="custom-select form-control-border" id="exampleSelectBorder">
-                        <option>Disponível</option>
-                        <option>Indisponível</option>
+                    <select [(ngModel)]="produto.status" class="custom-select form-control-border" id="exampleSelectBorder">
+                        <option value="true">Disponível</option>
+                        <option value="false">Indisponível</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Descrição</label>
-                    <textarea class="form-control" rows="2" placeholder="Enter ..."></textarea>
+                    <textarea class="form-control" rows="2" [(ngModel)]="produto.descricao"></textarea>
                   </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-primary" (click)="Editar()" data-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>
@@ -175,7 +146,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Deletar</button>
+                <button type="button" class="btn btn-primary" (click)="Excluir()" data-dismiss="modal">Deletar</button>
             </div>
         </div>
     </div>

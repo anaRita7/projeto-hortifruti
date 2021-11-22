@@ -18,6 +18,7 @@ public class ClienteDTO {
 		this.nome = cliente.getNome();
 		this.tipo = cliente.getTipo();
 		this.documento = cliente.getDocumento();
+		this.telefone = cliente.getTelefone();
 	}
 	
 	public static List<ClienteDTO> converterLista(List<Cliente> clientes) {

@@ -15,11 +15,11 @@ export class ClienteService {
     return this.http.get<Cliente[]>(this.Url);
   }
 
-  getClientePorDocumento(documento: string){
+  getClientePorDocumento(documento: any){
     return this.http.get<Cliente>(this.Url + '/documento/' + documento);
   }
 
-  getCliente(id: string){
+  getCliente(id: any){
     return this.http.get<Cliente>(this.Url + '/' + id);
   }
 
@@ -27,11 +27,11 @@ export class ClienteService {
     return this.http.post<Cliente>(this.Url, cliente);
   }
 
-  editCliente(id: String, cliente: Cliente){
+  editCliente(id: any, cliente: Cliente){
     return this.http.put(this.Url + '/' + id, cliente);
   }
 
-  deleteCliente(id: String){
+  deleteCliente(id: any){
     return this.http.delete(this.Url + '/' + id);
   }
 }
