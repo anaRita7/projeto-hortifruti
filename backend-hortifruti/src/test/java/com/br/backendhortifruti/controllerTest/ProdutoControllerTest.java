@@ -53,11 +53,11 @@ public class ProdutoControllerTest {
 		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-	@Test
-	public void consultarProdutosTest() {
-		ResponseEntity<List<ProdutoDTO>> produtoResponse = produtoController.consultarProdutos();
-		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
-	}
+//	@Test
+//	public void consultarProdutosTest() {
+//		ResponseEntity<List<ProdutoDTO>> produtoResponse = produtoController.consultarProdutos();
+//		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+//	}
 	
 	@Test
 	public void consultarProdutoPorCodigoTest() {
@@ -71,11 +71,11 @@ public class ProdutoControllerTest {
 		 assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-	@Test
-	public void consultarProdutosAtivosTest() {
-		ResponseEntity<List<ProdutoAtivoDTO>> produtoResponse = produtoController.consultarProdutosAtivos();
-		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
-	}
+//	@Test
+//	public void consultarProdutosAtivosTest() {
+//		ResponseEntity<List<ProdutoAtivoDTO>> produtoResponse = produtoController.consultarProdutosAtivos();
+//		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+//	}
 		
 	@Test
 	public void consultarProdutosAtivosPorCodigoTest() {

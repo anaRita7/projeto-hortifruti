@@ -2,6 +2,8 @@ package com.br.backendhortifruti.model.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.br.backendhortifruti.model.entity.Produto;
@@ -11,9 +13,9 @@ public interface ProdutoService {
 
 	Produto incluirProduto(Produto produto);
 
-	List<Produto> consultarProdutos();
+	Page<Produto> consultarProdutos(Pageable pageable);
 	
-	List<Produto> consultarProdutosAtivos();
+	Page<Produto> consultarProdutosAtivos(Pageable pageable);
 
 	Produto consultarProduto(Integer id);
 	

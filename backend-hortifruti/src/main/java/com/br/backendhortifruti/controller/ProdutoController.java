@@ -2,6 +2,9 @@ package com.br.backendhortifruti.controller;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -30,15 +33,17 @@ public class ProdutoController {
 	}
 
 	@GetMapping
-	public ResponseEntity<List<ProdutoDTO>> consultarProdutos() {
-		List<Produto> produtos = produtoService.consultarProdutos();
-		return new ResponseEntity<>(ProdutoDTO.converterList(produtos), HttpStatus.OK);
+	public ResponseEntity<PageImpl<ProdutoDTO>> consultarProdutos(Pageable pageable) {
+		Page<Produto> page = produtoService.consultarProdutos(pageable);
+		PageImpl<ProdutoDTO> pageDTO = new PageImpl<>(ProdutoDTO.converterList(page.getContent()), pageable, page.getTotalElements());
+		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
 	
 	@GetMapping("/ativos")
-	public ResponseEntity<List<ProdutoAtivoDTO>> consultarProdutosAtivos() {
-		List<Produto> produtos = produtoService.consultarProdutosAtivos();
-		return new ResponseEntity<>(ProdutoAtivoDTO.converterList(produtos), HttpStatus.OK);
+	public ResponseEntity<PageImpl<ProdutoAtivoDTO>> consultarProdutosAtivos(Pageable pageable) {
+		Page<Produto> page = produtoService.consultarProdutosAtivos(pageable);
+		PageImpl<ProdutoAtivoDTO> pageDTO = new PageImpl<>(ProdutoAtivoDTO.converterList(page.getContent()), pageable, page.getTotalElements());
+		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
 	
 	@GetMapping("/ativos/codigo/{codigo}")
