@@ -13,11 +13,19 @@ import { Cliente } from './../../../model/Cliente';
 })
 export class RegisterCliComponent implements OnInit {
     
+  cliente: Cliente = new Cliente();
+
+  constructor(private service: ClienteService, private router : Router) {}
+
   ngOnInit(): void {
     
   }
   postClient(){
-    
-  }
+    this.service.postCliente(this.cliente)
+    .subscribe(data => {
+      alert('Cliente cadastrado com sucesso');
+      this.router.navigate(['clients-consult']);
+    });
+  }    
 
 }
