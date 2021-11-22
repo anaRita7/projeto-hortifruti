@@ -2,7 +2,7 @@
     <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 text-center justify-content-center">
                 <div class="col-sm-10">
                     <h1 class="mx-2 mb-2">Carrinho de Compras</h1>
                 </div><!-- /.row -->
@@ -13,10 +13,10 @@
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="card mx-2">
+                <div class="card mx-2 pt-2 pb-2">
                     <div class="card-body p-0">
                         <table class="table table-striped projects">
-                            <thead class="">
+                            <thead>
                                 <tr>
                                     <th>
                                         PRODUTO
@@ -27,7 +27,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="">
+                            <tbody>
                                 <!--teste samy-->
                                 <tr style="background-color: #fff;">
                                     <td>
@@ -90,28 +90,107 @@
             <!-- /.container-fluid -->
         </div>
         <!-- /.content -->
+
         <!-- Main content -->
         <div class="content">
             <div class="container-fluid">
-                <div class="mx-2 mt-4 cart-adress">
-                    <div>
-                        <h5>Endereço:</h5>
+                <div class="mx-2 mt-4 pb-4 cart-adress">
+                    <div class="text-center py-2 d-flex justify-content-center">
+                        <i class="fas fa-map-marked-alt mr-2" style="font-size: 1.5rem;"></i>
+                        <h5 class="m-0">ENDEREÇO</h5>
                     </div>
-                    <div>
-                        <label for="">CEP -</label>
-                        <input type="text" name="endereco" class="ml-2">
-                        <button class="ml-2">GERAR ENDEREÇO</button>
-                        <span>
-                            <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="ml-2" target="_blank" style="font-size: small;">NÃO SEI MEU CEP</a>
-                        </span>
+                    <hr>
+                    <div class=" m-2 d-flex flex-wrap">
+                        <div class="col-sm-3">
+                            <label>CEP</label>
+                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 00000-000">
+
+                        </div>
+                        <div class="" style="margin-top: 35px;">
+                            <button>GERAR ENDEREÇO</button>
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="ml-2"
+                                target="_blank" style="font-size: small;">NÃO SEI MEU CEP</a>
+                        </div>
                     </div>
-                    <div class="m-2">
-                        <input type="text" placeholder="Rua" class="mx-1 mt-2">
-                        <input type="text" placeholder="Número" class="mx-1 mt-2">
-                        <input type="text" placeholder="Bairro" class="mx-1 mt-2">
-                        <input type="text" placeholder="Cidade" class="mx-1 mt-2">
-                        <input type="text" placeholder="Estado" class="mx-1 mt-2">
-                        <input type="text" placeholder="Complemento" class="mx-1 mt-2">
+                    <div class="mt-4">
+                        <div class="m-2 d-flex flex-wrap">
+                            <div class="col-sm-5">
+                                <label>Rua</label>
+                                <input type="text" name="rua" class="form-control" placeholder="Ex.: Rua Emma Tribess">
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Número</label>
+                                <input type="text" name="numero" class="form-control" placeholder="Ex.: 235">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Bairro</label>
+                                <input type="text" name="bairro" class="form-control" placeholder="Ex.: Tribess">
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Cidade</label>
+                                <input type="text" name="cidade" class="form-control" placeholder="Ex.: Blumenau">
+                            </div>
+                            <div class="col-sm-2 mt-2">
+                                <label>UF</label>
+                                <input type="text" name="cidade" class="form-control" placeholder="Ex.: SC">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="mx-2 mt-4 cart-pay">
+                    <div class="text-center py-2 d-flex justify-content-center">
+                        <i class="fas fa-wallet mr-2" style="font-size: 1.5rem;"></i>
+                        <h5 class="m-0">FORMA DE PAGAMENTO</h5>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <div class="text-center">
+                            <i class="fab fa-cc-visa mr-2 adress-card"></i>
+                            <i class="fab fa-cc-apple-pay mr-2 adress-card"></i>
+                            <i class="fab fa-cc-mastercard mr-2 adress-card"></i>
+                            <i class="fab fa-cc-paypal mr-2 adress-card"></i>
+                            <i class="fas fa-money-bill-alt adress-card"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 mb-5">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-sm-5">
+                                <label for="">Pagamento em:</label>
+                                <select class="custom-select form-control-border" id="exampleSelectBorder">
+                                  <option>Cartão de Crédito</option>
+                                  <option>Cartão de Débito</option>
+                                  <option>Dinheiro</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-5">
+                                <label for="">Status</label>
+                                <select class="custom-select form-control-border" id="exampleSelectBorder">
+                                  <option>Pago</option>
+                                  <option>Não Pago - Pagamento na Entrega</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 mb-2">
+                        <div class="d-flex justify-content-center">
+                            <div class="">
+                                <button type="button" class="btn btn-success btn-sm mr-2" data-toggle="modal"
+                                    data-target="#validadeDoc">
+                                    <i class="fas fa-receipt"></i>
+                                    Finalizar Pedido
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -120,4 +199,30 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+</div>
+
+<!-- Modal Validate Document -->
+<div class="modal fade" id="validadeDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info m-0">
+                <h5 class="modal-title" id="exampleModalLabel">Validação Cadastro do Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Documento</label>
+                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </div>
 </div>
