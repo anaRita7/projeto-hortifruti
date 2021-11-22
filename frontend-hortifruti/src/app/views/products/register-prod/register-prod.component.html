@@ -32,30 +32,20 @@
                         <div class="col-sm-3">
                             <label>Unidade de Medida</label>
                             <div class="form-group">
-                                <div class="custom-control custom-checkbox">
-                                  <input class="custom-control-input custom-control-input-danger custom-control-input-outline" type="checkbox" id="customCheckbox5" checked>
-                                  <label for="customCheckbox5" class="custom-control-label"></label>
-                                  <span>Kg</span>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input class="custom-control-input custom-control-input-danger custom-control-input-outline" type="checkbox" id="customCheckbox5" checked>
-                                    <label for="customCheckbox5" class="custom-control-label"></label>
-                                    <span>Unidade</span>
-                                </div>
-                              </div>
+                                <select class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option>Kg</option>
+                                    <option>Un</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="col-sm-3">
                             <label>Indisponível / Disponível</label>
                             <div class="form-group">
-                                <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                                  <input type="checkbox" class="custom-control-input" id="customSwitch3">
-                                  <label class="custom-control-label" for="customSwitch3"></label>
-                                </div>
+                                <select class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option>Disponível</option>
+                                    <option>Indisponível</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <label>Adicione a imagem do produto:</label>
-                            <input type="file" id="myfile" name="myfile">
                         </div>
                         <div class="col-sm-6">
                             <!-- textarea -->
@@ -63,6 +53,10 @@
                               <label>Descrição</label>
                               <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                             </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <label>Adicione a imagem do produto:</label>
+                            <input type="file" id="myfile" name="myfile">
                         </div>
                     </div>
                     <div class="btn-cad-prod">
