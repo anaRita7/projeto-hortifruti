@@ -1,0 +1,25 @@
+.card {
+    border-radius: 15px;
+    width: 18rem;
+    box-shadow: 4px 6px 10px -3px #bfc9d4;
+}
+
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    object-fit: contain;
+    max-height: 200px;
+}
+
+.card-price {
+    color: #008000;
+    font-weight: 600;
+}
+
+.card-input {
+    width: 150px;
+    height: 30px;
+    border: 1.5px solid #c4c4c4;
+    border-radius: 5px;
+    padding-left: 65px;
+}
