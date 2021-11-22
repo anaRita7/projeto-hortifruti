@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClienteService } from 'src/app/services/cliente.service';
-import { FormValidations } from 'src/app/shered/form-validations';
 
 import { Cliente } from './../../../model/Cliente';
 
@@ -13,11 +11,20 @@ import { Cliente } from './../../../model/Cliente';
 })
 export class RegisterCliComponent implements OnInit {
     
+  cliente: Cliente = new Cliente();
+
+  constructor(private service: ClienteService, private router : Router) {}
+
   ngOnInit(): void {
     
   }
+
   postClient(){
-    
-  }
+    this.service.postCliente(this.cliente)
+    .subscribe(data => {
+      alert('Cliente cadastrado com sucesso');
+      this.router.navigate(['clients-consult'])
+    });
+  }    
 
 }
