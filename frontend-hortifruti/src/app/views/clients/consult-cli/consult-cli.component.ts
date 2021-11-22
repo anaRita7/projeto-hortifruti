@@ -32,7 +32,6 @@ export class ConsultCliComponent implements OnInit {
     this.service.editCliente(id, this.cliente).subscribe(data => {
       alert('Editado com sucesso');
       this.reloadCurrentRoute();
-      //window.location.reload();
     });
   }
 
