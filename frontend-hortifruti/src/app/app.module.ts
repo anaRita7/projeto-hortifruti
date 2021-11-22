@@ -14,6 +14,7 @@ import { ConsultProdComponent } from './views/products/consult-prod/consult-prod
 import { RegisterCliComponent } from './views/clients/register-cli/register-cli.component';
 import { ConsultCliComponent } from './views/clients/consult-cli/consult-cli.component';
 import { CartComponent } from './views/cart/cart.component';
+import { OrdersComponent } from './views/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CartComponent } from './views/cart/cart.component';
     ConsultProdComponent,
     RegisterCliComponent,
     ConsultCliComponent,
-    CartComponent
+    CartComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
