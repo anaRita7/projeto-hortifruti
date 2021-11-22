@@ -32,7 +32,19 @@ export class ConsultCliComponent implements OnInit {
     this.service.editCliente(id, this.cliente).subscribe(data => {
       alert('Editado com sucesso');
       this.reloadCurrentRoute();
-      //window.location.reload();
+    });
+  }
+
+  irModalExcluir(documento: any){
+    this.service.getClientePorDocumento(documento).subscribe(data => 
+      localStorage.setItem("id", data.id.toString()));
+  }
+
+  Excluir(){
+    let id = localStorage.getItem("id");
+    this.service.deleteCliente(id).subscribe(data =>{
+      alert('Excluído com sucesso');
+      this.reloadCurrentRoute()
     });
   }
 
