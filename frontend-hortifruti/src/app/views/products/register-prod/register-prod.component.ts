@@ -19,11 +19,19 @@ export class RegisterProdComponent implements OnInit {
   }
 
   postProduct(){
-    this.service.postProduto(this.produto).subscribe(data =>
+    this.service.postProduto(this.produto).subscribe
+    (data =>
     {
-      alert('Produto cadastrado com sucesso');
-      this.router.navigate(['products-consult'])
-    });
+      alert("Produto criado com sucesso!");
+      this.router.navigate(['products-consult']);
+    },
+    erro =>
+    {
+      if(erro.status == 400) {
+        alert(erro.error.mensagem);
+      }
+    }
+    );
   }
 
 }

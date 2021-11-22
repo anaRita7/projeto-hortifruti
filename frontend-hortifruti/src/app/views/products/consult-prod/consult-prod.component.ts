@@ -30,11 +30,23 @@ export class ConsultProdComponent implements OnInit {
 
   Editar(){
     let id = localStorage.getItem("id");
-    this.service.editProduto(id, this.produto).subscribe(data => 
+    this.service.editProduto(id, this.produto).subscribe(
+    data => 
     {
-      alert('Editado com sucesso');
+      alert('Produto editado com sucesso!');
       this.reloadCurrentRoute();
-    });
+    },
+    erro =>
+    {
+      switch(erro.status) {
+        case 400:
+          alert(erro.error.mensagem);
+          break;
+        case 404:
+          alert('Produto não localizado!');
+          break;
+      }
+    })
   }
 
   irModalExcluir(codigo: any){
@@ -44,9 +56,16 @@ export class ConsultProdComponent implements OnInit {
 
   Excluir(){
     let id = localStorage.getItem("id");
-    this.service.deleteProduto(id).subscribe(data => {
-      alert("Excluído com sucesso!")
+    this.service.deleteProduto(id).subscribe(
+    data => 
+    {
+      alert("Produto excluído com sucesso!")
       this.reloadCurrentRoute();
+    },
+    erro =>
+    {
+      if(erro.status == 404) 
+        alert('Produto não localizado!');
     })
   }
 

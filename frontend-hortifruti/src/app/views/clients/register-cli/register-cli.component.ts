@@ -24,7 +24,14 @@ export class RegisterCliComponent implements OnInit {
     .subscribe(data => {
       alert('Cliente cadastrado com sucesso');
       this.router.navigate(['clients-consult'])
-    });
+    },
+    erro =>
+    {
+      if(erro.status == 400) {
+        alert(erro.error.mensagem);
+      }
+    }
+    );
   }    
 
 }
