@@ -1,7 +1,10 @@
 package com.br.backendhortifruti.controllerTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
+
+import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -44,17 +47,19 @@ public class ClienteControllerMockTest {
 		cliente.setTelefone("99999999999");
 		
 		Cliente clienteResponse = clienteServiceImpl.incluirCliente(cliente);
-		assertThat(clienteResponse.getNome().equals("Inajara Perei"));
-		assertThat(clienteResponse.getTipo() == 'F');
-		assertThat(clienteResponse.getNome().equals("063.785.409-85"));
-		assertThat(clienteResponse.getNome().equals("99999999999"));
+		assertEquals(clienteResponse.getNome(), "Inajara Pereira");
+		assertEquals(clienteResponse.getTipo(), 'F');
+		assertEquals(clienteResponse.getDocumento(), "063.785.409-85");
+		assertEquals(clienteResponse.getTelefone(), "99999999999");
+		// assertThat(clienteResponse.getNome().equals("Inajara Pereira"));
 	}
 	
-	/*@DisplayName("Update client")
+	@DisplayName("Replace client")
 	@Test
 	public void alterarClienteMockTest() {
 		Cliente cliente = new Cliente();
 		
+		when(clienteRepository.findById(1)).thenReturn(Optional.of(cliente)); //obs
 		when(clienteRepository.save(Mockito.any(Cliente.class))).thenReturn(cliente);
 		
 		cliente.setNome("Bruna Lima");
@@ -62,10 +67,10 @@ public class ClienteControllerMockTest {
 		cliente.setDocumento("072.097.771-13");
 		cliente.setTelefone("99999999999");
 		
-		Cliente clienteResponse = clienteServiceImpl.alterarCliente(cliente, 2);
-		assertThat(clienteResponse.getNome().equals("Bruna Lima"));
-		assertThat(clienteResponse.getTipo() == 'F');
-		assertThat(clienteResponse.getNome().equals("072.097.771-13"));
-		assertThat(clienteResponse.getNome().equals("99999999999"));
-	} */
+		Cliente clienteResponse = clienteServiceImpl.alterarCliente(cliente, 1);
+		assertEquals(clienteResponse.getNome(), "Bruna Lima");
+		assertEquals(clienteResponse.getTipo(), 'F');
+		assertEquals(clienteResponse.getDocumento(), "072.097.771-13");
+		assertEquals(clienteResponse.getTelefone(), "99999999999");
+	} 
 }
