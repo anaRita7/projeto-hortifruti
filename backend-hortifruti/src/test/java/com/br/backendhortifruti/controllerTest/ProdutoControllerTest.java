@@ -82,4 +82,10 @@ public class ProdutoControllerTest {
 		ResponseEntity<ProdutoAtivoDTO> produtoResponse = produtoController.consultarProdutoAtivoPorCodigo(8861);
 		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
+	
+	@Test
+	public void alterarStatusProdutoTest() {
+		ResponseEntity<ProdutoDTO> produtoResponse = produtoController.alterarStatusProduto(1, false);
+		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
 }
