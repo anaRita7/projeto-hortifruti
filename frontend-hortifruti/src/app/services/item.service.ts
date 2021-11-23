@@ -9,17 +9,17 @@ export class ItemService {
 
   constructor(private http:HttpClient) { }
 
-  private readonly Url='http://localhost:8080/api/item';
+  private readonly urlBase='http://localhost:8080/api/item';
 
   postItem(item: Item){
-    return this.http.post<Item>(this.Url, item);
+    return this.http.post<Item>(this.urlBase, item);
   }
 
   editItem(id: String, item: Item){
-    return this.http.put(this.Url + '/' + id, item);
+    return this.http.put(this.urlBase + '/' + id, item);
   }
 
   deleteItem(id: String){
-    return this.http.delete(this.Url + '/' + id);
+    return this.http.delete(this.urlBase + '/' + id);
   }
 }

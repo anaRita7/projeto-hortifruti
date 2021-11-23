@@ -133,11 +133,11 @@
                     <div class=" m-2 d-flex flex-wrap">
                         <div class="col-sm-3">
                             <label>CEP</label>
-                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 00000-000">
+                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 00000-000" [(ngModel)]="endereco.cep">
 
                         </div>
                         <div class="" style="margin-top: 35px;">
-                            <button>GERAR ENDEREÇO</button>
+                            <button (click)="geraEndereco(endereco.cep)">GERAR ENDEREÇO</button>
                         </div>
                         <div style="margin-top: 40px;">
                             <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="ml-2"
@@ -148,23 +148,23 @@
                         <div class="m-2 d-flex flex-wrap">
                             <div class="col-sm-5">
                                 <label>Rua</label>
-                                <input type="text" name="rua" class="form-control" placeholder="Ex.: Rua Emma Tribess">
+                                <input type="text" name="rua" class="form-control" placeholder="Ex.: Rua Emma Tribess" [(ngModel)]="endereco.logradouro">
                             </div>
                             <div class="col-sm-2">
                                 <label>Número</label>
-                                <input type="text" name="numero" class="form-control" placeholder="Ex.: 235">
+                                <input type="text" name="numero" class="form-control" placeholder="Ex.: 235" [(ngModel)]="endereco.numero">
                             </div>
                             <div class="col-sm-4">
                                 <label>Bairro</label>
-                                <input type="text" name="bairro" class="form-control" placeholder="Ex.: Tribess">
+                                <input type="text" name="bairro" class="form-control" placeholder="Ex.: Tribess" [(ngModel)]="endereco.bairro">
                             </div>
                             <div class="col-sm-4 mt-2">
                                 <label>Cidade</label>
-                                <input type="text" name="cidade" class="form-control" placeholder="Ex.: Blumenau">
+                                <input type="text" name="cidade" class="form-control" placeholder="Ex.: Blumenau" [(ngModel)]="endereco.localidade">
                             </div>
                             <div class="col-sm-2 mt-2">
                                 <label>UF</label>
-                                <input type="text" name="cidade" class="form-control" placeholder="Ex.: SC">
+                                <input type="text" name="cidade" class="form-control" placeholder="Ex.: SC" [(ngModel)]="endereco.uf">
                             </div>
                         </div>
                     </div>
