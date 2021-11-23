@@ -9,17 +9,17 @@ export class EnderecoService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly Url='http://localhost:8080/api/endereco';
+  private readonly urlBase='http://localhost:8080/api/endereco';
 
   postEndereco(endereco: Endereco){
-    return this.http.post<Endereco>(this.Url, endereco);
+    return this.http.post<Endereco>(this.urlBase, endereco);
   }
 
   editEndereco(id: String, endereco: Endereco){
-    return this.http.put(this.Url + '/' + id, endereco);
+    return this.http.put(this.urlBase + '/' + id, endereco);
   }
 
   deleteEndereco(id: String){
-    return this.http.delete(this.Url + '/' + id);
+    return this.http.delete(this.urlBase + '/' + id);
   }
 }
