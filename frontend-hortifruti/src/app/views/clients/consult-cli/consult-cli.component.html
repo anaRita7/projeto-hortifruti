@@ -18,7 +18,7 @@
                             <th style="width: 5%" >
                                 Tipo
                             </th>
-                            <th style="width: 10%">
+                            <th style="width: 15%">
                                 Documento
                             </th>
                             <th style="width: 20%">
@@ -35,7 +35,7 @@
                     <tbody class="text-center">
                         <tr *ngFor = "let cliente of clientes">
                             <td>
-                                {{cliente.tipo}}
+                                P{{cliente.tipo}}
                             </td>
                             <td>
                                 {{cliente.documento}}
@@ -46,17 +46,19 @@
                             <td>
                                 {{cliente.telefone}}
                             </td>
-                            <td class="project-actions text-right">
-                                <a class="btn btn-info btn-sm mr-2" href="#">
+                            <td class="project-actions text-center">
+                                <button (click)="irModalEditar(cliente.documento)" type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
+                                    data-target="#editCliModal" >
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
+                                </button>
+                                <button (click)="irModalExcluir(cliente.documento)"  type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#delCliModal">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
-                                </a>
+                                </button>
                             </td>
                         </tr>
                     </tbody>
@@ -66,4 +68,66 @@
         </div>
     </div>
     <!-- /.content-wrapper -->
+</div>
+
+<!-- Modal Edit Clients-->
+<div class="modal fade" id="editCliModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info m-0">
+                <h5 class="modal-title" id="exampleModalLabel">Informações do Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="exampleSelectBorder">PF / PJ</label>
+                    <select [(ngModel)]="cliente.tipo" name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
+                        <option value="F">Pessoa Física </option> 
+                        <option value="J">Pessoa Jurídica</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Documento</label>
+                    <input type="text" name="documento" class="form-control" value="cliente.documento" [(ngModel)]="cliente.documento">
+                </div>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" name="nome" class="form-control" [(ngModel)]="cliente.nome">
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="tel" name="telefone" class="form-control" [(ngModel)]="cliente.telefone">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary"  (click)="Editar()" data-dismiss="modal">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Delete Clients-->
+<div class="modal fade" id="delCliModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger">
+                <h5 class="modal-title" id="exampleModalLabel">Tem certeza que deseja deletar?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>As Informações não poderão ser recuperadas</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="Excluir()" data-dismiss="modal"> Deletar</button>
+            </div>
+        </div>
+    </div>
 </div>

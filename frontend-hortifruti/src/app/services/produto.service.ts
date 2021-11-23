@@ -1,6 +1,7 @@
 import { Produto } from '../model/Produto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,38 +10,38 @@ export class ProdutoService {
 
   constructor(private http:HttpClient) {}
   
-  private readonly Url='http://localhost:8080/api/produto';
+  private readonly urlBase='http://localhost:8080/api/produto';
 
   getProdutos() {
-    return this.http.get<Produto[]>(this.Url);
+    return this.http.get<Produto[]>(this.urlBase);
   }
 
   getProdutosAtivos() {
-    return this.http.get<Produto[]>(this.Url+'/ativos');
+    return this.http.get<Produto[]>(this.urlBase+'/ativos');
   }
 
   getProdutoCodigo(codigo: string){
-    return this.http.get<Produto>(this.Url + '/codigo/' + codigo);
+    return this.http.get<Produto>(this.urlBase + '/codigo/' + codigo);
   }
 
-  getProduto(id: string){
-    return this.http.get<Produto>(this.Url + '/' + id);
+  getProduto(id: any){
+    return this.http.get<Produto>(this.urlBase + '/' + id);
   }
 
   postProduto(produto: Produto){
-    return this.http.post<Produto>(this.Url, produto);
+    return this.http.post<string>(this.urlBase, produto);
   }
 
-  editProduto(id: String, produto: Produto){
-    return this.http.put(this.Url + '/' + id, produto);
+  editProduto(id: any, produto: Produto){
+    return this.http.put(this.urlBase + '/' + id, produto);
   }
 
-  alteraStatusProduto(id: String, status: String){
-    return this.http.put(this.Url + '/' + id + '/status', status);
+  editStatusProduto(id: String, status: String){
+    return this.http.put(this.urlBase + '/' + id + '/status', status);
   }
 
-  deleteProduto(id: String){
-    return this.http.delete(this.Url + '/' + id);
+  deleteProduto(id: any){
+    return this.http.delete(this.urlBase + '/' + id);
   }
 
 }

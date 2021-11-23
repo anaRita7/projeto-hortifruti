@@ -1,6 +1,7 @@
 package com.br.backendhortifruti.model.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -29,17 +30,21 @@ public class ItemServiceImpl implements ItemService{
 
 	@Override
 	public Item consultarItem(int id) {
-		return itemRepository.findById(id).get();
+		Optional<Item> item = itemRepository.findById(id);
+		return item.orElse(null);
 	}
 
 	@Override
 	public Item alterarItem(Item item, int id) {
-		Item existingItem = itemRepository.findById(id).get();
-		existingItem.setQuantidadeTotal(item.getQuantidadeTotal());
-		existingItem.setValorTotal(item.getValorTotal());
-		
-		itemRepository.save(existingItem);
-		return existingItem;
+		if (itemRepository.findById(id).isPresent()){
+			Item existingItem = itemRepository.findById(id).get();
+			existingItem.setQuantidadeTotal(item.getQuantidadeTotal());
+			existingItem.setValorTotal(item.getValorTotal());
+
+			itemRepository.save(existingItem);
+			return existingItem;
+		}
+		return null;
 	}
 
 	@Override

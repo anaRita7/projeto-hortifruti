@@ -6,39 +6,39 @@
                 <h2 class="title-cad-prod">Cadastar Cliente</h2>
             </div>
             <div class="card-body">
-                <form action="">
+                <form>
                     <div class="row">
                         <div class="form-group col-sm-6">
                             <label for="exampleSelectBorder">PF / PJ</label>
-                            <select class="custom-select form-control-border" id="exampleSelectBorder">
-                              <option>Pessoa Física</option>
-                              <option>Pessoa Jurídica</option>
+                            <select [(ngModel)]="cliente.tipo" name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
+                              <option value="F">Pessoa Física </option> 
+                              <option value="J">Pessoa Jurídica</option>
                             </select>
                         </div>
                         <div class="col-sm-6">
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Documento</label>
-                                <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
+                                <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ" [(ngModel)]="cliente.documento" mask="000.000.000-00||00.000.000/0000-00">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input type="text" name="nome" class="form-control" placeholder="Insira seu nome ...">
+                                <input type="text" name="nome" class="form-control" placeholder="Insira seu nome ..." [(ngModel)]="cliente.nome">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Telefone</label>
-                                <input type="tel" name="telefone" class="form-control" placeholder="Insira seu número ...">
+                                <input type="tel" name="telefone" class="form-control" placeholder="Insira seu número ..." [(ngModel)]="cliente.telefone" mask="(00) 0000-0000||(00) 0 0000-0000">
                             </div>
                         </div>
                     </div>
                     <div class="btn-cad-prod">
-                        <input type="submit" value="Cadastar">
+                        <input type="submit" (click)="postClient()" value="Cadastar">
                     </div>
                 </form>
             </div>

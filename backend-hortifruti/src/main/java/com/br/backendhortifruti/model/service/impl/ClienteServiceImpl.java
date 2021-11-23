@@ -19,14 +19,10 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente incluirCliente(Cliente cliente) {
-		//Formatação de caracteres será feita futuramento no front!
 		String documento = ValidadorDocumento.removeCaracteresEspeciais(cliente.getDocumento());
 		cliente.setDocumento(documento);
-		
-		//Chamada do método validador classe static
 		boolean documentoValido = ValidadorDocumento.validaDocumento(cliente);
 		if(documentoValido) {
-			//Salva o cliente com CPF/CNPJ ok
 			return clienteRepository.save(cliente);
 		}
 		return null;
@@ -39,7 +35,8 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente consultarCliente(Integer id) {
-		return clienteRepository.findById(id).get();
+		Optional<Cliente> cliente = clienteRepository.findById(id);
+		return cliente.orElse(null);
 	}
 
 	@Override
@@ -64,9 +61,7 @@ public class ClienteServiceImpl implements ClienteService {
 	@Override
 	public Cliente consultarClientePorDocumento(String documento) {
 		Optional<Cliente> cliente = clienteRepository.findByDocumento(documento);
-		if (cliente.isPresent())
-			return cliente.get();
-		return null;
+		return cliente.orElse(null);
 	}
 
 }

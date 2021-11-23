@@ -9,29 +9,29 @@ export class ClienteService {
 
   constructor(private http: HttpClient) { }
 
-  private readonly Url='http://localhost:8080/api/cliente';
+  private readonly urlBase='http://localhost:8080/api/cliente';
 
   getClientes() {
-    return this.http.get<Cliente[]>(this.Url);
+    return this.http.get<Cliente[]>(this.urlBase);
   }
 
-  getClientePorDocumento(documento: string){
-    return this.http.get<Cliente>(this.Url + '/documento/' + documento);
+  getClientePorDocumento(documento: any){
+    return this.http.get<Cliente>(this.urlBase + '/documento/' + documento);
   }
 
-  getCliente(id: string){
-    return this.http.get<Cliente>(this.Url + '/' + id);
+  getCliente(id: any){
+    return this.http.get<Cliente>(this.urlBase + '/' + id);
   }
 
   postCliente(cliente: Cliente){
-    return this.http.post<Cliente>(this.Url, cliente);
+    return this.http.post<Cliente>(this.urlBase, cliente);
   }
 
-  editCliente(id: String, cliente: Cliente){
-    return this.http.put(this.Url + '/' + id, cliente);
+  editCliente(id: any, cliente: Cliente){
+    return this.http.put(this.urlBase + '/' + id, cliente);
   }
 
-  deleteCliente(id: String){
-    return this.http.delete(this.Url + '/' + id);
+  deleteCliente(id: any){
+    return this.http.delete(this.urlBase + '/' + id);
   }
 }

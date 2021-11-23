@@ -29,7 +29,7 @@ public class ProdutoController {
 		this.produtoService = produtoService;
 	}
 
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<List<ProdutoDTO>> consultarProdutos() {
 		List<Produto> produtos = produtoService.consultarProdutos();
 		return new ResponseEntity<>(ProdutoDTO.converterList(produtos), HttpStatus.OK);
@@ -43,47 +43,66 @@ public class ProdutoController {
 	
 	@GetMapping("/ativos/codigo/{codigo}")
 	public ResponseEntity<ProdutoAtivoDTO> consultarProdutoAtivoPorCodigo(@PathVariable("codigo") Integer codigo) {
-		Produto produto = produtoService.consultarProdutoAtivoPorCodigo(codigo);
-		return new ResponseEntity<ProdutoAtivoDTO>(ProdutoAtivoDTO.converter(produto), HttpStatus.OK);
+		try{
+			Produto produto = produtoService.consultarProdutoAtivoPorCodigo(codigo);
+			return new ResponseEntity<ProdutoAtivoDTO>(ProdutoAtivoDTO.converter(produto), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 
-	@PostMapping("")
+	@PostMapping
 	public ResponseEntity<String> incluirProduto(@RequestBody Produto produto) {
 		Produto produtoResponse = produtoService.incluirProduto(produto);
 		if(produtoResponse == null) {
-			return new ResponseEntity<String>("Falha ao criar o produto!", HttpStatus.UNPROCESSABLE_ENTITY);
+			return new ResponseEntity<>("Falha ao criar o produto!", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
-		return new ResponseEntity<String>("Produto criado com sucesso!", HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<ProdutoDTO> consultarProduto(@PathVariable("id") Integer produtoId) {
-		Produto produto = produtoService.consultarProduto(produtoId);
-		return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produto), HttpStatus.OK);
+		try{
+			Produto produto = produtoService.consultarProduto(produtoId);
+			return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produto), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 	
 	@GetMapping("/codigo/{codigo}")
 	public ResponseEntity<ProdutoIdDTO> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
-		Produto produto = produtoService.consultarProdutoPorCodigo(codigo);
-		return new ResponseEntity<ProdutoIdDTO>(ProdutoIdDTO.converter(produto), HttpStatus.OK);
+		try{
+			Produto produto = produtoService.consultarProdutoPorCodigo(codigo);
+			return new ResponseEntity<ProdutoIdDTO>(ProdutoIdDTO.converter(produto), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
-	
 
 	@PutMapping("/{id}")
 	public ResponseEntity<String> alterarProduto(@PathVariable("id") Integer produtoId, @RequestBody Produto produto) {
-		produtoService.alterarProduto(produto, produtoId);
-		return new ResponseEntity<String>("Produto alterado com sucesso!",HttpStatus.OK);
+		try{
+			produtoService.alterarProduto(produto, produtoId);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirProduto(@PathVariable("id") Integer produtoId) {
 		produtoService.excluirProduto(produtoId);
-		return new ResponseEntity<String>("Produto deletado com sucesso!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}/status")
 	public ResponseEntity<ProdutoDTO> alterarStatusProduto(@PathVariable("id") Integer produtoId, @RequestBody boolean status){
-		Produto produtoResponse = produtoService.alterarStatusProduto(produtoId, status);
-		return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produtoResponse), HttpStatus.OK);
+		try{
+			Produto produtoResponse = produtoService.alterarStatusProduto(produtoId, status);
+			return new ResponseEntity<ProdutoDTO>(ProdutoDTO.converter(produtoResponse), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
 	}
 }

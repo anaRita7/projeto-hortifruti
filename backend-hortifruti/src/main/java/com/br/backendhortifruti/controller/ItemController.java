@@ -29,13 +29,13 @@ public class ItemController {
 		this.itemService = itemService;
 	}
 	
-	@GetMapping("")
+	@GetMapping
 	public ResponseEntity<List<ItemDTO>> consultarItens() {
 		List<Item> list = itemService.consultarItens();
         return new ResponseEntity<>(ItemDTO.converterLista(list), HttpStatus.OK);
     }
 
-	@PostMapping("")
+	@PostMapping
 	public ResponseEntity<ItemIdDTO> incluirItem(@RequestBody Item item){
 		Item itemResponse = itemService.incluirItem(item);
 		return new ResponseEntity<ItemIdDTO>(ItemIdDTO.converter(itemResponse),HttpStatus.CREATED);		
@@ -43,14 +43,22 @@ public class ItemController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<ItemDTO> consultarItem(@PathVariable Integer id) {
-		Item itemResponse = itemService.consultarItem(id);
-        return new ResponseEntity<ItemDTO>(ItemDTO.converter(itemResponse), HttpStatus.OK);
+		try{
+			Item itemResponse = itemService.consultarItem(id);
+        	return new ResponseEntity<ItemDTO>(ItemDTO.converter(itemResponse), HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
     }
 	
 	@PutMapping("/{id}")
 	public ResponseEntity<String> alterarItem(@PathVariable("id") Integer id, @RequestBody Item item) {
-		itemService.alterarItem(item, id);
-        return new ResponseEntity<String>("Item de pedido alterado com sucesso!", HttpStatus.OK);
+		try {
+			itemService.alterarItem(item, id);
+			return new ResponseEntity<String>("Item de pedido alterado com sucesso!", HttpStatus.OK);
+		}catch (NullPointerException e){
+			throw new NullPointerException();
+		}
     }
 	
 	@DeleteMapping("/{id}")
