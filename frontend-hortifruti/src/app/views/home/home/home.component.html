@@ -30,10 +30,10 @@
                                 </div>
                                 <form action="" class="d-flex justify-content-center mt-4">
                                     <div>
-                                        <input type="number" class="card-input" min="0">
+                                        <input [(ngModel)]="produto.qtdeEscolhida" name="quantidade" type="number" class="card-input" min="0" >
                                     </div>
                                     <div>
-                                        <button type="submit" class="card-btn-add">
+                                        <button (click)="adicionaCarrinho(produto.codigo, produto.qtdeEscolhida)"  type="submit" class="card-btn-add">
                                             <i class="fas fa-cart-plus"></i>
                                         </button>
                                     </div>

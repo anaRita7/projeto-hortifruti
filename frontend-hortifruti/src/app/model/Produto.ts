@@ -4,7 +4,7 @@ export class Produto{
     nome?: String;
     descricao?: String;
     unidadeMedida?: String;
-    valorUnitario?: number;
+    valorUnitario!: number;
     status?: boolean;
-
+    qtdeEscolhida?: number;
 }

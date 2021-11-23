@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Item } from 'src/app/model/Item';
 import { Produto } from 'src/app/model/Produto';
 import { ProdutoService } from 'src/app/services/produto.service';
 
@@ -9,6 +10,8 @@ import { ProdutoService } from 'src/app/services/produto.service';
 })
 export class HomeComponent implements OnInit {
 
+  itens: Item[] = [];
+
   produtosAtivos: Produto[] = [];
 
   constructor(private service:ProdutoService) {
@@ -17,7 +20,21 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
 
+  adicionaCarrinho(codProduto: any, qtde: any){
+    var itens = JSON.parse(localStorage.getItem("itens")||"[]");
+    
+    this.service.getProdutoCodigo(codProduto).subscribe(data => {
+      const item = {
+        idProduto: data.id,
+        quantidade: qtde,
+        valorTotal: qtde*data.valorUnitario
+      }
+      itens.push(item);
+      localStorage.setItem("itens",JSON.stringify(itens))
+      console.log(item)
+    })
   }
 
 }
