@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { PedidoForConsult } from '../model/PedidoForConsult';
 import { Pedido } from '../model/Pedido';
 
 @Injectable({
@@ -12,11 +13,11 @@ export class PedidoService {
   private readonly Url='http://localhost:8080/api/pedido';
 
   getPedidos() {
-    return this.http.get<Pedido[]>(this.Url);
+    return this.http.get<PedidoForConsult[]>(this.Url);
   }
 
   getPedidoCodigo(codigo: string){
-    return this.http.get<Pedido>(this.Url + '/codigo/' + codigo);
+    return this.http.get<PedidoForConsult>(this.Url + '/codigo/' + codigo);
   }
 
   getPedido(id: string){

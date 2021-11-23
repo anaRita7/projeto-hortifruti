@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-4">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Consultar Produto</h1>
+                    <h1 class="m-0">Consultar Pedido</h1>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -39,62 +39,30 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr>
+                        <tr *ngFor = "let pedido of pedidos">
                             <td>
-                                5698745
+                                {{pedido.codigo}}
                             </td>
                             <td>
-                                22/11/2021 16:01:00
+                                {{pedido.dataHora}}
                             </td>
                             <td>
-                                Thiago Souza
+                                {{pedido.nomeCliente}}
                             </td>
                             <td>
-                               5
+                               {{pedido.quantidadeTotal}}
                             </td>
                             <td>
-                                R$ 37,99
+                                R$ {{pedido.valorFinal}}
                              </td>
                             <td class="project-state text-center">
-                                <span class="badge badge-success py-2">Pago</span>
+                                <div *ngIf="pedido.situacao; then thenBlock else elseBlock"></div>
+                                <ng-template #thenBlock><span class="badge badge-danger py-2">Não Pago</span></ng-template>
+                                <ng-template #elseBlock><span class="badge badge-success py-2">Pago</span></ng-template>
                             </td>
                             <td class="project-actions text-center">
                                 <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
-                                    data-target="#editProdModal">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#delProdModal">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                5698745
-                            </td>
-                            <td>
-                                22/11/2021 16:01:00
-                            </td>
-                            <td>
-                                Thiago Souza
-                            </td>
-                            <td>
-                               5
-                            </td>
-                            <td>
-                                R$ 37,99
-                             </td>
-                            <td class="project-state text-center">
-                                <span class="badge badge-danger py-2">Não Pago</span>
-                            </td>
-                            <td class="project-actions text-center">
-                                <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
-                                    data-target="#editProdModal">
+                                    data-target="#editOrderModal">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Edit
@@ -116,4 +84,3 @@
     </div>
     <!-- /.content-wrapper -->
 </div>
-
