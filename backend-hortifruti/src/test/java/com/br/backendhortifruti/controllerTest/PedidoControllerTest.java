@@ -52,15 +52,14 @@ public class PedidoControllerTest {
 		endereco.setId(1);
 
 		Pedido pedido01 = new Pedido();
-		pedido01.setDataHora(LocalDateTime.now());
 		pedido01.setCliente(cliente);
 		pedido01.setEndereco(endereco);
 		pedido01.setSituacao(true);
-		pedido01.setValorTotal(720.00);
-		pedido01.setQuantidadeTotal(26);
-		pedido01.setDesconto(0.10);
+		pedido01.setValorTotal(850.00);
+		pedido01.setQuantidadeTotal(15);
+		pedido01.setDesconto(0.20);
 		pedido01.setValorFinal(712.80);
-		pedido01.setFormaPagamento("dinheiro");
+		pedido01.setFormaPagamento("debito");
 
 		ResponseEntity<String> pedidoResponse = pedidoController.incluirPedido(pedido01);
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
@@ -128,8 +127,4 @@ public class PedidoControllerTest {
 		ResponseEntity<PedidoDTO> pedidoResponse = pedidoController.consultarPedidoPorCodigo(123);
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
-	
-	// TODO: consultarProdutosAtivos()
-	
-	// TODO: consultarProdutosInativos()
 }

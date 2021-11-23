@@ -35,6 +35,4 @@ public class PedidoForListDTO {
 	public static List<PedidoForListDTO> converterList(List<Pedido> pedidos) {
         return pedidos.stream().map(PedidoForListDTO::new).collect(Collectors.toList());
     }
-	
-	
 }

@@ -43,5 +43,4 @@ public class PedidoDTO {
     public static PedidoDTO converter(Pedido pedido){
         return new PedidoDTO(pedido);
     }
-
 }
