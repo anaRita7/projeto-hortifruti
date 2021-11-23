@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { ProdutoService } from 'src/app/services/produto.service';
 import { HomeComponent } from './views/home/home/home.component';
@@ -33,7 +33,8 @@ import { OrdersComponent } from './views/orders/orders.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [ProdutoService],
   bootstrap: [AppComponent]
