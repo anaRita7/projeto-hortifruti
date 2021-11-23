@@ -38,11 +38,12 @@ public class EnderecoServiceImpl implements EnderecoService {
         if(enderecoRepository.findById(enderecoId).isPresent()) {
             Endereco enderecoExistente = enderecoRepository.findById(enderecoId).get();
             enderecoExistente.setCep(endereco.getCep());
-            enderecoExistente.setCidade(endereco.getCidade());
-            enderecoExistente.setBairro(endereco.getEstado());
-            enderecoExistente.setRua(endereco.getCep());
-            enderecoExistente.setComplemento(endereco.getComplemento());
+            enderecoExistente.setLogradouro(endereco.getLogradouro());
             enderecoExistente.setNumero(endereco.getNumero());
+            enderecoExistente.setComplemento(endereco.getComplemento());            
+            enderecoExistente.setLocalidade(endereco.getLocalidade());            
+            enderecoExistente.setBairro(endereco.getBairro());
+            enderecoExistente.setUf(endereco.getUf());
             
             enderecoRepository.save(enderecoExistente);
             return enderecoExistente;
