@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import com.br.backendhortifruti.controller.ClienteController;
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.dto.ClienteIdDTO;
-import com.br.backendhortifruti.model.dto.ProdutoDTO;
 import com.br.backendhortifruti.model.entity.Cliente;
 
 @SpringBootTest
