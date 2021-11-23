@@ -52,7 +52,7 @@
                             <td class="project-state text-center">
                                 <div *ngIf="produto.status; then thenBlock else elseBlock"></div>
                                 <ng-template #thenBlock><span class="badge badge-success py-2">Disponível</span></ng-template>
-                                <ng-template #elseBlock><span class="badge badge-success py-2">Indisponível</span></ng-template>
+                                <ng-template #elseBlock><span class="badge badge-danger py-2">Indisponível</span></ng-template>
                             </td>
                             <td class="project-actions text-center">
                                 <button (click)="irModalEditar(produto.codigo)" type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
