@@ -17,9 +17,18 @@
 }
 
 .card-input {
-    width: 150px;
-    height: 30px;
+    width: 100px;
+    height: 35px;
+    padding-left: 45px;
     border: 1.5px solid #c4c4c4;
     border-radius: 5px;
-    padding-left: 65px;
+    margin-right: 10px;
 }
+
+.card-btn-add {
+    height: 35px;
+    width: 50px;
+    border: 1.5px solid #c4c4c4;
+    border-radius: 5px;
+}
+
