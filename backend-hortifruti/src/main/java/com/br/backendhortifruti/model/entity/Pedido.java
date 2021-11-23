@@ -1,6 +1,7 @@
 package com.br.backendhortifruti.model.entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -72,4 +73,11 @@ public class Pedido {
 	public EnderecoDTO getEnderecoDTO(){ return EnderecoDTO.converter(getEndereco());}
 
 	public List<ItemDTO> getItensDTO(){ return ItemDTO.converterLista(getItens()); }
+	
+	public LocalDateTime getDataHoraFormat() {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+		String dataHoraFormat = dataHora.format(formatter);
+		LocalDateTime dataHoraFormatParse = LocalDateTime.parse(dataHoraFormat, formatter);
+		return dataHoraFormatParse;
+    }
 }

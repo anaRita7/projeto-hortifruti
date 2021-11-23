@@ -24,7 +24,7 @@ public class PedidoDTO {
 
     public PedidoDTO(Pedido pedido){
         this.codigo = pedido.getCodigo();
-        this.dataHora = pedido.getDataHora();
+        this.dataHora = pedido.getDataHoraFormat();
         this.cliente = pedido.getClienteDTO();
         this.endereco = pedido.getEnderecoDTO();
         this.situacao = pedido.isSituacao();
@@ -43,5 +43,4 @@ public class PedidoDTO {
     public static PedidoDTO converter(Pedido pedido){
         return new PedidoDTO(pedido);
     }
-
 }
