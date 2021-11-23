@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.dto.EnderecoDTO;
 import com.br.backendhortifruti.model.dto.ItemDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -74,10 +75,4 @@ public class Pedido {
 
 	public List<ItemDTO> getItensDTO(){ return ItemDTO.converterLista(getItens()); }
 	
-	public LocalDateTime getDataHoraFormat() {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-		String dataHoraFormat = dataHora.format(formatter);
-		LocalDateTime dataHoraFormatParse = LocalDateTime.parse(dataHoraFormat, formatter);
-		return dataHoraFormatParse;
-    }
 }
