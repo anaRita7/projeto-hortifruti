@@ -74,7 +74,7 @@ public class ClienteController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirCliente(@PathVariable Integer id) {
 		clienteService.excluirCliente(id);
-		return new ResponseEntity<String>("Cliente excluído com sucesso!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 }

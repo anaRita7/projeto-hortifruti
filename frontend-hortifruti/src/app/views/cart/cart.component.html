@@ -1,0 +1,261 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2 text-center justify-content-center">
+                <div class="col-sm-10">
+                    <h1 class="mx-2 mb-2">Carrinho de Compras</h1>
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card mx-2 pt-2 pb-2">
+                    <div class="card-body p-0">
+                        <table class="table table-striped projects">
+                            <thead>
+                                <tr style="font-size: large;" class="text-center">
+                                    <th>
+                                        PRODUTO
+                                    </th>
+                                    <th style="width: 80%"></th>
+                                    <th style="width: 15%">
+                                        SUBTOTAL
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!--teste samy-->
+                                <tr style="background-color: #fff;">
+                                    <td>
+                                        <img class="cart-img"
+                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
+                                            alt="">
+                                    </td>
+                                    <td>
+                                        <div class="pb-1 cart-title-prod">BANANA PRATA - Kg</div>
+                                        <div class="pb-2 cart-price-prod">R$ 8,80</div>
+                                        <div>
+                                            <input type="number" class="cart-input" min="0">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-price-prod">
+                                            R$ 8,80
+                                            <button type="button" class="btn btn-danger btn-sm ml-2" onclick="">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--teste samy-->
+                                <tr style="background-color: #fff;">
+                                    <td>
+                                        <img class="cart-img"
+                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
+                                            alt="">
+                                    </td>
+                                    <td>
+                                        <div class="pb-1 cart-title-prod">BANANA PRATA - Kg</div>
+                                        <div class="pb-2 cart-price-prod">R$ 8,80</div>
+                                        <div>
+                                            <input type="number" class="cart-input" min="0">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-price-prod">
+                                            R$ 8,80
+                                            <button type="button" class="btn btn-danger btn-sm ml-2" onclick="">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!--teste samy-->
+                                <tr style="background-color: #fff;">
+                                    <td>
+                                        <img class="cart-img"
+                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
+                                            alt="">
+                                    </td>
+                                    <td>
+                                        <div class="pb-1 cart-title-prod">BANANA PRATA - Kg</div>
+                                        <div class="pb-2 cart-price-prod">R$ 8,80</div>
+                                        <div>
+                                            <input type="number" class="cart-input" min="0">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="cart-price-prod">
+                                            R$ 8,80
+                                            <button type="button" class="btn btn-danger btn-sm ml-2" onclick="">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr style="background-color: #fff;"> 
+                                    <th>Desconto:</th>
+                                    <th></th>
+                                    <th>
+                                        <input class="cart-price-off" type="text" placeholder="R$">
+                                    </th>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="text-center cart-table-tfoot">
+                                    <th>TOTAL:</th>
+                                    <th></th>
+                                    <th>R$ 18,50</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="mx-2 mt-4 pb-4 cart-adress">
+                    <div class="text-center py-2 d-flex justify-content-center">
+                        <i class="fas fa-map-marked-alt mr-2" style="font-size: 1.5rem;"></i>
+                        <h5 class="m-0">ENDEREÇO</h5>
+                    </div>
+                    <hr>
+                    <div class=" m-2 d-flex flex-wrap">
+                        <div class="col-sm-3">
+                            <label>CEP</label>
+                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep">
+                        </div>
+                        <div class="" style="margin-top: 35px;">
+                            <button (click)="geraEndereco(endereco.cep)">GERAR ENDEREÇO</button>
+                        </div>
+                        <div style="margin-top: 40px;">
+                            <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="ml-2"
+                                target="_blank" style="font-size: small;">NÃO SEI MEU CEP</a>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <div class="m-2 d-flex flex-wrap">
+                            <div class="col-sm-5">
+                                <label>Rua</label>
+                                <input type="text" name="rua" class="form-control" placeholder="Ex.: Rua João Batista Pierre" [(ngModel)]="endereco.logradouro">
+                            </div>
+                            <div class="col-sm-2">
+                                <label>Número</label>
+                                <input type="text" name="numero" class="form-control" placeholder="Ex.: 235" [(ngModel)]="endereco.numero">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Bairro</label>
+                                <input type="text" name="bairro" class="form-control" placeholder="Ex.: Ponte do Imaruim" [(ngModel)]="endereco.bairro">
+                            </div>
+                            <div class="col-sm-4 mt-2">
+                                <label>Cidade</label>
+                                <input type="text" name="cidade" class="form-control" placeholder="Ex.: Palhoça" [(ngModel)]="endereco.localidade">
+                            </div>
+                            <div class="col-sm-2 mt-2">
+                                <label>UF</label>
+                                <input type="text" name="estado" class="form-control" placeholder="Ex.: SC" [(ngModel)]="endereco.uf">
+                            </div>
+                            <div class="col-sm-5 mt-2">
+                                <label>Complemento</label>
+                                <input type="text" name="complemento" class="form-control" placeholder="Ex.: Apto 305" [(ngModel)]="endereco.complemento">
+                            <div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="mx-2 mt-4 cart-pay">
+                    <div class="text-center py-2 d-flex justify-content-center">
+                        <i class="fas fa-wallet mr-2" style="font-size: 1.5rem;"></i>
+                        <h5 class="m-0">FORMA DE PAGAMENTO</h5>
+                    </div>
+                    <hr>
+                    <div class="mt-4">
+                        <div class="text-center">
+                            <i class="fab fa-cc-visa mr-2 adress-card"></i>
+                            <i class="fab fa-cc-apple-pay mr-2 adress-card"></i>
+                            <i class="fab fa-cc-mastercard mr-2 adress-card"></i>
+                            <i class="fab fa-cc-paypal mr-2 adress-card"></i>
+                            <i class="fas fa-money-bill-alt adress-card"></i>
+                        </div>
+                    </div>
+                    <div class="mt-4 mb-5">
+                        <div class="d-flex justify-content-center">
+                            <div class="col-sm-5">
+                                <label for="">Pagamento em:</label>
+                                <select class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option>Cartão de Crédito</option>
+                                    <option>Cartão de Débito</option>
+                                    <option>Dinheiro</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-5">
+                                <label for="">Status</label>
+                                <select class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option>Pago</option>
+                                    <option>Não Pago - Pagamento na Entrega</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 mb-2">
+                        <div class="d-flex justify-content-center">
+                            <div class="">
+                                <button type="button" class="btn btn-success btn-sm mr-2" data-toggle="modal"
+                                    data-target="#validadeDoc">
+                                    <i class="fas fa-receipt"></i>
+                                    Finalizar Pedido
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+</div>
+
+<!-- Modal Validate Document -->
+<div class="modal fade" id="validadeDoc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info m-0">
+                <h5 class="modal-title" id="exampleModalLabel">Validação Cadastro do Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Documento</label>
+                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>

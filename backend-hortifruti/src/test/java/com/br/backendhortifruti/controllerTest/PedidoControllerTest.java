@@ -22,6 +22,27 @@ public class PedidoControllerTest {
 
 	@Autowired
 	PedidoController pedidoController;
+	
+	@Test
+	public void incluirPedidoHoraDefaultTest() {
+		Cliente cliente = new Cliente();
+		cliente.setId(1);
+		Endereco endereco = new Endereco();
+		endereco.setId(1);
+
+		Pedido pedido01 = new Pedido();
+		pedido01.setCliente(cliente);
+		pedido01.setEndereco(endereco);
+		pedido01.setSituacao(true);
+		pedido01.setValorTotal(850.00);
+		pedido01.setQuantidadeTotal(30);
+		pedido01.setDesconto(0.10);
+		pedido01.setValorFinal(765.80);
+		pedido01.setFormaPagamento("dinheiro");
+
+		ResponseEntity<String> pedidoResponse = pedidoController.incluirPedido(pedido01);
+		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
 
 	@Test
 	public void incluirPedidoTest() {

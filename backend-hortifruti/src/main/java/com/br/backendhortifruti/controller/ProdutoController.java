@@ -55,9 +55,9 @@ public class ProdutoController {
 	public ResponseEntity<String> incluirProduto(@RequestBody Produto produto) {
 		Produto produtoResponse = produtoService.incluirProduto(produto);
 		if(produtoResponse == null) {
-			return new ResponseEntity<String>("Falha ao criar o produto!", HttpStatus.UNPROCESSABLE_ENTITY);
+			return new ResponseEntity<>("Falha ao criar o produto!", HttpStatus.UNPROCESSABLE_ENTITY);
 		}
-		return new ResponseEntity<String>("Produto criado com sucesso!", HttpStatus.CREATED);
+		return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{id}")
@@ -84,7 +84,7 @@ public class ProdutoController {
 	public ResponseEntity<String> alterarProduto(@PathVariable("id") Integer produtoId, @RequestBody Produto produto) {
 		try{
 			produtoService.alterarProduto(produto, produtoId);
-			return new ResponseEntity<String>("Produto alterado com sucesso!",HttpStatus.OK);
+			return new ResponseEntity<>(HttpStatus.OK);
 		}catch (NullPointerException e){
 			throw new NullPointerException();
 		}
@@ -93,7 +93,7 @@ public class ProdutoController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirProduto(@PathVariable("id") Integer produtoId) {
 		produtoService.excluirProduto(produtoId);
-		return new ResponseEntity<String>("Produto deletado com sucesso!", HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}/status")
