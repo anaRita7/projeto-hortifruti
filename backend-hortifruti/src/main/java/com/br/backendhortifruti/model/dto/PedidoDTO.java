@@ -24,7 +24,7 @@ public class PedidoDTO {
 
     public PedidoDTO(Pedido pedido){
         this.codigo = pedido.getCodigo();
-        this.dataHora = pedido.getDataHoraFormat();
+        this.dataHora = pedido.getDataHora();
         this.cliente = pedido.getClienteDTO();
         this.endereco = pedido.getEnderecoDTO();
         this.situacao = pedido.isSituacao();
