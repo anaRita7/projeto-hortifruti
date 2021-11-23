@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import com.br.backendhortifruti.controller.ClienteController;
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.dto.ClienteIdDTO;
+import com.br.backendhortifruti.model.dto.ProdutoDTO;
 import com.br.backendhortifruti.model.entity.Cliente;
 
 @SpringBootTest
@@ -47,6 +48,18 @@ public class ClienteControllerTest {
 	public void consultarClientes() {
 		ResponseEntity<List<ClienteDTO>> clienteResponse = clienteController.consultarClientes();
 		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
+	}
+	
+	@Test
+	public void consultarClientePorDocumentoTest() {
+		ResponseEntity<ClienteIdDTO> clienteResponse = clienteController.consultarClientePorDocumento("605.737.218-04");
+		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
+	}
+	
+	@Test
+	public void consultarClienteTest() {
+		 ResponseEntity<ClienteDTO> clienteResponse = clienteController.consultarCliente(1);
+		 assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 
 	@Test
