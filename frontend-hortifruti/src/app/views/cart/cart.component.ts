@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Endereco } from 'src/app/model/Endereco';
+import { BuscaCEPService } from 'src/app/services/busca-cep.service';
 
 @Component({
   selector: 'app-cart',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  constructor() { }
+  endereco: Endereco = new Endereco();
+
+  constructor(private serviceBuscaCep: BuscaCEPService) { }
 
   ngOnInit(): void {
   }
 
+  geraEndereco(inputCep: any){
+    this.serviceBuscaCep.buscarCEP(inputCep).subscribe(
+      data => this.endereco = data
+    )
+  }
 }
