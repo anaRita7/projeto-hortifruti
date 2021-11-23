@@ -106,8 +106,4 @@ public class PedidoControllerTest {
 		ResponseEntity<PedidoDTO> pedidoResponse = pedidoController.consultarPedidoPorCodigo(123);
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
-	
-	// TODO: consultarProdutosAtivos()
-	
-	// TODO: consultarProdutosInativos()
 }
