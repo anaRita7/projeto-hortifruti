@@ -5,9 +5,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
@@ -44,11 +41,9 @@ public class ImagemController {
         String folder = "c:/hortifrutti/imagem/";
 
         try {
-            String type = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-
             Path pathFolder = Paths.get(folder);
             Files.createDirectories(pathFolder);
-            Path pathFile = Paths.get(folder + pid + type);
+            Path pathFile = Paths.get(folder + pid);
             Files.write(pathFile, file.getBytes());
 
         } catch (RuntimeException | IOException e) {
