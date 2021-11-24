@@ -17,7 +17,7 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     
     @ExceptionHandler(IvalidDocumentException.class)
     public ResponseEntity docException(Exception e){
-        return new ResponseEntity("Documento inválido", HttpStatus.NOT_FOUND);
+        return new ResponseEntity("Documento inválido", HttpStatus.EXPECTATION_FAILED);
     }
 
 }

@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.ClienteController;
@@ -27,7 +26,7 @@ public class ClienteControllerTest {
 		Cliente cliente06 = new Cliente();
 		cliente06.setNome("Mercadinho do seu Ze");
 		cliente06.setTipo('J');
-		cliente06.setDocumento("00.000.309/0001-00");
+		cliente06.setDocumento("89.698.309/0001-00");
 		cliente06.setTelefone("99999999999");
 
 		ResponseEntity<ClienteIdDTO> clienteResponse = clienteController.incluirCliente(cliente06);

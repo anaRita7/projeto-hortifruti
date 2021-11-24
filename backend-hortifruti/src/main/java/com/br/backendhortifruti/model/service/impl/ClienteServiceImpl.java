@@ -24,19 +24,19 @@ public class ClienteServiceImpl implements ClienteService {
 		String documento = ValidadorDocumento.removeCaracteresEspeciais(cliente.getDocumento());
 		cliente.setDocumento(documento);
 		boolean documentoValido = ValidadorDocumento.validaDocumento(cliente);
-		if(documentoValido) {
+		if (documentoValido) {
 			return clienteRepository.save(cliente);
 		}
 		return null;
 	}
 
 	@Override
-	public Page<Cliente> consultarClientes (Pageable pageable) {
+	public Page<Cliente> consultarClientes(Pageable pageable) {
 		return clienteRepository.findAll(pageable);
 	}
 
 	@Override
-	public List<Cliente> consultarClientes () {
+	public List<Cliente> consultarClientes() {
 		return clienteRepository.findAll();
 	}
 
