@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
         if(element.produto.id == data.id){
           element.quantidadeTotal = qtde;
           element.valorTotal = qtde*data.valorUnitario;
+          localStorage.setItem("itens",JSON.stringify(this.itens))
           novoProduto = false
         }
       });
@@ -47,9 +48,6 @@ export class HomeComponent implements OnInit {
         }
         itens.push(item);
         localStorage.setItem("itens",JSON.stringify(itens))
-      }
-      else{
-        localStorage.setItem("itens",JSON.stringify(this.itens))
       }
     })
   }

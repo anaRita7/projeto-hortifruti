@@ -1,16 +1,15 @@
 package com.br.backendhortifruti.model.dto;
 
+import com.br.backendhortifruti.model.entity.Pedido;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.br.backendhortifruti.model.entity.Pedido;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
-import lombok.Getter;
-
 @Getter
-public class PedidoForListDTO {
+public class PedidoForPageDTO {
 
 	private Integer codigo;
 	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
@@ -20,7 +19,7 @@ public class PedidoForListDTO {
 	private Integer quantidadeTotal;
 	private Double valorFinal;
 
-	public PedidoForListDTO(Pedido pedido) {
+	public PedidoForPageDTO(Pedido pedido) {
 		this.codigo = pedido.getCodigo();
 		this.dataHora = pedido.getDataHora();
 		this.nomeCliente = pedido.getCliente().getNome();
@@ -28,8 +27,8 @@ public class PedidoForListDTO {
 		this.quantidadeTotal = pedido.getQuantidadeTotal();
 		this.valorFinal = pedido.getValorFinal();
 	}
-
-	public static List<PedidoForListDTO> converterList(List<Pedido> pedidos) {
-		return pedidos.stream().map(PedidoForListDTO::new).collect(Collectors.toList());
-	}
+	
+	public static List<PedidoForPageDTO> converterList(List<Pedido> pedidos) {
+        return pedidos.stream().map(PedidoForPageDTO::new).collect(Collectors.toList());
+    }
 }

@@ -21,18 +21,18 @@ public class ProdutoControllerTest {
 	@Autowired
 	ProdutoController produtoController;
 	
-	@Test
-	public void incluirProdutoTest() {
-		Produto p1 = new Produto();
-		p1.setNome("Chuchu");
-		p1.setDescricao("fonte de potassio");
-		p1.setUnidadeMedida("kg");
-		p1.setValorUnitario(3.49);
-		p1.setStatus(true);
-		
-		ResponseEntity<String> produtoResponse = produtoController.incluirProduto(p1);
-		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(201);
-	}
+//	@Test
+//	public void incluirProdutoTest() {
+//		Produto p1 = new Produto();
+//		p1.setNome("Chuchu");
+//		p1.setDescricao("fonte de potassio");
+//		p1.setUnidadeMedida("kg");
+//		p1.setValorUnitario(3.49);
+//		p1.setStatus(true);
+//
+//		ResponseEntity<String> produtoResponse = produtoController.incluirProduto(p1);
+//		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(201);
+//	}
 	
 	@Test
 	public void alterarProdutoTest() {
@@ -53,11 +53,11 @@ public class ProdutoControllerTest {
 		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-	@Test
-	public void consultarProdutosTest() {
-		ResponseEntity<List<ProdutoDTO>> produtoResponse = produtoController.consultarProdutos();
-		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
-	}
+//	@Test
+//	public void consultarProdutosTest() {
+//		ResponseEntity<List<ProdutoDTO>> produtoResponse = produtoController.consultarProdutos();
+//		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+//	}
 	
 	@Test
 	public void consultarProdutoPorCodigoTest() {
@@ -71,11 +71,11 @@ public class ProdutoControllerTest {
 		 assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-	@Test
-	public void consultarProdutosAtivosTest() {
-		ResponseEntity<List<ProdutoAtivoDTO>> produtoResponse = produtoController.consultarProdutosAtivos();
-		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
-	}
+//	@Test
+//	public void consultarProdutosAtivosTest() {
+//		ResponseEntity<List<ProdutoAtivoDTO>> produtoResponse = produtoController.consultarProdutosAtivos();
+//		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+//	}
 		
 	@Test
 	public void consultarProdutosAtivosPorCodigoTest() {

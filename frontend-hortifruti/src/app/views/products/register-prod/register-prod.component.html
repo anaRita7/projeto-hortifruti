@@ -6,7 +6,7 @@
                 <h2 class="title-cad-prod">Cadastar Produto</h2>
             </div>
             <div class="card-body">
-                <form action="">
+                <form action="" enctype="multipart/form-data" name="">
                     <div class="row">
                         <div class="col-sm-6">
                             <!-- text input -->
@@ -43,10 +43,10 @@
                               <textarea name="descricao" class="form-control" maxlength="70" rows="3" placeholder="Insira a descrição..." [(ngModel)]="produto.descricao"></textarea>
                             </div>
                         </div>
-                        <!--<div class="col-sm-5">
+                        <div class="col-sm-5">
                               <label>Adicione a imagem do produto:</label>
-                            <input type="file" id="myfile" name="myfile">
-                        </div>-->
+                            <input type="file" id="myfile" name="myfile" accept="image/png, image/jpeg" (change)="onFileChanged($event)" [(ngModel)]="produto.imagem">
+                        </div>
                     </div>
                     <div class="btn-cad-prod">
                         <input type="submit" (click)="postProduct()" value="Cadastar">
