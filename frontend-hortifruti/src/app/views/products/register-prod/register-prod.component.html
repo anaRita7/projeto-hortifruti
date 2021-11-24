@@ -11,27 +11,27 @@
                         <div class="col-sm-6">
                             <!-- text input -->
                             <div class="form-group">
-                                <label>Nome</label>
-                                <input type="text" name="nome-produto" class="form-control" placeholder="Insira o nome ..." [(ngModel)]="produto.nome">
+                                <label>Nome <span class="required">*</span></label>
+                                <input type="text" name="nome-produto" class="form-control" placeholder="Insira o nome ..." [(ngModel)]="produto.nome" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <!-- text input -->
                             <div class="form-group">
-                                <label>Preço</label>
-                                <input type="text" name="preco" class="form-control" prefix="R$ " mask="0,00 ||00,00 ||000,00 ||0000,00" thousandSeparator="," [(ngModel)]="produto.valorUnitario">
+                                <label>Preço <span class="required">*</span></label>
+                                <input type="text" name="preco" class="form-control" prefix="R$ " mask="0,00 ||00,00 ||000,00 ||0000,00" thousandSeparator="," [(ngModel)]="produto.valorUnitario" required>
                             </div>
                         </div>
                         <div class="col-sm-3">
-                            <label for="exampleSelectBorder">Unidade de Medida</label>
-                            <select [(ngModel)]="produto.unidadeMedida" name="unidade-medida" class="custom-select form-control-border" id="exampleSelectBorder">
+                            <label for="exampleSelectBorder">Unidade de Medida <span class="required">*</span></label>
+                            <select [(ngModel)]="produto.unidadeMedida" name="unidade-medida" class="custom-select form-control-border" id="exampleSelectBorder" required>
                                 <option value="Kg">Kg</option>
                                 <option value="und">Un</option>
                             </select>
                         </div>
                         <div class="col-sm-3">
-                            <label for="exampleSelectBorder">Status</label>
-                            <select [(ngModel)]="produto.status" name="status" class="custom-select form-control-border" id="exampleSelectBorder">
+                            <label for="exampleSelectBorder">Status <span class="required">*</span></label>
+                            <select [(ngModel)]="produto.status" name="status" class="custom-select form-control-border" id="exampleSelectBorder" required>
                                 <option value="true">Disponível</option>
                                 <option value="false">Indisponível</option>
                             </select>

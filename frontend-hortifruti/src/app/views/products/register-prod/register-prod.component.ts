@@ -36,8 +36,26 @@ export class RegisterProdComponent implements OnInit {
     this.service.postProduto(this.produto, this.formDataUploadFile).subscribe
     (data =>
     {
-      alert("Produto criado com sucesso!");
-      this.router.navigate(['products-consult']);
+      if(this.produto.nome == null && this.produto.valorUnitario == null && this.produto.unidadeMedida == null && this.produto.status == null){
+        alert("Preencha todos os dados!");
+      }
+      else if(this.produto.nome == null){
+        alert("Preencha todos os dados. Campo de nome está vazio!");
+      }
+      else if(this.produto.valorUnitario == null){
+        alert("Preencha todos os dados. Campo de preço está vazio!");
+      }
+      else if(this.produto.unidadeMedida == null){
+        alert("Preencha todos os dados. Campo de unidade de medida está vazio!");
+      }
+      else if(this.produto.status == null){
+        alert("Preencha todos os dados. Campo de status está vazio!");
+      }
+      else{
+        alert("Produto criado com sucesso!");
+        this.router.navigate(['products-consult']);
+      }
+      
     },
     erro =>
     {
