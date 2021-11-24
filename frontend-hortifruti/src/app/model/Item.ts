@@ -6,4 +6,5 @@ export class Item{
     produto!: Produto;
     quantidadeTotal?: number;
     valorTotal?: number;
+    imagem?: String;
 }

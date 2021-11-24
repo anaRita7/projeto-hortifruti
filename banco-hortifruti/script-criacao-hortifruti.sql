@@ -68,3 +68,6 @@ ALTER TABLE item_do_pedido ADD CONSTRAINT fk_produto_item_do_pedido FOREIGN KEY 
 
 ALTER TABLE endereco RENAME COLUMN cidade TO localidade, RENAME COLUMN estado TO uf, RENAME COLUMN rua TO logradouro;
 
+
+SELECT * FROM produto p 
+
