@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import com.br.backendhortifruti.model.entity.Pedido;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -75,8 +76,13 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
-    public Page<Produto> consultarProdutosAtivos(Pageable pageable) {
+    public Page<Produto> consultarProdutosAtivosPage(Pageable pageable) {
         return new PageImpl<>(produtoRepository.findByStatusTrue(), pageable, produtoRepository.findByStatusTrue().size());
+    }
+
+    @Override
+    public List<Produto> consultarProdutosAtivos() {
+        return produtoRepository.findByStatusTrue();
     }
 
     @Override
@@ -93,6 +99,11 @@ public class ProdutoServiceImpl implements ProdutoService {
             return produtoRepository.save(produto);
         }
         return null;
+    }
+
+    @Override
+    public List<Produto> consultarProdutosInativos() {
+        return produtoRepository.findByStatusFalse();
     }
 
 }

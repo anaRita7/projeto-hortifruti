@@ -12,6 +12,8 @@ public interface ClienteService {
 
 	Page<Cliente> consultarClientes(Pageable pageable);
 
+	List<Cliente> consultarClientes();
+
 	Cliente consultarCliente(Integer id);
 	
 	Cliente consultarClientePorDocumento(String documento);

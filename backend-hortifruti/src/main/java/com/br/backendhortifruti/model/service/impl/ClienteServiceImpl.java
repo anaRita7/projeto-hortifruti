@@ -36,6 +36,11 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
+	public List<Cliente> consultarClientes () {
+		return clienteRepository.findAll();
+	}
+
+	@Override
 	public Cliente consultarCliente(Integer id) {
 		Optional<Cliente> cliente = clienteRepository.findById(id);
 		return cliente.orElse(null);
