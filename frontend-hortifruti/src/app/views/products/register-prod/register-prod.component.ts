@@ -29,7 +29,7 @@ export class RegisterProdComponent implements OnInit {
     if (this.selectedImage) {
       this.produto.imagem = this.randomStr(10);
       this.formDataUploadFile = new FormData();
-      //this.formDataUploadFile.append('pid', this.produto.imagem);
+      this.formDataUploadFile.append('pid', this.produto.imagem);
       this.formDataUploadFile.append('file', this.selectedImage);
     }
 
