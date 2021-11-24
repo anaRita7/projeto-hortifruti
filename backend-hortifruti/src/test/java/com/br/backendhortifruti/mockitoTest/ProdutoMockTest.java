@@ -81,7 +81,7 @@ public class ProdutoMockTest {
 		assertThat(produtoResponse.isStatus() == true);
 	}
 	
-	@DisplayName("Consultar produtos")
+	/*@DisplayName("Consultar produtos")
 	@Test
 	public void consultarProdutosMockTest() {
 		List<Produto> listaProdutos = new ArrayList<Produto>();
@@ -107,7 +107,7 @@ public class ProdutoMockTest {
 		List<Produto> produtoResponse = produtoServiceImpl.consultarProdutos();
 		assertNotNull(produtoResponse);
 		assertThat(listaProdutos.size() == 2);
-	}
+	}*/
 	
 	@DisplayName("Consultar produto por id")
 	@Test
