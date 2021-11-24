@@ -22,8 +22,14 @@ export class RegisterProdComponent implements OnInit {
     this.service.postProduto(this.produto).subscribe
     (data =>
     {
-      alert("Produto criado com sucesso!");
-      this.router.navigate(['products-consult']);
+      if(this.produto.nome == null){
+        alert("Preencha todos os dados");
+      }
+      else{
+        alert("Produto criado com sucesso!");
+        this.router.navigate(['products-consult']);
+      }
+      
     },
     erro =>
     {
