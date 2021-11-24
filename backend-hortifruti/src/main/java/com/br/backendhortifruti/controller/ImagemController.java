@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -21,10 +22,12 @@ import java.nio.file.Paths;
 public class ImagemController {
 
 
+
+
     @GetMapping ("{pid}")
     public void downloadImagem(@PathVariable ("pid") String pid, HttpServletResponse response){
         try{
-            File fileDownload = new File("C:/workspace/TCC/projeto-hortifruti/imagens/" + pid);
+            File fileDownload = new File("c:/hortifrutti/imagens" + pid);
             try(InputStream inputStream = new FileInputStream(fileDownload)){
                 response.setContentType("application/force-download");
                 response.setHeader("Content-Disposition", "attachment; filename=" + pid);
@@ -41,7 +44,7 @@ public class ImagemController {
         if (file.isEmpty()) {
             throw new RuntimeException("Nenhuma imagem selecionada.");
         }
-        String folder = "C:/workspace/TCC/projeto-hortifruti/imagens/";
+        String folder = "c:/hortifrutti/imagens";
 
         try {
             String type = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
