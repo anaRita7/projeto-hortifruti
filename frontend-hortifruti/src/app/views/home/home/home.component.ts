@@ -9,9 +9,7 @@ import { ProdutoService } from 'src/app/services/produto.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  itens: Item[] = [];
-
+  itens: Item[] =[]
   produtosAtivos: Produto[] = [];
 
   constructor(private service:ProdutoService) {
@@ -28,12 +26,11 @@ export class HomeComponent implements OnInit {
     this.service.getProdutoCodigo(codProduto).subscribe(data => {
       const item = {
         idProduto: data.id,
-        quantidade: qtde,
+        quantidadeTotal: qtde,
         valorTotal: qtde*data.valorUnitario
       }
       itens.push(item);
       localStorage.setItem("itens",JSON.stringify(itens))
-      console.log(item)
     })
   }
 
