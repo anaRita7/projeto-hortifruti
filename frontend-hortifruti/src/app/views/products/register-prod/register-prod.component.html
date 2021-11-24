@@ -19,7 +19,7 @@
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Preço</label>
-                                <input type="text" name="preco" class="form-control" prefix="R$ " mask="separator.2" thousandSeparator="." [(ngModel)]="produto.valorUnitario">
+                                <input type="text" name="preco" class="form-control" prefix="R$ " mask="0,00 ||00,00 ||000,00 ||0000,00" thousandSeparator="," [(ngModel)]="produto.valorUnitario">
                             </div>
                         </div>
                         <div class="col-sm-3">
