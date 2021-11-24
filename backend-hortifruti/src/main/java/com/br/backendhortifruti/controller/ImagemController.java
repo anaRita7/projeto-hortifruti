@@ -21,13 +21,10 @@ import java.nio.file.Paths;
 @RequestMapping("/api/imagem")
 public class ImagemController {
 
-
-
-
     @GetMapping ("{pid}")
     public void downloadImagem(@PathVariable ("pid") String pid, HttpServletResponse response){
         try{
-            File fileDownload = new File("c:/hortifrutti/imagens" + pid);
+            File fileDownload = new File("c:/hortifrutti/imagem/" + pid);
             try(InputStream inputStream = new FileInputStream(fileDownload)){
                 response.setContentType("application/force-download");
                 response.setHeader("Content-Disposition", "attachment; filename=" + pid);
@@ -44,7 +41,7 @@ public class ImagemController {
         if (file.isEmpty()) {
             throw new RuntimeException("Nenhuma imagem selecionada.");
         }
-        String folder = "c:/hortifrutti/imagens";
+        String folder = "c:/hortifrutti/imagem/";
 
         try {
             String type = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
