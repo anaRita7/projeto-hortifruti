@@ -10,21 +10,17 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 
 @Getter
-public class PedidoForPageDTO {
-	
-	private Integer codigo;
-	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss") 
-	private LocalDateTime dataHora;
-	
-	private String nomeCliente;
-	
-	private boolean situacao;
-	
-	private Integer quantidadeTotal;
+public class PedidoForListDTO {
 
+	private Integer codigo;
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss")
+	private LocalDateTime dataHora;
+	private String nomeCliente;
+	private boolean situacao;
+	private Integer quantidadeTotal;
 	private Double valorFinal;
 
-	public PedidoForPageDTO(Pedido pedido) {
+	public PedidoForListDTO(Pedido pedido) {
 		this.codigo = pedido.getCodigo();
 		this.dataHora = pedido.getDataHora();
 		this.nomeCliente = pedido.getCliente().getNome();
@@ -32,8 +28,8 @@ public class PedidoForPageDTO {
 		this.quantidadeTotal = pedido.getQuantidadeTotal();
 		this.valorFinal = pedido.getValorFinal();
 	}
-	
-	public static List<PedidoForPageDTO> converterList(List<Pedido> pedidos) {
-        return pedidos.stream().map(PedidoForPageDTO::new).collect(Collectors.toList());
-    }
+
+	public static List<PedidoForListDTO> converterList(List<Pedido> pedidos) {
+		return pedidos.stream().map(PedidoForListDTO::new).collect(Collectors.toList());
+	}
 }
