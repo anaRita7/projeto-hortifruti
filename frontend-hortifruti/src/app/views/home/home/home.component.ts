@@ -11,10 +11,15 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class HomeComponent implements OnInit {
   itens: Item[] = []
   produtosAtivos: Produto[] = [];
+  defaultValue: number = 1;
 
   constructor(private service:ProdutoService) {
     this.service.getProdutosAtivos().subscribe(
       data => this.produtosAtivos = data);
+
+      for (let i = 0; i < this.produtosAtivos.length; i++) {
+        this.produtosAtivos[i].qtdeEscolhida = this.defaultValue;
+      }      
    }
 
   ngOnInit(): void {
