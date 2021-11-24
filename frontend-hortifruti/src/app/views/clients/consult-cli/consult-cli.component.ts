@@ -13,6 +13,9 @@ export class ConsultCliComponent implements OnInit {
   clientes: Cliente[] = [];
   cliente: Cliente = new Cliente();
 
+  page: number = 1;
+  itemsPerPage: number = 6;
+
   constructor(private service:ClienteService, private router:Router) {
      this.service.getClientes().subscribe(data => this.clientes = data);
   }

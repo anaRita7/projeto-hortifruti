@@ -53,7 +53,7 @@
                                {{pedido.quantidadeTotal}}
                             </td>
                             <td>
-                                R$ {{pedido.valorFinal}}
+                                {{pedido.valorFinal | currency: 'BRL'}}
                              </td>
                             <td class="project-state text-center">
                                 <div *ngIf="pedido.situacao; then thenBlock else elseBlock"></div>

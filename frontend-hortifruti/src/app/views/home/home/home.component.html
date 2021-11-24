@@ -26,11 +26,11 @@
                                     <p class="">{{produto.descricao}}</p>
                                 </div>
                                 <div>
-                                    <h5 class="card-price">R$ {{produto.valorUnitario}} {{produto.unidadeMedida}}</h5>
+                                    <h5 class="card-price">R$ {{produto.valorUnitario}} {{produto.unidadeMedida}}</h5>                                    
                                 </div>
                                 <form action="" class="d-flex justify-content-center mt-4">
                                     <div>
-                                        <input [(ngModel)]="produto.qtdeEscolhida" name="quantidade" type="number" class="card-input" min="0" >
+                                        <input [(ngModel)]="produto.qtdeEscolhida" name="quantidade" type="number" class="card-input" >
                                     </div>
                                     <div>
                                         <button (click)="adicionaCarrinho(produto.codigo, produto.qtdeEscolhida)"  type="submit" class="card-btn-add">
