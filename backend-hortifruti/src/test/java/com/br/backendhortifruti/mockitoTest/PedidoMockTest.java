@@ -2,11 +2,8 @@ package com.br.backendhortifruti.mockitoTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +19,6 @@ import org.mockito.junit.MockitoJUnitRunner;
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.entity.Endereco;
 import com.br.backendhortifruti.model.entity.Pedido;
-import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.repository.PedidoRepository;
 import com.br.backendhortifruti.model.service.impl.PedidoServiceImpl;
 
@@ -128,5 +124,7 @@ public class PedidoMockTest {
 		pedidoServiceImpl.consultarPedido(1);
 		assertThat(pedido.getId() == 1);
 	}
+	
+	//TODO: excluir pedido
 }
 	
