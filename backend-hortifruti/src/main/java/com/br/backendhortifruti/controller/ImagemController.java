@@ -58,3 +58,4 @@ public class ImagemController {
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
+}
