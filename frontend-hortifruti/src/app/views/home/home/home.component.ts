@@ -40,6 +40,7 @@ export class HomeComponent implements OnInit {
       if(novoProduto === true){
         var itens = JSON.parse(localStorage.getItem("itens")||"[]");
         const item = {
+          imagem: data.imagem,
           quantidadeTotal: qtde,
           valorTotal: qtde*data.valorUnitario,
           produto: {

@@ -2,7 +2,6 @@ package com.br.backendhortifruti.controller;
 
 import java.util.List;
 
-import com.br.backendhortifruti.model.entity.Pedido;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -110,8 +109,12 @@ public class ProdutoController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirProduto(@PathVariable("id") Integer produtoId) {
-		produtoService.excluirProduto(produtoId);
-		return new ResponseEntity<>(HttpStatus.OK);
+		try {
+			produtoService.excluirProduto(produtoId);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}catch (Exception e) {
+			return new ResponseEntity<>("Falha ao deletar o produto!", HttpStatus.EXPECTATION_FAILED);
+		}
 	}
 
 	@PutMapping("/{id}/status")
