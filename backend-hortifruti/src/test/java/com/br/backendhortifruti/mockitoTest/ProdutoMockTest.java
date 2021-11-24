@@ -176,9 +176,7 @@ public class ProdutoMockTest {
 		produto.setStatus(true);
 		
 		when(produtoRepository.findById(1)).thenReturn(Optional.of(produto));
-		Produto produtoResponse = produtoServiceImpl.alterarStatusProduto(1, false);
+		produtoServiceImpl.alterarStatusProduto(1, false);
 		assertThat(produto.isStatus() == false);
 	}
-	
-	// TODO: excluir produto
 }
