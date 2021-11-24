@@ -16,6 +16,8 @@ import { ConsultCliComponent } from './views/clients/consult-cli/consult-cli.com
 import { CartComponent } from './views/cart/cart.component';
 import { OrdersComponent } from './views/orders/orders.component';
 import { NgxMaskModule } from 'ngx-mask'
+import { NgxPrintModule } from 'ngx-print';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { NgxMaskModule } from 'ngx-mask'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgxPrintModule,
+    NgxPaginationModule
   ],
   providers: [ProdutoService],
   bootstrap: [AppComponent]

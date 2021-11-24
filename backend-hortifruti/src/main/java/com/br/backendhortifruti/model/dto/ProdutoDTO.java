@@ -22,6 +22,8 @@ public class ProdutoDTO {
     
     private boolean status;
 
+    private String imagem;
+
     public ProdutoDTO(Produto produto) {
     	this.codigo = produto.getCodigo();
     	this.nome = produto.getNome();
@@ -29,6 +31,7 @@ public class ProdutoDTO {
         this.unidadeMedida = produto.getUnidadeMedida();
         this.valorUnitario = produto.getValorUnitario();
         this.status = produto.isStatus();
+        this.imagem = produto.getImagem();
     }
 
     public static List<ProdutoDTO> converterList(List<Produto> produtos) {
