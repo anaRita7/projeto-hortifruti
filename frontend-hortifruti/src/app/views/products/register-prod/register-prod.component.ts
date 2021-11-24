@@ -27,7 +27,7 @@ export class RegisterProdComponent implements OnInit {
   postProduct(){
 
     if (this.selectedImage) {
-      this.produto.imagem = this.randomStr(10);
+      this.produto.imagem = this.getNameImagem(this.selectedImage);
       this.formDataUploadFile = new FormData();
       this.formDataUploadFile.append('pid', this.produto.imagem);
       this.formDataUploadFile.append('file', this.selectedImage);
@@ -64,6 +64,12 @@ export class RegisterProdComponent implements OnInit {
       }
     }
     );
+  }
+
+  getNameImagem(imagem: File) {
+    let arrayTermos = imagem.name.split(".");
+    let fileName = this.randomStr(10) + "." + arrayTermos[arrayTermos.length - 1];
+    return fileName;
   }
 
   randomStr(tamanho: number) {
