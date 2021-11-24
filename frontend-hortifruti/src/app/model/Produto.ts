@@ -1,10 +1,10 @@
 export class Produto{
     id!: number;
     codigo?: number;
-    nome?: String;
+    nome?: any;
     descricao?: String;
-    unidadeMedida?: String;
-    valorUnitario!: number;
+    unidadeMedida?: any;
+    valorUnitario!: any;
     status?: boolean;
     qtdeEscolhida?: number;
 }

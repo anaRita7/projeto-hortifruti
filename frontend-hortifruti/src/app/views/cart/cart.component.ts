@@ -16,14 +16,10 @@ export class CartComponent implements OnInit {
   itens: Item[] = [];
 
   constructor(private serviceBuscaCep: BuscaCEPService, private serviceProd: ProdutoService) {
+    this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
   }
 
   ngOnInit(): void {
-    this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
-    this.itens.forEach(element => {
-      this.serviceProd.getProduto(element.idProduto).subscribe(data => element.produto = data)
-      }
-    )
   }
 
   geraEndereco(inputCep: any){
@@ -34,12 +30,17 @@ export class CartComponent implements OnInit {
 
   removeItem(item: Item){
     const element = {
-      idProduto: item.idProduto,
       quantidadeTotal: item.quantidadeTotal,
-      valorTotal: item.valorTotal 
+      valorTotal: item.valorTotal,
+      produto: {
+        id: item.produto.id,
+        nome: item.produto.nome,
+        unidadeMedida: item.produto.unidadeMedida,
+        valorUnitario: item.produto.valorUnitario
+      }
     }
     var itens = JSON.parse(localStorage.getItem("itens")||"[]");
-    const index = itens.indexOf(element);
+    const index = itens.indexOf(element) - 1;
     this.itens.splice(index, 1);
     localStorage.setItem("itens",JSON.stringify(this.itens))
   }
