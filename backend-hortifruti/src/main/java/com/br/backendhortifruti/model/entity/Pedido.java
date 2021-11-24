@@ -1,6 +1,7 @@
 package com.br.backendhortifruti.model.entity;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import javax.persistence.Table;
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.dto.EnderecoDTO;
 import com.br.backendhortifruti.model.dto.ItemDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -72,4 +74,5 @@ public class Pedido {
 	public EnderecoDTO getEnderecoDTO(){ return EnderecoDTO.converter(getEndereco());}
 
 	public List<ItemDTO> getItensDTO(){ return ItemDTO.converterLista(getItens()); }
+	
 }

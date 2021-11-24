@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.br.backendhortifruti.model.entity.Pedido;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 
@@ -12,7 +13,7 @@ import lombok.Getter;
 public class PedidoForPageDTO {
 	
 	private Integer codigo;
-	
+	@JsonFormat(pattern="dd/MM/yyyy HH:mm:ss") 
 	private LocalDateTime dataHora;
 	
 	private String nomeCliente;
@@ -35,6 +36,4 @@ public class PedidoForPageDTO {
 	public static List<PedidoForPageDTO> converterList(List<Pedido> pedidos) {
         return pedidos.stream().map(PedidoForPageDTO::new).collect(Collectors.toList());
     }
-	
-	
 }

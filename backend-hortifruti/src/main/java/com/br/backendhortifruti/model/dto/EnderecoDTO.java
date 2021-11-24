@@ -10,19 +10,19 @@ import java.util.stream.Collectors;
 public class EnderecoDTO {
 
     private String cep;
-    private String cidade;
+    private String localidade;
     private String bairro;
-    private String estado;
-    private String rua;
+    private String uf;
+    private String logradouro;
     private String complemento;
     private Integer numero;
 
     public EnderecoDTO(Endereco endereco){
         this.cep = endereco.getCep();
-        this.cidade = endereco.getCidade();
+        this.localidade = endereco.getLocalidade();
         this.bairro = endereco.getBairro();
-        this.estado = endereco.getEstado();
-        this.rua = endereco.getRua();
+        this.uf = endereco.getUf();
+        this.logradouro = endereco.getLogradouro();
         this.complemento = endereco.getComplemento();
         this.numero = endereco.getNumero();
     }

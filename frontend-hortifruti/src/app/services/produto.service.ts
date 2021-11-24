@@ -11,22 +11,22 @@ export class ProdutoService {
 
   constructor(private http:HttpClient) {}
   
-  private readonly Url='http://localhost:8080/api/produto';
+  private readonly urlBase='http://localhost:8080/api/produto';
 
   getProdutos() {
-    return this.http.get<Produto[]>(this.Url);
+    return this.http.get<Produto[]>(this.urlBase);
   }
 
   getProdutosAtivos() {
-    return this.http.get<Produto[]>(this.Url+'/ativos');
+    return this.http.get<Produto[]>(this.urlBase+'/ativos');
   }
 
   getProdutoCodigo(codigo: string){
-    return this.http.get<Produto>(this.Url + '/codigo/' + codigo);
+    return this.http.get<Produto>(this.urlBase + '/codigo/' + codigo);
   }
 
   getProduto(id: any){
-    return this.http.get<Produto>(this.Url + '/' + id);
+    return this.http.get<Produto>(this.urlBase + '/' + id);
   }
 
   postProduto(produto: Produto, formDataUploadFile?: FormData){
@@ -45,21 +45,21 @@ export class ProdutoService {
 
     return observable.pipe(
       switchMap(() => {
-        return this.http.post<string>(this.Url, produto);
+        return this.http.post<string>(this.urlBase, produto);
       })
     );
   }
 
   editProduto(id: any, produto: Produto){
-    return this.http.put(this.Url + '/' + id, produto);
+    return this.http.put(this.urlBase + '/' + id, produto);
   }
 
   editStatusProduto(id: String, status: String){
-    return this.http.put(this.Url + '/' + id + '/status', status);
+    return this.http.put(this.urlBase + '/' + id + '/status', status);
   }
 
   deleteProduto(id: any){
-    return this.http.delete(this.Url + '/' + id);
+    return this.http.delete(this.urlBase + '/' + id);
   }
 
 }

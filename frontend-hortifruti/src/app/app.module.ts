@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 import { ProdutoService } from 'src/app/services/produto.service';
 import { HomeComponent } from './views/home/home/home.component';
@@ -15,6 +15,7 @@ import { RegisterCliComponent } from './views/clients/register-cli/register-cli.
 import { ConsultCliComponent } from './views/clients/consult-cli/consult-cli.component';
 import { CartComponent } from './views/cart/cart.component';
 import { OrdersComponent } from './views/orders/orders.component';
+import { NgxMaskModule } from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { OrdersComponent } from './views/orders/orders.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [ProdutoService],
   bootstrap: [AppComponent]

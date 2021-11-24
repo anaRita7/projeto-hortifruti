@@ -1,16 +1,19 @@
 package com.br.backendhortifruti.model.dto;
 
-import com.br.backendhortifruti.model.entity.Pedido;
-import lombok.Getter;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.br.backendhortifruti.model.entity.Pedido;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.Getter;
 
 @Getter
 public class PedidoDTO {
 
     private Integer codigo;
+    @JsonFormat(pattern="dd/MM/yyyy HH:mm:ss") 
     private LocalDateTime dataHora;
     private ClienteDTO cliente;
     private EnderecoDTO endereco;
@@ -43,5 +46,4 @@ public class PedidoDTO {
     public static PedidoDTO converter(Pedido pedido){
         return new PedidoDTO(pedido);
     }
-
 }
