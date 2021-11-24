@@ -29,23 +29,23 @@
                             </thead>
                             <tbody>
                                 <!--teste samy-->
-                                <tr style="background-color: #fff;">
+                                <tr style="background-color: #fff;" *ngFor = "let item of itens" >
                                     <td>
                                         <img class="cart-img"
                                             src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
                                             alt="">
                                     </td>
                                     <td>
-                                        <div class="pb-1 cart-title-prod">BANANA PRATA - Kg</div>
-                                        <div class="pb-2 cart-price-prod">R$ 8,80</div>
+                                        <div class="pb-1 cart-title-prod">{{item.produto.nome}} - {{item.produto.unidadeMedida}}</div>
+                                        <div class="pb-2 cart-price-prod">R$ {{item.produto.valorUnitario}}</div>
                                         <div>
-                                            <input type="number" class="cart-input" min="0">
+                                            <input [(ngModel)]="item.quantidadeTotal" type="number" class="cart-input" min="0">
                                         </div>
                                     </td>
                                     <td>
                                         <div class="cart-price-prod">
-                                            R$ 8,80
-                                            <button type="button" class="btn btn-danger btn-sm ml-2" onclick="">
+                                            <span>R$ {{item.valorTotal}}</span>
+                                            <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm ml-2" onclick="">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
@@ -101,7 +101,7 @@
                                     <th>Desconto:</th>
                                     <th></th>
                                     <th>
-                                        <input class="cart-price-off" type="text" placeholder="R$">
+                                        <input class="cart-price-off" type="text" mask="percent" suffix="%" placeholder="R$ ">
                                     </th>
                                 </tr>
                             </tbody>
