@@ -20,12 +20,15 @@ public class ProdutoAtivoDTO {
 
     private double valorUnitario;
 
+    private String imagem;
+
     public ProdutoAtivoDTO(Produto produto) {
     	this.codigo = produto.getCodigo();
     	this.nome = produto.getNome();
         this.descricao = produto.getDescricao();
         this.unidadeMedida = produto.getUnidadeMedida();
         this.valorUnitario = produto.getValorUnitario();
+        this.imagem = produto.getImagem();
     }
 
     public static List<ProdutoAtivoDTO> converterList(List<Produto> produtos) {
