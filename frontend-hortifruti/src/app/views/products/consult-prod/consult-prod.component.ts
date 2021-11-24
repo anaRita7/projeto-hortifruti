@@ -13,6 +13,9 @@ export class ConsultProdComponent implements OnInit {
   produtos: Produto[] = [];
   produto: Produto = new Produto();
 
+  page: number = 1;
+  itemsPerPage: number = 6;
+
   constructor(private service:ProdutoService, private router: Router) {
     this.service.getProdutos().subscribe(data => this.produtos = data);
    }

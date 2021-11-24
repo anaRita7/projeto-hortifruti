@@ -17,6 +17,8 @@ import { CartComponent } from './views/cart/cart.component';
 import { OrdersComponent } from './views/orders/orders.component';
 import { TaxInvoiceComponent } from './views/tax-invoice/tax-invoice.component';
 import { NgxMaskModule } from 'ngx-mask'
+import { NgxPrintModule } from 'ngx-print';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { NgxMaskModule } from 'ngx-mask'
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    NgxPrintModule,
+    NgxPaginationModule
   ],
   providers: [ProdutoService],
   bootstrap: [AppComponent]
