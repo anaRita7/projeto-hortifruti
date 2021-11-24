@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.br.backendhortifruti.model.dto.ProdutoAtivoDTO;
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
-import com.br.backendhortifruti.model.dto.ProdutoIdDTO;
+import com.br.backendhortifruti.model.dto.ProdutoForItemDTO;
 import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.service.ProdutoService;
 
@@ -71,10 +71,10 @@ public class ProdutoController {
 	}
 	
 	@GetMapping("/codigo/{codigo}")
-	public ResponseEntity<ProdutoIdDTO> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
+	public ResponseEntity<ProdutoForItemDTO> consultarProdutoPorCodigo(@PathVariable("codigo") Integer codigo) {
 		try{
 			Produto produto = produtoService.consultarProdutoPorCodigo(codigo);
-			return new ResponseEntity<ProdutoIdDTO>(ProdutoIdDTO.converter(produto), HttpStatus.OK);
+			return new ResponseEntity<ProdutoForItemDTO>(ProdutoForItemDTO.converter(produto), HttpStatus.OK);
 		}catch (NullPointerException e){
 			throw new NullPointerException();
 		}

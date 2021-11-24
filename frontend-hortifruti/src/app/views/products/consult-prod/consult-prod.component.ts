@@ -66,11 +66,17 @@ export class ConsultProdComponent implements OnInit {
       this.reloadCurrentRoute();
     },
     erro =>
-    {
-      if(erro.status == 404) 
-        alert('Produto não localizado!');
-    })
-  }
+    { 
+      switch(erro.status) { 
+        case 500: 
+          alert("Produto não pode ser deletado!"); 
+          break; 
+        case 404: 
+          alert('Produto não localizado!'); 
+          break; 
+      }
+    }
+  )}
 
   reloadCurrentRoute() {
     let currentUrl = this.router.url;

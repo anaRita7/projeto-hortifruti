@@ -1,6 +1,8 @@
-package com.br.backendhortifruti.controllerTest;
+package com.br.backendhortifruti.mockitoTest;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
@@ -17,14 +19,13 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.repository.ClienteRepository;
 import com.br.backendhortifruti.model.service.impl.ClienteServiceImpl;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ClienteControllerMockTest {
+public class ClienteMockTest {
 	
 	@Mock
 	private ClienteRepository clienteRepository;
@@ -76,10 +77,12 @@ public class ClienteControllerMockTest {
 		assertEquals(clienteResponse.getTelefone(), "99999999999");
 	} 
 	
-	@DisplayName("Consutar lista de clientes")
+	@DisplayName("Consultar lista de clientes")
 	@Test
 	public void consultarClientesTest() {
 		List<Cliente> listaClientes = new ArrayList<Cliente>();
+		
+		when(clienteRepository.findAll()).thenReturn(listaClientes);
 		
 		Cliente cliente = new Cliente();
 		cliente.setNome("Bruna Lima");
@@ -95,29 +98,33 @@ public class ClienteControllerMockTest {
 		cliente1.setTelefone("111111111");
 		listaClientes.add(cliente1);
 		
-		when(clienteRepository.findAll()).thenReturn(listaClientes);
 		List<Cliente> clienteResponse = clienteServiceImpl.consultarClientes();
 		assertNotNull(clienteResponse);
+		assertThat(listaClientes.size() == 2);
 	}
 	
 	@DisplayName("Consultar cliente por ID")
 	@Test
 	public void consultarClienteMockTest() {
 		Cliente cliente = new Cliente();
+		cliente.setId(1);
 		
 		when(clienteRepository.findById(1)).thenReturn(Optional.of(cliente));
 		Cliente clienteResponse = clienteServiceImpl.consultarCliente(1);
 		assertNotNull(clienteResponse);
+		assertThat(cliente.getId() == 1);
 	}
 	
 	@DisplayName("Consultar cliente por documento")
 	@Test
 	public void consultarClientePorDocumentoMockTest() {
-		Optional<Cliente> cliente = Optional.ofNullable(new Cliente());
+		Cliente cliente = new Cliente();
+		cliente.setDocumento("605.737.218-04");
 		
-		when(clienteRepository.findByDocumento("605.737.218-04")).thenReturn(cliente);
+		when(clienteRepository.findByDocumento("605.737.218-04")).thenReturn(Optional.of(cliente));
 		Cliente clienteResponse = clienteServiceImpl.consultarClientePorDocumento("605.737.218-04");
 		assertNotNull(clienteResponse);
+		assertThat(cliente.getDocumento() == "605.737.218-04");
 	}
 	
 	// TODO: excluir cliente

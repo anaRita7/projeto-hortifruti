@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import com.br.backendhortifruti.controller.ProdutoController;
 import com.br.backendhortifruti.model.dto.ProdutoAtivoDTO;
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
-import com.br.backendhortifruti.model.dto.ProdutoIdDTO;
+import com.br.backendhortifruti.model.dto.ProdutoForItemDTO;
 import com.br.backendhortifruti.model.entity.Produto;
 
 @SpringBootTest
@@ -61,7 +61,7 @@ public class ProdutoControllerTest {
 	
 	@Test
 	public void consultarProdutoPorCodigoTest() {
-		 ResponseEntity<ProdutoIdDTO> produtoResponse = produtoController.consultarProdutoPorCodigo(4323);
+		 ResponseEntity<ProdutoForItemDTO> produtoResponse = produtoController.consultarProdutoPorCodigo(4323);
 		 assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
