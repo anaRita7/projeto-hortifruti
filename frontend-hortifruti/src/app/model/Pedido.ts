@@ -9,9 +9,9 @@ export class Pedido{
     idEndereco?: Endereco["id"];
     situacao?: boolean;
     quantidadeTotal?: number;
-    valorTotal?: number;
-    desconto?:number;
+    valorTotal!: number;
+    desconto!:number;
     formaPagamento?: String;
-    valorFinal?: number;
+    valorFinal!: number;
     idItens?: Item["id"][];
 }

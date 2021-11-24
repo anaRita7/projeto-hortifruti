@@ -31,25 +31,45 @@ export class RegisterProdComponent implements OnInit {
       this.formDataUploadFile = new FormData();
       this.formDataUploadFile.append('pid', this.produto.imagem);
       this.formDataUploadFile.append('file', this.selectedImage);
-    }*/
+    }
 
-    this.service.postProduto(this.produto, /*this.formDataUploadFile*/).subscribe
-      (data => {
+    this.service.postProduto(this.produto, this.formDataUploadFile).subscribe
+    (data =>
+    {
+      if(this.produto.nome == null && this.produto.valorUnitario == null && this.produto.unidadeMedida == null && this.produto.status == null){
+        alert("Preencha todos os dados!");
+      }
+      else if(this.produto.nome == null){
+        alert("Preencha todos os dados. Campo de nome está vazio!");
+      }
+      else if(this.produto.valorUnitario == null){
+        alert("Preencha todos os dados. Campo de preço está vazio!");
+      }
+      else if(this.produto.unidadeMedida == null){
+        alert("Preencha todos os dados. Campo de unidade de medida está vazio!");
+      }
+      else if(this.produto.status == null){
+        alert("Preencha todos os dados. Campo de status está vazio!");
+      }
+      else{
         alert("Produto criado com sucesso!");
         this.router.navigate(['products-consult']);
-      },
-        erro => {
-          if (erro.status == 400) {
-            alert(erro.error.mensagem);
-          }
-        }
-      );
+      }
+      
+    },
+    erro =>
+    {
+      if(erro.status == 400) {
+        alert(erro.error.mensagem);
+      }
+    }
+    );
+  }
 
-
-      /*randomStr(tamanho: number) {
-      var stringAleatoria = '';
-      var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      for (var i = 0; i < tamanho; i++) {
+  randomStr(tamanho: number) {
+    var stringAleatoria = '';
+    var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < tamanho; i++) {
         stringAleatoria += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
       }
       return stringAleatoria;

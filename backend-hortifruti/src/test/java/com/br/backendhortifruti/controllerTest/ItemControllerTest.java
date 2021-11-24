@@ -15,7 +15,6 @@ import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.entity.Produto;
 import com.br.backendhortifruti.model.dto.ItemDTO;
 import com.br.backendhortifruti.model.dto.ItemIdDTO;
-import com.br.backendhortifruti.model.dto.ProdutoDTO;
 
 @SpringBootTest
 public class ItemControllerTest {
