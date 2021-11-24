@@ -25,39 +25,37 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("/api/imagem")
 public class ImagemController {
 
-	@GetMapping("{pid}")
-	public void downloadImagem(@PathVariable("pid") String pid, HttpServletResponse response) {
-		try {
-			File fileDownload = new File("c:/hortifrutti/imagem/" + pid);
-			try (InputStream inputStream = new FileInputStream(fileDownload)) {
-				response.setContentType("application/force-download");
-				response.setHeader("Content-Disposition", "attachment; filename=" + pid);
-				IOUtils.copy(inputStream, response.getOutputStream());
-				response.flushBuffer();
-			}
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
+    @GetMapping ("{pid}")
+    public void downloadImagem(@PathVariable ("pid") String pid, HttpServletResponse response){
+        try{
+            File fileDownload = new File("c:/hortifrutti/imagem/" + pid);
+            try(InputStream inputStream = new FileInputStream(fileDownload)){
+                response.setContentType("application/force-download");
+                response.setHeader("Content-Disposition", "attachment; filename=" + pid);
+                IOUtils.copy(inputStream, response.getOutputStream());
+                response.flushBuffer();
+            }
+        }catch (Exception e){
+            throw new RuntimeException(e);
+        }
+    }
 
-	@PostMapping
-	public ResponseEntity<?> uploadImagem(@RequestParam("pid") String pid, @RequestParam("file") MultipartFile file) {
-		if (file.isEmpty()) {
-			throw new RuntimeException("Nenhuma imagem selecionada.");
-		}
-		String folder = "c:/hortifrutti/imagem/";
+    @PostMapping
+    public ResponseEntity<?> uploadImagem(@RequestParam("pid") String pid, @RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            throw new RuntimeException("Nenhuma imagem selecionada.");
+        }
+        String folder = "c:/hortifrutti/imagem/";
 
-		try {
-			String type = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+        try {
+            Path pathFolder = Paths.get(folder);
+            Files.createDirectories(pathFolder);
+            Path pathFile = Paths.get(folder + pid);
+            Files.write(pathFile, file.getBytes());
 
-			Path pathFolder = Paths.get(folder);
-			Files.createDirectories(pathFolder);
-			Path pathFile = Paths.get(folder + pid + type);
-			Files.write(pathFile, file.getBytes());
-
-		} catch (RuntimeException | IOException e) {
-			throw new RuntimeException();
-		}
-		return new ResponseEntity<>(HttpStatus.OK);
-	}
+        } catch (RuntimeException | IOException e) {
+            throw new RuntimeException();
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
