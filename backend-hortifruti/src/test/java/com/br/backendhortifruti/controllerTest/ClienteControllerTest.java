@@ -14,6 +14,7 @@ import com.br.backendhortifruti.controller.ClienteController;
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.dto.ClienteIdDTO;
 import com.br.backendhortifruti.model.entity.Cliente;
+import com.br.backendhortifruti.model.handler.IvalidDocumentException;
 
 @SpringBootTest
 public class ClienteControllerTest {
@@ -22,11 +23,11 @@ public class ClienteControllerTest {
 	ClienteController clienteController;
 
 	@Test
-	public void incluirClientesTeste() {
+	public void incluirClientesTeste() throws IvalidDocumentException {
 		Cliente cliente06 = new Cliente();
 		cliente06.setNome("Mercadinho do seu Ze");
 		cliente06.setTipo('J');
-		cliente06.setDocumento("89.698.309/0001-00");
+		cliente06.setDocumento("00.000.309/0001-00");
 		cliente06.setTelefone("99999999999");
 
 		ResponseEntity<ClienteIdDTO> clienteResponse = clienteController.incluirCliente(cliente06);

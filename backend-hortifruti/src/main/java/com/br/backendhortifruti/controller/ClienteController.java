@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.dto.ClienteIdDTO;
 import com.br.backendhortifruti.model.entity.Cliente;
+import com.br.backendhortifruti.model.handler.IvalidDocumentException;
 import com.br.backendhortifruti.model.service.ClienteService;
 
 @RestController
@@ -30,12 +31,13 @@ public class ClienteController {
 	private ClienteService clienteService;
 
 	@PostMapping
-	public ResponseEntity<ClienteIdDTO> incluirCliente(@RequestBody Cliente cliente) {
-		Cliente clienteResponse = clienteService.incluirCliente(cliente);
-		if(clienteResponse == null) {
-			return new ResponseEntity<>(ClienteIdDTO.converter(clienteResponse), HttpStatus.UNPROCESSABLE_ENTITY);
+	public ResponseEntity<ClienteIdDTO> incluirCliente(@RequestBody Cliente cliente) throws IvalidDocumentException {
+		try {
+			Cliente clienteResponse = clienteService.incluirCliente(cliente);
+			return new ResponseEntity<>(ClienteIdDTO.converter(clienteResponse), HttpStatus.CREATED);
+		} catch (NullPointerException e) {
+			throw new IvalidDocumentException();
 		}
-		return new ResponseEntity<>(ClienteIdDTO.converter(clienteResponse), HttpStatus.CREATED);
 	}
 
 	@PutMapping("/{id}")
@@ -43,17 +45,17 @@ public class ClienteController {
 		try {
 			Cliente clienteResponse = clienteService.alterarCliente(cliente, id);
 			return new ResponseEntity<>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
-		}catch (NullPointerException e){
+		} catch (NullPointerException e) {
 			throw new NullPointerException();
 		}
 	}
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<ClienteDTO> consultarCliente(@PathVariable Integer id) {
-		try{
+		try {
 			Cliente clienteResponse = clienteService.consultarCliente(id);
 			return new ResponseEntity<>(ClienteDTO.converter(clienteResponse), HttpStatus.OK);
-		}catch (NullPointerException e){
+		} catch (NullPointerException e) {
 			throw new NullPointerException();
 		}
 	}
@@ -61,7 +63,8 @@ public class ClienteController {
 	@GetMapping("/page")
 	public ResponseEntity<PageImpl<ClienteDTO>> consultarClientes(Pageable pageable) {
 		Page<Cliente> page = clienteService.consultarClientes(pageable);
-		PageImpl<ClienteDTO> pageDTO = new PageImpl<> (ClienteDTO.converterLista(page.getContent()), pageable, page.getTotalElements());
+		PageImpl<ClienteDTO> pageDTO = new PageImpl<>(ClienteDTO.converterLista(page.getContent()), pageable,
+				page.getTotalElements());
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
 
@@ -73,10 +76,10 @@ public class ClienteController {
 
 	@GetMapping("/documento/{documento}")
 	public ResponseEntity<ClienteIdDTO> consultarClientePorDocumento(@PathVariable("documento") String documento) {
-		try{
-            Cliente cliente = clienteService.consultarClientePorDocumento(documento);
-            return new ResponseEntity<>(ClienteIdDTO.converter(cliente), HttpStatus.OK);}
-		catch (NullPointerException e){
+		try {
+			Cliente cliente = clienteService.consultarClientePorDocumento(documento);
+			return new ResponseEntity<>(ClienteIdDTO.converter(cliente), HttpStatus.OK);
+		} catch (NullPointerException e) {
 			throw new NullPointerException();
 		}
 	}
