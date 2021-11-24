@@ -1,5 +1,6 @@
 package com.br.backendhortifruti.controller;
 
+import com.br.backendhortifruti.model.dto.PedidoForPageDTO;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.br.backendhortifruti.model.dto.PedidoDTO;
-import com.br.backendhortifruti.model.dto.PedidoForPageDTO;
+import com.br.backendhortifruti.model.dto.PedidoForListDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.service.PedidoService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/pedido")
@@ -29,12 +32,20 @@ public class PedidoController {
 		this.pedidoService = pedidoService;
 	}
 
-	@GetMapping
+	@GetMapping("/page")
 	public ResponseEntity<PageImpl<PedidoForPageDTO>> consultarPedidos(Pageable pageable) {
 		Page<Pedido> page = pedidoService.consultarPedidos(pageable);
 		PageImpl<PedidoForPageDTO> pageDTO = new PageImpl<>(PedidoForPageDTO.converterList(page.getContent()),pageable, page.getTotalElements());
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
+
+	@GetMapping
+	public ResponseEntity<List<PedidoForListDTO>> consultarPedidos() {
+		List<Pedido> pedidos = pedidoService.consultarPedidosAtivos();
+		pedidos.addAll(pedidoService.consultarPedidosInativos());
+		return new ResponseEntity<>(PedidoForListDTO.converterList(pedidos), HttpStatus.OK);
+	}
+
 
 	@GetMapping("/codigo/{codigo}")
 	public ResponseEntity<PedidoDTO> consultarPedidoPorCodigo(@PathVariable("codigo") Integer codigo) {
