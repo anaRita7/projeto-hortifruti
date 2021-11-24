@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.br.backendhortifruti.model.entity.Cliente;
@@ -29,7 +31,12 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
-	public List<Cliente> consultarClientes() {
+	public Page<Cliente> consultarClientes (Pageable pageable) {
+		return clienteRepository.findAll(pageable);
+	}
+
+	@Override
+	public List<Cliente> consultarClientes () {
 		return clienteRepository.findAll();
 	}
 

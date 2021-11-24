@@ -6,5 +6,6 @@ export class Produto{
     unidadeMedida?: any;
     valorUnitario!: any;
     status?: boolean;
+    imagem?: string;
     qtdeEscolhida?: number;
 }

@@ -12,18 +12,50 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class RegisterProdComponent implements OnInit {
 
   produto: Produto = new Produto();
+  selectedImage: File | undefined;
+  formDataUploadFile: FormData | undefined;
 
   constructor(private service: ProdutoService, private router : Router) { }
 
   ngOnInit(): void {
   }
 
+  onFileChanged(event: Event){
+    this.selectedImage = (event.target as HTMLInputElement).files![0];
+  }
+
   postProduct(){
-    this.service.postProduto(this.produto).subscribe
+
+    if (this.selectedImage) {
+      this.produto.imagem = this.randomStr(10);
+      this.formDataUploadFile = new FormData();
+      this.formDataUploadFile.append('pid', this.produto.imagem);
+      this.formDataUploadFile.append('file', this.selectedImage);
+    }
+
+    this.service.postProduto(this.produto, this.formDataUploadFile).subscribe
     (data =>
     {
-      alert("Produto criado com sucesso!");
-      this.router.navigate(['products-consult']);
+      if(this.produto.nome == null && this.produto.valorUnitario == null && this.produto.unidadeMedida == null && this.produto.status == null){
+        alert("Preencha todos os dados!");
+      }
+      else if(this.produto.nome == null){
+        alert("Preencha todos os dados. Campo de nome está vazio!");
+      }
+      else if(this.produto.valorUnitario == null){
+        alert("Preencha todos os dados. Campo de preço está vazio!");
+      }
+      else if(this.produto.unidadeMedida == null){
+        alert("Preencha todos os dados. Campo de unidade de medida está vazio!");
+      }
+      else if(this.produto.status == null){
+        alert("Preencha todos os dados. Campo de status está vazio!");
+      }
+      else{
+        alert("Produto criado com sucesso!");
+        this.router.navigate(['products-consult']);
+      }
+      
     },
     erro =>
     {
@@ -32,6 +64,15 @@ export class RegisterProdComponent implements OnInit {
       }
     }
     );
+  }
+
+  randomStr(tamanho: number) {
+    var stringAleatoria = '';
+    var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < tamanho; i++) {
+        stringAleatoria += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return stringAleatoria;
   }
 
 }
