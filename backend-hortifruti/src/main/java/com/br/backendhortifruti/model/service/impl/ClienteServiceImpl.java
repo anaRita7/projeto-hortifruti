@@ -21,10 +21,9 @@ public class ClienteServiceImpl implements ClienteService {
 
 	@Override
 	public Cliente incluirCliente(Cliente cliente) {
-		String documento = ValidadorDocumento.removeCaracteresEspeciais(cliente.getDocumento());
-		cliente.setDocumento(documento);
-		boolean documentoValido = ValidadorDocumento.validaDocumento(cliente);
-		if (documentoValido) {
+		String documentoValido = ValidadorDocumento.verificaDocumento(cliente.getDocumento());
+		if (documentoValido != null) {
+			cliente.setDocumento(documentoValido);
 			return clienteRepository.save(cliente);
 		}
 		return null;
