@@ -17,11 +17,9 @@ export class HomeComponent implements OnInit {
     this.service.getProdutosAtivos().subscribe(
       data => this.produtosAtivos = data);
 
-      for (let i = 0; i < this.produtosAtivos.length; i++) {
-        this.produtosAtivos[i].qtdeEscolhida = this.defaultValue;
-      }      
+          
    }
-
+   
   ngOnInit(): void {
   }
 
