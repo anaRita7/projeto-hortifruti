@@ -1,7 +1,8 @@
 import { Produto } from '../model/Produto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -28,8 +29,25 @@ export class ProdutoService {
     return this.http.get<Produto>(this.Url + '/' + id);
   }
 
-  postProduto(produto: Produto){
-    return this.http.post<string>(this.Url, produto);
+  postProduto(produto: Produto, formDataUploadFile?: FormData){
+
+    let observable = of({});
+
+    if (formDataUploadFile) {
+      observable = observable.pipe(
+        switchMap(() => {
+          return this.http.post('http://localhost:8080/api/imagem', formDataUploadFile, {
+            responseType: 'text'
+          })
+        })
+      );
+    }
+
+    return observable.pipe(
+      switchMap(() => {
+        return this.http.post<string>(this.Url, produto);
+      })
+    );
   }
 
   editProduto(id: any, produto: Produto){
