@@ -124,6 +124,7 @@ public class ClienteMockTest {
 		when(clienteRepository.findByDocumento("605.737.218-04")).thenReturn(Optional.of(cliente));
 		Cliente clienteResponse = clienteServiceImpl.consultarClientePorDocumento("605.737.218-04");
 		assertNotNull(clienteResponse);
+		assertThat(cliente.getDocumento() == "605.737.218-04");
 	}
 	
 	// TODO: excluir cliente
