@@ -12,20 +12,27 @@ INSERT INTO cliente (tipo, documento, nome, telefone) VALUES
   ("J","048.541.195-63","Caick Stanton","(31)3221-2011");
  
   
-INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status)
+INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
 VALUES
-  (4323,"Banana Prata","Fruta rica em potássio.","Kg",5.29,true),
-  (6849,"Abacate","Rico em ferro, potássio e vitaminas","Kg",1.45,false),
-  (6991,"Cenoura Vermelha","Possui vitaminas B, C e K.","Kg",2.19,true),
-  (9726,"Cebola Amarela","Esta cebola possui um sabor mais ácido.","Kg",4.25,true),
-  (5763,"Pimentão Verde","Rico em antioxidantes.","Kg",1.75,TRUE);
-INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status)
+  (45454323,"BANANA PRATA","Embalagem com 500 gramas.","Und",3.29,TRUE,"Gh5YgTerQ1.jpg"),
+  (86506849,"ABACATE","Unidade de aproximadamente 150 gramas","Und",2.45,FALSE,"6HJi85GPoi.jpg"),
+  (69951181,"LIMÃO TAITI","Embalagem com 400 gramas.","Und",2.19,TRUE,"Lm0766trea.jpg"),
+  (97800426,"CEBOLA AMRELA","Aproximadamente 500 gramas.","Kg",3.25,TRUE,"5Yy654Fhha.jpg"),
+  (57821763,"ALHO","Embalagem com 200 gramas.","Und",2.75,TRUE,"8I8AL86Gt5A.jpg");
+INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
 VALUES
-  (8861,"Maçã Fuji","Rico em vitaminas B1, B2, ferro e fósforo.","Kg",5.49,true),
-  (7596,"Couve Lisa","Rica em proteínas, fibras, cálcio e ferro","maço",2.50,true),
-  (0860,"Maxixe","O maxixe é uma planta riquíssima em Zinco.","Kg",3.00,true),
-  (7918,"Batata Inglesa","Rico em proteínas e fonte de sais minerais.","Kg",4.25,true),
-  (8640,"Pêra Argentina","Fruta rica em fibras e tem baixo índice glicêmico","Kg",9.70,false);
-  
+  (8005861,"MAÇÃ FUJI","Embalagem de 500 gramas.","Und",5.49,TRUE,"sHy654weQa.jpg"),
+  (7568796,"REPOLHO VERDE","Unidade de aproximadamente 100 gramas","Und",1.65,TRUE,"5LK8treasWQ.jpg"),
+  (0860057,"KIWI","Embalagem com 150 gramas.","Und",3.79,TRUE,"k3tT551ASa.jpg"),
+  (7910878,"PIMENTÃO VERDE","Embalagem com 300 gramas.","Und",4.25,TRUE,"WuA75rd21K.jpg"),
+  (8649630,"BROCOLIS NINJA","Unidade","Und",5.75,FALSE,"Ki643eFGbb.jpg");
+INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
+VALUES
+  (8878061,"VAGEM","Embalagem de 500 gramas.","Und",4.99,TRUE,"V6BTq121hg.jpg"),
+  (7596206,"MELÃO AMARELO","Meia unidade, aproximadamente 200 gramas.","Und",1.65,TRUE,"Mel34IUa5b.jpg"),
+  (0869780,"TOMATE ANDREA","Embalagem com 250 gramas.","Und",3.79,TRUE,"Tbv54q2E1q.jpg"),
+  (7058918,"MARACUJÁ AZEDO","Embalagem com 300 gramas.","Und",4.25,TRUE,"FV542WwqaP.jpg"),
+  (8988640,"ALFACE AMERICANA","Unidade","Und",3.75,TRUE,"yT54QW12e1.jpg");
+    
  
  
