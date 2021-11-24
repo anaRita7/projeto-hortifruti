@@ -4,6 +4,8 @@ import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.repository.PedidoRepository;
 import com.br.backendhortifruti.model.service.PedidoService;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -81,5 +83,11 @@ public class PedidoServiceImpl implements PedidoService {
 	public List<Pedido> consultarPedidosInativos() {
 		return pedidoRepository.findBySituacaoFalse();
 	}
+
+	@Override
+	public Page<Pedido> consultarPedidos(Pageable pageable) {
+		return pedidoRepository.findAll(pageable);
+	}
+
 
 }

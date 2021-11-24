@@ -3,7 +3,6 @@ package com.br.backendhortifruti.controllerTest;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.PedidoController;
 import com.br.backendhortifruti.model.dto.PedidoDTO;
-import com.br.backendhortifruti.model.dto.PedidoForListDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.entity.Endereco;
@@ -52,15 +50,14 @@ public class PedidoControllerTest {
 		endereco.setId(1);
 
 		Pedido pedido01 = new Pedido();
-		pedido01.setDataHora(LocalDateTime.now());
 		pedido01.setCliente(cliente);
 		pedido01.setEndereco(endereco);
 		pedido01.setSituacao(true);
-		pedido01.setValorTotal(720.00);
-		pedido01.setQuantidadeTotal(26);
-		pedido01.setDesconto(0.10);
+		pedido01.setValorTotal(850.00);
+		pedido01.setQuantidadeTotal(15);
+		pedido01.setDesconto(0.20);
 		pedido01.setValorFinal(712.80);
-		pedido01.setFormaPagamento("dinheiro");
+		pedido01.setFormaPagamento("debito");
 
 		ResponseEntity<String> pedidoResponse = pedidoController.incluirPedido(pedido01);
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
@@ -111,11 +108,11 @@ public class PedidoControllerTest {
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-	@Test
-	public void consultarPedidosTest() {
-		ResponseEntity<List<PedidoForListDTO>> pedidoResponse = pedidoController.consultarPedidos();
-		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
-	}
+//	@Test
+//	public void consultarPedidosTest() {
+//		ResponseEntity<List<PedidoForListDTO>> pedidoResponse = pedidoController.consultarPedidos();
+//		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
+//	}
 	
 	@Test
 	public void consultarPedidoTest() {
@@ -128,8 +125,4 @@ public class PedidoControllerTest {
 		ResponseEntity<PedidoDTO> pedidoResponse = pedidoController.consultarPedidoPorCodigo(123);
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
-	
-	// TODO: consultarProdutosAtivos()
-	
-	// TODO: consultarProdutosInativos()
 }
