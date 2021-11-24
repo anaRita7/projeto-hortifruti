@@ -59,7 +59,7 @@
                                     <th></th>
                                     <th>
                                         <form>
-                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" type="number"> % 
+                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%" placeholder="%">
                                             <button (click)=aplicarDesconto(percDesconto)> Aplicar </button>
                                         </form>
                                     </th>
