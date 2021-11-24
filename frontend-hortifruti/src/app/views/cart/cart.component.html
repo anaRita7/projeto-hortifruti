@@ -37,71 +37,31 @@
                                     </td>
                                     <td>
                                         <div class="pb-1 cart-title-prod">{{item.produto.nome}} - {{item.produto.unidadeMedida}}</div>
-                                        <div class="pb-2 cart-price-prod">R$ {{item.produto.valorUnitario}}</div>
-                                        <div>
-                                            <input [(ngModel)]="item.quantidadeTotal" type="number" class="cart-input" min="0">
-                                        </div>
+                                        <div class="pb-2 cart-price-prod">{{item.produto.valorUnitario | currency: 'BRL'}}</div>
+                                        <div class="pb-2 cart-price-prod">Qtde: {{item.quantidadeTotal}}</div>
                                     </td>
                                     <td>
                                         <div class="cart-price-prod">
-                                            <span>R$ {{item.valorTotal}}</span>
+                                            <span>{{item.valorTotal | currency: 'BRL'}}</span>
                                             <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm ml-2" onclick="">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                                <!--teste samy-->
-                                <tr style="background-color: #fff;">
-                                    <td>
-                                        <img class="cart-img"
-                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
-                                            alt="">
-                                    </td>
-                                    <td>
-                                        <div class="pb-1 cart-title-prod">BANANA PRATA - Kg</div>
-                                        <div class="pb-2 cart-price-prod">R$ 8,80</div>
-                                        <div>
-                                            <input type="number" class="cart-input" min="0">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="cart-price-prod">
-                                            R$ 8,80
-                                            <button type="button" class="btn btn-danger btn-sm ml-2" onclick="">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <!--teste samy-->
-                                <tr style="background-color: #fff;">
-                                    <td>
-                                        <img class="cart-img"
-                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
-                                            alt="">
-                                    </td>
-                                    <td>
-                                        <div class="pb-1 cart-title-prod">BANANA PRATA - Kg</div>
-                                        <div class="pb-2 cart-price-prod">R$ 8,80</div>
-                                        <div>
-                                            <input type="number" class="cart-input" min="0">
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="cart-price-prod">
-                                            R$ 8,80
-                                            <button type="button" class="btn btn-danger btn-sm ml-2" onclick="">
-                                                <i class="fas fa-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
+                                <tr style="background-color: #fff;"> 
+                                    <th>Subtotal:</th>
+                                    <th></th>
+                                    <th>{{pedido.valorTotal | currency: 'BRL'}}</th>
                                 </tr>
                                 <tr style="background-color: #fff;"> 
                                     <th>Desconto:</th>
                                     <th></th>
                                     <th>
-                                        <input class="cart-price-off" type="number" mask="percent" suffix="%" placeholder="%">
+                                        <form>
+                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" type="number"> % 
+                                            <button (click)=aplicarDesconto(percDesconto)> Aplicar </button>
+                                        </form>
                                     </th>
                                 </tr>
                             </tbody>
@@ -109,7 +69,7 @@
                                 <tr class="text-center cart-table-tfoot">
                                     <th>TOTAL:</th>
                                     <th></th>
-                                    <th>R$ 18,50</th>
+                                    <th>{{pedido.valorFinal | currency: 'BRL'}}</th>
                                 </tr>
                             </tfoot>
                         </table>

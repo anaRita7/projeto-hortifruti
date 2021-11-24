@@ -34,6 +34,7 @@ CREATE TABLE produto(
 	unidade_medida varchar(5), 
 	valor_unitario float(5,2),
 	status boolean,
+	imagem varchar (150),
 	PRIMARY KEY (id_produto)
 );
 
@@ -67,5 +68,3 @@ ALTER TABLE item_do_pedido ADD CONSTRAINT fk_produto_item_do_pedido FOREIGN KEY 
 
 ALTER TABLE endereco RENAME COLUMN cidade TO localidade, RENAME COLUMN estado TO uf, RENAME COLUMN rua TO logradouro;
 
-select * from endereco;
-select * from cliente;
