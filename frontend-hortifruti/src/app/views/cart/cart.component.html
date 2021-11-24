@@ -159,17 +159,17 @@
                         <div class="d-flex justify-content-center">
                             <div class="col-sm-5">
                                 <label for="">Pagamento em:</label>
-                                <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                    <option>Cartão de Crédito</option>
-                                    <option>Cartão de Débito</option>
-                                    <option>Dinheiro</option>
+                                <select [(ngModel)]="pedido.formaPagamento" name="pagamento" class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option value="Crédito">Cartão de Crédito</option>
+                                    <option value="Débito">Cartão de Débito</option>
+                                    <option value="Em Dinheito">Dinheiro</option>
                                 </select>
                             </div>
                             <div class="col-sm-5">
                                 <label for="">Status</label>
-                                <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                    <option>Pago</option>
-                                    <option>Não Pago - Pagamento na Entrega</option>
+                                <select [(ngModel)]="pedido.situacao" class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option value="false">Pago</option>
+                                    <option value="true">Não Pago - Pagamento na Entrega</option>
                                 </select>
                             </div>
                         </div>
@@ -208,13 +208,53 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Documento</label>
-                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
+                    <input [(ngModel)]="cliente.documento" type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary">Buscar</button>
+                <button type="button" class="btn btn-primary" (click)=buscarDodumento(cliente.documento) data-toggle="modal" data-target="#registerCliModal">Buscar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Register Clients-->
+<div class="modal fade" id="registerCliModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info m-0">
+                <h5 class="modal-title" id="exampleModalLabel">Informações do Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>PF / PJ</label>
+                    <select name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
+                        <option value="F">Pessoa Física </option> 
+                        <option value="J">Pessoa Jurídica</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Documento</label>
+                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ" mask="000.000.000-00||00.000.000/0000-00">
+                </div>
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" name="nome" class="form-control" placeholder="Insira o nome ...">
+                </div>
+                <div class="form-group">
+                    <label>Telefone</label>
+                    <input type="tel" name="telefone" class="form-control" placeholder="Insira o número ..." mask="(00) 0000-0000||(00) 0 0000-0000">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>
