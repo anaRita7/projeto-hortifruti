@@ -29,18 +29,7 @@ export class CartComponent implements OnInit {
   }
 
   removeItem(item: Item){
-    const element = {
-      quantidadeTotal: item.quantidadeTotal,
-      valorTotal: item.valorTotal,
-      produto: {
-        id: item.produto.id,
-        nome: item.produto.nome,
-        unidadeMedida: item.produto.unidadeMedida,
-        valorUnitario: item.produto.valorUnitario
-      }
-    }
-    var itens = JSON.parse(localStorage.getItem("itens")||"[]");
-    const index = itens.indexOf(element) - 1;
+    const index = this.itens.indexOf(item);
     this.itens.splice(index, 1);
     localStorage.setItem("itens",JSON.stringify(this.itens))
   }
