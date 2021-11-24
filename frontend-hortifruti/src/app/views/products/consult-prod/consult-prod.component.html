@@ -35,8 +35,8 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="text-center">
-                        <tr *ngFor = "let produto of produtos">
+                    <tbody class="text-center"> 
+                        <tr *ngFor = "let produto of produtos | paginate: {itemsPerPage: itemsPerPage, currentPage: page}">
                             <td>
                                 {{produto.codigo}}
                             </td>
@@ -71,6 +71,10 @@
                         </tr>
                     </tbody>
                 </table>
+                <hr>
+                <div class="d-flex w-100">
+                    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Próximo" class="ml-auto mr-4"></pagination-controls>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>
@@ -93,7 +97,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Código</label>
-                    <input type="text" name="codigo" class="form-control" [(ngModel)]="produto.codigo">
+                    <input type="text" name="codigo" class="form-control" [(ngModel)]="produto.codigo" readonly>
                 </div>
                 <div class="form-group">
                     <label>Produto</label>
