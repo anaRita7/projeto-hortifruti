@@ -110,8 +110,12 @@ public class ProdutoController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirProduto(@PathVariable("id") Integer produtoId) {
-		produtoService.excluirProduto(produtoId);
-		return new ResponseEntity<>(HttpStatus.OK);
+		try {
+			produtoService.excluirProduto(produtoId);
+			return new ResponseEntity<>(HttpStatus.OK);
+		}catch (Exception e) {
+			return new ResponseEntity<>("Falha ao deletar o produto!", HttpStatus.EXPECTATION_FAILED);
+		}
 	}
 
 	@PutMapping("/{id}/status")
