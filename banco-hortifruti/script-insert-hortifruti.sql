@@ -17,7 +17,7 @@ VALUES
   (45454323,"BANANA PRATA","Embalagem com 500 gramas.","Und",3.29,TRUE,"Gh5YgTerQ1.jpg"),
   (86506849,"ABACATE","Unidade de aproximadamente 150 gramas","Und",2.45,FALSE,"6HJi85GPoi.jpg"),
   (69951181,"LIMÃO TAITI","Embalagem com 400 gramas.","Und",2.19,TRUE,"Lm0766trea.jpg"),
-  (97800426,"CEBOLA AMRELA","Aproximadamente 500 gramas.","Kg",3.25,TRUE,"5Yy654Fhha.jpg"),
+  (97800426,"CEBOLA AMARELA","Aproximadamente 500 gramas.","Kg",3.25,TRUE,"5Yy654Fhha.jpg"),
   (57821763,"ALHO","Embalagem com 200 gramas.","Und",2.75,TRUE,"8I8AL86Gt5A.jpg");
 INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
 VALUES
