@@ -6,5 +6,6 @@ export class Produto{
     unidadeMedida?: String;
     valorUnitario?: number;
     status?: boolean;
+    imagem?: string;
 
 }
