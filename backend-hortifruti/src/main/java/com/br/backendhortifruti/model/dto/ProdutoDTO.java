@@ -14,6 +14,8 @@ public class ProdutoDTO {
 	
 	private String nome;
 	
+	private String imagem;
+	
 	private String descricao;
 
     private String unidadeMedida;
@@ -25,6 +27,7 @@ public class ProdutoDTO {
     public ProdutoDTO(Produto produto) {
     	this.codigo = produto.getCodigo();
     	this.nome = produto.getNome();
+    	this.imagem = produto.getImagem();
         this.descricao = produto.getDescricao();
         this.unidadeMedida = produto.getUnidadeMedida();
         this.valorUnitario = produto.getValorUnitario();
