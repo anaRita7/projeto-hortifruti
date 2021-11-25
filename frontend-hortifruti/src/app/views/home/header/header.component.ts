@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
+import { Item } from 'src/app/model/Item';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  qtdeItens: number = 0
 
-  ngOnInit(): void {
+  constructor() { 
   }
 
+  ngOnInit(): void {
+    this.qtdeItens = JSON.parse(localStorage.getItem("itens")||"[]").length
+  }
+  
 }
