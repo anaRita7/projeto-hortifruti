@@ -13,14 +13,56 @@ export class ConsultProdComponent implements OnInit {
   produtos: Produto[] = [];
   produto: Produto = new Produto();
 
-  page: number = 1;
-  itemsPerPage: number = 6;
+  page = 1;
+  count = 0;
+  sort = "status,desc";
+  pageSize = 5;
+  pageSizes = [5, 10, 15];
 
   constructor(private service:ProdutoService, private router: Router) {
-    this.service.getProdutos().subscribe(data => this.produtos = data);
+    this.retrieveProduto();
    }
 
   ngOnInit(): void {
+  }
+
+  getRequestParams(page: number, pageSize: number, sort: string): any {
+    let params: any = {};
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    params[`sort`] = sort;
+
+    return params;
+  }
+
+  retrieveProduto(): void {
+    const params = this.getRequestParams(this.page, this.pageSize, this.sort);
+    this.service.getProdutos(params)
+    .subscribe(
+      response => {
+        this.produtos = response.content;
+        this.count = response.totalElements;
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveProduto();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveProduto();
   }
 
   irModalEditar(codigo: any){

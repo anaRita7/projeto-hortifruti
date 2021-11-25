@@ -13,14 +13,56 @@ export class ConsultCliComponent implements OnInit {
   clientes: Cliente[] = [];
   cliente: Cliente = new Cliente();
 
-  page: number = 1;
-  itemsPerPage: number = 6;
+  page = 1;
+  count = 0;
+  pageSize = 5;
+  pageSizes = [5, 10, 15];
+
 
   constructor(private service:ClienteService, private router:Router) {
-     this.service.getClientes().subscribe(data => this.clientes = data);
+    this.retrieveCliente();
   }
   ngOnInit(): void {
   }
+
+  getRequestParams(page: number, pageSize: number): any {
+    let params: any = {};
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    return params;
+  }
+
+  retrieveCliente(): void {
+    const params = this.getRequestParams(this.page, this.pageSize);
+    this.service.getClientes(params)
+    .subscribe(
+      response => {
+        this.clientes = response.content;
+        this.count = response.totalElements;
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveCliente();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveCliente();
+  }
+
+
 
   irModalEditar(documento: any){
     this.service.getClientePorDocumento(documento).subscribe(data => 

@@ -133,26 +133,26 @@ public class ProdutoMockTest {
 		assertThat(produto.getCodigo() == 1234);
 	}
 	
-	@DisplayName("Consultar produtos ativos")
-	@Test
-	public void consultarProdutosAtivosMockTest() {
-		List<Produto> listaProdutos = new ArrayList<Produto>();
-		
-		Produto p1 = new Produto();
-		p1.setStatus(true);
-		listaProdutos.add(p1);
-		
-		Produto p2 = new Produto();
-		p2.setStatus(true);
-		listaProdutos.add(p2);
-		
-		when(produtoRepository.findByStatusTrue()).thenReturn(listaProdutos);
-		List<Produto> produtoResponse = produtoServiceImpl.consultarProdutosAtivos();
-		assertNotNull(produtoResponse);
-		assertThat(listaProdutos.size() == 2);
-		assertThat(p1.isStatus() == true);
-		assertThat(p2.isStatus() == true);
-	}
+//	@DisplayName("Consultar produtos ativos")
+//	@Test
+//	public void consultarProdutosAtivosMockTest() {
+//		List<Produto> listaProdutos = new ArrayList<Produto>();
+//
+//		Produto p1 = new Produto();
+//		p1.setStatus(true);
+//		listaProdutos.add(p1);
+//
+//		Produto p2 = new Produto();
+//		p2.setStatus(true);
+//		listaProdutos.add(p2);
+//
+//		when(produtoRepository.findByStatusTrue()).thenReturn(listaProdutos);
+//		List<Produto> produtoResponse = produtoServiceImpl.consultarProdutosAtivos();
+//		assertNotNull(produtoResponse);
+//		assertThat(listaProdutos.size() == 2);
+//		assertThat(p1.isStatus() == true);
+//		assertThat(p2.isStatus() == true);
+//	}
 	
 	@DisplayName("Consultar produto ativo por codigo")
 	@Test

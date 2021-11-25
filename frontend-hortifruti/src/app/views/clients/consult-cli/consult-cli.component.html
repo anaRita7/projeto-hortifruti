@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr *ngFor = "let cliente of clientes | paginate: {itemsPerPage: itemsPerPage, currentPage: page}">
+                        <tr *ngFor = "let cliente of clientes | paginate: {itemsPerPage: pageSize, currentPage: page, totalItems: count}">
                             <td>
                                 P{{cliente.tipo}}
                             </td>
@@ -59,8 +59,14 @@
                 </table>
                 <hr>
                 <div class="d-flex w-100">
-                    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Próximo" class="ml-auto mr-4"></pagination-controls>
-                </div>
+                    <pagination-controls (pageChange)="handlePageChange($event)"  [responsive]="true" previousLabel="Anterior" nextLabel="Próximo" class="ml-auto mr-4"></pagination-controls>
+                    <div class="mt-3"> Itens por pagina:
+                            <select (change)="handlePageSizeChange($event)">
+                                <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                    {{ size }}
+                                 </option>
+                            </select>
+                    </div>
             </div>
             <!-- /.card-body -->
         </div>

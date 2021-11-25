@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 import { Produto } from '../model/Produto';
@@ -15,12 +15,15 @@ export class ProdutoService {
   
   private readonly urlBase='http://localhost:8080/api/produto';
 
-  getProdutos() {
-    return this.http.get<Produto[]>(this.urlBase);
+ 
+  getProdutos(params: any): Observable<any> {
+    console.log("params", params);
+    return this.http.get<any>(this.urlBase, { params });
   }
 
-  getProdutosAtivos() {
-    return this.http.get<Produto[]>(this.urlBase+'/ativos');
+  getProdutosAtivos(params: any): Observable<any> {
+    console.log("params", params);
+    return this.http.get<any>(this.urlBase+'/ativos', { params });
   }
 
   getProdutoCodigo(codigo: string){

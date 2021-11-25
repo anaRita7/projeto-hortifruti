@@ -60,18 +60,12 @@ public class ClienteController {
 		}
 	}
 
-	@GetMapping("/page")
+	@GetMapping
 	public ResponseEntity<PageImpl<ClienteDTO>> consultarClientes(Pageable pageable) {
 		Page<Cliente> page = clienteService.consultarClientes(pageable);
 		PageImpl<ClienteDTO> pageDTO = new PageImpl<>(ClienteDTO.converterLista(page.getContent()), pageable,
 				page.getTotalElements());
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
-	}
-
-	@GetMapping
-	public ResponseEntity<List<ClienteDTO>> consultarClientes() {
-		List<Cliente> list = clienteService.consultarClientes();
-		return new ResponseEntity<>(ClienteDTO.converterLista(list), HttpStatus.OK);
 	}
 
 	@GetMapping("/documento/{documento}")
