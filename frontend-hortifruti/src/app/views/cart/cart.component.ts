@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.soma = 0;
-    this.percDesconto;
+    this.percDesconto = 0;
     this.updateTotal();
   }
 
