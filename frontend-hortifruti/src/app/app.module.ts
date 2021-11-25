@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProdutoService } from './services/produto.service';
 import { SharedModule } from './shared/shared.module';
+
 import { CartComponent } from './views/cart/cart.component';
 import { ConsultCliComponent } from './views/clients/consult-cli/consult-cli.component';
 import { RegisterCliComponent } from './views/clients/register-cli/register-cli.component';
