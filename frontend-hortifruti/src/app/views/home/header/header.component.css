@@ -1,4 +1,15 @@
 nav{
     position: sticky;
     top: 0;
+    background-color: #DF7700;
+}
+
+.fa-bars {
+    color: aliceblue;
+    font-size: 1.2rem;
+}
+
+.fa-shopping-cart {
+    color: aliceblue;
+    font-size: 1.2rem;
 }

@@ -16,14 +16,19 @@ export class HomeComponent implements OnInit {
   constructor(private service:ProdutoService) {
     this.service.getProdutosAtivos().subscribe(
       data => this.produtosAtivos = data);
-
-          
    }
    
   ngOnInit(): void {
+    console.log(this.produtosAtivos);
+  }
+
+  adjustQtd(qtd:any){
+    console.log('teste')
   }
 
   adicionaCarrinho(codProduto: any, qtde: any){
+    qtde = qtde === undefined ? 1 : qtde;
+
     let novoProduto = true;
     this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
     this.service.getProdutoCodigo(codProduto).subscribe(data => {

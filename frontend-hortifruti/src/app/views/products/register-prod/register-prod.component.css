@@ -12,7 +12,38 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    margin-top: 20px;
 }
+
+.btn-cad {
+    width: 120px;
+    height: 40px;
+    border-radius: 60px;
+    border: none;
+    background-color: #B6DD69;
+    color: aliceblue;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-cad:hover {
+    background-color: #6EBB00;
+}
+
 .required{
     color: red;
+}
+
+.content-wrapper {
+    background-color: #fff;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card-header {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
