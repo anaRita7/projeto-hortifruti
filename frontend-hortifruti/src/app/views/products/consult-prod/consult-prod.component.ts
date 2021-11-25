@@ -116,6 +116,9 @@ export class ConsultProdComponent implements OnInit {
         case 404: 
           alert('Produto não localizado!'); 
           break; 
+        case 417: 
+          alert("Produto não pode ser deletado!"); 
+          break; 
       }
     }
   )}
