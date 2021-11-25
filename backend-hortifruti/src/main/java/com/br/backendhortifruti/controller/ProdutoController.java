@@ -39,10 +39,9 @@ public class ProdutoController {
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
 
-
 	@GetMapping("/ativos")
 	public ResponseEntity<PageImpl<ProdutoAtivoDTO>> consultarProdutosAtivosPage(Pageable pageable) {
-		Page<Produto> page = produtoService.consultarProdutos(pageable);
+		Page<Produto> page = produtoService.consultarProdutosAtivos(pageable);
 		PageImpl<ProdutoAtivoDTO> pageDTO = new PageImpl<>(ProdutoAtivoDTO.converterList(page.getContent()), pageable, page.getTotalElements());
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
