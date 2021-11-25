@@ -68,24 +68,23 @@ export class CartComponent implements OnInit {
     this.cliService.getClientePorDocumento(this.cliente.documento).subscribe(data =>
       {
         this.idCliente = data.id
-        console.log(data.id)
+        console.log("passei aqui")
         this.salvarPedido();
       },
       erro =>
       {
-        switch(erro.status) {
-          case 400:
-            alert(erro.error.mensagem);
-            break;
-          case 404:
+        if(erro.status == 404) {
             alert('Cliente não localizado!');
-            break;
         }
       })
   }
 
   salvarCliente(){
-    this.cliService.postCliente(this.cliente).subscribe(data => this.idCliente = data.id) 
+    this.cliService.postCliente(this.cliente).subscribe(data => {
+      this.idCliente = data.id
+      console.log(data.id)
+      console.log(this.idCliente)
+    }) 
     this.salvarPedido()
   }
 
@@ -125,6 +124,7 @@ export class CartComponent implements OnInit {
         }
 
         console.log(item)
+        this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
         this.itemService.postItem(item).subscribe(data =>{console.log(data)})
         const index = this.itens.indexOf(element);
         this.itens.splice(index, 1);
