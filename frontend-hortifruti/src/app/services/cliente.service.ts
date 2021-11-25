@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from '../model/Cliente';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ export class ClienteService {
 
   private readonly urlBase='http://localhost:8080/api/cliente';
 
-  getClientes() {
-    return this.http.get<Cliente[]>(this.urlBase);
+  getClientes(params: any): Observable<any> {
+    console.log("params", params);
+    return this.http.get<any>(this.urlBase, { params });
   }
 
   getClientePorDocumento(documento: any){

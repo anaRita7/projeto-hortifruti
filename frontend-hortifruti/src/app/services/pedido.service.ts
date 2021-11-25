@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PedidoForConsult } from '../model/PedidoForConsult';
 import { Pedido } from '../model/Pedido';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class PedidoService {
 
   private readonly urlBase='http://localhost:8080/api/pedido';
 
-  getPedidos() {
-    return this.http.get<PedidoForConsult[]>(this.urlBase);
+  getPedidos(params: any): Observable<any> {
+    console.log("params", params);
+    return this.http.get<any>(this.urlBase, { params });
   }
 
   getPedidoCodigo(codigo: string){
