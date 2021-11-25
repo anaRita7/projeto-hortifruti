@@ -58,7 +58,7 @@
                                     <th>Desconto:</th>
                                     <th></th>
                                     <th>
-                                        <form>
+                                        <form class="d-flex">
                                             <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%">
                                             <button (click)=aplicarDesconto() class="btn-off"> APLICAR </button>
                                         </form>
