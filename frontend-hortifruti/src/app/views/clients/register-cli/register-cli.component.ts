@@ -11,7 +11,9 @@ import { Cliente } from './../../../model/Cliente';
   styleUrls: ['./register-cli.component.css']
 })
 export class RegisterCliComponent implements OnInit {
-    
+
+  public customPatterns = { 'A': { pattern: new RegExp('\[A-Z\]')} };
+
   cliente: Cliente = new Cliente();
 
   constructor(private service: ClienteService, private router : Router) {}
