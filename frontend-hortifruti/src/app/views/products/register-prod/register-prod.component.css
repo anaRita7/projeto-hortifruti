@@ -16,8 +16,8 @@
 }
 
 .btn-cad {
-    width: 150px;
-    height: 50px;
+    width: 120px;
+    height: 40px;
     border-radius: 60px;
     border: none;
     background-color: #B6DD69;
@@ -27,7 +27,7 @@
 }
 
 .btn-cad:hover {
-    background-image: linear-gradient(to left, #6EBB00, #B6DD69, #F8AC55, #DF7700);
+    background-color: #6EBB00;
 }
 
 .required{
@@ -39,11 +39,10 @@
 }
 
 .card {
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .card-header {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-color: #B6DD69;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }

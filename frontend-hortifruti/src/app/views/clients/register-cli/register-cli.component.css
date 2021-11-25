@@ -7,7 +7,7 @@
     padding: 1px;
 }
 
-.btn-cad-prod {
+.btn-cad-cli {
     display: flex;
     justify-content: center;
     text-align: center;
@@ -15,16 +15,30 @@
     margin-top: 15px;
 }
 
+.btn-cad {
+    width: 120px;
+    height: 40px;
+    border-radius: 60px;
+    border: none;
+    background-color: #B6DD69;
+    color: aliceblue;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn-cad:hover {
+    background-color: #6EBB00;
+}
+
 .content-wrapper {
     background-color: #fff;
 }
 
 .card {
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .card-header {
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    background-color: #B6DD69;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
