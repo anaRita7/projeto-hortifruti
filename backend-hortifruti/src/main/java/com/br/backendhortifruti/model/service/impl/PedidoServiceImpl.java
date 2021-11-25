@@ -75,16 +75,6 @@ public class PedidoServiceImpl implements PedidoService {
 	}
 
 	@Override
-	public List<Pedido> consultarPedidosAtivos() {
-		return pedidoRepository.findBySituacaoTrue();
-	}
-
-	@Override
-	public List<Pedido> consultarPedidosInativos() {
-		return pedidoRepository.findBySituacaoFalse();
-	}
-
-	@Override
 	public Page<Pedido> consultarPedidos(Pageable pageable) {
 		return pedidoRepository.findAll(pageable);
 	}
