@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/model/Cliente';
 import { Endereco } from 'src/app/model/Endereco';
@@ -26,6 +26,7 @@ export class CartComponent implements OnInit {
   itens: Item[] = [];
   pedido: Pedido = new Pedido;
   cliente: Cliente = new Cliente;
+  @ViewChild('closebutton') closebutton: ElementRef;
 
   constructor(private pedidoService: PedidoService,private router: Router, private endService: EnderecoService, private itemService: ItemService, private serviceBuscaCep: BuscaCEPService, private serviceProd: ProdutoService, private cliService:ClienteService) {
     this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
@@ -70,6 +71,8 @@ export class CartComponent implements OnInit {
         this.idCliente = data.id
         console.log(data.id)
         this.salvarPedido();
+        console.log(this.closebutton.nativeElement)
+        this.closebutton.nativeElement.click();
       },
       erro =>
       {
@@ -78,7 +81,7 @@ export class CartComponent implements OnInit {
             alert(erro.error.mensagem);
             break;
           case 404:
-            alert('Cliente não localizado!');
+            alert('Cliente não localizado!')
             break;
         }
       })
@@ -123,15 +126,15 @@ export class CartComponent implements OnInit {
           quantidadeTotal: element.quantidadeTotal,
           valorTotal: element.valorTotal
         }
-
+        
         console.log(item)
         this.itemService.postItem(item).subscribe(data =>{console.log(data)})
         const index = this.itens.indexOf(element);
         this.itens.splice(index, 1);
         localStorage.setItem("itens",JSON.stringify(this.itens))
+        this.router.navigate(['tax-invoice'])
       });
     })
-    this.router.navigate(['shopping-orders'])
   })
   }
 }
