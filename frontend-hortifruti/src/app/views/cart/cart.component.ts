@@ -33,7 +33,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.soma = 0;
-    this.percDesconto;
+    this.percDesconto = 0;
     this.updateTotal();
   }
 
@@ -53,7 +53,10 @@ export class CartComponent implements OnInit {
 
   geraEndereco(inputCep: any){
     this.serviceBuscaCep.buscarCEP(inputCep).subscribe(
-      data => this.endereco = data
+      data => {
+        alert('CEP inválido');
+        this.endereco = data
+      }
     )
   }
 
