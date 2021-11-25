@@ -93,7 +93,7 @@
                     <div class=" m-2 d-flex flex-wrap">
                         <div class="col-sm-3">
                             <label>CEP</label>
-                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep">
+                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep" mask="00000-000">
                         </div>
                         <div class="" style="margin-top: 35px;">
                             <button (click)="geraEndereco(endereco.cep)" class="btn-adress">GERAR ENDEREÇO</button>
