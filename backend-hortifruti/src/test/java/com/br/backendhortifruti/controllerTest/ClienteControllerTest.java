@@ -17,7 +17,7 @@ import com.br.backendhortifruti.model.handler.IvalidDocumentException;
 
 @SpringBootTest
 public class ClienteControllerTest {
-
+	
 	@Autowired
 	ClienteController clienteController;
 
@@ -32,7 +32,7 @@ public class ClienteControllerTest {
 		ResponseEntity<ClienteIdDTO> clienteResponse = clienteController.incluirCliente(cliente06);
 		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(201);
 	}
-
+	
 	@Test
 	public void alterarClienteTeste() {
 		Cliente cliente06 = new Cliente();

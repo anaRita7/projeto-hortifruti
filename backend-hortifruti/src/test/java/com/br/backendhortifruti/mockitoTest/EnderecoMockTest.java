@@ -131,6 +131,4 @@ public class EnderecoMockTest {
 		assertNotNull(enderecoResponse);
 		assertThat(ed1.getId() == 1);
 	}
-	
-	// TODO: exluir endereco
 }

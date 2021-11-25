@@ -41,9 +41,9 @@
                                         <div class="pb-2 cart-price-prod">Qtde: {{item.quantidadeTotal}}</div>
                                     </td>
                                     <td>
-                                        <div class="cart-price-prod">
+                                        <div class="cart-price-prod d-flex justify-content-center">
                                             <span>{{item.valorTotal | currency: 'BRL'}}</span>
-                                            <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm ml-2" onclick="">
+                                            <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm ml-3" onclick="">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
@@ -52,15 +52,15 @@
                                 <tr style="background-color: #fff;"> 
                                     <th>Subtotal:</th>
                                     <th></th>
-                                    <th>{{pedido.valorTotal | currency: 'BRL'}}</th>
+                                    <th class="text-center">{{pedido.valorTotal | currency: 'BRL'}}</th>
                                 </tr>
                                 <tr style="background-color: #fff;"> 
                                     <th>Desconto:</th>
                                     <th></th>
                                     <th>
                                         <form>
-                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%" placeholder="%">
-                                            <button (click)=aplicarDesconto(percDesconto)> Aplicar </button>
+                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%">
+                                            <button (click)=aplicarDesconto() class="btn-off"> APLICAR </button>
                                         </form>
                                     </th>
                                 </tr>
@@ -93,10 +93,10 @@
                     <div class=" m-2 d-flex flex-wrap">
                         <div class="col-sm-3">
                             <label>CEP</label>
-                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep">
+                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep" mask="00000-000">
                         </div>
                         <div class="" style="margin-top: 35px;">
-                            <button (click)="geraEndereco(endereco.cep)">GERAR ENDEREÇO</button>
+                            <button (click)="geraEndereco(endereco.cep)" class="btn-adress">GERAR ENDEREÇO</button>
                         </div>
                         <div style="margin-top: 40px;">
                             <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="ml-2"
@@ -214,7 +214,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)=buscarDodumento(cliente.documento) data-toggle="modal" data-target="#registerCliModal">Buscar</button>
+                <button type="button" class="btn btn-primary" (click)=buscarDocumento() data-dismiss="modal" data-toggle="modal" data-target="#registerCliModal">Buscar</button>
             </div>
         </div>
     </div>
@@ -227,34 +227,30 @@
         <div class="modal-content">
             <div class="modal-header bg-info m-0">
                 <h5 class="modal-title" id="exampleModalLabel">Informações do Cliente</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" #closebutton data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
                     <label>PF / PJ</label>
-                    <select name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
+                    <select [(ngModel)]="cliente.tipo" name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
                         <option value="F">Pessoa Física </option> 
                         <option value="J">Pessoa Jurídica</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Documento</label>
-                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ" mask="000.000.000-00||00.000.000/0000-00">
-                </div>
-                <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" name="nome" class="form-control" placeholder="Insira o nome ...">
+                    <input [(ngModel)]="cliente.nome" type="text" name="nome" class="form-control" placeholder="Insira o nome ...">
                 </div>
                 <div class="form-group">
                     <label>Telefone</label>
-                    <input type="tel" name="telefone" class="form-control" placeholder="Insira o número ..." mask="(00) 0000-0000||(00) 0 0000-0000">
+                    <input [(ngModel)]="cliente.telefone" type="tel" name="telefone" class="form-control" placeholder="Insira o número ..." mask="(00) 0000-0000||(00) 0 0000-0000">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-primary" (click)="salvarCliente()" data-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>
