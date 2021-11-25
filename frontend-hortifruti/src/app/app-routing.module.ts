@@ -8,6 +8,7 @@ import { RegisterCliComponent } from './views/clients/register-cli/register-cli.
 import { ConsultCliComponent } from './views/clients/consult-cli/consult-cli.component';
 import { CartComponent } from './views/cart/cart.component';
 import { OrdersComponent } from './views/orders/orders.component';
+import { TaxInvoiceComponent } from './views/tax-invoice/tax-invoice.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
   {
     path: "shopping-orders",
     component: OrdersComponent
+  },
+  {
+    path: "tax-invoice",
+    component: TaxInvoiceComponent
   }
 ];
 
