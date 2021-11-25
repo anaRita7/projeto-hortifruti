@@ -38,11 +38,11 @@
                     </div>
                     <div class="mx-3 d-flex align-items-center">
                         <h6 class="pr-2 mb-0">Documento:</h6>
-                        <p class="mb-0">{{pedido.cliente.documento}}</p>
+                        <p class="mb-0">{{pedido.cliente.documento | cpfCnpj}}</p>
                     </div>
                     <div class="mx-3 d-flex align-items-center">
                         <h6 class="pr-2 mb-0">Telefone:</h6>
-                        <p class="mb-0">{{pedido.cliente.telefone}}</p>
+                        <p class="mb-0">{{pedido.cliente.telefone | phone}}</p>
                     </div>
                     <hr>
                     <div class="mx-3 d-flex align-items-center">
@@ -51,7 +51,7 @@
                     </div>
                     <div class="mx-3 d-flex align-items-center">
                         <h6 class="pr-2 mb-0">Total:</h6>
-                        <p class="mb-0">{{pedido.valorFinal}}</p>
+                        <p class="mb-0">{{pedido.valorFinal | currency: 'BRL'}}</p>
                     </div>
                     <div class="mx-3 d-flex align-items-center">
                         <h6 class="pr-2 mb-0">Forma de Pagamento:</h6>
