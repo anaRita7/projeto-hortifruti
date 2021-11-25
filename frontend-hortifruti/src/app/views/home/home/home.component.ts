@@ -27,6 +27,8 @@ export class HomeComponent implements OnInit {
   }
 
   adicionaCarrinho(codProduto: any, qtde: any){
+    qtde = qtde === undefined ? 1 : qtde;
+
     let novoProduto = true;
     this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
     this.service.getProdutoCodigo(codProduto).subscribe(data => {
