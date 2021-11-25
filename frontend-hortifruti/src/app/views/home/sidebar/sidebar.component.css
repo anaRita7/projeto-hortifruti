@@ -5,3 +5,7 @@
 .sidebar-items {
     background-color: #DF7700 !important;
 }
+
+.logo {
+    max-width: 220px;
+}
