@@ -1,5 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { DOCUMENT } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Route } from '@angular/router';
+import { Pedido } from 'src/app/model/Pedido';
+import { PedidoService } from 'src/app/services/pedido.service';
 
 @Component({
   selector: 'app-tax-invoice',
@@ -8,9 +10,17 @@ import { DOCUMENT } from '@angular/common';
 })
 export class TaxInvoiceComponent implements OnInit {
 
-  constructor(@Inject(DOCUMENT) private document: Document) { }
+  pedido: Pedido = new Pedido();
+  id:any;
+
+  constructor(private pedidoService:PedidoService, private router: ActivatedRoute) {
+    this.id = this.router.snapshot.paramMap.get("id");
+    this.pedidoService.getPedido(this.id).subscribe(
+      data => this.pedido = data
+    )
+   }
 
   ngOnInit(): void {
-    (this.document.querySelector('.modal-backdrop') as Element).classList.remove('show')
+
   }
 }

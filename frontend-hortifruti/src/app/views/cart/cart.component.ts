@@ -129,7 +129,7 @@ export class CartComponent implements OnInit {
         const index = this.itens.indexOf(element);
         this.itens.splice(index, 1);
         localStorage.setItem("itens",JSON.stringify(this.itens))
-        this.router.navigate(['tax-invoice'])
+        this.router.navigate(['tax-invoice', this.idPedido])
       });
     })
   })
