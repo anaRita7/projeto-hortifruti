@@ -52,9 +52,16 @@ export class CartComponent implements OnInit {
   }
 
   geraEndereco(inputCep: any){
-    this.serviceBuscaCep.buscarCEP(inputCep).subscribe(
-      data => this.endereco = data
-    )
+    if(inputCep != null && inputCep !== '') {
+      this.serviceBuscaCep.buscarCEP(inputCep).subscribe(
+        data => {
+          this.endereco = data
+          if(this.endereco.logradouro == null){
+            alert("CEP inválido")
+          }
+        }
+      )
+    }
   }
 
   removeItem(item: Item){
