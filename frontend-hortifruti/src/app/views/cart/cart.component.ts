@@ -26,7 +26,6 @@ export class CartComponent implements OnInit {
   itens: Item[] = [];
   pedido: Pedido = new Pedido;
   cliente: Cliente = new Cliente;
-  @ViewChild('closebutton') closebutton: ElementRef;
 
   constructor(private pedidoService: PedidoService,private router: Router, private endService: EnderecoService, private itemService: ItemService, private serviceBuscaCep: BuscaCEPService, private serviceProd: ProdutoService, private cliService:ClienteService) {
     this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
@@ -71,8 +70,6 @@ export class CartComponent implements OnInit {
         this.idCliente = data.id
         console.log("passei aqui")
         this.salvarPedido();
-        console.log(this.closebutton.nativeElement)
-        this.closebutton.nativeElement.click();
       },
       erro =>
       {
