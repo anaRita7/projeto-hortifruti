@@ -38,34 +38,34 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr *ngFor = "let pedido of pedidos">
+                        <tr *ngFor = "let ped of pedidos">
                             <td>
-                                {{pedido.codigo}}
+                                {{ped.codigo}}
                             </td>
                             <td>
-                                {{pedido.dataHora}}
+                                {{ped.dataHora}}
                             </td>
                             <td>
-                                {{pedido.nomeCliente}}
+                                {{ped.nomeCliente}}
                             </td>
                             <td>
-                               {{pedido.quantidadeTotal}}
+                               {{ped.quantidadeTotal}}
                             </td>
                             <td>
-                                {{pedido.valorFinal | currency: 'BRL'}}
+                                {{ped.valorFinal | currency: 'BRL'}}
                              </td>
                             <td class="project-state text-center">
-                                <div *ngIf="pedido.situacao; then thenBlock else elseBlock"></div>
+                                <div *ngIf="ped.situacao; then thenBlock else elseBlock"></div>
                                 <ng-template #thenBlock><span class="badge badge-success py-2">Não Pago</span></ng-template>
                                 <ng-template #elseBlock><span class="badge badge-danger py-2">Pago</span></ng-template>
                             </td>
                             <td class="project-actions text-center">
-                                <a href="" data-toggle="modal" data-target="#viewOrdersModal" style="margin-right: 20px;">
+                                <a data-toggle="modal" data-target="#viewOrdersModal" (click)="detalharPedido(ped.codigo)"style="margin-right: 20px;">
                                     <i class="fas fa-eye text-dark"></i>
                                 </a>
                                 <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
                                     data-target="#editOrdersModal"
-                                    [disabled]="!pedido.situacao">
+                                    [disabled]="!ped.situacao">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Editar
@@ -82,8 +82,8 @@
     <!-- /.content-wrapper -->
 </div>
 
-<!-- Modal View Orders-->
-<div class="modal fade" id="viewOrdersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<!-- Modal View Orders -->
+<!-- <div class="modal fade" id="viewOrdersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -105,48 +105,50 @@
                                 <div class="d-flex w-100 justify-content-between">
                                     <div class="d-flex align-items-center">
                                         <h6 class="pr-2 mb-0">Código:</h6>
-                                        <p class="mb-0">562565</p>
+                                        <p class="mb-0">{{pedido.codigo}}</p>
                                     </div>
                                     <div class="d-flex align-items-center">
                                         <h6 class="pr-2 mb-0">Data & Hora:</h6>
-                                        <p class="mb-0">23/11/2021 16:37:05</p>
+                                        <p class="mb-0">{{pedido.dataHora}}</p>
                                     </div>
                                 </div>
                             </div>
                             <hr>
                             <div class="mx-3 d-flex align-items-center">
                                 <h6 class="pr-2 mb-0">Cliente:</h6>
-                                <p class="mb-0">Vitória Costa</p>
+                                <p class="mb-0">{{pedido.cliente.nome}}</p>
                             </div>
                             <div class="mx-3 d-flex align-items-center">
                                 <h6 class="pr-2 mb-0">Documento:</h6>
-                                <p class="mb-0">136.519.226-18</p>
+                                <p class="mb-0">{{pedido.cliente.documento | cpfCnpj}}</p>
                             </div>
                             <div class="mx-3 d-flex align-items-center">
                                 <h6 class="pr-2 mb-0">Telefone:</h6>
-                                <p class="mb-0">(41) 9 8680-2672</p>
+                                <p class="mb-0">{{pedido.cliente.telefone | phone}}</p>
                             </div>
                             <hr>
                             <div class="mx-3 d-flex align-items-center">
                                 <h6 class="pr-2 mb-0">Quantidade de Items:</h6>
-                                <p class="mb-0">12</p>
+                                <p class="mb-0">{{pedido.quantidadeTotal}}</p>
                             </div>
                             <div class="mx-3 d-flex align-items-center">
                                 <h6 class="pr-2 mb-0">Total:</h6>
-                                <p class="mb-0">R$ 67,99</p>
+                                <p class="mb-0">{{pedido.valorFinal | currency: 'BRL'}}</p>
                             </div>
                             <div class="mx-3 d-flex align-items-center">
                                 <h6 class="pr-2 mb-0">Forma de Pagamento:</h6>
-                                <p class="mb-0">Cartão de Crédito</p>
+                                <p class="mb-0">{{pedido.formaPagamento}}</p>
                             </div>
                             <hr>
                             <div class="mx-3 d-flex align-items-center">
                                 <h6 class="pr-2 mb-0">Endereço:</h6>
-                                <p class="mb-0">Rua Emma Tribess, 100 - Tribess, Blumenau/SC - Apto 503</p>
+                                <p class="mb-0">{{pedido.endereco.logradouro}}, {{pedido.endereco.numero}} - , {{pedido.endereco.localidade}}/{{pedido.endereco.uf}} - {{pedido.endereco.complemento}}</p>
                             </div>
                             <div class="mx-3 d-flex align-items-center">
                                 <h6 class="pr-2 mb-0">Status:</h6>
-                                <p class="mb-0">Pago</p>
+                                <div *ngIf="pedido.situacao; then thenBlock else elseBlock"></div>
+                            <ng-template #thenBlock><p class="mb-0">Não Pago</p></ng-template>
+                            <ng-template #elseBlock><p class="mb-0">Pago</p></ng-template>
                             </div>
 
                             <table class="table table-striped projects mt-3">
@@ -162,50 +164,55 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!--teste samy-->
-                                    <tr style="background-color: #fff;">
+                                
+                                    <tr *ngFor="let item of pedido.itens" style="background-color: #fff;">
                                         <td class="d-flex">
-                                            <img class="cart-img" src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
+                                            <img class="cart-img" [src]="'http://localhost:8080/api/imagem/' + item.produto.imagem"
                                             style="width: 50px; height: 50px;">
                                             <div class="ml-3" style="font-size: 12px;">
-                                                <div class="cart-title-prod">BANANA PRATA - Und</div>
-                                                <div class="cart-price-prod">R$ 3.29</div>
-                                                <div class="cart-price-prod">Qtde: 1</div>
+                                                <div class="cart-title-prod">{{item.produto.nome}} - {{item.produto.unidadeMedida}}</div>
+                                                <div class="cart-price-prod">{{item.produto.valorUnitario | currency: 'BRL'}}</div>
+                                                <div class="cart-price-prod">Qtde: {{item.quantidadeTotal}}</div>
                                             </div>
                                         </td>     
                                         <td></td>                                   
                                         <td class="text-right">
-                                                R$ 3.29                                            
+                                                {{item.valorTotal | currency: 'BRL'}}                                            
                                         </td>
+                                    </tr>
+                                    <tr style="background-color: #fff;"> 
+                                        <th>Subtotal:</th>
+                                        <th></th>
+                                        <th class="text-right">{{pedido.valorTotal | currency: 'BRL'}}</th>
                                     </tr>
                                     <tr style="background-color: #fff;"> 
                                         <th>Desconto:</th>
                                         <th></th>
-                                        <th class="text-right">0%</th>
+                                        <th class="text-right">{{pedido.desconto*100}}%</th>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr class="text-center cart-table-tfoot">
                                         <th class="text-left">TOTAL:</th>
                                         <th></th>
-                                        <th class="text-right">R$ 3.29</th>
+                                        <th class="text-right">{{pedido.valorFinal | currency: 'BRL'}}</th>
                                     </tr>
                                 </tfoot>
                             </table>
-                            <!-- /.container-fluid -->
+                            
                         </div>
-                        <!-- /.content -->
+                       
                     </div>
-                    <!-- /.content-wrapper -->
+                   
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
 
 <!-- Modal Edit Orders-->
 <div class="modal fade" id="editOrdersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

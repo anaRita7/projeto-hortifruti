@@ -1,5 +1,6 @@
 import { Cliente } from "./Cliente";
 import { Endereco } from "./Endereco";
+import { Item } from "./Item";
 
 export class Pedido{
     id?: any;
@@ -13,4 +14,5 @@ export class Pedido{
     desconto!:number;
     formaPagamento?: String;
     valorFinal!: number;
+    itens?: Item[]
 }

@@ -23,6 +23,12 @@ export class RegisterCliComponent implements OnInit {
   }
 
   postClient(){
+    if(this.cliente.nome == null){
+      alert("Preencha todos os dados. Campo de nome está vazio!");
+    }
+    else if(this.cliente.documento == null){
+      alert("Preencha todos os dados. Campo de documento está vazio!");
+    }
     this.service.postCliente(this.cliente)
     .subscribe(data => {
       alert('Cliente cadastrado com sucesso');

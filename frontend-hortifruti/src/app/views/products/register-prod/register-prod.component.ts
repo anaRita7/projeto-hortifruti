@@ -32,13 +32,7 @@ export class RegisterProdComponent implements OnInit {
       this.formDataUploadFile.append('file', this.selectedImage);
     }
 
-    this.service.postProduto(this.produto, this.formDataUploadFile).subscribe
-    (data =>
-    {
-      if(this.produto.nome == null && this.produto.valorUnitario == null && this.produto.unidadeMedida == null && this.produto.status == null){
-        alert("Preencha todos os dados!");
-      }
-      else if(this.produto.nome == null){
+    if(this.produto.nome == null){
         alert("Preencha todos os dados. Campo de nome está vazio!");
       }
       else if(this.produto.valorUnitario == null){
@@ -50,21 +44,25 @@ export class RegisterProdComponent implements OnInit {
       else if(this.produto.status == null){
         alert("Preencha todos os dados. Campo de status está vazio!");
       }
+      else if(this.produto.nome == null && this.produto.valorUnitario == null && this.produto.unidadeMedida == null && this.produto.status == null){
+        alert("Preencha todos os dados!");
+      }
       else{
-        alert("Produto criado com sucesso!");
-        this.router.navigate(['products-consult']);
-      }
-      
-    },
-    erro =>
-    {
-      if(erro.status == 400) {
-        alert(erro.error.mensagem);
-      }
+        this.service.postProduto(this.produto, this.formDataUploadFile).subscribe
+        (data =>{
+          alert("Produto criado com sucesso!");
+          this.router.navigate(['products-consult']);
+        },
+        erro =>
+        {
+          if(erro.status == 400) {
+            alert(erro.error.mensagem);
+          }
+        }
+        );
+      }    
     }
-    );
-  }
-
+    
   getNameImagem(imagem: File) {
     let arrayTermos = imagem.name.split(".");
     let fileName = this.randomStr(10) + "." + arrayTermos[arrayTermos.length - 1];
