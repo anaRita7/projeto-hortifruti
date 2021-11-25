@@ -60,7 +60,7 @@
                                     <th>
                                         <form>
                                             <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%" placeholder="%">
-                                            <button (click)=aplicarDesconto(percDesconto)> Aplicar </button>
+                                            <button (click)=aplicarDesconto()> Aplicar </button>
                                         </form>
                                     </th>
                                 </tr>
@@ -214,7 +214,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)=buscarDodumento(cliente.documento) data-toggle="modal" data-target="#registerCliModal">Buscar</button>
+                <button type="button" class="btn btn-primary" (click)=buscarDocumento() data-dismiss="modal" data-toggle="modal" data-target="#registerCliModal">Buscar</button>
             </div>
         </div>
     </div>
@@ -234,27 +234,23 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>PF / PJ</label>
-                    <select name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
+                    <select [(ngModel)]="cliente.tipo" name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
                         <option value="F">Pessoa Física </option> 
                         <option value="J">Pessoa Jurídica</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Documento</label>
-                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ" mask="000.000.000-00||00.000.000/0000-00">
-                </div>
-                <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" name="nome" class="form-control" placeholder="Insira o nome ...">
+                    <input [(ngModel)]="cliente.nome" type="text" name="nome" class="form-control" placeholder="Insira o nome ...">
                 </div>
                 <div class="form-group">
                     <label>Telefone</label>
-                    <input type="tel" name="telefone" class="form-control" placeholder="Insira o número ..." mask="(00) 0000-0000||(00) 0 0000-0000">
+                    <input [(ngModel)]="cliente.telefone" type="tel" name="telefone" class="form-control" placeholder="Insira o número ..." mask="(00) 0000-0000||(00) 0 0000-0000">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-primary" (click)="salvarCliente()" data-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>
