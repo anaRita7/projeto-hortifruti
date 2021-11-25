@@ -33,36 +33,40 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr *ngFor = "let cliente of clientes">
+                        <tr *ngFor = "let cliente of clientes | paginate: {itemsPerPage: itemsPerPage, currentPage: page}">
                             <td>
                                 P{{cliente.tipo}}
                             </td>
                             <td>
-                                {{cliente.documento}}
+                                {{cliente.documento | cpfCnpj}}
                             </td>
                             <td>
                                 {{cliente.nome}}
                             </td>
                             <td>
-                                {{cliente.telefone}}
+                                {{cliente.telefone | phone}}
                             </td>
                             <td class="project-actions text-center">
                                 <button (click)="irModalEditar(cliente.documento)" type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
                                     data-target="#editCliModal" >
                                     <i class="fas fa-pencil-alt">
                                     </i>
-                                    Edit
+                                    Editar
                                 </button>
                                 <button (click)="irModalExcluir(cliente.documento)"  type="button" class="btn btn-danger btn-sm" data-toggle="modal"
                                     data-target="#delCliModal">
                                     <i class="fas fa-trash">
                                     </i>
-                                    Delete
+                                    Deletar
                                 </button>
                             </td>
                         </tr>
                     </tbody>
                 </table>
+                <hr>
+                <div class="d-flex w-100">
+                    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Próximo" class="ml-auto mr-4"></pagination-controls>
+                </div>
             </div>
             <!-- /.card-body -->
         </div>
@@ -76,7 +80,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info m-0">
-                <h5 class="modal-title" id="exampleModalLabel">Informações do Cliente</h5>
+                <h5 class="modal-title" id="exampleModalLabel">INFORMAÇÕES DO CLIENTE</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -91,7 +95,7 @@
                 </div>
                 <div class="form-group">
                     <label>Documento</label>
-                    <input type="text" name="documento" class="form-control" value="cliente.documento" [(ngModel)]="cliente.documento">
+                    <input type="text" name="documento" class="form-control" value="cliente.documento" [(ngModel)]="cliente.documento" mask="000.000.000-00||00.000.000/0000-00">
                 </div>
                 <div class="form-group">
                     <label>Nome</label>
@@ -99,7 +103,7 @@
                 </div>
                 <div class="form-group">
                     <label>Telefone</label>
-                    <input type="tel" name="telefone" class="form-control" [(ngModel)]="cliente.telefone">
+                    <input type="tel" name="telefone" class="form-control" mask="(00) 0000-0000||(00) 0 0000-0000" [(ngModel)]="cliente.telefone" >
                 </div>
             </div>
             <div class="modal-footer">
@@ -122,7 +126,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>As Informações não poderão ser recuperadas</p>
+                <p class="m-2">As Informações não poderão ser recuperadas</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

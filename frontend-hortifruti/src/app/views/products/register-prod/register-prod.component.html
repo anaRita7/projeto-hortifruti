@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header mx-3 my-3">
-        <div class="card card-success">
+        <div class="card">
             <div class="card-header">
                 <h2 class="title-cad-prod">Cadastar Produto</h2>
             </div>
@@ -12,44 +12,49 @@
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Nome <span class="required">*</span></label>
-                                <input type="text" name="nome-produto" class="form-control" placeholder="Insira o nome ..." [(ngModel)]="produto.nome" required>
+                                <input type="text" name="nome-produto" class="form-control"
+                                    placeholder="Insira o nome ..." [(ngModel)]="produto.nome" required>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <!-- text input -->
                             <div class="form-group">
                                 <label>Preço <span class="required">*</span></label>
-                                <input type="text" name="preco" class="form-control" prefix="R$ " mask="0,00 ||00,00 ||000,00 ||0000,00" thousandSeparator="," [(ngModel)]="produto.valorUnitario" required>
+                                <input type="text" name="preco" class="form-control" prefix="R$ " mask="separator.2"
+                                    thousandSeparator="." [(ngModel)]="produto.valorUnitario" required>
                             </div>
                         </div>
                         <div class="col-sm-3">
                             <label for="exampleSelectBorder">Unidade de Medida <span class="required">*</span></label>
-                            <select [(ngModel)]="produto.unidadeMedida" name="unidade-medida" class="custom-select form-control-border" id="exampleSelectBorder" required>
+                            <select [(ngModel)]="produto.unidadeMedida" name="unidade-medida"
+                                class="custom-select form-control-border" id="exampleSelectBorder" required>
                                 <option value="Kg">Kg</option>
                                 <option value="und">Un</option>
                             </select>
                         </div>
                         <div class="col-sm-3">
                             <label for="exampleSelectBorder">Status <span class="required">*</span></label>
-                            <select [(ngModel)]="produto.status" name="status" class="custom-select form-control-border" id="exampleSelectBorder" required>
+                            <select [(ngModel)]="produto.status" name="status" class="custom-select form-control-border"
+                                id="exampleSelectBorder" required>
                                 <option value="true">Disponível</option>
                                 <option value="false">Indisponível</option>
                             </select>
                         </div>
                         <div class="col-sm-6">
-                            <!-- textarea -->
                             <div class="form-group">
-                              <label>Descrição</label>
-                              <textarea name="descricao" class="form-control" maxlength="70" rows="3" placeholder="Insira a descrição..." [(ngModel)]="produto.descricao"></textarea>
+                                <label>Descrição</label>
+                                <textarea name="descricao" class="form-control" maxlength="50" rows="3"
+                                    placeholder="Insira a descrição..." [(ngModel)]="produto.descricao"></textarea>
                             </div>
                         </div>
-                        <div class="col-sm-5">
-                              <label>Adicione a imagem do produto:</label>
-                            <input type="file" id="myfile" name="myfile" accept="image/png, image/jpeg" (change)="onFileChanged($event)" [(ngModel)]="produto.imagem">
+                        <div class="col-sm-4">
+                            <label>Adicione a imagem do produto: <span class="required">*</span></label>
+                            <input type="file" id="myfile" name="myfile" accept="image/png, image/jpeg"
+                                (change)="onFileChanged($event)" [(ngModel)]="produto.imagem">
                         </div>
                     </div>
                     <div class="btn-cad-prod">
-                        <input type="submit" (click)="postProduct()" value="Cadastar">
+                        <input type="submit" (click)="postProduct()" value="Cadastrar" class="btn-cad">
                     </div>
                 </form>
             </div>

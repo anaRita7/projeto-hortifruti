@@ -1,21 +1,18 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
+<aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed sidebar">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a routerLink="/" class="brand-link d-flex justify-content-center">
         <!-- COLOCAR IMAGEM DA LOGO -->
-        <span class="brand-text font-weight-light">HORTIFRUTI</span>
+        <img src="./assets/images/logo.svg" alt="" class="logo">
     </a>
 
     <!-- Sidebar -->
     <div class="sidebar">
-
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a routerLink="/" class="nav-link active">
+                    <a routerLink="/" class="nav-link active sidebar-items">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Home
@@ -23,7 +20,7 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a class="nav-link active">
+                    <a class="nav-link active sidebar-items">
                         <i class="nav-icon fas fa-store"></i>
                         <p>
                             Produtos
@@ -33,20 +30,20 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a routerLink="/products-register" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-edit"></i>
                                 <p>Cadastrar</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a routerLink="/products-consult" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-clipboard-list"></i>
                                 <p>Consultar</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item menu-open">
-                    <a class="nav-link active">
+                    <a class="nav-link active sidebar-items">
                         <i class="nav-icon fas fa-id-card"></i>
                         <p>
                             Clientes
@@ -56,20 +53,20 @@
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a routerLink="/clients-register" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-edit"></i>
                                 <p>Cadastrar</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a routerLink="/clients-consult" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
+                                <i class="nav-icon fas fa-clipboard-list"></i>
                                 <p>Consultar</p>
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li class="nav-item menu-open">
-                    <a routerLink="/shopping-cart" class="nav-link active">
+                    <a routerLink="/shopping-cart" class="nav-link active sidebar-items">
                         <i class="nav-icon fas fa-shopping-cart"></i>
                         <p>
                             Carrinho
@@ -77,7 +74,7 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a routerLink="/shopping-orders" class="nav-link active">
+                    <a routerLink="/shopping-orders" class="nav-link active sidebar-items">
                         <i class="nav-icon fas fa-cash-register"></i>
                         <p>
                             Pedidos

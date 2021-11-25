@@ -7,15 +7,11 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.PedidoController;
 import com.br.backendhortifruti.model.dto.PedidoDTO;
-import com.br.backendhortifruti.model.dto.PedidoForListDTO;
-import com.br.backendhortifruti.model.dto.PedidoForPageDTO;
+import com.br.backendhortifruti.model.dto.PedidoIdDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.entity.Endereco;
@@ -43,7 +39,7 @@ public class PedidoControllerTest {
 		pedido01.setValorFinal(765.80);
 		pedido01.setFormaPagamento("dinheiro");
 
-		ResponseEntity<String> pedidoResponse = pedidoController.incluirPedido(pedido01);
+		ResponseEntity<PedidoIdDTO> pedidoResponse = pedidoController.incluirPedido(pedido01);
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 
@@ -64,7 +60,7 @@ public class PedidoControllerTest {
 		pedido01.setValorFinal(712.80);
 		pedido01.setFormaPagamento("debito");
 
-		ResponseEntity<String> pedidoResponse = pedidoController.incluirPedido(pedido01);
+		ResponseEntity<PedidoIdDTO> pedidoResponse = pedidoController.incluirPedido(pedido01);
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
@@ -81,7 +77,7 @@ public class PedidoControllerTest {
 		pedido.setEndereco(endereco);
 		pedido.setCodigo(3015);
 
-		ResponseEntity<String> pedidoResponse = pedidoController.incluirPedido(pedido);
+		ResponseEntity<PedidoIdDTO> pedidoResponse = pedidoController.incluirPedido(pedido);
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(422);
 	}
 	

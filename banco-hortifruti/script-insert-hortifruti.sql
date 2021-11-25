@@ -1,31 +1,59 @@
+//clientes
+
 INSERT INTO cliente (tipo, documento, nome, telefone) VALUES 
-  ("J","605.737.218-04","Paula Jacobs","(31)3223-2122"),
-  ("F","622.184.166-25","Iona Pereira","(31)3222-2544"),
-  ("F","640.243.813-45","Maria Silva","(31)3221-4788"),
-  ("F","769.750.722-54","Silas Sandoval","(31)3229-5552"),
-  ("F","546.171.253-60","Grady Prates","(31)3223-0899");
+  ("F","60573721804","Paula Jacobs","3732232122"),
+  ("F","62218416625","Iara Pereira","3532222544"),
+  ("F","64024381345","Maria Silva","6232214788"),
+  ("F","76975072254","Silas Sandoval","6532295552"),
+  ("F","54617125360","Graciele Prates","8732230899");
  INSERT INTO cliente (tipo, documento, nome, telefone) VALUES 
-  ("J","754.031.324-43","Fernando Maia","(31)3222-0577"),
-  ("F","655.747.758-83","Denise Vieira","(31)3221-2049"),
-  ("J","115.886.861-14","Cody Chapman","(31)3222-1897"),
-  ("J","418.717.313-27","Rigel Rocha","(31)3223-3133"),
-  ("J","048.541.195-63","Caick Stanton","(31)3221-2011");
+  ("F","75403132443","Fernando Maia","8732220577"),
+  ("F","65574775883","Denise Vieira","3832212049"),
+  ("F","11588686114","Felipe Cardoso","6732221897"),
+  ("F","41871731327","Raquel Rocha","1132233133"),
+  ("F","04854119563","Caick Stanton","2132212011");
+ INSERT INTO cliente (tipo, documento, nome, telefone) VALUES
+  ("J","04854119500063","Restaurante da Dona Jura","1132212011");
+  ("J","08745112100005","Restaurante Dois Irmãos","2122215097");
+  ("J","78994521300011","Creche Pedacinho do Céu","1132212055");
+  ("J","03874966100069","Restaurante Popular","3332212011");
  
+ 
+//produtos
   
-INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status)
+INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
 VALUES
-  (4323,"Banana Prata","Fruta rica em potássio.","Kg",5.29,true),
-  (6849,"Abacate","Rico em ferro, potássio e vitaminas","Kg",1.45,false),
-  (6991,"Cenoura Vermelha","Possui vitaminas B, C e K.","Kg",2.19,true),
-  (9726,"Cebola Amarela","Esta cebola possui um sabor mais ácido.","Kg",4.25,true),
-  (5763,"Pimentão Verde","Rico em antioxidantes.","Kg",1.75,TRUE);
-INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status)
+  (45454323,"BANANA PRATA","Embalagem com 500 gramas.","Und",3.29,TRUE,"Gh5YgTerQ1.jpg"),
+  (86506849,"ABACATE","Unidade de aproximadamente 150 gramas","Und",2.45,FALSE,"6HJi85GPoi.jpg"),
+  (69951181,"LIMÃO TAITI","Embalagem com 400 gramas.","Und",2.19,TRUE,"Lm0766trea.jpg"),
+  (97800426,"CEBOLA AMARELA","Aproximadamente 500 gramas.","Kg",3.25,TRUE,"5Yy654Fhha.jpg"),
+  (57821763,"ALHO","Embalagem com 200 gramas.","Und",2.75,TRUE,"8I8AL86Gt5A.jpg");
+INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
 VALUES
-  (8861,"Maçã Fuji","Rico em vitaminas B1, B2, ferro e fósforo.","Kg",5.49,true),
-  (7596,"Couve Lisa","Rica em proteínas, fibras, cálcio e ferro","maço",2.50,true),
-  (0860,"Maxixe","O maxixe é uma planta riquíssima em Zinco.","Kg",3.00,true),
-  (7918,"Batata Inglesa","Rico em proteínas e fonte de sais minerais.","Kg",4.25,true),
-  (8640,"Pêra Argentina","Fruta rica em fibras e tem baixo índice glicêmico","Kg",9.70,false);
-  
+  (8005861,"MAÇÃ FUJI","Embalagem de 500 gramas.","Und",5.49,TRUE,"sHy654weQa.jpg"),
+  (7568796,"REPOLHO VERDE","Unidade de aproximadamente 100 gramas","Und",1.65,TRUE,"5LK8treasWQ.jpg"),
+  (0860057,"KIWI","Embalagem com 150 gramas.","Und",3.79,TRUE,"k3tT551ASa.jpg"),
+  (7910878,"PIMENTÃO VERDE","Embalagem com 300 gramas.","Und",4.25,TRUE,"WuA75rd21K.jpg"),
+  (8649630,"BROCOLIS NINJA","Unidade","Und",5.75,FALSE,"Ki643eFGbb.jpg");
+INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
+VALUES
+  (8878061,"VAGEM","Embalagem de 500 gramas.","Und",4.99,TRUE,"V6BTq121hg.jpg"),
+  (7596206,"MELÃO AMARELO","Meia unidade, aproximadamente 200 gramas.","Und",1.65,TRUE,"Mel34IUa5b.jpg"),
+  (0869780,"TOMATE ANDREA","Embalagem com 250 gramas.","Und",3.79,TRUE,"Tbv54q2E1q.jpg"),
+  (7058918,"MARACUJÁ AZEDO","Embalagem com 300 gramas.","Und",4.25,TRUE,"FV542WwqaP.jpg"),
+  (8988640,"ALFACE AMERICANA","Unidade","Und",3.75,TRUE,"yT54QW12e1.jpg");
+    
  
+//endereco
  
+ INSERT INTO endereco (cep, localidade, bairro, uf, logradouro, numero) VALUES
+ (39401844, "Montes Claros", "Alcides Rabelo", "Minas Gerais", "Avenida Josefina Rabelo", 275),
+ (39402237, "Montes Claros", "Jardim Alvorada", "Minas Gerais", "Rua Baronesa", 55),
+ (40296340), "Salvador", "Candeal", "Bahia", "Rua Paulo Afonso", 101),
+ (72302703), "Brasília", "Samambaia", "Distrito Federal", "QR 116 Conjunto 3 Comércio", 1036),
+ (88037000), "Florianópolis", "Córrego Grande", "Santa Catarina", "Rua João Pio Duarte Silva", 1179);
+ 
+
+//pedido - YYYY-MM-DD HH:MM:SS
+
+INSERT INTO pedido (codigo, data_hora, id_cliente, id_endereco, situacao, quantidade_total, valor_total, valor_final, desconto, forma_pagamento) VALUES
