@@ -12,6 +12,9 @@ export class BuscaCEPService {
   constructor(private http: HttpClient) { }
 
   buscarCEP(inputCep: any){
+    if(inputCep == null){
+      alert("CEP inválido");
+    }
       return this.http.get<Endereco>(this.urlBase + inputCep + '/json/');
   }
 }
