@@ -53,10 +53,7 @@ export class CartComponent implements OnInit {
 
   geraEndereco(inputCep: any){
     this.serviceBuscaCep.buscarCEP(inputCep).subscribe(
-      data => {
-        alert('CEP inválido');
-        this.endereco = data
-      }
+      data => this.endereco = data
     )
   }
 
