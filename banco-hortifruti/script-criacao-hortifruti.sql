@@ -29,22 +29,23 @@ CREATE TABLE pedido(
 CREATE TABLE produto(
 	id_produto bigint AUTO_INCREMENT NOT NULL,
 	codigo bigint,
-	nome varchar(30),
+	nome varchar(30) NOT NULL,
 	descricao varchar(50),
 	unidade_medida varchar(5), 
-	valor_unitario float(5,2),
+	valor_unitario float(5,2) NOT NULL,
 	status boolean,
-	imagem varchar (150),
+	imagem varchar (150) NOT NULL,
 	PRIMARY KEY (id_produto)
 );
+
 
 CREATE TABLE endereco(
 	id_endereco bigint AUTO_INCREMENT NOT NULL,
 	cep varchar(9),
-	cidade varchar(30),
+	localidade varchar(30),
 	bairro varchar(30),
-	estado varchar(30),
-	rua varchar(30),
+	uf varchar(30),
+	logradouro varchar(30),
 	complemento varchar (30),
 	numero int,
 	PRIMARY KEY (id_endereco)
@@ -64,10 +65,4 @@ ALTER TABLE pedido ADD CONSTRAINT fk_endereco_pedido FOREIGN KEY (id_endereco) R
 
 ALTER TABLE item_do_pedido ADD CONSTRAINT fk_pedido_item_do_pedido FOREIGN KEY (id_pedido) REFERENCES pedido (id_pedido);
 ALTER TABLE item_do_pedido ADD CONSTRAINT fk_produto_item_do_pedido FOREIGN KEY (id_produto) REFERENCES produto (id_produto);
-
-
-ALTER TABLE endereco RENAME COLUMN cidade TO localidade, RENAME COLUMN estado TO uf, RENAME COLUMN rua TO logradouro;
-
-
-SELECT * FROM produto p 
 
