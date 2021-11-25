@@ -40,7 +40,7 @@ const routes: Routes = [
     component: OrdersComponent
   },
   {
-    path: "tax-invoice",
+    path: "tax-invoice/:id",
     component: TaxInvoiceComponent
   }
 ];
