@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-import com.br.backendhortifruti.model.entity.Pedido;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;

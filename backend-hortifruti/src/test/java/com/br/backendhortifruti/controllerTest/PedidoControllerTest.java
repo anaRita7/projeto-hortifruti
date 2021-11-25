@@ -109,11 +109,17 @@ public class PedidoControllerTest {
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-//	@Test
-//	public void consultarPedidosTest() {
-//		ResponseEntity<List<PedidoForListDTO>> pedidoResponse = pedidoController.consultarPedidos();
-//		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
-//	}
+	/*@Test
+	public void consultarPedidosTest() {
+		ResponseEntity<List<PedidoForListDTO>> pedidoResponse = pedidoController.consultarPedidos();
+		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
+	
+	@Test
+	public void consultarPedidosTest() {
+		ResponseEntity<PageImpl<PedidoForPageDTO>> pedidoResponse = pedidoController.consultarPedidos();
+		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
+	}*/
 	
 	@Test
 	public void consultarPedidoTest() {

@@ -1,0 +1,10 @@
+.invoice-infos{
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 8px 8px 10px -3px #bfc9d4;
+}
+
+.invoice-adress {
+    margin-left: 90px;
+}

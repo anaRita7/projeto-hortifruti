@@ -124,7 +124,5 @@ public class PedidoMockTest {
 		pedidoServiceImpl.consultarPedido(1);
 		assertThat(pedido.getId() == 1);
 	}
-	
-	//TODO: excluir pedido
 }
 	

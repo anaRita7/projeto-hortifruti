@@ -9,7 +9,6 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
         <div class="card mx-2">
             <div class="card-body p-0">
                 <table class="table table-striped projects">
@@ -33,7 +32,7 @@
                             <th style="width: 10%">
                                 Status
                             </th>
-                            <th style="width: 18%">
+                            <th style="width: 15%">
                                 Opções
                             </th>
                         </tr>
@@ -61,17 +60,15 @@
                                 <ng-template #elseBlock><span class="badge badge-danger py-2">Pago</span></ng-template>
                             </td>
                             <td class="project-actions text-center">
+                                <a href="" data-toggle="modal" data-target="#viewOrdersModal" style="margin-right: 20px;">
+                                    <i class="fas fa-eye text-dark"></i>
+                                </a>
                                 <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
-                                    data-target="#editOrderModal">
+                                    data-target="#editOrdersModal"
+                                    [disabled]="!pedido.situacao">
                                     <i class="fas fa-pencil-alt">
                                     </i>
-                                    Edit
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#delProdModal">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
+                                    Editar
                                 </button>
                             </td>
                         </tr>
@@ -83,4 +80,157 @@
         <!-- /.card -->
     </div>
     <!-- /.content-wrapper -->
+</div>
+
+<!-- Modal View Orders-->
+<div class="modal fade" id="viewOrdersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info m-0 d-flex justify-content-between align-items-center">
+                <div></div>
+                <div class="text-center py-2 d-flex justify-content-center">
+                    <i class="fas fa-receipt mr-2" style="font-size: 1.5rem;"></i>
+                    <h5 class="m-0">Informações do Pedido</h5>
+                </div>
+                <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="mx-2 mt-4 pb-4 invoice-infos">
+                            <div class="mx-3">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="pr-2 mb-0">Código:</h6>
+                                        <p class="mb-0">562565</p>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <h6 class="pr-2 mb-0">Data & Hora:</h6>
+                                        <p class="mb-0">23/11/2021 16:37:05</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="mx-3 d-flex align-items-center">
+                                <h6 class="pr-2 mb-0">Cliente:</h6>
+                                <p class="mb-0">Vitória Costa</p>
+                            </div>
+                            <div class="mx-3 d-flex align-items-center">
+                                <h6 class="pr-2 mb-0">Documento:</h6>
+                                <p class="mb-0">136.519.226-18</p>
+                            </div>
+                            <div class="mx-3 d-flex align-items-center">
+                                <h6 class="pr-2 mb-0">Telefone:</h6>
+                                <p class="mb-0">(41) 9 8680-2672</p>
+                            </div>
+                            <hr>
+                            <div class="mx-3 d-flex align-items-center">
+                                <h6 class="pr-2 mb-0">Quantidade de Items:</h6>
+                                <p class="mb-0">12</p>
+                            </div>
+                            <div class="mx-3 d-flex align-items-center">
+                                <h6 class="pr-2 mb-0">Total:</h6>
+                                <p class="mb-0">R$ 67,99</p>
+                            </div>
+                            <div class="mx-3 d-flex align-items-center">
+                                <h6 class="pr-2 mb-0">Forma de Pagamento:</h6>
+                                <p class="mb-0">Cartão de Crédito</p>
+                            </div>
+                            <hr>
+                            <div class="mx-3 d-flex align-items-center">
+                                <h6 class="pr-2 mb-0">Endereço:</h6>
+                                <p class="mb-0">Rua Emma Tribess, 100 - Tribess, Blumenau/SC - Apto 503</p>
+                            </div>
+                            <div class="mx-3 d-flex align-items-center">
+                                <h6 class="pr-2 mb-0">Status:</h6>
+                                <p class="mb-0">Pago</p>
+                            </div>
+
+                            <table class="table table-striped projects mt-3">
+                                <thead>
+                                    <tr style="font-size: large;" class="text-center">
+                                        <th class="text-left">
+                                            PRODUTO
+                                        </th>
+                                        <th></th>
+                                        <th class="text-right">
+                                            SUBTOTAL
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!--teste samy-->
+                                    <tr style="background-color: #fff;">
+                                        <td class="d-flex">
+                                            <img class="cart-img" src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
+                                            style="width: 50px; height: 50px;">
+                                            <div class="ml-3" style="font-size: 12px;">
+                                                <div class="cart-title-prod">BANANA PRATA - Und</div>
+                                                <div class="cart-price-prod">R$ 3.29</div>
+                                                <div class="cart-price-prod">Qtde: 1</div>
+                                            </div>
+                                        </td>     
+                                        <td></td>                                   
+                                        <td class="text-right">
+                                                R$ 3.29                                            
+                                        </td>
+                                    </tr>
+                                    <tr style="background-color: #fff;"> 
+                                        <th>Desconto:</th>
+                                        <th></th>
+                                        <th class="text-right">0%</th>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="text-center cart-table-tfoot">
+                                        <th class="text-left">TOTAL:</th>
+                                        <th></th>
+                                        <th class="text-right">R$ 3.29</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <!-- /.container-fluid -->
+                        </div>
+                        <!-- /.content -->
+                    </div>
+                    <!-- /.content-wrapper -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit Orders-->
+<div class="modal fade" id="editOrdersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info m-0">
+                <h5 class="modal-title" id="exampleModalLabel">ALTERE O STATUS DO PEDIDO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="exampleSelectBorder">Status</label>
+                    <select name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
+                        <option value="">Pago </option> 
+                        <option value="">Não Pago</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+            </div>
+        </div>
+    </div>
 </div>

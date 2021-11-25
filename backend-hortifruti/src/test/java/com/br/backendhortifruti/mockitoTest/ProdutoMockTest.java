@@ -104,7 +104,7 @@ public class ProdutoMockTest {
 		p2.setStatus(true);
 		listaProdutos.add(p2);
 		
-		List<Produto> produtoResponse = produtoServiceImpl.consultarProdutos();
+		Page<Produto> produtoResponse = produtoServiceImpl.consultarProdutos();
 		assertNotNull(produtoResponse);
 		assertThat(listaProdutos.size() == 2);
 	}*/

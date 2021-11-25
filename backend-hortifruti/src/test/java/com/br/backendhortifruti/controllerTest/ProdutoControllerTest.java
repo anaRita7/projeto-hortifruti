@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
+
 import com.br.backendhortifruti.controller.ProdutoController;
 import com.br.backendhortifruti.model.dto.ProdutoAtivoDTO;
 import com.br.backendhortifruti.model.dto.ProdutoDTO;
@@ -56,6 +59,13 @@ public class ProdutoControllerTest {
 //		ResponseEntity<List<ProdutoDTO>> produtoResponse = produtoController.consultarProdutos();
 //		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
 //	}
+	
+	@Test
+	public void consultarProdutosTest() {
+		Pageable page = null;
+		ResponseEntity<PageImpl<ProdutoDTO>> produtoResponse = produtoController.consultarProdutos(page);
+		assertThat(produtoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
 	
 	@Test
 	public void consultarProdutoPorCodigoTest() {

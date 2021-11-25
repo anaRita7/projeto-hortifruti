@@ -20,6 +20,7 @@ import { SidebarComponent } from './views/home/sidebar/sidebar.component';
 import { OrdersComponent } from './views/orders/orders.component';
 import { ConsultProdComponent } from './views/products/consult-prod/consult-prod.component';
 import { RegisterProdComponent } from './views/products/register-prod/register-prod.component';
+import { TaxInvoiceComponent } from './views/tax-invoice/tax-invoice.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RegisterProdComponent } from './views/products/register-prod/register-p
     RegisterCliComponent,
     ConsultCliComponent,
     CartComponent,
-    OrdersComponent    
+    OrdersComponent,
+    TaxInvoiceComponent    
   ],
   imports: [
     BrowserModule,
