@@ -61,6 +61,8 @@ export class CartComponent implements OnInit {
           }
         }
       )
+    }else{
+      alert("Informe o CEP");
     }
   }
 
