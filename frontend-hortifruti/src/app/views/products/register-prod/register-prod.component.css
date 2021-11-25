@@ -12,7 +12,38 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    margin-top: 20px;
 }
+
+.btn-cad {
+    width: 150px;
+    height: 50px;
+    border-radius: 60px;
+    border: none;
+    background-color: #B6DD69;
+    color: aliceblue;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.btn-cad:hover {
+    background-image: linear-gradient(to left, #6EBB00, #B6DD69, #F8AC55, #DF7700);
+}
+
 .required{
     color: red;
+}
+
+.content-wrapper {
+    background-color: #fff;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #B6DD69;
 }

@@ -14,3 +14,17 @@
     align-items: center;
     margin-top: 15px;
 }
+
+.content-wrapper {
+    background-color: #fff;
+}
+
+.card {
+    border-radius: 15px;
+}
+
+.card-header {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: #B6DD69;
+}
