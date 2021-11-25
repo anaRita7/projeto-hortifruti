@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Pedido } from 'src/app/model/Pedido';
 import { PedidoForConsult } from 'src/app/model/PedidoForConsult';
 import { PedidoService } from 'src/app/services/pedido.service';
 
@@ -65,5 +66,9 @@ export class OrdersComponent implements OnInit {
     this.retrievePedido();
   }
 
+
+  detalharPedido(codigo: any){
+    this.service.getPedidoCodigo(codigo).subscribe(data => this.pedido = data)
+  }
 
 }

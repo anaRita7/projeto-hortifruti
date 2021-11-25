@@ -19,7 +19,7 @@ export class PedidoService {
   }
 
   getPedidoCodigo(codigo: string){
-    return this.http.get<PedidoForConsult>(this.urlBase + '/codigo/' + codigo);
+    return this.http.get<Pedido>(this.urlBase + '/codigo/' + codigo);
   }
 
   getPedido(id: string){

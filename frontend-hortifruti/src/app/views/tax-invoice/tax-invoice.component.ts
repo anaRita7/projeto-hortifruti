@@ -21,6 +21,6 @@ export class TaxInvoiceComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  }
 
+  }
 }

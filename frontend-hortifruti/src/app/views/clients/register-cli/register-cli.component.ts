@@ -11,7 +11,9 @@ import { Cliente } from './../../../model/Cliente';
   styleUrls: ['./register-cli.component.css']
 })
 export class RegisterCliComponent implements OnInit {
-    
+
+  public customPatterns = { 'A': { pattern: new RegExp('\[A-Z\]')} };
+
   cliente: Cliente = new Cliente();
 
   constructor(private service: ClienteService, private router : Router) {}
@@ -21,6 +23,12 @@ export class RegisterCliComponent implements OnInit {
   }
 
   postClient(){
+    if(this.cliente.nome == null){
+      alert("Preencha todos os dados. Campo de nome está vazio!");
+    }
+    else if(this.cliente.documento == null){
+      alert("Preencha todos os dados. Campo de documento está vazio!");
+    }
     this.service.postCliente(this.cliente)
     .subscribe(data => {
       alert('Cliente cadastrado com sucesso');
