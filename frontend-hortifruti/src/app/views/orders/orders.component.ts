@@ -12,7 +12,7 @@ import { PedidoService } from 'src/app/services/pedido.service';
 export class OrdersComponent implements OnInit {
 
   pedidos: PedidoForConsult[] = []
-  pedido: PedidoForConsult = new PedidoForConsult();
+  pedido: Pedido = new Pedido();
 
   page = 1;
   count = 0;
