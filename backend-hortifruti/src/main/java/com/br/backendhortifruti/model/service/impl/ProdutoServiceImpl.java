@@ -75,14 +75,10 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
-    public Page<Produto> consultarProdutosAtivosPage(Pageable pageable) {
-        return new PageImpl<>(produtoRepository.findByStatusTrue(), pageable, produtoRepository.findByStatusTrue().size());
+    public Page<Produto> consultarProdutosAtivos(Pageable pageable) {
+        return produtoRepository.findByStatusTrue(pageable);
     }
 
-    @Override
-    public List<Produto> consultarProdutosAtivos() {
-        return produtoRepository.findByStatusTrue();
-    }
 
     @Override
     public Produto consultarProdutoAtivoPorCodigo(Integer codigo) {
@@ -100,9 +96,4 @@ public class ProdutoServiceImpl implements ProdutoService {
         return null;
     }
 
-    @Override
-    public List<Produto> consultarProdutosInativos() {
-        return produtoRepository.findByStatusFalse();
-    }
-
-}
+ }
