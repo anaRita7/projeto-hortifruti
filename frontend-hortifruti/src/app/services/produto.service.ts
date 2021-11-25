@@ -1,8 +1,10 @@
-import { Produto } from '../model/Produto';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+
+import { Produto } from '../model/Produto';
+
 
 @Injectable({
   providedIn: 'root'

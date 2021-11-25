@@ -41,9 +41,9 @@
                                         <div class="pb-2 cart-price-prod">Qtde: {{item.quantidadeTotal}}</div>
                                     </td>
                                     <td>
-                                        <div class="cart-price-prod">
+                                        <div class="cart-price-prod d-flex justify-content-center">
                                             <span>{{item.valorTotal | currency: 'BRL'}}</span>
-                                            <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm ml-2" onclick="">
+                                            <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm ml-3" onclick="">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
@@ -52,7 +52,7 @@
                                 <tr style="background-color: #fff;"> 
                                     <th>Subtotal:</th>
                                     <th></th>
-                                    <th>{{pedido.valorTotal | currency: 'BRL'}}</th>
+                                    <th class="text-center">{{pedido.valorTotal | currency: 'BRL'}}</th>
                                 </tr>
                                 <tr style="background-color: #fff;"> 
                                     <th>Desconto:</th>
@@ -60,7 +60,7 @@
                                     <th>
                                         <form>
                                             <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%" placeholder="%">
-                                            <button (click)=aplicarDesconto()> Aplicar </button>
+                                            <button (click)=aplicarDesconto()> APLICAR </button>
                                         </form>
                                     </th>
                                 </tr>
@@ -93,10 +93,10 @@
                     <div class=" m-2 d-flex flex-wrap">
                         <div class="col-sm-3">
                             <label>CEP</label>
-                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep">
+                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep" mask="00000-000">
                         </div>
                         <div class="" style="margin-top: 35px;">
-                            <button (click)="geraEndereco(endereco.cep)">GERAR ENDEREÇO</button>
+                            <button (click)="geraEndereco(endereco.cep)" class="btn-adress">GERAR ENDEREÇO</button>
                         </div>
                         <div style="margin-top: 40px;">
                             <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="ml-2"
