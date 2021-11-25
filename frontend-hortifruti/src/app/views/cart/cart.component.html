@@ -32,7 +32,7 @@
                                 <tr style="background-color: #fff;" *ngFor = "let item of itens" >
                                     <td>
                                         <img class="cart-img"
-                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
+                                        [src]="'http://localhost:8080/api/imagem/' + item.imagem"
                                             alt="">
                                     </td>
                                     <td>
@@ -41,9 +41,9 @@
                                         <div class="pb-2 cart-price-prod">Qtde: {{item.quantidadeTotal}}</div>
                                     </td>
                                     <td>
-                                        <div class="cart-price-prod">
+                                        <div class="cart-price-prod d-flex justify-content-center">
                                             <span>{{item.valorTotal | currency: 'BRL'}}</span>
-                                            <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm ml-2" onclick="">
+                                            <button (click)="removeItem(item)" type="button" class="btn btn-danger btn-sm ml-3" onclick="">
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         </div>
@@ -52,15 +52,15 @@
                                 <tr style="background-color: #fff;"> 
                                     <th>Subtotal:</th>
                                     <th></th>
-                                    <th>{{pedido.valorTotal | currency: 'BRL'}}</th>
+                                    <th class="text-center">{{pedido.valorTotal | currency: 'BRL'}}</th>
                                 </tr>
                                 <tr style="background-color: #fff;"> 
                                     <th>Desconto:</th>
                                     <th></th>
                                     <th>
                                         <form>
-                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%" placeholder="%">
-                                            <button (click)=aplicarDesconto(percDesconto)> Aplicar </button>
+                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%">
+                                            <button (click)=aplicarDesconto() class="btn-off"> APLICAR </button>
                                         </form>
                                     </th>
                                 </tr>
@@ -93,10 +93,10 @@
                     <div class=" m-2 d-flex flex-wrap">
                         <div class="col-sm-3">
                             <label>CEP</label>
-                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep">
+                            <input type="text" name="cep" class="form-control" placeholder="Ex.: 88130-340" [(ngModel)]="endereco.cep" mask="00000-000">
                         </div>
                         <div class="" style="margin-top: 35px;">
-                            <button (click)="geraEndereco(endereco.cep)">GERAR ENDEREÇO</button>
+                            <button (click)="geraEndereco(endereco.cep)" class="btn-adress">GERAR ENDEREÇO</button>
                         </div>
                         <div style="margin-top: 40px;">
                             <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" class="ml-2"
@@ -159,17 +159,17 @@
                         <div class="d-flex justify-content-center">
                             <div class="col-sm-5">
                                 <label for="">Pagamento em:</label>
-                                <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                    <option>Cartão de Crédito</option>
-                                    <option>Cartão de Débito</option>
-                                    <option>Dinheiro</option>
+                                <select [(ngModel)]="pedido.formaPagamento" name="pagamento" class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option value="Crédito">Cartão de Crédito</option>
+                                    <option value="Débito">Cartão de Débito</option>
+                                    <option value="Em Dinheito">Dinheiro</option>
                                 </select>
                             </div>
                             <div class="col-sm-5">
                                 <label for="">Status</label>
-                                <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                    <option>Pago</option>
-                                    <option>Não Pago - Pagamento na Entrega</option>
+                                <select [(ngModel)]="pedido.situacao" class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option value="false">Pago</option>
+                                    <option value="true">Não Pago - Pagamento na Entrega</option>
                                 </select>
                             </div>
                         </div>
@@ -208,13 +208,13 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Documento</label>
-                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
+                    <input [(ngModel)]="cliente.documento" type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerCliModal">Buscar</button>
+                <button type="button" class="btn btn-primary" (click)=buscarDocumento() data-dismiss="modal" data-toggle="modal" data-target="#registerCliModal">Buscar</button>
             </div>
         </div>
     </div>
@@ -234,27 +234,23 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>PF / PJ</label>
-                    <select name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
+                    <select [(ngModel)]="cliente.tipo" name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
                         <option value="F">Pessoa Física </option> 
                         <option value="J">Pessoa Jurídica</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Documento</label>
-                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ" mask="000.000.000-00||00.000.000/0000-00">
-                </div>
-                <div class="form-group">
                     <label>Nome</label>
-                    <input type="text" name="nome" class="form-control" placeholder="Insira o nome ...">
+                    <input [(ngModel)]="cliente.nome" type="text" name="nome" class="form-control" placeholder="Insira o nome ...">
                 </div>
                 <div class="form-group">
                     <label>Telefone</label>
-                    <input type="tel" name="telefone" class="form-control" placeholder="Insira o número ..." mask="(00) 0000-0000||(00) 0 0000-0000">
+                    <input [(ngModel)]="cliente.telefone" type="tel" name="telefone" class="form-control" placeholder="Insira o número ..." mask="(00) 0000-0000||(00) 0 0000-0000">
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button type="button" class="btn btn-primary" (click)="salvarCliente()" data-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>

@@ -14,5 +14,10 @@ public class ApplicationExceptionHandler extends ResponseEntityExceptionHandler 
     public ResponseEntity npException(Exception e){
         return new ResponseEntity("Não encontrado!", HttpStatus.NOT_FOUND);
     }
+    
+    @ExceptionHandler(IvalidDocumentException.class)
+    public ResponseEntity docException(Exception e){
+        return new ResponseEntity("Documento inválido", HttpStatus.EXPECTATION_FAILED);
+    }
 
 }

@@ -1,6 +1,8 @@
 package com.br.backendhortifruti.controller;
 
 import com.br.backendhortifruti.model.dto.PedidoForPageDTO;
+import com.br.backendhortifruti.model.dto.PedidoIdDTO;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.br.backendhortifruti.model.dto.ClienteIdDTO;
 import com.br.backendhortifruti.model.dto.PedidoDTO;
 import com.br.backendhortifruti.model.dto.PedidoForListDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
@@ -68,12 +71,12 @@ public class PedidoController {
 	}
 
 	@PostMapping
-	public ResponseEntity<String> incluirPedido(@RequestBody Pedido pedido) {
+	public ResponseEntity<PedidoIdDTO> incluirPedido(@RequestBody Pedido pedido) {
 		Pedido pedidoResponse = pedidoService.incluirPedido(pedido);
 		if (pedidoResponse == null) {
-			return new ResponseEntity<>("Falha ao salvar o pedido!", HttpStatus.UNPROCESSABLE_ENTITY);
+			return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY);
 		}
-		return new ResponseEntity<>("Pedido salvo com sucesso!", HttpStatus.OK);
+		return new ResponseEntity<PedidoIdDTO>(PedidoIdDTO.converter(pedidoResponse), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")

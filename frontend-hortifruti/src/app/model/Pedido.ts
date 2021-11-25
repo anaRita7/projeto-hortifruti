@@ -1,17 +1,16 @@
 import { Cliente } from "./Cliente";
-import { Item } from "./Item";
 import { Endereco } from "./Endereco";
 
 export class Pedido{
+    id?: any;
     codigo?: number;
     dataHora?: String;
-    idCliente?: Cliente["id"];
-    idEndereco?: Endereco["id"];
+    cliente!: Cliente;
+    endereco!: Endereco;
     situacao?: boolean;
     quantidadeTotal?: number;
     valorTotal!: number;
     desconto!:number;
     formaPagamento?: String;
     valorFinal!: number;
-    idItens?: Item["id"][];
 }
