@@ -31,8 +31,7 @@ import { RegisterProdComponent } from './views/products/register-prod/register-p
     RegisterCliComponent,
     ConsultCliComponent,
     CartComponent,
-    OrdersComponent,
-    SharedModule
+    OrdersComponent    
   ],
   imports: [
     BrowserModule,
@@ -42,7 +41,8 @@ import { RegisterProdComponent } from './views/products/register-prod/register-p
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     NgxPrintModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    SharedModule
   ],
   providers: [ProdutoService],
   bootstrap: [AppComponent]

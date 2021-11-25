@@ -10,6 +10,9 @@ import { PhonePipe } from './phone-pipe/phone.pipe';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    PhonePipe
   ]
 })
 export class SharedModule { }
