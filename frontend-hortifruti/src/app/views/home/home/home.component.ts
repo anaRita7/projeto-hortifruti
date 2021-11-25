@@ -13,18 +13,60 @@ export class HomeComponent implements OnInit {
   produtosAtivos: Produto[] = [];
   defaultValue: number = 1;
 
+  page = 1;
+  count = 0;
+  pageSize = 10;
+  pageSizes = [10, 15, 20];
+
   constructor(private service:ProdutoService) {
-    this.service.getProdutosAtivos().subscribe(
-      data => this.produtosAtivos = data);
+    this.retrieveProduto();
    }
    
   ngOnInit(): void {
-    console.log(this.produtosAtivos);
   }
 
   adjustQtd(qtd:any){
-    console.log('teste')
   }
+
+
+  getRequestParams(page: number, pageSize: number): any {
+    let params: any = {};
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+
+    return params;
+  }
+
+  retrieveProduto(): void {
+    const params = this.getRequestParams(this.page, this.pageSize);
+    this.service.getProdutosAtivos(params)
+    .subscribe(
+      response => {
+        this.produtosAtivos = response.content;
+        this.count = response.totalElements;
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrieveProduto();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrieveProduto();
+  }
+
 
   adicionaCarrinho(codProduto: any, qtde: any){
     qtde = qtde === undefined ? 1 : qtde;

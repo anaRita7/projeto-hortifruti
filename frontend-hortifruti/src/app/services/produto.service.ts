@@ -21,13 +21,9 @@ export class ProdutoService {
     return this.http.get<any>(this.urlBase, { params });
   }
 
-  getProdutosAtivosPage(params: any): Observable<any> {
+  getProdutosAtivos(params: any): Observable<any> {
     console.log("params", params);
-    return this.http.get<any>(this.urlBase+'/page', { params });
-  }
-
-  getProdutosAtivos() {
-    return this.http.get<Produto[]>(this.urlBase+'/ativos');
+    return this.http.get<any>(this.urlBase+'/ativos', { params });
   }
 
   getProdutoCodigo(codigo: string){
