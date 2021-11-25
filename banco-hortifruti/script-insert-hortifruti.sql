@@ -1,4 +1,4 @@
-use hortfruit;
+use hortfruti;
 //clientes
 
 INSERT INTO cliente (tipo, documento, nome, telefone) VALUES 
