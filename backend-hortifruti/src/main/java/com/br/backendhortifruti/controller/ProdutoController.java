@@ -31,29 +31,18 @@ public class ProdutoController {
 	public ProdutoController(ProdutoService produtoService) {
 		this.produtoService = produtoService;
 	}
-	@GetMapping
-	public ResponseEntity<List<ProdutoDTO>> consultarProdutos() {
-		List<Produto> produtos = produtoService.consultarProdutosAtivos();
-		produtos.addAll(produtoService.consultarProdutosInativos());
-		return new ResponseEntity<>(ProdutoDTO.converterList(produtos), HttpStatus.OK);
-	}
 
-	@GetMapping("/page")
+	@GetMapping
 	public ResponseEntity<PageImpl<ProdutoDTO>> consultarProdutos(Pageable pageable) {
 		Page<Produto> page = produtoService.consultarProdutos(pageable);
 		PageImpl<ProdutoDTO> pageDTO = new PageImpl<>(ProdutoDTO.converterList(page.getContent()), pageable, page.getTotalElements());
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
 
-	@GetMapping("/ativos")
-	public ResponseEntity<List<ProdutoAtivoDTO>> consultarProdutosAtivos() {
-		List<Produto> produtos = produtoService.consultarProdutosAtivos();
-		return new ResponseEntity<>(ProdutoAtivoDTO.converterList(produtos), HttpStatus.OK);
-	}
 
-	@GetMapping("/page/ativos")
+	@GetMapping("/ativos")
 	public ResponseEntity<PageImpl<ProdutoAtivoDTO>> consultarProdutosAtivosPage(Pageable pageable) {
-		Page<Produto> page = produtoService.consultarProdutosAtivosPage(pageable);
+		Page<Produto> page = produtoService.consultarProdutos(pageable);
 		PageImpl<ProdutoAtivoDTO> pageDTO = new PageImpl<>(ProdutoAtivoDTO.converterList(page.getContent()), pageable, page.getTotalElements());
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
