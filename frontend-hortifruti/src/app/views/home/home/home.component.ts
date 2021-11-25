@@ -16,11 +16,14 @@ export class HomeComponent implements OnInit {
   constructor(private service:ProdutoService) {
     this.service.getProdutosAtivos().subscribe(
       data => this.produtosAtivos = data);
-
-          
    }
    
   ngOnInit(): void {
+    console.log(this.produtosAtivos);
+  }
+
+  adjustQtd(qtd:any){
+    console.log('teste')
   }
 
   adicionaCarrinho(codProduto: any, qtde: any){
