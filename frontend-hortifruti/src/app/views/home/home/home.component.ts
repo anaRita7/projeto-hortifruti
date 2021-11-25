@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
           element.valorTotal = qtde*data.valorUnitario;
           localStorage.setItem("itens",JSON.stringify(this.itens))
           novoProduto = false
+          alert("Produto alterado no pedido!");
         }
       });
 
@@ -57,6 +58,7 @@ export class HomeComponent implements OnInit {
         }
         itens.push(item);
         localStorage.setItem("itens",JSON.stringify(itens))
+        alert("Produto adicionado ao carrinho!");
       }
     })
   }
