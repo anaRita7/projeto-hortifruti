@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-tax-invoice',
@@ -7,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaxInvoiceComponent implements OnInit {
 
-  constructor() { }
+  constructor(@Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit(): void {
+    (this.document.querySelector('.modal-backdrop') as Element).classList.remove('show')
   }
-
 }
