@@ -38,13 +38,13 @@
                                 P{{cliente.tipo}}
                             </td>
                             <td>
-                                {{cliente.documento}}
+                                {{cliente.documento | cpfCnpj}}
                             </td>
                             <td>
                                 {{cliente.nome}}
                             </td>
                             <td>
-                                {{cliente.telefone}}
+                                {{cliente.telefone | phone}}
                             </td>
                             <td class="project-actions text-center">
                                 <button (click)="irModalEditar(cliente.documento)" type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
@@ -95,7 +95,7 @@
                 </div>
                 <div class="form-group">
                     <label>Documento</label>
-                    <input type="text" name="documento" class="form-control" value="cliente.documento" [(ngModel)]="cliente.documento">
+                    <input type="text" name="documento" class="form-control" value="cliente.documento" [(ngModel)]="cliente.documento" mask="000.000.000-00||00.000.000/0000-00">
                 </div>
                 <div class="form-group">
                     <label>Nome</label>
@@ -103,7 +103,7 @@
                 </div>
                 <div class="form-group">
                     <label>Telefone</label>
-                    <input type="tel" name="telefone" class="form-control" [(ngModel)]="cliente.telefone">
+                    <input type="tel" name="telefone" class="form-control" mask="(00) 0000-0000||(00) 0 0000-0000" [(ngModel)]="cliente.telefone" >
                 </div>
             </div>
             <div class="modal-footer">
