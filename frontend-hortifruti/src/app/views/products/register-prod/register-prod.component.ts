@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Produto } from 'src/app/model/Produto';
@@ -12,22 +11,22 @@ import { ProdutoService } from 'src/app/services/produto.service';
 export class RegisterProdComponent implements OnInit {
 
   produto: Produto = new Produto();
-  //selectedImage: File | undefined;
-  //formDataUploadFile: FormData | undefined;
+  selectedImage: File | undefined;
+  formDataUploadFile: FormData | undefined;
 
-  constructor(private service: ProdutoService, private router: Router) { }
+  constructor(private service: ProdutoService, private router : Router) { }
 
   ngOnInit(): void {
   }
 
-  /*onFileChanged(event: Event) {
+  onFileChanged(event: Event){
     this.selectedImage = (event.target as HTMLInputElement).files![0];
-  }*/
+  }
 
-  postProduct() {
+  postProduct(){
 
-    /*if (this.selectedImage) {
-      this.produto.imagem = this.randomStr(10);
+    if (this.selectedImage) {
+      this.produto.imagem = this.getNameImagem(this.selectedImage);
       this.formDataUploadFile = new FormData();
       this.formDataUploadFile.append('pid', this.produto.imagem);
       this.formDataUploadFile.append('file', this.selectedImage);
@@ -66,13 +65,19 @@ export class RegisterProdComponent implements OnInit {
     );
   }
 
+  getNameImagem(imagem: File) {
+    let arrayTermos = imagem.name.split(".");
+    let fileName = this.randomStr(10) + "." + arrayTermos[arrayTermos.length - 1];
+    return fileName;
+  }
+
   randomStr(tamanho: number) {
     var stringAleatoria = '';
     var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     for (var i = 0; i < tamanho; i++) {
         stringAleatoria += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-      }
-      return stringAleatoria;
-    }*/
+    }
+    return stringAleatoria;
   }
+
 }

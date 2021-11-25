@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Cliente } from 'src/app/model/Cliente';
 import { Endereco } from 'src/app/model/Endereco';
 import { Item } from 'src/app/model/Item';
 import { Pedido } from 'src/app/model/Pedido';
@@ -17,6 +18,7 @@ export class CartComponent implements OnInit {
   endereco: Endereco = new Endereco();
   itens: Item[] = [];
   pedido: Pedido = new Pedido;
+  cliente: Cliente = new Cliente;
 
   constructor(private serviceBuscaCep: BuscaCEPService, private serviceProd: ProdutoService) {
     this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
@@ -55,4 +57,7 @@ export class CartComponent implements OnInit {
     this.updateTotal()
   }
 
+  buscarDodumento(documento:any){
+    
+  }
 }

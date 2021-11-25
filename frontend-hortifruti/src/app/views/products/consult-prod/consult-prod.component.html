@@ -47,7 +47,7 @@
                                 {{produto.unidadeMedida}}
                             </td>
                             <td>
-                                {{produto.valorUnitario}}
+                                {{produto.valorUnitario | currency: 'BRL'}}
                             </td>
                             <td class="project-state text-center">
                                 <div *ngIf="produto.status; then thenBlock else elseBlock"></div>

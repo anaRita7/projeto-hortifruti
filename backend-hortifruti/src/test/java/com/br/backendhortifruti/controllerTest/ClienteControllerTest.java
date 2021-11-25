@@ -7,13 +7,13 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.ClienteController;
 import com.br.backendhortifruti.model.dto.ClienteDTO;
 import com.br.backendhortifruti.model.dto.ClienteIdDTO;
 import com.br.backendhortifruti.model.entity.Cliente;
+import com.br.backendhortifruti.model.handler.IvalidDocumentException;
 
 @SpringBootTest
 public class ClienteControllerTest {
@@ -22,7 +22,7 @@ public class ClienteControllerTest {
 	ClienteController clienteController;
 
 	@Test
-	public void incluirClientesTeste() {
+	public void incluirClientesTeste() throws IvalidDocumentException {
 		Cliente cliente06 = new Cliente();
 		cliente06.setNome("Mercadinho do seu Ze");
 		cliente06.setTipo('J');

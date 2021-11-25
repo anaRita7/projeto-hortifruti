@@ -32,7 +32,7 @@
                                 <tr style="background-color: #fff;" *ngFor = "let item of itens" >
                                     <td>
                                         <img class="cart-img"
-                                            src="https://d3ugyf2ht6aenh.cloudfront.net/stores/746/397/products/banana_prata11-bb9a8816fe05fe206f15220284985229-320-0.jpg"
+                                        [src]="'http://localhost:8080/api/imagem/' + item.imagem"
                                             alt="">
                                     </td>
                                     <td>
@@ -59,7 +59,7 @@
                                     <th></th>
                                     <th>
                                         <form>
-                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" type="number"> % 
+                                            <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" class="cart-price-off" mask="percent" suffix="%" placeholder="%">
                                             <button (click)=aplicarDesconto(percDesconto)> Aplicar </button>
                                         </form>
                                     </th>
@@ -159,17 +159,17 @@
                         <div class="d-flex justify-content-center">
                             <div class="col-sm-5">
                                 <label for="">Pagamento em:</label>
-                                <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                    <option>Cartão de Crédito</option>
-                                    <option>Cartão de Débito</option>
-                                    <option>Dinheiro</option>
+                                <select [(ngModel)]="pedido.formaPagamento" name="pagamento" class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option value="Crédito">Cartão de Crédito</option>
+                                    <option value="Débito">Cartão de Débito</option>
+                                    <option value="Em Dinheito">Dinheiro</option>
                                 </select>
                             </div>
                             <div class="col-sm-5">
                                 <label for="">Status</label>
-                                <select class="custom-select form-control-border" id="exampleSelectBorder">
-                                    <option>Pago</option>
-                                    <option>Não Pago - Pagamento na Entrega</option>
+                                <select [(ngModel)]="pedido.situacao" class="custom-select form-control-border" id="exampleSelectBorder">
+                                    <option value="false">Pago</option>
+                                    <option value="true">Não Pago - Pagamento na Entrega</option>
                                 </select>
                             </div>
                         </div>
@@ -208,13 +208,13 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Documento</label>
-                    <input type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
+                    <input [(ngModel)]="cliente.documento" type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
                 </div>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerCliModal">Buscar</button>
+                <button type="button" class="btn btn-primary" (click)=buscarDodumento(cliente.documento) data-toggle="modal" data-target="#registerCliModal">Buscar</button>
             </div>
         </div>
     </div>
