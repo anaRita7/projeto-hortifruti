@@ -15,3 +15,15 @@
     border: none;
     background-color:rgba(236, 71, 71, 0.945) !important;
 }
+
+.modal-title {
+    margin-left: 90px;
+}
+
+.bg-info {
+    background-color: #F8AC55 !important;
+}
+
+.bg-danger {
+    background-color:rgba(250, 59, 59, 0.945) !important;
+}

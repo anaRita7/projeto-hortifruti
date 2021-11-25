@@ -24,6 +24,7 @@
     color: aliceblue;
     text-transform: uppercase;
     cursor: pointer;
+    font-weight: 600;
 }
 
 .btn-cad:hover {

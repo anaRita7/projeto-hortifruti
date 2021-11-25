@@ -45,8 +45,37 @@
     font-weight: 500;
 }
 
+.desconto {
+    display: flex;
+}
+
 .cart-price-off {
-    width: 120px;
+    width: 60px;
     border: 1.5px solid #c4c4c4;
     border-radius: 5px;
+    margin-right: 5px;
+}
+
+.btn-danger {
+    background-color:rgba(236, 71, 71, 0.945) !important;
+}
+
+.btn-off {
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    background-color:rgb(252, 168, 89);
+    width: 80px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.btn-adress {
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    background-color:rgb(252, 168, 89);
+    width: 150px;
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
