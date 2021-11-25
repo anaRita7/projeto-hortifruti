@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/model/Cliente';
 import { Endereco } from 'src/app/model/Endereco';
@@ -122,16 +122,16 @@ export class CartComponent implements OnInit {
           quantidadeTotal: element.quantidadeTotal,
           valorTotal: element.valorTotal
         }
-
+        
         console.log(item)
         this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
         this.itemService.postItem(item).subscribe(data =>{console.log(data)})
         const index = this.itens.indexOf(element);
         this.itens.splice(index, 1);
         localStorage.setItem("itens",JSON.stringify(this.itens))
+        this.router.navigate(['tax-invoice'])
       });
     })
-    this.router.navigate(['shopping-orders'])
   })
   }
 }
