@@ -7,10 +7,15 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.PedidoController;
 import com.br.backendhortifruti.model.dto.PedidoDTO;
+import com.br.backendhortifruti.model.dto.PedidoForListDTO;
+import com.br.backendhortifruti.model.dto.PedidoForPageDTO;
 import com.br.backendhortifruti.model.entity.Pedido;
 import com.br.backendhortifruti.model.entity.Cliente;
 import com.br.backendhortifruti.model.entity.Endereco;
@@ -108,11 +113,17 @@ public class PedidoControllerTest {
 		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 	
-//	@Test
-//	public void consultarPedidosTest() {
-//		ResponseEntity<List<PedidoForListDTO>> pedidoResponse = pedidoController.consultarPedidos();
-//		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
-//	}
+	/*@Test
+	public void consultarPedidosTest() {
+		ResponseEntity<List<PedidoForListDTO>> pedidoResponse = pedidoController.consultarPedidos();
+		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
+	}
+	
+	@Test
+	public void consultarPedidosTest() {
+		ResponseEntity<PageImpl<PedidoForPageDTO>> pedidoResponse = pedidoController.consultarPedidos();
+		assertThat(pedidoResponse.getStatusCodeValue()).isEqualTo(200);
+	}*/
 	
 	@Test
 	public void consultarPedidoTest() {
