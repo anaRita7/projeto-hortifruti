@@ -1,8 +1,7 @@
 package com.br.backendhortifruti.mockitoTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+
 import static org.mockito.Mockito.when;
 
 import java.util.Optional;
@@ -88,8 +87,6 @@ public class ItemMockTest {
 		assertThat(itemResponse.getValorTotal() == 1000);
 	}
 	
-	// TODO: consultar todos os itens
-	
 	@DisplayName("Consultar um item")
 	@Test
 	public void consultarItemMockTest() {
@@ -100,6 +97,4 @@ public class ItemMockTest {
 		itemServiceImpl.consultarItem(1);
 		assertThat(item.getId() == 1);
 	}
-	
-	// TODO: excluir item
 }

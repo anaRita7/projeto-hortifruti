@@ -7,7 +7,6 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 
 import com.br.backendhortifruti.controller.ClienteController;
@@ -17,7 +16,7 @@ import com.br.backendhortifruti.model.entity.Cliente;
 
 @SpringBootTest
 public class ClienteControllerTest {
-
+	
 	@Autowired
 	ClienteController clienteController;
 
@@ -32,7 +31,7 @@ public class ClienteControllerTest {
 		ResponseEntity<ClienteIdDTO> clienteResponse = clienteController.incluirCliente(cliente06);
 		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(201);
 	}
-
+	
 	@Test
 	public void alterarClienteTeste() {
 		Cliente cliente06 = new Cliente();
