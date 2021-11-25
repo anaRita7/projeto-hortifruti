@@ -68,7 +68,6 @@ export class CartComponent implements OnInit {
     this.cliService.getClientePorDocumento(this.cliente.documento).subscribe(data =>
       {
         this.idCliente = data.id
-        console.log("passei aqui")
         this.salvarPedido();
       },
       erro =>
@@ -82,8 +81,6 @@ export class CartComponent implements OnInit {
   salvarCliente(){
     this.cliService.postCliente(this.cliente).subscribe(data => {
       this.idCliente = data.id
-      console.log(data.id)
-      console.log(this.idCliente)
     }) 
     this.salvarPedido()
   }
@@ -108,7 +105,6 @@ export class CartComponent implements OnInit {
     
     this.pedidoService.postPedido(pedido).subscribe(data => {
       this.idPedido = data.id;
-      console.log(this.idPedido)
       this.itens.forEach(element => {
 
         const item = {
@@ -123,12 +119,11 @@ export class CartComponent implements OnInit {
           valorTotal: element.valorTotal
         }
         
-        console.log(item)
         this.itens = JSON.parse(localStorage.getItem("itens")||"[]");
         this.itemService.postItem(item).subscribe(data =>{console.log(data)})
         const index = this.itens.indexOf(element);
         this.itens.splice(index, 1);
-        localStorage.setItem("itens",JSON.stringify(this.itens))
+        localStorage.setItem("itens",JSON.stringify(this.itens))  
         this.router.navigate(['tax-invoice', this.idPedido])
       });
     })

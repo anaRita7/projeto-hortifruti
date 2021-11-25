@@ -1,3 +1,4 @@
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -38,35 +39,35 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr *ngFor="let ped of pedidos">
+                        <tr *ngFor="let p of pedidos">
                             <td>
-                                {{ped.codigo}}
+                                {{p.codigo}}
                             </td>
                             <td>
-                                {{ped.dataHora}}
+                                {{p.dataHora}}
                             </td>
                             <td>
-                                {{ped.nomeCliente}}
+                                {{p.nomeCliente}}
                             </td>
                             <td>
-                                {{ped.quantidadeTotal}}
+                                {{p.quantidadeTotal}}
                             </td>
                             <td>
-                                {{ped.valorFinal | currency: 'BRL'}}
+                                {{p.valorFinal | currency: 'BRL'}}
                             </td>
                             <td class="project-state text-center">
-                                <div *ngIf="ped.situacao; then thenBlock else elseBlock"></div>
+                                <div *ngIf="p.situacao; then thenBlock else elseBlock"></div>
                                 <ng-template #thenBlock><span class="badge badge-success py-2">Aberto</span>
                                 </ng-template>
                                 <ng-template #elseBlock><span class="badge badge-danger py-2">Fechado</span></ng-template>
                             </td>
                             <td class="project-actions text-center">
                                 <a data-toggle="modal" data-target="#viewOrdersModal"
-                                    (click)="detalharPedido(ped.codigo)" style="margin-right: 20px;">
+                                    (click)="detalharPedido(p.codigo)" style="margin-right: 20px;">
                                     <i class="fas fa-eye text-dark"></i>
                                 </a>
                                 <button type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
-                                    data-target="#editOrdersModal" [disabled]="!ped.situacao">
+                                    data-target="#editOrdersModal" [disabled]="!p.situacao">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Editar
@@ -84,141 +85,6 @@
 </div>
 
 <!-- Modal View Orders -->
-<div class="modal fade" id="viewOrdersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-info m-0 d-flex justify-content-between align-items-center">
-                <div class="text-center py-2 d-flex justify-content-center">
-                    <i class="fas fa-receipt mr-2" style="font-size: 1.5rem;"></i>
-                    <h5 class="m-0">Informações do Pedido</h5>
-                </div>
-                <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="content">
-                    <div class="container-fluid">
-                        <div class="mx-2 mt-4 pb-4 invoice-infos">
-                            <div class="mx-3">
-                                <div class="d-flex w-100 justify-content-between">
-                                    <div class="d-flex align-items-center">
-                                        <h6 class="pr-2 mb-0">Código:</h6>
-                                        <p class="mb-0">{{pedido.codigo}}</p>
-                                    </div>
-                                    <div class="d-flex align-items-center">
-                                        <h6 class="pr-2 mb-0">Data & Hora:</h6>
-                                        <p class="mb-0">{{pedido.dataHora}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="mx-3 d-flex align-items-center">
-                                <h6 class="pr-2 mb-0">Cliente:</h6>
-                                <p class="mb-0">{{pedido.cliente.nome}}</p>
-                            </div>
-                            <div class="mx-3 d-flex align-items-center">
-                                <h6 class="pr-2 mb-0">Documento:</h6>
-                                <p class="mb-0">{{pedido.cliente.documento | cpfCnpj}}</p>
-                            </div>
-                            <div class="mx-3 d-flex align-items-center">
-                                <h6 class="pr-2 mb-0">Telefone:</h6>
-                                <p class="mb-0">{{pedido.cliente.telefone | phone}}</p>
-                            </div>
-                            <hr>
-                            <div class="mx-3 d-flex align-items-center">
-                                <h6 class="pr-2 mb-0">Quantidade de Items:</h6>
-                                <p class="mb-0">{{pedido.quantidadeTotal}}</p>
-                            </div>
-                            <div class="mx-3 d-flex align-items-center">
-                                <h6 class="pr-2 mb-0">Total:</h6>
-                                <p class="mb-0">{{pedido.valorFinal | currency: 'BRL'}}</p>
-                            </div>
-                            <div class="mx-3 d-flex align-items-center">
-                                <h6 class="pr-2 mb-0">Forma de Pagamento:</h6>
-                                <p class="mb-0">{{pedido.formaPagamento}}</p>
-                            </div>
-                            <hr>
-                            <div class="mx-3 d-flex align-items-center">
-                                <h6 class="pr-2 mb-0">Endereço:</h6>
-                                <p class="mb-0">{{pedido.endereco.logradouro}}, {{pedido.endereco.numero}} - ,
-                                    {{pedido.endereco.localidade}}/{{pedido.endereco.uf}} -
-                                    {{pedido.endereco.complemento}}</p>
-                            </div>
-                            <div class="mx-3 d-flex align-items-center">
-                                <h6 class="pr-2 mb-0">Status:</h6>
-                                <div *ngIf="pedido.situacao; then thenBlock else elseBlock"></div>
-                                <ng-template #thenBlock>
-                                    <p class="mb-0">Não Pago</p>
-                                </ng-template>
-                                <ng-template #elseBlock>
-                                    <p class="mb-0">Pago</p>
-                                </ng-template>
-                            </div>
-                            <div>
-                                <table class="table table-striped projects mt-3">
-                                    <thead>
-                                        <tr style="font-size: large;" class="text-center">
-                                            <th class="text-left">
-                                                PRODUTO
-                                            </th>
-                                            <th></th>
-                                            <th class="text-right">
-                                                SUBTOTAL
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-    
-                                        <tr *ngFor="let item of pedido.itens" style="background-color: #fff;">
-                                            <td class="d-flex">
-                                                <img class="cart-img"
-                                                    [src]="'http://localhost:8080/api/imagem/' + item.produto.imagem"
-                                                    style="width: 50px; height: 50px;">
-                                                <div class="ml-3" style="font-size: 12px;">
-                                                    <div class="cart-title-prod">{{item.produto.nome}} -
-                                                        {{item.produto.unidadeMedida}}</div>
-                                                    <div class="cart-price-prod">{{item.produto.valorUnitario | currency:
-                                                        'BRL'}}</div>
-                                                    <div class="cart-price-prod">Qtde: {{item.quantidadeTotal}}</div>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td class="text-right">
-                                                {{item.valorTotal | currency: 'BRL'}}
-                                            </td>
-                                        </tr>
-                                        <tr style="background-color: #fff;">
-                                            <th>Subtotal:</th>
-                                            <th></th>
-                                            <th class="text-right">{{pedido.valorTotal | currency: 'BRL'}}</th>
-                                        </tr>
-                                        <tr style="background-color: #fff;">
-                                            <th>Desconto:</th>
-                                            <th></th>
-                                            <th class="text-right">{{pedido.desconto*100}}%</th>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr class="text-center cart-table-tfoot">
-                                            <th class="text-left">TOTAL:</th>
-                                            <th></th>
-                                            <th class="text-right">{{pedido.valorFinal | currency: 'BRL'}}</th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Modal Edit Orders-->
 <div class="modal fade" id="editOrdersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -247,3 +113,138 @@
         </div>
     </div>
 </div>
+    <div *ngIf="mostrar" class="modal fade" id="viewOrdersModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-info m-0 d-flex justify-content-between align-items-center">
+                    <div class="text-center py-2 d-flex justify-content-center">
+                        <i class="fas fa-receipt mr-2" style="font-size: 1.5rem;"></i>
+                        <h5 class="m-0">Informações do Pedido</h5>
+                    </div>
+                    <button type="button" class="close m-0" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="content">
+                        <div class="container-fluid">
+                            <div class="mx-2 mt-4 pb-4 invoice-infos">
+                                <div class="mx-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <div class="d-flex align-items-center">
+                                            <h6 class="pr-2 mb-0">Código:</h6>
+                                            <p class="mb-0">{{pedido.codigo}}</p>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <h6 class="pr-2 mb-0">Data & Hora:</h6>
+                                            <p class="mb-0">{{pedido.dataHora}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="mx-3 d-flex align-items-center">
+                                    <h6 class="pr-2 mb-0">Cliente:</h6>
+                                    <p class="mb-0">{{pedido.cliente.nome}}</p>
+                                </div>
+                                <div class="mx-3 d-flex align-items-center">
+                                    <h6 class="pr-2 mb-0">Documento:</h6>
+                                    <p class="mb-0">{{pedido.cliente.documento | cpfCnpj}}</p>
+                                </div>
+                                <div class="mx-3 d-flex align-items-center">
+                                    <h6 class="pr-2 mb-0">Telefone:</h6>
+                                    <p class="mb-0">{{pedido.cliente.telefone | phone}}</p>
+                                </div>
+                                <hr>
+                                <div class="mx-3 d-flex align-items-center">
+                                    <h6 class="pr-2 mb-0">Quantidade de Items:</h6>
+                                    <p class="mb-0">{{pedido.quantidadeTotal}}</p>
+                                </div>
+                                <div class="mx-3 d-flex align-items-center">
+                                    <h6 class="pr-2 mb-0">Total:</h6>
+                                    <p class="mb-0">{{pedido.valorFinal | currency: 'BRL'}}</p>
+                                </div>
+                                <div class="mx-3 d-flex align-items-center">
+                                    <h6 class="pr-2 mb-0">Forma de Pagamento:</h6>
+                                    <p class="mb-0">{{pedido.formaPagamento}}</p>
+                                </div>
+                                <hr>
+                                <div class="mx-3 d-flex align-items-center">
+                                    <h6 class="pr-2 mb-0">Endereço:</h6>
+                                    <p class="mb-0">{{pedido.endereco.logradouro}}, {{pedido.endereco.numero}} - ,
+                                        {{pedido.endereco.localidade}}/{{pedido.endereco.uf}} -
+                                        {{pedido.endereco.complemento}}</p>
+                                </div>
+                                <div class="mx-3 d-flex align-items-center">
+                                    <h6 class="pr-2 mb-0">Status:</h6>
+                                    <div *ngIf="pedido.situacao; then thenBlock else elseBlock"></div>
+                                    <ng-template #thenBlock>
+                                        <p class="mb-0">Não Pago</p>
+                                    </ng-template>
+                                    <ng-template #elseBlock>
+                                        <p class="mb-0">Pago</p>
+                                    </ng-template>
+                                </div>
+                                <div>
+                                    <table class="table table-striped projects mt-3">
+                                        <thead>
+                                            <tr style="font-size: large;" class="text-center">
+                                                <th class="text-left">
+                                                    PRODUTO
+                                                </th>
+                                                <th></th>
+                                                <th class="text-right">
+                                                    SUBTOTAL
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+        
+                                            <tr *ngFor="let item of pedido.itens" style="background-color: #fff;">
+                                                <td class="d-flex">
+                                                    <img class="cart-img"
+                                                        [src]="'http://localhost:8080/api/imagem/' + item.produto.imagem"
+                                                        style="width: 50px; height: 50px;">
+                                                    <div class="ml-3" style="font-size: 12px;">
+                                                        <div class="cart-title-prod">{{item.produto.nome}} -
+                                                            {{item.produto.unidadeMedida}}</div>
+                                                        <div class="cart-price-prod">{{item.produto.valorUnitario | currency:
+                                                            'BRL'}}</div>
+                                                        <div class="cart-price-prod">Qtde: {{item.quantidadeTotal}}</div>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                                <td class="text-right">
+                                                    {{item.valorTotal | currency: 'BRL'}}
+                                                </td>
+                                            </tr>
+                                            <tr style="background-color: #fff;">
+                                                <th>Subtotal:</th>
+                                                <th></th>
+                                                <th class="text-right">{{pedido.valorTotal | currency: 'BRL'}}</th>
+                                            </tr>
+                                            <tr style="background-color: #fff;">
+                                                <th>Desconto:</th>
+                                                <th></th>
+                                                <th class="text-right">{{pedido.desconto*100}}%</th>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="text-center cart-table-tfoot">
+                                                <th class="text-left">TOTAL:</th>
+                                                <th></th>
+                                                <th class="text-right">{{pedido.valorFinal | currency: 'BRL'}}</th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>

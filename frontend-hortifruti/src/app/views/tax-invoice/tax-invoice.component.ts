@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
 import { Pedido } from 'src/app/model/Pedido';
 import { PedidoService } from 'src/app/services/pedido.service';
+import * as $ from 'jquery' 
 
 @Component({
   selector: 'app-tax-invoice',
@@ -21,6 +22,6 @@ export class TaxInvoiceComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
+    $('.modal-backdrop').removeClass()
   }
 }
