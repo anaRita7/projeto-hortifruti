@@ -21,20 +21,12 @@ export class ConsultProdComponent implements OnInit {
   pageSize = 5;
   pageSizes = [5, 10, 15];
 
-  //selectedImage: File | undefined;
-  //formDataUploadFile: FormData | undefined;
-
   constructor(private service:ProdutoService, private router: Router) {
     this.retrieveProduto();
    }
 
   ngOnInit(): void {
-    
   }
-
-  /*onFileChanged(event: Event){
-    this.selectedImage = (event.target as HTMLInputElement).files![0];
-  }*/
 
   getRequestParams(page: number, pageSize: number, sort: string): any {
     let params: any = {};
