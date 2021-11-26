@@ -1,5 +1,6 @@
 package com.br.backendhortifruti.model.service.impl;
 
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -56,6 +57,13 @@ public class ProdutoServiceImpl implements ProdutoService {
             existingProduto.setUnidadeMedida(produto.getUnidadeMedida());
             existingProduto.setValorUnitario(produto.getValorUnitario());
             existingProduto.setStatus(produto.isStatus());
+
+            if (!produto.getImagem().isEmpty()) {
+                String nome = "c:/hortifrutti/imagem/";
+                File f = new File(nome + existingProduto.getImagem());
+                f.delete();
+                existingProduto.setImagem(produto.getImagem());
+            }
 
             produtoRepository.save(existingProduto);
             return existingProduto;
