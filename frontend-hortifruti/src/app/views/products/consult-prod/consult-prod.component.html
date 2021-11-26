@@ -3,8 +3,17 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-4">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Consultar Produto</h1>
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="ml-2">
+                        <h1 class="m-0">Consultar Produto</h1>
+                    </div>
+                    <div class="mt-2 mr-2"> Itens por pagina:
+                        <select style="border-radius: 5px;" (change)="handlePageSizeChange($event)">
+                            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                {{ size }}
+                            </option>
+                        </select>
+                    </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -35,8 +44,9 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="text-center"> 
-                        <tr *ngFor = "let produto of produtos | paginate: {itemsPerPage: pageSize, currentPage: page, totalItems: count}">
+                    <tbody class="text-center">
+                        <tr
+                            *ngFor="let produto of produtos | paginate: {itemsPerPage: pageSize, currentPage: page, totalItems: count}">
                             <td>
                                 {{produto.codigo}}
                             </td>
@@ -51,18 +61,20 @@
                             </td>
                             <td class="project-state text-center">
                                 <div *ngIf="produto.status; then thenBlock else elseBlock"></div>
-                                <ng-template #thenBlock><span class="badge badge-success py-2">Disponível</span></ng-template>
-                                <ng-template #elseBlock><span class="badge badge-danger py-2">Indisponível</span></ng-template>
+                                <ng-template #thenBlock><span class="badge badge-success py-2">Disponível</span>
+                                </ng-template>
+                                <ng-template #elseBlock><span class="badge badge-danger py-2">Indisponível</span>
+                                </ng-template>
                             </td>
                             <td class="project-actions text-center">
-                                <button (click)="irModalEditar(produto.codigo)" type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
-                                    data-target="#editProdModal">
+                                <button (click)="irModalEditar(produto.codigo)" type="button"
+                                    class="btn btn-info btn-sm mr-2" data-toggle="modal" data-target="#editProdModal">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Editar
                                 </button>
-                                <button (click)="irModalExcluir(produto.codigo)" type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#delProdModal">
+                                <button (click)="irModalExcluir(produto.codigo)" type="button"
+                                    class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delProdModal">
                                     <i class="fas fa-trash">
                                     </i>
                                     Deletar
@@ -73,14 +85,8 @@
                 </table>
                 <hr>
                 <div class="d-flex w-100">
-                    <pagination-controls (pageChange)="handlePageChange($event)"  [responsive]="true" previousLabel="Anterior" nextLabel="Próximo" class="ml-auto mr-4"></pagination-controls>
-                    <div class="mt-3"> Itens por pagina:
-                            <select (change)="handlePageSizeChange($event)">
-                                <option *ngFor="let size of pageSizes" [ngValue]="size">
-                                    {{ size }}
-                                 </option>
-                            </select>
-                    </div>
+                    <pagination-controls (pageChange)="handlePageChange($event)" [responsive]="true"
+                        previousLabel="Anterior" nextLabel="Próximo" class="ml-auto mr-4"></pagination-controls>
                 </div>
             </div>
             <!-- /.card-body -->
@@ -112,18 +118,21 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleSelectBorder">Unidade de Medida</label>
-                    <select [(ngModel)]="produto.unidadeMedida" name="codigo" class="custom-select form-control-border" id="exampleSelectBorder">
+                    <select [(ngModel)]="produto.unidadeMedida" name="codigo" class="custom-select form-control-border"
+                        id="exampleSelectBorder">
                         <option value="Kg">Kg</option>
                         <option value="und">Un</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Preço</label>
-                    <input [(ngModel)]="produto.valorUnitario" type="text" name="preco" class="form-control" prefix="R$ " mask="separator.2">
+                    <input [(ngModel)]="produto.valorUnitario" type="text" name="preco" class="form-control"
+                        prefix="R$ " mask="separator.2">
                 </div>
                 <div class="form-group">
                     <label for="exampleSelectBorder">Status</label>
-                    <select [(ngModel)]="produto.status" class="custom-select form-control-border" id="exampleSelectBorder">
+                    <select [(ngModel)]="produto.status" class="custom-select form-control-border"
+                        id="exampleSelectBorder">
                         <option value="true">Disponível</option>
                         <option value="false">Indisponível</option>
                     </select>
@@ -132,6 +141,11 @@
                     <label>Descrição</label>
                     <textarea class="form-control" rows="2" [(ngModel)]="produto.descricao"></textarea>
                   </div>
+                  <div class="col-sm-4">
+                    <label>Nova imagem: </label>
+                    <input type="file" id="myfile" name="myfile" accept="image/png, image/jpeg"
+                        (change)="onFileChanged($event)" [(ngModel)]="produto.imagem">
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -162,4 +176,3 @@
         </div>
     </div>
 </div>
-
