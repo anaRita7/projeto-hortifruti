@@ -43,8 +43,14 @@ VALUES
   (0869780,"TOMATE ANDREA","Embalagem com 250 gramas.","Und",3.79,TRUE,"Tbv54q2E1q.jpg"),
   (7058918,"MARACUJÁ AZEDO","Embalagem com 300 gramas.","Und",4.25,TRUE,"FV542WwqaP.jpg"),
   (8988640,"ALFACE AMERICANA","Unidade","Und",3.75,TRUE,"yT54QW12e1.jpg");
+INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
+VALUES
+  (8888061,"MAXIXE","Embalagem de 200 gramas.","Und",1.99,TRUE,"8d1acfd2d2.jpg"),
+  (7996206,"GOIABA VERMELHA","Unidade.","Und",1.49,TRUE,"1c73f82f96.jpg"),
+  (0889780,"CAJU FRESCO","Bandeja com 300 gramas.","Und",11.79,TRUE,"fe92c48425.jpg"),
+  (7052918,"MILHO VERDE","Unidade.","Und",1.25,TRUE,"c5dbc2015c.jpg"),
+  (8980640,"COUVE FLOR","Unidade","Und",4.75,TRUE,"87b191e9bd.jpg");
     
- 
 //endereco
  
  INSERT INTO endereco (cep, localidade, bairro, uf, logradouro, numero) VALUES

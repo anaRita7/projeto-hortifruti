@@ -13,7 +13,6 @@ export class ClienteService {
   private readonly urlBase='http://localhost:8080/api/cliente';
 
   getClientes(params: any): Observable<any> {
-    console.log("params", params);
     return this.http.get<any>(this.urlBase, { params });
   }
 

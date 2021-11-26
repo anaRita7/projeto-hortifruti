@@ -140,9 +140,6 @@ export class ConsultProdComponent implements OnInit {
     erro =>
     { 
       switch(erro.status) { 
-        case 500: 
-          alert("Produto não pode ser deletado!"); 
-          break; 
         case 404: 
           alert('Produto não localizado!'); 
           break; 
