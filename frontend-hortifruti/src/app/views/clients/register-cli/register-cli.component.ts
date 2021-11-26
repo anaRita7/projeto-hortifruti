@@ -26,9 +26,6 @@ export class RegisterCliComponent implements OnInit {
     if(this.cliente.nome == null){
       alert("Preencha todos os dados. Campo de nome está vazio!");
     }
-    else if(this.cliente.documento == null){
-      alert("Preencha todos os dados. Campo de documento está vazio!");
-    }
     else{
     this.service.getClientePorDocumento(this.cliente.documento).subscribe(data =>
       {
@@ -45,7 +42,7 @@ export class RegisterCliComponent implements OnInit {
           erro =>
           {
             if(erro.status == 400) {
-              alert(erro.error.mensagem);
+              alert(erro.mensage)
             }
             else if(erro.status == 417) {
               alert('CPF/CNPJ inválido');
@@ -54,6 +51,6 @@ export class RegisterCliComponent implements OnInit {
           )
         }
       })
-    }    
+    }  
+  }  
   }
-}
