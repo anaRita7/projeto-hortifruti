@@ -2,7 +2,7 @@
   <header>
     <h1 align="middle">
       <img src="https://media4.giphy.com/media/VFhgsXzJqWMpP03v8W/giphy.gif?cid=ecf05e476q23pfrrs65ny3tiynl1uqsb0hsbcvznmcmltrpv&rid=giphy.gif&ct=s" width="55">
-        <img src="https://raw.githubusercontent.com/anaRita7/projeto-hortifruti/210abced0e93458e29c2392b2d21270f4ad54bf0/frontend-hortifruti/src/assets/images/logo.svg?token=ATJOTJSLTH7LIV4EDGKTBU3BUDV26" width="500">
+        <img src="https://raw.githubusercontent.com/anaRita7/projeto-hortifruti/7119783072629c266aad3c67067a10fcffcd29e2/frontend-hortifruti/src/assets/images/logo.svg?token=ATJOTJXODG6DKLXSPLQGBWLBUD27Y" width="500">
       <img src="https://media4.giphy.com/media/VFhgsXzJqWMpP03v8W/giphy.gif?cid=ecf05e476q23pfrrs65ny3tiynl1uqsb0hsbcvznmcmltrpv&rid=giphy.gif&ct=s" width="55">
     </h1>
   </header>
@@ -98,7 +98,7 @@ cd projeto-hortifruti
 ## Back-End
   - Utilize o terminal de sua preferência;
   - Esse é um exemplo no Windows de como abrir o cmd(propt de comando) direto no diretório:
->>  <img src="https://github.com/anaRita7/projeto-hortifruti/blob/feature/palloma.soares/imgReadME/CaptureCMD.PNG?raw=true" >
+>>  <img src="https://github.com/anaRita7/projeto-hortifruti/blob/develop/readme-util/CaptureCMD.PNG?raw=true" >
  
 ```bash
 # Entrar no diretório
