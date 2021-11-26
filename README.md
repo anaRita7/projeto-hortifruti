@@ -77,8 +77,9 @@
   
   - Abra o git bash no local onde deseja salvar o projeto;
 ```bash
+  
 # Clonar o repositório
-git clone <link>
+git clone https://github.com/anaRita7/projeto-hortifruti.git 
   
 # Entrar no diretório
 cd projeto-hortifruti
