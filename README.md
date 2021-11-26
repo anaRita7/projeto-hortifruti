@@ -26,11 +26,10 @@
   
 ## Introdução:
 
-  A HortiFrooti, projeto desenvolvido afim de aprimorar nossos conhecimentos em Spring-Boot e Angular, é um site que visa
-  gerenciar todas as etapas que são realizadas, diariamente, em uma hortelaria. Esse desafio nos foi passado como entrega final de conclusão de curso.
+  A HortiFroot é um site que visa gerenciar todas as etapas que são realizadas diariamente em uma hortifruit. Esse projeto foi desenvolvido com o objetivo de aprimorar nossos conhecimentos em Spring-Boot e Angular. Desafio final de conclusão de curso da Academia Java e Angular.
   
-  Projeto proposto por: 
-  - Alício ...
+  Professor orientador:
+  - Alício Cunha
   
  <div align="end"> 
    
@@ -79,6 +78,7 @@
   
   - Abra o git bash no local onde deseja salvar o projeto;
 ```bash
+  
 # Clonar o repositório
 git clone https://github.com/anaRita7/projeto-hortifruti.git
   
@@ -96,9 +96,9 @@ cd projeto-hortifruti
 <div id='backEnd'/> 
   
 ## Back-End
-  - Utilize o terminal de sua preferecia;
-  - Aqui vai um exemplo de como abrir o cmd(propt de comando) direto no diretório:
->>  <img src="https://github.com/anaRita7/projeto-hortifruti/blob/feature/palloma.soares/readme-util/CaptureCMD.PNG?raw=true" >
+  - Utilize o terminal de sua preferência;
+  - Esse é um exemplo no Windows de como abrir o cmd(propt de comando) direto no diretório:
+>>  <img src="https://github.com/anaRita7/projeto-hortifruti/blob/feature/palloma.soares/imgReadME/CaptureCMD.PNG?raw=true" >
  
 ```bash
 # Entrar no diretório
@@ -296,15 +296,22 @@ ng serve
 <div id='softwares'/> 
 
  <div>
-     <h3 align="center"> 🛠 SOFTWARES UTILIZADOS | VERSÕES 🛠 </h3>
+     <h3 align="center"> 🛠 SOFTWARES UTILIZADOS 🛠 </h3>
   </div>
   
-- Node | 14.18.1
-- SpringBoot | 2.5.6
-- Angular CLI | 12.2.11
-- Java | 11
-- Package Manager | npm 6.14.15 
-- Apache Maven | 3.8.3
+- <a href="https://trello.com/pt-BR" taget="_blank">Trello</a> 
+- <a href="https://www.eclipse.org/downloads/" taget="_blank">Eclipse</a>
+- <a href="https://code.visualstudio.com/" taget="_blank">Visual Studio Code</a>
+- <a href="https://www.mysql.com/" taget="_blank">MySQL</a>
+- <a href="https://nodejs.org/en/" taget="_blank">Node</a> ```16.13.0```
+- <a href="https://spring.io/projects/spring-boot" taget="_blank">SpringBoot</a> ```2.5.6```
+- <a href="https://www.npmjs.com/package/@angular/cli" taget="_blank">Angular CLI</a> ```12.2.11```
+- <a href="https://www.tutorialspoint.com/java/index.htm" taget="_blank">Java</a> ```11```
+- <a href="https://junit.org/junit5/docs/current/user-guide/" taget="_blank">JUnit</a> ```5.0```
+- <a href="https://site.mockito.org/" taget="_blank">Mockito</a> 
+- Package Manager ```npm 6.14.15 ```
+- Apache Maven ```3.8.3```
+- Lombok
 
  <div align="end"> 
    
