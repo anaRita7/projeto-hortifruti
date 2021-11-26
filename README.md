@@ -2,11 +2,10 @@
   <header>
     <h1 align="middle">
       <img src="https://media4.giphy.com/media/VFhgsXzJqWMpP03v8W/giphy.gif?cid=ecf05e476q23pfrrs65ny3tiynl1uqsb0hsbcvznmcmltrpv&rid=giphy.gif&ct=s" width="55">
-        <img src="https://raw.githubusercontent.com/anaRita7/projeto-hortifruti/2d7e790edb1eef92fc3f0d2d860514d4ea94c466/frontend-hortifruti/src/assets/images/logo.svg?token=ATJOTJWHBYB6G35SE2PUI63BUEKP6" width="500">
+      HortiFroot
       <img src="https://media4.giphy.com/media/VFhgsXzJqWMpP03v8W/giphy.gif?cid=ecf05e476q23pfrrs65ny3tiynl1uqsb0hsbcvznmcmltrpv&rid=giphy.gif&ct=s" width="55">
     </h1>
   </header>
-
   
 <div id='indice'/>
   
@@ -97,8 +96,6 @@ cd projeto-hortifruti
   
 ## Back-End
   - Utilize o terminal de sua preferência;
-  - Esse é um exemplo no Windows de como abrir o cmd(propt de comando) direto no diretório:
->>  <img src="https://raw.githubusercontent.com/anaRita7/projeto-hortifruti/develop/readme-util/CaptureCMD.PNG?token=ATJOTJQEWKYNKOZGQGPUF6DBUEKDW" >
  
 ```bash
 # Entrar no diretório
