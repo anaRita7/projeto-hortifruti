@@ -1,10 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cliente } from 'src/app/model/Cliente';
 import { Endereco } from 'src/app/model/Endereco';
 import { Item } from 'src/app/model/Item';
 import { Pedido } from 'src/app/model/Pedido';
-import { Produto } from 'src/app/model/Produto';
 import { BuscaCEPService } from 'src/app/services/busca-cep.service';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { EnderecoService } from 'src/app/services/endereco.service';

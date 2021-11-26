@@ -29,7 +29,7 @@ export class PedidoService {
     return this.http.post<Pedido>(this.urlBase, pedido);
   }
 
-  editPedido(id: String, pedido: Pedido){
+  editPedido(id: any, pedido: Pedido){
     return this.http.put(this.urlBase + '/' + id, pedido);
   }
 
