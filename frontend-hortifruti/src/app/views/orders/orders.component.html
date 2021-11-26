@@ -3,8 +3,17 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-4">
-                <div class="col-sm-6">
-                    <h1 class="m-0">Consultar Pedido</h1>
+                <div class="d-flex justify-content-between w-100">
+                    <div class="ml-2">
+                        <h1 class="m-0">Consultar Pedido</h1>
+                    </div>
+                    <div class="mt-2 mr-2"> Itens por pagina:
+                        <select style="border-radius: 5px;" (change)="handlePageSizeChange($event)">
+                            <option *ngFor="let size of pageSizes" [ngValue]="size">
+                                {{ size }}
+                            </option>
+                        </select>
+                    </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
@@ -38,7 +47,8 @@
                         </tr>
                     </thead>
                     <tbody class="text-center">
-                        <tr *ngFor = "let p of pedidos | paginate: {itemsPerPage: pageSize, currentPage: page, totalItems: count}">
+                        <tr
+                            *ngFor="let p of pedidos | paginate: {itemsPerPage: pageSize, currentPage: page, totalItems: count}">
                             <td>
                                 {{p.codigo}}
                             </td>
@@ -66,8 +76,8 @@
                                     style="margin-right: 20px;">
                                     <i class="fas fa-eye text-dark"></i>
                                 </a>
-                                <button (click)="irModalEditar(p.codigo)" type="button" class="btn btn-info btn-sm mr-2" data-toggle="modal"
-                                    data-target="#editOrdersModal" [disabled]="!p.situacao">
+                                <button (click)="irModalEditar(p.codigo)" type="button" class="btn btn-info btn-sm mr-2"
+                                    data-toggle="modal" data-target="#editOrdersModal" [disabled]="!p.situacao">
                                     <i class="fas fa-pencil-alt">
                                     </i>
                                     Editar
@@ -78,14 +88,8 @@
                 </table>
                 <hr>
                 <div class="d-flex w-100">
-                    <pagination-controls (pageChange)="handlePageChange($event)"  [responsive]="true" previousLabel="Anterior" nextLabel="Próximo" class="ml-auto mr-4"></pagination-controls>
-                    <div class="mt-3"> Itens por pagina:
-                            <select (change)="handlePageSizeChange($event)">
-                                <option *ngFor="let size of pageSizes" [ngValue]="size">
-                                    {{ size }}
-                                 </option>
-                            </select>
-                    </div>
+                    <pagination-controls (pageChange)="handlePageChange($event)" [responsive]="true"
+                        previousLabel="Anterior" nextLabel="Próximo" class="ml-auto mr-4"></pagination-controls>
                 </div>
             </div>
             <!-- /.card-body -->
@@ -101,6 +105,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info m-0 d-flex justify-content-between align-items-center">
+                <div></div>
                 <div class="text-center py-2 d-flex justify-content-center">
                     <i class="fas fa-receipt mr-2" style="font-size: 1.5rem;"></i>
                     <h5 class="m-0">Informações do Pedido</h5>
@@ -231,7 +236,7 @@
             </div>
         </div>
     </div>
-</div> 
+</div>
 
 
 <!-- Modal Edit Orders-->
@@ -239,33 +244,37 @@
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header bg-info m-0">
+            <div class="modal-header bg-info m-0 d-flex justify-content-between">
+                <div></div>
                 <h5 class="modal-title" id="exampleModalLabel">EDIÇÃO DE PEDIDO</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close ml-0" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="form-group">
                     <label for="exampleSelectBorder">Status</label>
-                    <select [(ngModel)]="pedido.situacao" name="tipo" class="custom-select form-control-border" id="exampleSelectBorder">
-                        <option value="true">Aberto</option> 
+                    <select [(ngModel)]="pedido.situacao" name="tipo" class="custom-select form-control-border"
+                        id="exampleSelectBorder">
+                        <option value="true">Aberto</option>
                         <option value="false">Fechado</option>
                     </select>
-                    <label> Desconto: </label>
-                    <form>
-                        <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" placeholder="%" class="cart-price-off" mask="percent" suffix="%">
-                        <button (click)="aplicarDesconto()" class="btn-off"> APLICAR </button>
+                    <label class="mt-2"> Desconto: </label>
+                    <form class="d-flex">
+                        <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" placeholder="%"
+                            class="cart-price-off form-control form-control-border mr-2" mask="percent" suffix="%" style="width: 75px">
+                        <button (click)="aplicarDesconto()" class="btn-off btn btn-info"> APLICAR </button>
                     </form>
                 </div>
-                <b> Subtotal: {{pedido.valorTotal | currency: 'BRL'}}</b>
-                <br>
-                <br>
-                <p><b> TOTAL: {{pedido.valorFinal | currency: 'BRL'}}</b></p>
+                <div class="d-flex flex-column text-right">
+                    <b> Subtotal: {{pedido.valorTotal | currency: 'BRL'}}</b>
+                    <p class="mb-0 mt-1"><b> TOTAL: {{pedido.valorFinal | currency: 'BRL'}}</b></p>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button (click)="editarPedido()" type="button" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                <button (click)="editarPedido()" type="button" class="btn btn-primary"
+                    data-dismiss="modal">Salvar</button>
             </div>
         </div>
     </div>
