@@ -258,10 +258,10 @@
                         <button (click)="aplicarDesconto()" class="btn-off"> APLICAR </button>
                     </form>
                 </div>
-                <b> Subtotal: {{pedido.valorTotal}}</b>
+                <b> Subtotal: {{pedido.valorTotal | currency: 'BRL'}}</b>
                 <br>
                 <br>
-                <p><b> TOTAL: {{pedido.valorFinal}}</b></p>
+                <p><b> TOTAL: {{pedido.valorFinal | currency: 'BRL'}}</b></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
