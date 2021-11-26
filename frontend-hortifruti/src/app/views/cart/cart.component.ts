@@ -88,7 +88,8 @@ export class CartComponent implements OnInit {
 
   salvarCliente(){
     this.cliService.postCliente(this.cliente).subscribe(data => {
-      this.idCliente = data.id
+      this.idCliente = data.id;
+      alert("Cliente cadastrado com sucesso!")
     }) 
     this.salvarPedido()
   }
