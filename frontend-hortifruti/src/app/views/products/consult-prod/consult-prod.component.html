@@ -140,6 +140,11 @@
                 <div class="form-group">
                     <label>Descrição</label>
                     <textarea class="form-control" rows="2" [(ngModel)]="produto.descricao"></textarea>
+                  </div>
+                  <div class="col-sm-4">
+                    <label>Nova imagem: </label>
+                    <input type="file" id="myfile" name="myfile" accept="image/png, image/jpeg"
+                        (change)="onFileChanged($event)" [(ngModel)]="produto.imagem">
                 </div>
             </div>
             <div class="modal-footer">

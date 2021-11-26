@@ -43,8 +43,7 @@
                                 </div>
                                 <form action="" class="d-flex justify-content-center mt-auto">
                                     <div>
-                                        <input [(ngModel)]="produto.qtdeEscolhida" twice name="quantidade" type="number"
-                                            class="card-input" min="1" max="20">
+                                        <input [(ngModel)]="produto.qtdeEscolhida" twice name="quantidade" type="number" class="card-input" min="1" max="20" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="2">
                                     </div>
                                     <div>
                                         <button (click)="adicionaCarrinho(produto.codigo, produto.qtdeEscolhida)"

@@ -21,6 +21,9 @@ export class ConsultProdComponent implements OnInit {
   pageSize = 5;
   pageSizes = [5, 10, 15];
 
+  //selectedImage: File | undefined;
+  //formDataUploadFile: FormData | undefined;
+
   constructor(private service:ProdutoService, private router: Router) {
     this.retrieveProduto();
    }
@@ -29,9 +32,9 @@ export class ConsultProdComponent implements OnInit {
     
   }
 
-  onFileChanged(event: Event){
+  /*onFileChanged(event: Event){
     this.selectedImage = (event.target as HTMLInputElement).files![0];
-  }
+  }*/
 
   getRequestParams(page: number, pageSize: number, sort: string): any {
     let params: any = {};
@@ -72,6 +75,10 @@ export class ConsultProdComponent implements OnInit {
     this.retrieveProduto();
   }
 
+  onFileChanged(event: Event){
+    this.selectedImage = (event.target as HTMLInputElement).files![0];
+  }
+
   irModalEditar(codigo: any){
     this.service.getProdutoCodigo(codigo).subscribe(data => 
       {
@@ -81,8 +88,17 @@ export class ConsultProdComponent implements OnInit {
   }
 
   Editar(){
+    if (this.selectedImage) {
+      this.produto.imagem = this.getNameImagem(this.selectedImage);
+      this.formDataUploadFile = new FormData();
+      this.formDataUploadFile.append('pid', this.produto.imagem);
+      this.formDataUploadFile.append('file', this.selectedImage);
+    } else {
+      this.produto.imagem = "";
+    }
+
     let id = localStorage.getItem("id");
-    this.service.editProduto(id, this.produto).subscribe(
+    this.service.editProduto(id, this.produto, this.formDataUploadFile).subscribe(
     data => 
     {
       alert('Produto editado com sucesso!');
@@ -99,6 +115,21 @@ export class ConsultProdComponent implements OnInit {
           break;
       }
     })
+  }
+
+  getNameImagem(imagem: File) {
+    let arrayTermos = imagem.name.split(".");
+    let fileName = this.randomStr(10) + "." + arrayTermos[arrayTermos.length - 1];
+    return fileName;
+  }
+
+  randomStr(tamanho: number) {
+    var stringAleatoria = '';
+    var caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    for (var i = 0; i < tamanho; i++) {
+        stringAleatoria += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    }
+    return stringAleatoria;
   }
 
   irModalExcluir(codigo: any){
@@ -122,6 +153,9 @@ export class ConsultProdComponent implements OnInit {
           break; 
         case 404: 
           alert('Produto não localizado!'); 
+          break; 
+        case 417: 
+          alert("Produto não pode ser deletado!"); 
           break; 
       }
     }

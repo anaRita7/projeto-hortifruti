@@ -55,9 +55,27 @@ export class ProdutoService {
     );
   }
 
-  editProduto(id: any, produto: Produto){
-    return this.http.put(this.urlBase + '/' + id, produto);
+  editProduto(id: any, produto: Produto, formDataUploadFile?: FormData){
+
+      let observable = of({});
+  
+      if (formDataUploadFile) {
+        observable = observable.pipe(
+          switchMap(() => {
+            return this.http.put('http://localhost:8080/api/imagem', formDataUploadFile, {
+              responseType: 'text'
+            })
+          })
+        );
+      }
+  
+      return observable.pipe(
+        switchMap(() => {
+          return this.http.put(this.urlBase + '/' + id, produto);
+        })
+      );
   }
+  
 
   editStatusProduto(id: String, status: String){
     return this.http.put(this.urlBase + '/' + id + '/status', status);
