@@ -17,13 +17,11 @@ export class ProdutoService {
 
  
   getProdutos(params: any): Observable<any> {
-    console.log("params", params);
-    return this.http.get<any>(this.urlBase, { params });
+      return this.http.get<any>(this.urlBase, { params });
   }
 
   getProdutosAtivos(params: any): Observable<any> {
-    console.log("params", params);
-    return this.http.get<any>(this.urlBase+'/ativos', { params });
+      return this.http.get<any>(this.urlBase+'/ativos', { params });
   }
 
   getProdutoCodigo(codigo: string){

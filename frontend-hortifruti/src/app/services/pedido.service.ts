@@ -13,7 +13,6 @@ export class PedidoService {
   private readonly urlBase='http://localhost:8080/api/pedido';
 
   getPedidos(params: any) {
-    console.log("params", params);
     return this.http.get<any>(this.urlBase, { params });
   }
 
