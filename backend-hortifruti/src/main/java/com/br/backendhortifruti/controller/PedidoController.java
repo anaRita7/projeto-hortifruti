@@ -75,7 +75,7 @@ public class PedidoController {
 	public ResponseEntity<String> alterarPedido(@PathVariable("id") int pedidoId, @RequestBody Pedido pedido) {
 		try{
 			pedidoService.alterarPedido(pedidoId, pedido);
-			return new ResponseEntity<>("Pedido Alterado com sucesso!", HttpStatus.OK);
+			return new ResponseEntity<>(HttpStatus.OK);
 		}catch (NullPointerException e){
 			throw new NullPointerException();
 		}
