@@ -45,11 +45,11 @@ VALUES
   (8988640,"ALFACE AMERICANA","Unidade","Und",3.75,TRUE,"yT54QW12e1.jpg");
 INSERT INTO produto (codigo, nome, descricao, unidade_medida, valor_unitario, status, imagem)
 VALUES
-  (8878061,"MAXIXE","Embalagem de 200 gramas.","Und",1.99,TRUE,"8d1acfd2d2.jpg"),
-  (7596206,"GOIABA VERMELHA","Unidade.","Und",1.49,TRUE,"1c73f82f96.jpg"),
-  (0869780,"CAJU FRESCO","Bandeja com 300 gramas.","Und",11.79,TRUE,"fe92c48425.jpg"),
-  (7058918,"MILHO VERDE","Unidade.","Und",1.25,TRUE,"c5dbc2015c.jpg"),
-  (8988640,"COUVE FLOR","Unidade","Und",4.75,TRUE,"87b191e9bd.jpg");
+  (8888061,"MAXIXE","Embalagem de 200 gramas.","Und",1.99,TRUE,"8d1acfd2d2.jpg"),
+  (7996206,"GOIABA VERMELHA","Unidade.","Und",1.49,TRUE,"1c73f82f96.jpg"),
+  (0889780,"CAJU FRESCO","Bandeja com 300 gramas.","Und",11.79,TRUE,"fe92c48425.jpg"),
+  (7052918,"MILHO VERDE","Unidade.","Und",1.25,TRUE,"c5dbc2015c.jpg"),
+  (8980640,"COUVE FLOR","Unidade","Und",4.75,TRUE,"87b191e9bd.jpg");
     
 //endereco
  
