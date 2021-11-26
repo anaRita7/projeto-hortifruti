@@ -29,17 +29,28 @@ export class RegisterCliComponent implements OnInit {
     else if(this.cliente.documento == null){
       alert("Preencha todos os dados. Campo de documento está vazio!");
     }
-    this.service.postCliente(this.cliente)
-    .subscribe(data => {
-      alert('Cliente cadastrado com sucesso');
-      this.router.navigate(['clients-consult'])
-    },
-    erro =>
-    {
-      if(erro.status == 400) {
-        alert(erro.error.mensagem);
-      }
-    }
-    );
-  }    
+    else{
+    this.service.getClientePorDocumento(this.cliente.documento).subscribe(data =>
+      {
+        alert("Este usuário já está cadastrado!")
+      },
+      erro =>
+      {
+        if(erro.status == 404) {
+          this.service.postCliente(this.cliente)
+          .subscribe(data => {
+            alert('Cliente cadastrado com sucesso');
+            this.router.navigate(['clients-consult'])
+          },
+          erro =>
+          {
+            if(erro.status == 400) {
+              alert(erro.error.mensagem);
+            }
+          }
+          )
+        }
+      })
+    }    
+  }
 }

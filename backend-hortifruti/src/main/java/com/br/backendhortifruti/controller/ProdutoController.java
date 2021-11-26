@@ -39,13 +39,6 @@ public class ProdutoController {
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
 
-	@GetMapping("/ativos")
-	public ResponseEntity<PageImpl<ProdutoAtivoDTO>> consultarProdutosAtivosPage(Pageable pageable) {
-		Page<Produto> page = produtoService.consultarProdutosAtivos(pageable);
-		PageImpl<ProdutoAtivoDTO> pageDTO = new PageImpl<>(ProdutoAtivoDTO.converterList(page.getContent()), pageable, page.getTotalElements());
-		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
-	}
-
 	@GetMapping("/ativos/codigo/{codigo}")
 	public ResponseEntity<ProdutoAtivoDTO> consultarProdutoAtivoPorCodigo(@PathVariable("codigo") Integer codigo) {
 		try{
@@ -95,6 +88,13 @@ public class ProdutoController {
 		}
 	}
 
+	@GetMapping("/ativos")
+	public ResponseEntity<PageImpl<ProdutoAtivoDTO>> consultarProdutosAtivosPage(Pageable pageable) {
+		Page<Produto> page = produtoService.consultarProdutosAtivos(pageable);
+		PageImpl<ProdutoAtivoDTO> pageDTO = new PageImpl<>(ProdutoAtivoDTO.converterList(page.getContent()), pageable, page.getTotalElements());
+		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
+	}
+	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> excluirProduto(@PathVariable("id") Integer produtoId) {
 		try {
