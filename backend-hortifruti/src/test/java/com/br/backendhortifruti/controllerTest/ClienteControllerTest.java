@@ -2,8 +2,6 @@ package com.br.backendhortifruti.controllerTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,12 +42,6 @@ public class ClienteControllerTest {
 		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 
-//	@Test
-//	public void consultarClientes() {
-//		ResponseEntity<List<ClienteDTO>> clienteResponse = clienteController.consultarClientes();
-//		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
-//	}
-
 	@Test
 	public void consultarClientePorDocumentoTest() {
 		ResponseEntity<ClienteIdDTO> clienteResponse = clienteController.consultarClientePorDocumento("605.737.218-04");
@@ -76,4 +68,9 @@ public class ClienteControllerTest {
 		}
 	}
 
+//	@Test
+//	public void consultarClientes() {
+//		ResponseEntity<List<ClienteDTO>> clienteResponse = clienteController.consultarClientes();
+//		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
+//	}
 }
