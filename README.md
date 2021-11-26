@@ -1,12 +1,13 @@
 <body>
   <header>
     <h1 align="middle">
-      <img src="https://media2.giphy.com/media/bWsQzCz6Q4idrqKGhI/200.webp?cid=ecf05e47qcnwv0fxx8t3whmc6f39mfh3vd0eeiot6c6rwj1v&rid=200.webp&ct=s" width="55">
-        HortiFrooti
+      <img src="https://media4.giphy.com/media/VFhgsXzJqWMpP03v8W/giphy.gif?cid=ecf05e476q23pfrrs65ny3tiynl1uqsb0hsbcvznmcmltrpv&rid=giphy.gif&ct=s" width="55">
+        <img src="https://raw.githubusercontent.com/anaRita7/projeto-hortifruti/210abced0e93458e29c2392b2d21270f4ad54bf0/frontend-hortifruti/src/assets/images/logo.svg?token=ATJOTJSLTH7LIV4EDGKTBU3BUDV26" width="500">
       <img src="https://media4.giphy.com/media/VFhgsXzJqWMpP03v8W/giphy.gif?cid=ecf05e476q23pfrrs65ny3tiynl1uqsb0hsbcvznmcmltrpv&rid=giphy.gif&ct=s" width="55">
     </h1>
-  </header><hr>
- 
+  </header>
+
+  
 <div id='indice'/>
   
 ## 📚 Índice
@@ -71,7 +72,7 @@
   
 <hr>
 
-<div id='gitClone'/> 
+<div id='gitClone'/>
   
 ## Clonando o Projeto do GitHub
   
@@ -79,7 +80,7 @@
 ```bash
   
 # Clonar o repositório
-git clone https://github.com/anaRita7/projeto-hortifruti.git 
+git clone https://github.com/anaRita7/projeto-hortifruti.git
   
 # Entrar no diretório
 cd projeto-hortifruti
