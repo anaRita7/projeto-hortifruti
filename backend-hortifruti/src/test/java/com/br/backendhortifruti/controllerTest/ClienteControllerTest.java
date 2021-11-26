@@ -44,12 +44,12 @@ public class ClienteControllerTest {
 		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
 	}
 
-	@Test
-	public void consultarClientes() {
-		ResponseEntity<List<ClienteDTO>> clienteResponse = clienteController.consultarClientes();
-		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
-	}
-	
+//	@Test
+//	public void consultarClientes() {
+//		ResponseEntity<List<ClienteDTO>> clienteResponse = clienteController.consultarClientes();
+//		assertThat(clienteResponse.getStatusCodeValue()).isEqualTo(200);
+//	}
+
 	@Test
 	public void consultarClientePorDocumentoTest() {
 		ResponseEntity<ClienteIdDTO> clienteResponse = clienteController.consultarClientePorDocumento("605.737.218-04");

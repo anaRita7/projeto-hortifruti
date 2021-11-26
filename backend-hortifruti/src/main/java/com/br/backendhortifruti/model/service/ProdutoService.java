@@ -15,9 +15,7 @@ public interface ProdutoService {
 
 	Page<Produto> consultarProdutos(Pageable pageable);
 	
-	Page<Produto> consultarProdutosAtivosPage(Pageable pageable);
-
-	List<Produto> consultarProdutosAtivos();
+	Page<Produto> consultarProdutosAtivos(Pageable pageable);
 
 	Produto consultarProduto(Integer id);
 	
@@ -31,5 +29,4 @@ public interface ProdutoService {
 
     Produto alterarStatusProduto(Integer produtoId, boolean status);
 
-    List<Produto> consultarProdutosInativos();
 }

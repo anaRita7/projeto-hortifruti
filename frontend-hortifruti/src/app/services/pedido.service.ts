@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { PedidoForConsult } from '../model/PedidoForConsult';
@@ -13,8 +12,9 @@ export class PedidoService {
 
   private readonly urlBase='http://localhost:8080/api/pedido';
 
-  getPedidos() {
-    return this.http.get<PedidoForConsult[]>(this.urlBase);
+  getPedidos(params: any) {
+    console.log("params", params);
+    return this.http.get<any>(this.urlBase, { params });
   }
 
   getPedidoCodigo(codigo: string){

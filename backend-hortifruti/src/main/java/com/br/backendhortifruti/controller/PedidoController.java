@@ -35,20 +35,12 @@ public class PedidoController {
 		this.pedidoService = pedidoService;
 	}
 
-	@GetMapping("/page")
+	@GetMapping
 	public ResponseEntity<PageImpl<PedidoForPageDTO>> consultarPedidos(Pageable pageable) {
 		Page<Pedido> page = pedidoService.consultarPedidos(pageable);
 		PageImpl<PedidoForPageDTO> pageDTO = new PageImpl<>(PedidoForPageDTO.converterList(page.getContent()),pageable, page.getTotalElements());
 		return new ResponseEntity<>(pageDTO, HttpStatus.OK);
 	}
-
-	@GetMapping
-	public ResponseEntity<List<PedidoForListDTO>> consultarPedidos() {
-		List<Pedido> pedidos = pedidoService.consultarPedidosAtivos();
-		pedidos.addAll(pedidoService.consultarPedidosInativos());
-		return new ResponseEntity<>(PedidoForListDTO.converterList(pedidos), HttpStatus.OK);
-	}
-
 
 	@GetMapping("/codigo/{codigo}")
 	public ResponseEntity<PedidoDTO> consultarPedidoPorCodigo(@PathVariable("codigo") Integer codigo) {

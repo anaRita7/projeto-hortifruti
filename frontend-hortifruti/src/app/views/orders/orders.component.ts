@@ -14,12 +14,58 @@ export class OrdersComponent implements OnInit {
   pedido: Pedido = new Pedido();
   mostrar: boolean = false;
 
+  page = 1;
+  count = 0;
+  pageSize = 5;
+  pageSizes = [5, 10, 15];
+  sort = "situacao,asc";
+
   constructor(private service: PedidoService) {
-    this.service.getPedidos().subscribe(data => this.pedidos = data);
+    this.retrievePedido();
   }
 
   ngOnInit(): void {
   }
+
+  getRequestParams(page: number, pageSize: number, sort: string): any {
+    let params: any = {};
+    if (page) {
+      params[`page`] = page - 1;
+    }
+
+    if (pageSize) {
+      params[`size`] = pageSize;
+    }
+    
+    params[`sort`] = sort;
+
+    return params;
+  }
+
+  retrievePedido(): void {
+    const params = this.getRequestParams(this.page, this.pageSize, this.sort);
+    this.service.getPedidos(params)
+    .subscribe(
+      response => {
+        this.pedidos = response.content;
+        this.count = response.totalElements;
+      },
+      error => {
+        console.log(error);
+      });
+  }
+
+  handlePageChange(event: number): void {
+    this.page = event;
+    this.retrievePedido();
+  }
+
+  handlePageSizeChange(event: any): void {
+    this.pageSize = event.target.value;
+    this.page = 1;
+    this.retrievePedido();
+  }
+
 
   detalharPedido(codigo: any){
     this.mostrar = true;
