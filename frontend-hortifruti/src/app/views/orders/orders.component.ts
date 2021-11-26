@@ -77,7 +77,6 @@ export class OrdersComponent implements OnInit {
     this.service.getPedidoCodigo(codigo).subscribe(data => {
       this.pedido = data
       this.percDesconto = this.pedido.desconto*100
-      console.log(this.pedido)
     })
   }
 
