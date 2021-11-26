@@ -32,7 +32,7 @@ export class RegisterCliComponent implements OnInit {
     else{
     this.service.getClientePorDocumento(this.cliente.documento).subscribe(data =>
       {
-        alert("Este usuário já está cadastrado!")
+        alert("Este documento já está cadastrado!")
       },
       erro =>
       {
@@ -46,6 +46,9 @@ export class RegisterCliComponent implements OnInit {
           {
             if(erro.status == 400) {
               alert(erro.error.mensagem);
+            }
+            else if(erro.status == 417) {
+              alert('CPF/CNPJ inválido');
             }
           }
           )
