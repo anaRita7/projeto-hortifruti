@@ -12,6 +12,8 @@ export class ConsultProdComponent implements OnInit {
 
   produtos: Produto[] = [];
   produto: Produto = new Produto();
+  selectedImage: File | undefined;
+  formDataUploadFile: FormData | undefined;
 
   page = 1;
   count = 0;
@@ -27,6 +29,11 @@ export class ConsultProdComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
+  }
+
+  onFileChanged(event: Event){
+    this.selectedImage = (event.target as HTMLInputElement).files![0];
   }
 
   getRequestParams(page: number, pageSize: number, sort: string): any {

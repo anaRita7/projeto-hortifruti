@@ -58,7 +58,7 @@
                                     <th>Desconto:</th>
                                     <th></th>
                                     <th>
-                                        <form>
+                                        <form class="d-flex">
                                             <input [(ngModel)]="percDesconto" name="desconto" min="0" nome="desconto" placeholder="%" class="cart-price-off" mask="percent" suffix="%">
                                             <button (click)=aplicarDesconto() class="btn-off"> APLICAR </button>
                                         </form>
@@ -208,7 +208,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label>Documento</label>
-                    <input [(ngModel)]="cliente.documento" type="text" name="documento" class="form-control" placeholder="CPF/CNPJ">
+                    <input [(ngModel)]="cliente.documento" type="text" name="documento" class="form-control" placeholder="CPF/CNPJ" mask="000.000.000-00||00.000.000/0000-00">
                 </div>
 
             </div>
@@ -221,7 +221,7 @@
 </div>
 
 <!-- Modal Register Clients-->
-<div class="modal fade" id="registerCliModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div  class="modal fade" id="registerCliModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
